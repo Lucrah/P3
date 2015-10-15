@@ -61,7 +61,7 @@
     <Compile Include="Viewmodels\ViewModelGraphScreen1.cs" />
     <Compile Include="Viewmodels\ViewModelMain.cs" />
     <Compile Include="Viewmodels\ViewModelPropertyScreen.cs" />
-    <Compile Include="Viewmodels\ViewModelResultScren.cs" />
+    <Compile Include="Viewmodels\ViewModelResultScreen.cs" />
     <Compile Include="Viewmodels\ViewModelSearchScreen.cs" />
     <Compile Include="Views\GraphScreen.xaml.cs">
       <DependentUpon>GraphScreen.xaml</DependentUpon>
