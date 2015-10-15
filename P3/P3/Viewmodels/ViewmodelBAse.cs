@@ -11,7 +11,12 @@ namespace P3.Viewmodels
 {
     class ViewmodelBase : INotifyPropertyChanged
     {
-        //basic ViewModelBase
+        /*
+         * Dont ever make a constructor in a viewmodel, it breaks the view - viewmodel connection, as it is only possible to do because a viemodel specifically have no constructor
+         * Base for all viewmodels, implements INotifyPropertyChanged
+         * If you were to use collections with INotifyPropertyChanged, use dispatcher, or the changes will not go through to the view. Something about it being of different threads i think.
+         * Link to this: http://blogs.msdn.com/b/davidrickard/archive/2010/04/01/using-the-dispatcher-with-mvvm.aspx
+         */
         internal void RaisePropertyChanged(string propertyName)
         {
             if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); }
