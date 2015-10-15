@@ -1,8 +1,13 @@
 ﻿<Window x:Class="P3.Views.PropertyInfoScreen"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:P3.Viewmodels"
+        DataContext="{DynamicResource ViewModelPropertyScreen}"
         Title="PropertyInfoScreen" Height="300" Width="300">
     <Grid>
         
     </Grid>
+    <Window.Resources>
+        <vm:ViewModelPropertyScreen x:Key="ViewModelPropertyScreen"/>
+    </Window.Resources>
 </Window>

@@ -1,8 +1,13 @@
 ﻿<Window x:Class="P3.Views.GraphScreen"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:P3.Viewmodels"
+        DataContext="{DynamicResource ViewModelGraphScreen1}"
         Title="GraphScreen" Height="300" Width="300">
     <Grid>
         
     </Grid>
+    <Window.Resources>
+        <vm:ViewModelGraphScreen1 x:Key="ViewModelGraphScreen1"/>
+    </Window.Resources>
 </Window>

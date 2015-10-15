@@ -12,9 +12,9 @@ namespace P3.Viewmodels
     class ViewmodelBase : INotifyPropertyChanged
     {
         //basic ViewModelBase
-        internal void RaisePropertyChanged(string prop)
+        internal void RaisePropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); }
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
