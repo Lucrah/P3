@@ -22,7 +22,6 @@ namespace P3
     {
         public MainWindow()
         {
-            //why dosent it work
             InitializeComponent();
         }
     }
