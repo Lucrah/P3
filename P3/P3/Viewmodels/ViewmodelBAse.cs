@@ -9,7 +9,7 @@ using System.Windows.Threading;
 
 namespace P3.Viewmodels
 {
-    class ViewmodelBase : INotifyPropertyChanged
+    class ViewModelBase : INotifyPropertyChanged
     {
         /*
          * Dont ever make a constructor in a viewmodel, it breaks the view - viewmodel connection, as it is only possible to do because a viemodel specifically have no constructor
@@ -24,25 +24,25 @@ namespace P3.Viewmodels
         public event PropertyChangedEventHandler PropertyChanged;
 
         //Extra Stuff, shows why a base ViewModel is useful
-        bool? _CloseWindowFlag;
-        public bool? CloseWindowFlag
-        {
-            get { return _CloseWindowFlag; }
-            set
-            {
-                _CloseWindowFlag = value;
-                RaisePropertyChanged("CloseWindowFlag");
-            }
-        }
+        //bool? _CloseWindowFlag;
+        //public bool? CloseWindowFlag
+        //{
+        //    get { return _CloseWindowFlag; }
+        //    set
+        //    {
+        //        _CloseWindowFlag = value;
+        //        RaisePropertyChanged("CloseWindowFlag");
+        //    }
+        //}
 
-        public virtual void CloseWindow(bool? result = true)
-        {
-            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
-            {
-                CloseWindowFlag = CloseWindowFlag == null
-                    ? true
-                    : !CloseWindowFlag;
-            }));
-        }
+        //public virtual void CloseWindow(bool? result = true)
+        //{
+        //    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
+        //    {
+        //        CloseWindowFlag = CloseWindowFlag == null
+        //            ? true
+        //            : !CloseWindowFlag;
+        //    }));
+        //}
     }
 }
