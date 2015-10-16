@@ -8,6 +8,11 @@ namespace ConsoleApplication1
 {
   class Listing // lav om så listing er generel og hus/lejlighed/erhvervsejendom nedarver.(flyt antal værelser/badeværelser osv ind i nedarvende klasser)
   {
+    public Listing(string streetName, int houseNumber, int areaCode, string city)
+    {
+      address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode) + " " + city; 
+      addressforURL = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode) + "+" + city;
+    }
     public Listing(string streetName, int houseNumber, int areaCode, string city,  int priceOfHouse, int sizeOfHouse, int yearBuilt)
     {
       address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode) + " " + city; //can be made to keep each part of the address in it's own prop.

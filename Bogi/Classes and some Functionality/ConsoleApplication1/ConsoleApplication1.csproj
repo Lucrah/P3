@@ -43,8 +43,10 @@
   <ItemGroup>
     <Compile Include="Funktionality.cs" />
     <Compile Include="Listings\Apartment.cs" />
+    <Compile Include="Listings\CommercialProperty.cs" />
     <Compile Include="Listings\House.cs" />
     <Compile Include="Listings\Listing.cs" />
+    <Compile Include="Listings\Listings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Structs\Coordinates.cs" />

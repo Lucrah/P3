@@ -8,6 +8,11 @@ namespace ConsoleApplication1
 {
   class House : Listing
   {
+     public House(string streetName, int houseNumber, int areaCode, string city) : base(streetName, houseNumber, areaCode, city)
+    {
+      
+    }
+
     public House(string streetName, int houseNumber, int areaCode, string city,  int priceOfHouse, int sizeOfHouse, int numberOfRooms, 
                  int numberOfBathrooms, int sizeOfProperty, int sizeOfBasement, int numberOfFloors, int yearBuilt) : base(streetName, 
                  houseNumber, areaCode, city, priceOfHouse, sizeOfHouse, yearBuilt) 
@@ -66,6 +71,22 @@ namespace ConsoleApplication1
       get { return YearBuilt; }
       set { YearBuilt = value; }
     }
+    /*private bool Andelsbolig;
+
+    public bool andelsbolig
+    {
+      get { return Andelsbolig; }
+      private set { Andelsbolig = value; }
+    }
+    private bool FritidsBolig;    //Brug muligvis til checkbokse omkring andelsbolig/fritidsbolig/almindeligt hus.
+
+    public bool fritidsbolig
+    {
+      get { return FritidsBolig; }
+      private set { FritidsBolig = value; }
+    }*/
+
+
 
   }
 }
