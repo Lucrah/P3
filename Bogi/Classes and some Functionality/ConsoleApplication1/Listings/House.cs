@@ -17,74 +17,70 @@ namespace ConsoleApplication1
                  int numberOfBathrooms, int sizeOfProperty, int sizeOfBasement, int numberOfFloors, int yearBuilt) : base(streetName, 
                  houseNumber, areaCode, city, priceOfHouse, sizeOfHouse, yearBuilt) 
     {
-      numberofrooms = numberOfRooms;
-      numberofbathrooms = numberOfBathrooms;
-      sizeofproperty = sizeOfProperty;
-      sizeofbasement = sizeOfBasement;
-      numberoffloors = numberOfFloors;
+      NumberOfRooms = numberOfRooms;
+      NumberOfBathrooms = numberOfBathrooms;
+      SizeOfProperty = sizeOfProperty;
+      SizeOfBasement = sizeOfBasement;
+      NumberOfFloors = numberOfFloors;
     }
 
-    private int NumberOfRooms;
+    private int _numberOfRooms;
 
-    public int numberofrooms
+    public int NumberOfRooms
     {
-      get { return NumberOfRooms; }
-      private set { NumberOfRooms = value; }
+      get { return _numberOfRooms; }
+      private set { _numberOfRooms = value; }
     }
 
-    private int NumberOfBathrooms;
+    private int _numberOfBathrooms;
 
-    public int numberofbathrooms
+    public int NumberOfBathrooms
     {
-      get { return NumberOfBathrooms; }
-      private set { NumberOfBathrooms = value; }
+      get { return _numberOfBathrooms; }
+      private set { _numberOfBathrooms = value; }
     }
 
-    private int SizeOfProperty;
+    private int _sizeOfProperty;
 
-    public int sizeofproperty
+    public int SizeOfProperty
     {
-      get { return SizeOfProperty; }
-      private set { SizeOfProperty = value; }
+      get { return _sizeOfProperty; }
+      private set { _sizeOfProperty = value; }
     }
 
-    private int SizeOfBasement;
+    private int _sizeOfBasement;
 
-    public int sizeofbasement
+    public int SizeOfBasement
     {
-      get { return SizeOfBasement; }
-      private set { SizeOfBasement = value; }
+      get { return _sizeOfBasement; }
+      private set { _sizeOfBasement = value; }
     }
 
-    private int NumberOfFloors;
+    private int _numberOfFloors;
 
-    public int numberoffloors
+    public int NumberOfFloors
     {
-      get { return NumberOfFloors; }
-      set { NumberOfFloors = value; }
+      get { return _numberOfFloors; }
+      set { _numberOfFloors = value; }
     }
 
-    private int YearBuilt;
+    /*private bool _andelsbolig;
 
-    public int yearbuilt
+    public bool AndelsBolig
     {
-      get { return YearBuilt; }
-      set { YearBuilt = value; }
+      get { return _andelsbolig; }
+      private set { _andelsbolig = value; }
     }
-    /*private bool Andelsbolig;
+    private bool _fritidsBolig;    //Brug muligvis til checkbokse omkring andelsbolig/fritidsbolig/almindeligt hus.
 
-    public bool andelsbolig
+    public bool FritidsBolig
     {
-      get { return Andelsbolig; }
-      private set { Andelsbolig = value; }
-    }
-    private bool FritidsBolig;    //Brug muligvis til checkbokse omkring andelsbolig/fritidsbolig/almindeligt hus.
-
-    public bool fritidsbolig
-    {
-      get { return FritidsBolig; }
-      private set { FritidsBolig = value; }
+      get { return _fritidsBolig; }
+      private set { _fritidsBolig = value; }
     }*/
+
+    }
+    
 
 
 

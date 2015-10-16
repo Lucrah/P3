@@ -6,60 +6,60 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
-  class Listing // lav om så listing er generel og hus/lejlighed/erhvervsejendom nedarver.(flyt antal værelser/badeværelser osv ind i nedarvende klasser)
+  class Listing 
   {
     public Listing(string streetName, int houseNumber, int areaCode, string city)
     {
-      address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode) + " " + city; 
-      addressforURL = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode) + "+" + city;
+      Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode) + " " + city; 
+      AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode) + "+" + city;
     }
     public Listing(string streetName, int houseNumber, int areaCode, string city,  int priceOfHouse, int sizeOfHouse, int yearBuilt)
     {
-      address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode) + " " + city; //can be made to keep each part of the address in it's own prop.
-      addressforURL = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode) + "+" + city; //used for GeoCode lookups.
-      price = priceOfHouse;
-      size = sizeOfHouse;
-      yearbuilt = yearBuilt;
+      Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode) + " " + city; //can be made to keep each part of the address in it's own prop.
+      AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode) + "+" + city; //used for GeoCode lookups.
+      Price = priceOfHouse;
+      Size = sizeOfHouse;
+      YearBuilt = yearBuilt;
     }
     #region property
-    private string Address;
+    private string _address;
 
-    public string address
+    public string Address
     {
-      get { return Address; }
-      private set { Address = value; }
+      get { return _address; }
+      private set { _address = value; }
     }
 
-    private string AddressForURL;
+    private string _addressForURL;
 
-    public string addressforURL
+    public string AddressForURL
     {
-      get { return AddressForURL; }
-      private set { AddressForURL = value; }
-    }
-    
-    private int Price;
-
-    public int price
-    {
-      get { return Price; }
-      private set { Price = value; }
+      get { return _addressForURL; }
+      private set { _addressForURL = value; }
     }
     
-    private int Size;
+    private int _price;
 
-    public int size
+    public int Price
     {
-      get { return Size; }
-      private set { Size = value; }
+      get { return _price; }
+      private set { _price = value; }
+    }
+    
+    private int _size;
+
+    public int Size
+    {
+      get { return _size; }
+      private set { _size = value; }
     }
 
-    private int YearBuilt;
+    private int _yearBuilt;
 
-    public int yearbuilt
+    public int YearBuilt
     {
-      get { return YearBuilt; }
-      set { YearBuilt = value; }
+      get { return _yearBuilt; }
+      set { _yearBuilt = value; }
     }
 
     public Coordinates coordinates = new Coordinates();

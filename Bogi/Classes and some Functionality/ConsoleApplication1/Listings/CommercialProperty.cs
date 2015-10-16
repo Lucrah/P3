@@ -17,58 +17,58 @@ namespace ConsoleApplication1.Listings
                  int sizeOfStorage, int sizeOfProperty, int sizeOfBasement, int numberOfFloors, int yearBuilt) : base(streetName, 
                  houseNumber, areaCode, city, priceOfHouse, sizeOfHouse, yearBuilt) 
     {
-      sizeofstorage = sizeOfStorage;
-      sizeofproperty = sizeOfProperty;
-      sizeofbasement = sizeOfBasement;
-      numberoffloors = numberOfFloors;
+      SizeOfStorage = sizeOfStorage;
+      SizeOfProperty = sizeOfProperty;
+      SizeOfBasement = sizeOfBasement;
+      NumberOfFloors = numberOfFloors;
     }
 
-     private int SizeOfProperty;
+     private int _sizeOfProperty;
 
-     public int sizeofproperty
+     public int SizeOfProperty
      {
-       get { return SizeOfProperty; }
-       private set { SizeOfProperty = value; }
+       get { return _sizeOfProperty; }
+       private set { _sizeOfProperty = value; }
      }
 
-     private int SizeOfBasement;
+     private int _sizeOfBasement;
 
-     public int sizeofbasement
+     public int SizeOfBasement
      {
-       get { return SizeOfBasement; }
-       private set { SizeOfBasement = value; }
+       get { return _sizeOfBasement; }
+       private set { _sizeOfBasement = value; }
      }
 
-     private int NumberOfFloors;
+     private int _numberOfFloors;
 
-     public int numberoffloors
+     public int NumberOfFloors
      {
-       get { return NumberOfFloors; }
-       set { NumberOfFloors = value; }
+       get { return _numberOfFloors; }
+       set { _numberOfFloors = value; }
      }
 
-     private int SizeOfStorage;
+     private int _sizeOfStorage;
 
-     public int sizeofstorage
+     public int SizeOfStorage
      {
-       get { return SizeOfStorage; }
-       private set { SizeOfStorage = value; }
+       get { return _sizeOfStorage; }
+       private set { _sizeOfStorage = value; }
      }
 
-    /* private bool WarehouseBuilding;
+    /* private bool _warehouseBuilding;
 
-     public bool warehousebuilding
+     public bool WarehouseBuilding
      {
-       get { return WarehouseBuilding; }
-       private set { WarehouseBuilding = value; }
+       get { return _warehouseBuilding; }
+       private set { _warehouseBuilding = value; }
      }
                                                   // use for determining what kind of commercial property this is.
-     private bool OfficeBuilding;
+     private bool _officeBuilding;
 
-     public bool officebuilding
+     public bool OfficeBuilding
      {
-       get { return OfficeBuilding; }
-       set { OfficeBuilding = value; }
+       get { return _officeBuilding; }
+       set { _officeBuilding = value; }
      }*/
 
   }

@@ -33,7 +33,7 @@ namespace ConsoleApplication1.Listings
       Dictionary<string, Listing> result = new Dictionary<string, Listing>();
       if (!listingDB.ContainsKey(address))
       {
-        //new Listing somethin ... funktion som defineret i importListings();
+        //new Listing something ... funktion som defineret i importListings();
         Listing something = new Listing(streetName, houseNumber, areaCode, city);
         Funktionality.getCoordinates(something);
         //tilføj til DB

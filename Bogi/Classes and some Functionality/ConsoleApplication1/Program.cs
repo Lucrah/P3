@@ -10,8 +10,8 @@ namespace ConsoleApplication1
   {
     static void Main(string[] args)
     {
-      Listing listing1 = new House("H C Andersen Vej", 3, 9000, "Aalborg", 2098000, 124, 4, 2, 709, 0, 1, 1966);
-      Listing listing2 = new Apartment("Gammel Strandvej", 5, 9000, "Aalborg", 785000, 43, 1, 1, 4, 1939);
+      Listing listing1 = new House("Rendsburggade", 28, 9000, "Aalborg", 2098000, 124, 4, 2, 709, 0, 1, 1966);
+      Listing listing2 = new Apartment("gl. Egebjergvej", 9, 8700, "Horsens", 785000, 43, 1, 1, 4, 1939);
 
       List<Listing> dict = new List<Listing>();
       dict.Add(listing1);

@@ -16,34 +16,34 @@ namespace ConsoleApplication1
     public Apartment(string streetName, int houseNumber, int areaCode, string city,  int priceOfHouse, int sizeOfHouse, int numberOfRooms, 
                  int numberOfBathrooms, int floorNumber, int yearBuilt) : base(streetName, houseNumber, areaCode, city, priceOfHouse, sizeOfHouse, yearBuilt) 
     {
-      numberofrooms = numberOfRooms;
-      numberofbathrooms = numberOfBathrooms;
-      floornumber = floorNumber;
+      NumberOfRooms = numberOfRooms;
+      NumberOfBathrooms = numberOfBathrooms;
+      FloorNumber = floorNumber;
       
     }
 
-    private int NumberOfRooms;
+    private int _numberOfRooms;
 
-    public int numberofrooms
+    public int NumberOfRooms
     {
-      get { return NumberOfRooms; }
-      private set { NumberOfRooms = value; }
+      get { return _numberOfRooms; }
+      private set { _numberOfRooms = value; }
     }
 
-    private int NumberOfBathrooms;
+    private int _numberOfBathrooms;
 
-    public int numberofbathrooms
+    public int NumberOfBathrooms
     {
-      get { return NumberOfBathrooms; }
-      private set { NumberOfBathrooms = value; }
+      get { return _numberOfBathrooms; }
+      private set { _numberOfBathrooms = value; }
     }
 
-    private int FloorNumber;
+    private int _floorNumber;
 
-    public int floornumber
+    public int FloorNumber
     {
-      get { return FloorNumber; }
-      private set { FloorNumber = value; }
+      get { return _floorNumber; }
+      private set { _floorNumber = value; }
     }
 
   }
