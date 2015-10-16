@@ -23,26 +23,26 @@ namespace P3.Viewmodels
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
-        //Extra Stuff, shows why a base ViewModel is useful
-        //bool? _CloseWindowFlag;
-        //public bool? CloseWindowFlag
-        //{
-        //    get { return _CloseWindowFlag; }
-        //    set
-        //    {
-        //        _CloseWindowFlag = value;
-        //        RaisePropertyChanged("CloseWindowFlag");
-        //    }
-        //}
+        //
+        bool? _CloseWindowFlag;
+        public bool? CloseWindowFlag
+        {
+            get { return _CloseWindowFlag; }
+            set
+            {
+                _CloseWindowFlag = value;
+                RaisePropertyChanged("CloseWindowFlag");
+            }
+        }
 
-        //public virtual void CloseWindow(bool? result = true)
-        //{
-        //    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
-        //    {
-        //        CloseWindowFlag = CloseWindowFlag == null
-        //            ? true
-        //            : !CloseWindowFlag;
-        //    }));
-        //}
+        public virtual void CloseWindow(bool? result = true)
+        {
+            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
+            {
+                CloseWindowFlag = CloseWindowFlag == null
+                    ? true
+                    : !CloseWindowFlag;
+            }));
+        }
     }
 }
