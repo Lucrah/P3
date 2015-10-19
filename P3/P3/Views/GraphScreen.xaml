@@ -9,6 +9,5 @@
 
     </Grid>
     <Window.Resources>
-        <vm:ViewModelGraphScreen1 x:Key="ViewModelGraphScreen1"/>
     </Window.Resources>
 </Window>
