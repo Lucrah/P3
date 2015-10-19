@@ -33,10 +33,10 @@ namespace P3.Helpers
 		{
 			if (this.ToggleFullScreen)
 			{
-                if (this.AssociatedObject.WindowState == "Maximized")
-                    this.AssociatedObject.WindowState = Normal;
+                if (this.AssociatedObject.WindowState == WindowState.Maximized)
+                    this.AssociatedObject.WindowState = WindowState.Normal;
                 else
-                    this.AssociatedObject.WindowState = Maxmimized;
+                    this.AssociatedObject.WindowState = WindowState.Maximized;
 			}
 		}
 	}
