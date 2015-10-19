@@ -39,6 +39,16 @@ namespace P3.Viewmodels
                 RaisePropertyChanged("CloseTrigger");
             }
         }
+        internal bool toggleFullScreen;
+        public bool ToggleFullScreen
+        {
+            get { return this.ToggleFullScreen; }
+            set
+            {
+                this.ToggleFullScreen = value;
+                RaisePropertyChanged();
+            }
+        }
 
 
     }
