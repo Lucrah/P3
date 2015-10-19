@@ -9,16 +9,12 @@
 		xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         DataContext="{DynamicResource ViewModelMain}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1080" Width="1920" ResizeMode="CanMinimize" Background="#FFD1D1D1">
-	<i:Interaction.Behaviors>
-		<hlp:CloseWindowBehavior CloseTrigger="{Binding CloseTrigger}"/>
-	</i:Interaction.Behaviors>
+        Title="MainWindow" ResizeMode="CanMinimize" Background="#FFD1D1D1" WindowState="Maximized">
+    <i:Interaction.Behaviors>
+        <hlp:CloseWindowBehavior CloseTrigger="{Binding CloseTrigger}"/>
+    </i:Interaction.Behaviors>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="412*"/>
-            <ColumnDefinition Width="545*"/>
-        </Grid.ColumnDefinitions>
-        <Button Content="Test" HorizontalAlignment="Left" Margin="10,1021,0,0" VerticalAlignment="Top" Width="75" Command="{Binding GotoDummyWindowCommand}" />
+        <Button Content="Test" HorizontalAlignment="Left" Margin="10,1021,0,0" VerticalAlignment="Top" Width="75" Command="{Binding GotoDummyWindowCommand}" Height="20" />
     </Grid>
     <Window.Resources>
         <vm:ViewModelMain x:Key="ViewModelMain"/>
