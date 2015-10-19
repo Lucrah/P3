@@ -15,6 +15,7 @@ namespace P3.Viewmodels
     {
         #region ICommand and Relay
         private RelayCommand _GotoDummyWindowCommand;
+
         public ICommand GotoDummyWindowCommand
         {
             get
@@ -26,11 +27,13 @@ namespace P3.Viewmodels
                 return _GotoDummyWindowCommand;
             }
         }
+
         #endregion
         private void GotoDummyWindow()
         {
             var win = new DummyView();
             win.Show();
+            CloseTrigger = true;
         }
     }
 }

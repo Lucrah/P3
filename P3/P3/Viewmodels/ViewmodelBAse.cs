@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Threading;
 using P3.Helpers;
+using System.Windows.Interactivity;
 
 namespace P3.Viewmodels
 {
@@ -25,27 +26,18 @@ namespace P3.Viewmodels
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        ////Extra Stuff, shows why a base ViewModel is useful ??
-        //bool? _CloseWindowFlag;
-        //public bool? CloseWindowFlag
-        //{
-        //    get { return _CloseWindowFlag; }
-        //    set
-        //    {
-        //        _CloseWindowFlag = value;
-        //        RaisePropertyChanged("CloseWindowFlag");
-        //    }
-        //}
-
-        //public virtual void CloseWindow(bool? result = true)
-        //{
-        //    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
-        //    {
-        //        CloseWindowFlag = CloseWindowFlag == null
-        //            ? true
-        //            : !CloseWindowFlag;
-        //    }));
-        //}
+        //Commands  that are available for all windows, should be in here. 
+        // Procedure: Make function in viewmodel,set property to true to trigger, bind function to control in xaml.
+        internal bool closeTrigger;
+        public bool CloseTrigger
+        {
+            get { return this.closeTrigger; }
+            set
+            {
+                this.closeTrigger = value;
+                RaisePropertyChanged("CloseTrigger");
+            }
+        }
 
 
     }

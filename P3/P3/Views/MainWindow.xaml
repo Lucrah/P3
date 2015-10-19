@@ -5,12 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:P3"
         xmlns:vm="clr-namespace:P3.Viewmodels"
+		xmlns:hlp="clr-namespace:P3.Helpers"
+		xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         DataContext="{DynamicResource ViewModelMain}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="1080" Width="1920" ResizeMode="CanMinimize">
+	<i:Interaction.Behaviors>
+		<hlp:CloseWindowBehavior CloseTrigger="{Binding CloseTrigger}"/>
+	</i:Interaction.Behaviors>
     <Grid>
         <Button Content="Test" HorizontalAlignment="Left" Margin="432,288,0,0" VerticalAlignment="Top" Width="75" Command="{Binding GotoDummyWindowCommand}" />
-
     </Grid>
     <Window.Resources>
         <vm:ViewModelMain x:Key="ViewModelMain"/>
