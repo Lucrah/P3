@@ -13,6 +13,21 @@ namespace P3.Viewmodels
 {
     class DummyViewModel : ViewModelBase
     {
+        public ObservableCollection<DummyModel> People { get; set; }
+
+        object _selectedPerson;
+        public object SelectedPerson
+        {
+            get { return _selectedPerson; }
+            set {
+                    if (_selectedPerson != value)
+                    {
+                        _selectedPerson = value;
+                        RaisePropertyChanged();
+                    }
+                }
+        }
+
         private int _Age;
         public int Age
         {
@@ -49,9 +64,13 @@ namespace P3.Viewmodels
 
         public DummyViewModel()
         {
-            Age = 20;
-            Name = "gert";
-            UserAccessLevel = 0;
+            People = new ObservableCollection<DummyModel>
+            {
+                new DummyModel {Age = 20, Name = "Gert", UserAccessLevel = (AccessLevel)0},
+                new DummyModel {Age = 20, Name = "Bent", UserAccessLevel = (AccessLevel)1},
+                new DummyModel {Age = 20, Name = "Lars", UserAccessLevel = (AccessLevel)2},
+                new DummyModel {Age = 20, Name = "Kurt", UserAccessLevel = (AccessLevel)3},
+            };
         }
     }
 }
