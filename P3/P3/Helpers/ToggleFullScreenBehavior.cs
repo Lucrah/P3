@@ -37,11 +37,13 @@ namespace P3.Helpers
                 {
                     this.AssociatedObject.WindowState = WindowState.Normal;
                     this.AssociatedObject.WindowStyle = WindowStyle.SingleBorderWindow;
+                    this.AssociatedObject.ResizeMode = ResizeMode.CanResize;
                 }
                 else
                 {
                     this.AssociatedObject.WindowState = WindowState.Maximized;
                     this.AssociatedObject.WindowStyle = WindowStyle.None;
+                    this.AssociatedObject.ResizeMode = ResizeMode.NoResize;
                 }
 
 			}
