@@ -38,14 +38,20 @@ namespace P3.Helpers
                     this.AssociatedObject.WindowState = WindowState.Normal;
                     this.AssociatedObject.WindowStyle = WindowStyle.SingleBorderWindow;
                 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/master
                 else
                 {
                     this.AssociatedObject.WindowState = WindowState.Maximized;
                     this.AssociatedObject.WindowStyle = WindowStyle.None;
                 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 			}
 		}
 	}
