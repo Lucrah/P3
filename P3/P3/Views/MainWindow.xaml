@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:P3"
         xmlns:vm="clr-namespace:P3.Viewmodels"
 		xmlns:hlp="clr-namespace:P3.Helpers"
+        xmlns:views="clr-namespace:P3.Views"
 		xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         DataContext="{DynamicResource ViewModelMain}"
         mc:Ignorable="d"
@@ -16,14 +17,17 @@
     </i:Interaction.Behaviors>
     <Grid>
         <Button Content="Test" HorizontalAlignment="Left" Margin="10,497,0,0" VerticalAlignment="Top" Width="75" Command="{Binding GotoDummyWindowCommand}"/>
-
-    </Grid>
-    
+        <TabControl HorizontalAlignment="Left" Height="527" VerticalAlignment="Top" Width="760">
+        </TabControl>
+    </Grid>   
     <Window.InputBindings>
         <KeyBinding Key="F11" Command="{Binding ToggleFullScreenCommand}"/>
     </Window.InputBindings>
     
     <Window.Resources>
         <vm:ViewModelMain x:Key="ViewModelMain"/>
+        <DataTemplate DataType="{x:Type vm:ViewModelSearchScreen}">
+            <views:SearchScreen/>
+        </DataTemplate>
     </Window.Resources>
 </Window>
