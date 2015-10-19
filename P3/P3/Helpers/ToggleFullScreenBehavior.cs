@@ -35,8 +35,8 @@ namespace P3.Helpers
 			{
                 if (this.AssociatedObject.WindowState == WindowState.Maximized)
                 {
-                    this.AssociatedObject.WindowState = WindowState.Normal;
                     this.AssociatedObject.WindowStyle = WindowStyle.SingleBorderWindow;
+                    this.AssociatedObject.WindowState = WindowState.Normal;
                 }
                 else
                 {
