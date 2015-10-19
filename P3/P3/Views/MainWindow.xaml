@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Button Content="Test" HorizontalAlignment="Left" Margin="432,288,0,0" VerticalAlignment="Top" Width="75" Command="{Binding GotoDummyWindowCommand}"/>
+        <Button Content="Test" HorizontalAlignment="Left" Margin="432,288,0,0" VerticalAlignment="Top" Width="75" Command="{Binding GotoDummyWindowCommand}" />
 
     </Grid>
     <Window.Resources>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Threading;
+using P3.Helpers;
 
 namespace P3.Viewmodels
 {
@@ -23,26 +24,29 @@ namespace P3.Viewmodels
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
-        //
-        bool? _CloseWindowFlag;
-        public bool? CloseWindowFlag
-        {
-            get { return _CloseWindowFlag; }
-            set
-            {
-                _CloseWindowFlag = value;
-                RaisePropertyChanged("CloseWindowFlag");
-            }
-        }
 
-        public virtual void CloseWindow(bool? result = true)
-        {
-            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
-            {
-                CloseWindowFlag = CloseWindowFlag == null
-                    ? true
-                    : !CloseWindowFlag;
-            }));
-        }
+        ////Extra Stuff, shows why a base ViewModel is useful ??
+        //bool? _CloseWindowFlag;
+        //public bool? CloseWindowFlag
+        //{
+        //    get { return _CloseWindowFlag; }
+        //    set
+        //    {
+        //        _CloseWindowFlag = value;
+        //        RaisePropertyChanged("CloseWindowFlag");
+        //    }
+        //}
+
+        //public virtual void CloseWindow(bool? result = true)
+        //{
+        //    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
+        //    {
+        //        CloseWindowFlag = CloseWindowFlag == null
+        //            ? true
+        //            : !CloseWindowFlag;
+        //    }));
+        //}
+
+
     }
 }

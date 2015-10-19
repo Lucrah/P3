@@ -6,7 +6,7 @@
         DataContext="{DynamicResource DummyViewModel}"
         Title="DummyView" Height="300" Width="300">
     <Grid>
-        <Button Content="Exit" HorizontalAlignment="Left" Margin="100,238,0,0" VerticalAlignment="Top" Width="75" Command="{Binding ExitProgram}" CommandParameter="{Binding ElementName=MainWindow}"/>
+        <Button Content="Exit" HorizontalAlignment="Left" Margin="100,238,0,0" VerticalAlignment="Top" Width="75"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="10,50,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="10,90,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
