@@ -9,15 +9,16 @@
 		xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         DataContext="{DynamicResource ViewModelMain}"
         mc:Ignorable="d"
-        Title="MainWindow" Background="#FFD1D1D1" WindowState="Maximized" WindowStyle="None">
+        Title="MainWindow" Background="#FFD1D1D1" WindowStyle="None" WindowState="Maximized">
     <i:Interaction.Behaviors>
         <hlp:CloseWindowBehavior CloseTrigger="{Binding CloseTrigger}"/>
+        <hlp:ToggleFullScreenBehavior ToggleFullScreen="{Binding ToggleFullScreen}"/>
     </i:Interaction.Behaviors>
     <Grid>
         <Button Content="Test" HorizontalAlignment="Left" Margin="10,1021,0,0" VerticalAlignment="Top" Width="75" Command="{Binding GotoDummyWindowCommand}" Height="20" />
     </Grid>
     <Window.InputBindings>
-        <KeyBinding Key="F11" Command="{}"/>
+        <KeyBinding Key="F11" Command="{Binding ToggleFullScreen}"/>
 
     </Window.InputBindings>
     <Window.Resources>

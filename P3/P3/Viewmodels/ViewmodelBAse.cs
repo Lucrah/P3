@@ -42,10 +42,10 @@ namespace P3.Viewmodels
         internal bool toggleFullScreen;
         public bool ToggleFullScreen
         {
-            get { return this.ToggleFullScreen; }
+            get { return this.toggleFullScreen; }
             set
             {
-                this.ToggleFullScreen = value;
+                this.toggleFullScreen = value;
                 RaisePropertyChanged();
             }
         }
