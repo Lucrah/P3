@@ -9,7 +9,7 @@
 		xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         DataContext="{DynamicResource ViewModelMain}"
         mc:Ignorable="d"
-        Title="MainWindow" ResizeMode="CanMinimize" Background="#FFD1D1D1" WindowState="Maximized">
+        Title="MainWindow" Background="#FFD1D1D1" WindowState="Maximized" WindowStyle="None">
     <i:Interaction.Behaviors>
         <hlp:CloseWindowBehavior CloseTrigger="{Binding CloseTrigger}"/>
     </i:Interaction.Behaviors>
