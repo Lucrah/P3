@@ -15,16 +15,14 @@
         <hlp:ToggleFullScreenBehavior ToggleFullScreen="{Binding ToggleFullScreen}"/>
     </i:Interaction.Behaviors>
     <Grid>
-        <Button Content="Test" HorizontalAlignment="Left" Margin="10,1021,0,-514" Width="75" Command="{Binding GotoDummyWindowCommand}" Height="20" VerticalAlignment="Top" />
-    </Grid>
-    <Window.InputBindings>
-<<<<<<< HEAD
-        <KeyBinding Key="F11" Command="{Binding ToggleFullScreenCommand}"/>
-=======
-        <KeyBinding Key="F11" Command="{Binding ToggleFullScreen}"/>
+        <Button Content="Test" HorizontalAlignment="Left" Margin="10,497,0,0" VerticalAlignment="Top" Width="75" Command="{Binding GotoDummyWindowCommand}"/>
 
->>>>>>> origin/master
+    </Grid>
+    
+    <Window.InputBindings>
+        <KeyBinding Key="F11" Command="{Binding ToggleFullScreenCommand}"/>
     </Window.InputBindings>
+    
     <Window.Resources>
         <vm:ViewModelMain x:Key="ViewModelMain"/>
     </Window.Resources>
