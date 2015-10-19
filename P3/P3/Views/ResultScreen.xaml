@@ -5,7 +5,8 @@
         DataContext="{DynamicResource ViewModelResultScreen}"
         Title="ResultScreen" Height="1080" Width="1920" ResizeMode="CanMinimize">
     <Grid>
-        
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="629,572,0,0" TextWrapping="Wrap" Text="ResultScreen" VerticalAlignment="Top" Width="120"/>
+
     </Grid>
     <Window.Resources>
         <vm:ViewModelPropertyScreen x:Key="ViewModelResultScreen"/>

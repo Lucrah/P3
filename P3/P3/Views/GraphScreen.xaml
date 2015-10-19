@@ -5,7 +5,8 @@
         DataContext="{DynamicResource ViewModelGraphScreen1}"
         Title="GraphScreen" Height="1080" Width="1920" ResizeMode="CanMinimize">
     <Grid>
-        
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="422,395,0,0" TextWrapping="Wrap" Text="Kris er grim" VerticalAlignment="Top" Width="120"/>
+
     </Grid>
     <Window.Resources>
         <vm:ViewModelGraphScreen1 x:Key="ViewModelGraphScreen1"/>
