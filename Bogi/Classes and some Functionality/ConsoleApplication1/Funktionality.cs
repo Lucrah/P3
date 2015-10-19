@@ -15,7 +15,7 @@ namespace ConsoleApplication1
       System.Threading.Thread.Sleep(1000);
       double[] geoCode = new double[2] { 0.0, 0.0 };
 
-      string address = "http://maps.googleapis.com/maps/api/geocode/xml?address=" + listing.addressforURL + "&sensor=false";
+      string address = "http://maps.googleapis.com/maps/api/geocode/xml?address=" + listing.AddressForURL + "&sensor=false";
 
       var result = new System.Net.WebClient().DownloadString(address);
       XmlDocument doc = new XmlDocument();

@@ -10,18 +10,39 @@ namespace ConsoleApplication1
   {
     public Listing(string streetName, int houseNumber, int areaCode, string city)
     {
+      StreetName = streetName;
+      AreaCode = areaCode;
       Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode) + " " + city; 
       AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode) + "+" + city;
     }
     public Listing(string streetName, int houseNumber, int areaCode, string city,  int priceOfHouse, int sizeOfHouse, int yearBuilt)
     {
-      Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode) + " " + city; //can be made to keep each part of the address in it's own prop.
+      StreetName = streetName;
+      AreaCode = areaCode;
+      Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode) + " " + city; 
       AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode) + "+" + city; //used for GeoCode lookups.
       Price = priceOfHouse;
       Size = sizeOfHouse;
       YearBuilt = yearBuilt;
     }
     #region property
+    private int _areaCode;
+
+    public int AreaCode
+    {
+      get { return _areaCode; }
+      set { _areaCode = value; }
+    }
+
+    
+    private string _streetName;
+
+    public string StreetName
+    {
+      get { return _streetName; }
+      set { _streetName = value; }
+    }
+
     private string _address;
 
     public string Address

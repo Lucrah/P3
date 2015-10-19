@@ -79,7 +79,7 @@ namespace ConsoleApplication1
       private set { _fritidsBolig = value; }
     }*/
 
-    }
+    
     
 
 
