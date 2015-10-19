@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using P3.Models;
 
-namespace ConsoleApplication1
+namespace P3
 {
-  class Listing 
+  class Listing : BaseINPCModel
   {
     public Listing(string streetName, int houseNumber, int areaCode, string city)
     {
@@ -14,6 +15,7 @@ namespace ConsoleApplication1
       AreaCode = areaCode;
       Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode) + " " + city; 
       AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode) + "+" + city;
+      ListingID = Guid.NewGuid();
     }
     public Listing(string streetName, int houseNumber, int areaCode, string city,  int priceOfHouse, int sizeOfHouse, int yearBuilt)
     {
@@ -24,14 +26,37 @@ namespace ConsoleApplication1
       Price = priceOfHouse;
       Size = sizeOfHouse;
       YearBuilt = yearBuilt;
+      ListingID = Guid.NewGuid();
     }
     #region property
+    private Guid _listingID;
+    public Guid ListingID
+    {
+      get { return _listingID; }
+      set { _listingID = value; }
+    }
+
+    
+    
+
+    private double _lat;
+    public double Lat
+    {
+      get { return _lat; }
+      set { _lat = value; RaisePropertyChanged(); }
+    }
+    private double _lng;
+    public double Lng
+    {
+      get { return _lng; }
+      set { _lng = value; RaisePropertyChanged(); }
+    }
     private int _areaCode;
 
     public int AreaCode
     {
       get { return _areaCode; }
-      set { _areaCode = value; }
+      set { _areaCode = value; RaisePropertyChanged();}
     }
 
     
@@ -40,7 +65,7 @@ namespace ConsoleApplication1
     public string StreetName
     {
       get { return _streetName; }
-      set { _streetName = value; }
+      set { _streetName = value; RaisePropertyChanged();}
     }
 
     private string _address;
@@ -48,7 +73,7 @@ namespace ConsoleApplication1
     public string Address
     {
       get { return _address; }
-      private set { _address = value; }
+      private set { _address = value; RaisePropertyChanged();}
     }
 
     private string _addressForURL;
@@ -56,7 +81,7 @@ namespace ConsoleApplication1
     public string AddressForURL
     {
       get { return _addressForURL; }
-      private set { _addressForURL = value; }
+      private set { _addressForURL = value; RaisePropertyChanged(); }
     }
     
     private int _price;
@@ -64,7 +89,7 @@ namespace ConsoleApplication1
     public int Price
     {
       get { return _price; }
-      private set { _price = value; }
+      private set { _price = value; RaisePropertyChanged(); }
     }
     
     private int _size;
@@ -72,7 +97,7 @@ namespace ConsoleApplication1
     public int Size
     {
       get { return _size; }
-      private set { _size = value; }
+      private set { _size = value; RaisePropertyChanged(); }
     }
 
     private int _yearBuilt;
@@ -80,17 +105,16 @@ namespace ConsoleApplication1
     public int YearBuilt
     {
       get { return _yearBuilt; }
-      set { _yearBuilt = value; }
+      set { _yearBuilt = value; RaisePropertyChanged(); }
     }
 
-    public Coordinates coordinates = new Coordinates();
 #endregion 
 
 
     public void GetGeoCode(double[] a)
     {
-      coordinates.lat = a[0];
-      coordinates.lng = a[1];
+      Lat = a[0];
+      Lng = a[1];
     }
 
   }

@@ -5,15 +5,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using P3.Models;
 using P3.Helpers;
 using P3.Views;
 
 namespace P3.Viewmodels
 {
-    class ViewModelMain : ViewModelBase
+    class ViewModelMain : ViewModelBase , INotifyPropertyChanged
     {
+
+      //Aggregation of the viewmodels
+        private ViewModelSearchScreen VMSearch = new ViewModelSearchScreen();
+        private ViewModelPropertyScreen VMProperty = new ViewModelPropertyScreen();
+        private ViewModelResultScreen VMResultScreen = new ViewModelResultScreen();
+        private ViewModelGraphScreen VMGraphScreen = new ViewModelGraphScreen();
+        #region inpccurrentviewmodel
+        #endregion
         #region ICommand and Relay
+
         private RelayCommand _GotoDummyWindowCommand;
 
         public ICommand GotoDummyWindowCommand
@@ -39,6 +50,8 @@ namespace P3.Viewmodels
             }
         }
         #endregion
+
+        #region Actual UI logic
         private void togglefullscreencommand()
         {
                 ToggleFullScreen = false;
@@ -50,5 +63,6 @@ namespace P3.Viewmodels
             win.Show();
             CloseTrigger = true;
         }
+        #endregion
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication1.Listings
+namespace P3.Listings
 {
   class CommercialProperty : Listing
   {
@@ -28,7 +28,7 @@ namespace ConsoleApplication1.Listings
      public int SizeOfProperty
      {
        get { return _sizeOfProperty; }
-       private set { _sizeOfProperty = value; }
+       private set { _sizeOfProperty = value; RaisePropertyChanged(); }
      }
 
      private int _sizeOfBasement;
@@ -36,7 +36,7 @@ namespace ConsoleApplication1.Listings
      public int SizeOfBasement
      {
        get { return _sizeOfBasement; }
-       private set { _sizeOfBasement = value; }
+       private set { _sizeOfBasement = value; RaisePropertyChanged(); }
      }
 
      private int _numberOfFloors;
@@ -44,7 +44,7 @@ namespace ConsoleApplication1.Listings
      public int NumberOfFloors
      {
        get { return _numberOfFloors; }
-       set { _numberOfFloors = value; }
+       set { _numberOfFloors = value; RaisePropertyChanged(); }
      }
 
      private int _sizeOfStorage;
@@ -52,7 +52,7 @@ namespace ConsoleApplication1.Listings
      public int SizeOfStorage
      {
        get { return _sizeOfStorage; }
-       private set { _sizeOfStorage = value; }
+       private set { _sizeOfStorage = value; RaisePropertyChanged(); }
      }
 
     /* private bool _warehouseBuilding;

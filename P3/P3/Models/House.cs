@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication1
+namespace P3
 {
   class House : Listing
   {
@@ -29,7 +29,7 @@ namespace ConsoleApplication1
     public int NumberOfRooms
     {
       get { return _numberOfRooms; }
-      private set { _numberOfRooms = value; }
+      private set { _numberOfRooms = value; RaisePropertyChanged(); }
     }
 
     private int _numberOfBathrooms;
@@ -37,7 +37,7 @@ namespace ConsoleApplication1
     public int NumberOfBathrooms
     {
       get { return _numberOfBathrooms; }
-      private set { _numberOfBathrooms = value; }
+      private set { _numberOfBathrooms = value; RaisePropertyChanged(); }
     }
 
     private int _sizeOfProperty;
@@ -45,7 +45,7 @@ namespace ConsoleApplication1
     public int SizeOfProperty
     {
       get { return _sizeOfProperty; }
-      private set { _sizeOfProperty = value; }
+      private set { _sizeOfProperty = value; RaisePropertyChanged(); }
     }
 
     private int _sizeOfBasement;
@@ -53,7 +53,7 @@ namespace ConsoleApplication1
     public int SizeOfBasement
     {
       get { return _sizeOfBasement; }
-      private set { _sizeOfBasement = value; }
+      private set { _sizeOfBasement = value; RaisePropertyChanged(); }
     }
 
     private int _numberOfFloors;
@@ -61,7 +61,7 @@ namespace ConsoleApplication1
     public int NumberOfFloors
     {
       get { return _numberOfFloors; }
-      set { _numberOfFloors = value; }
+      set { _numberOfFloors = value; RaisePropertyChanged(); }
     }
 
     /*private bool _andelsbolig;

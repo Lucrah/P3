@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication1
+namespace P3
 {
   class Apartment : Listing
   {
@@ -27,7 +27,7 @@ namespace ConsoleApplication1
     public int NumberOfRooms
     {
       get { return _numberOfRooms; }
-      private set { _numberOfRooms = value; }
+      private set { _numberOfRooms = value; RaisePropertyChanged(); }
     }
 
     private int _numberOfBathrooms;
@@ -35,7 +35,7 @@ namespace ConsoleApplication1
     public int NumberOfBathrooms
     {
       get { return _numberOfBathrooms; }
-      private set { _numberOfBathrooms = value; }
+      private set { _numberOfBathrooms = value; RaisePropertyChanged(); }
     }
 
     private int _floorNumber;
@@ -43,7 +43,7 @@ namespace ConsoleApplication1
     public int FloorNumber
     {
       get { return _floorNumber; }
-      private set { _floorNumber = value; }
+      private set { _floorNumber = value; RaisePropertyChanged(); }
     }
 
   }

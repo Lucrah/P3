@@ -18,6 +18,15 @@
     <Grid>
         <Button Content="Test" HorizontalAlignment="Left" Margin="10,497,0,0" VerticalAlignment="Top" Width="75" Command="{Binding GotoDummyWindowCommand}"/>
         <TabControl HorizontalAlignment="Left" Height="527" VerticalAlignment="Top" Width="760">
+            <TabControl.ItemContainerStyle>
+                <Style TargetType="{x:Type TabItem}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TabControl}}, Path=Items.Count}" Value="1">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TabControl.ItemContainerStyle>
         </TabControl>
     </Grid>   
     <Window.InputBindings>
