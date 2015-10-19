@@ -11,21 +11,13 @@ using P3.Helpers;
 
 namespace P3.Viewmodels
 {
-    class DummyViewModel : ViewModelBase, ICloseableVM
+    class DummyViewModel : ViewModelBase
     {
-        public event EventHandler CloseWindowEvent;
-        #region ICommand and Relay
-        private RelayCommand _CloseWindowCommand;
-        public ICommand CloseWindowCommand
+        string _Age;
+        public string Age
         {
-            get { if (_CloseWindowCommand == null) { _CloseWindowCommand = new RelayCommand(param => exit()); } return _CloseWindowCommand; }
-        }
-
-        #endregion
-        void exit()
-        {
-            if (CloseWindowEvent != null)
-                CloseWindowEvent(this, null);
+            get { return _Age; }
+            set { _Age = value; RaisePropertyChanged(); }
         }
     }
 }

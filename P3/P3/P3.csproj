@@ -67,7 +67,6 @@
     </ApplicationDefinition>
     <Compile Include="Data\Database.cs" />
     <Compile Include="Helpers\CloseWindowBehavior.cs" />
-    <Compile Include="Helpers\ICloseableVM.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Models\BaseINPCModel.cs" />
     <Compile Include="Models\DummyModel.cs" />
