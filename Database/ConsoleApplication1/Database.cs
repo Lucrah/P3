@@ -69,11 +69,11 @@ namespace P3Database
                 string[] split = item.Split(new char[] { ',' });
                 if(split[5] == "House")
                 {
-                    Dict.Add(new House(split[0], split[1], split[2], split[3], split[4], split[8], split[9], split[10], split[11], split[12], split[13], split[14], split[16]);
+                    Dict.Add(new House(split[0], split[1], int.Parse(split[2]), int.Parse(split[3]), split[4], int.Parse(split[8]), int.Parse(split[9]), int.Parse(split[10]), int.Parse(split[11]), int.Parse(split[12]), int.Parse(split[13]), int.Parse(split[14]), int.Parse(split[16]));
                 }
                 if(split[5] == "Apartment")
                 {
-                    Dict.Add(new Apartment(split[0], split[1], split[2], split[3], split[4], split[8], split[9], split[10], split[11], split[14], split[16]);
+                    Dict.Add(new Apartment(split[0], split[1], int.Parse(split[2]), int.Parse(split[3]), split[4], int.Parse(split[8]), int.Parse(split[9]), int.Parse(split[10]), int.Parse(split[11]), int.Parse(split[14]), int.Parse(split[16]));
                 }
             }
          }*/
