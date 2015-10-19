@@ -28,8 +28,22 @@ namespace P3.Viewmodels
             }
         }
 
-
+        private RelayCommand _ToggleFullscreenCommand;
+        public ICommand ToggleFullScreenCommand
+        {
+            get
+            {
+                if (_ToggleFullscreenCommand == null)
+                    _ToggleFullscreenCommand = new RelayCommand(param => this.togglefullscreencommand());
+                return _ToggleFullscreenCommand;
+            }
+        }
         #endregion
+        private void togglefullscreencommand()
+        {
+                ToggleFullScreen = false;
+                ToggleFullScreen = true;
+        }
         private void GotoDummyWindow()
         {
             var win = new DummyView();

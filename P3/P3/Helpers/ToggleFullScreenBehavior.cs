@@ -34,9 +34,18 @@ namespace P3.Helpers
 			if (this.ToggleFullScreen)
 			{
                 if (this.AssociatedObject.WindowState == WindowState.Maximized)
+                {
                     this.AssociatedObject.WindowState = WindowState.Normal;
+                    this.AssociatedObject.WindowStyle = WindowStyle.SingleBorderWindow;
+                }
+
+
                 else
+                {
                     this.AssociatedObject.WindowState = WindowState.Maximized;
+                    this.AssociatedObject.WindowStyle = WindowStyle.None;
+                }
+
 			}
 		}
 	}

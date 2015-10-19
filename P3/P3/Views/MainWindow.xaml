@@ -12,13 +12,13 @@
         Title="MainWindow" Background="#FFD1D1D1" WindowState="Maximized" WindowStyle="None">
     <i:Interaction.Behaviors>
         <hlp:CloseWindowBehavior CloseTrigger="{Binding CloseTrigger}"/>
+        <hlp:ToggleFullScreenBehavior ToggleFullScreen="{Binding ToggleFullScreen}"/>
     </i:Interaction.Behaviors>
     <Grid>
-        <Button Content="Test" HorizontalAlignment="Left" Margin="10,1021,0,0" VerticalAlignment="Top" Width="75" Command="{Binding GotoDummyWindowCommand}" Height="20" />
+        <Button Content="Test" HorizontalAlignment="Left" Margin="10,1021,0,-514" Width="75" Command="{Binding GotoDummyWindowCommand}" Height="20" VerticalAlignment="Top" />
     </Grid>
     <Window.InputBindings>
-        <KeyBinding Key="F11" Command="{}"/>
-
+        <KeyBinding Key="F11" Command="{Binding ToggleFullScreenCommand}"/>
     </Window.InputBindings>
     <Window.Resources>
         <vm:ViewModelMain x:Key="ViewModelMain"/>
