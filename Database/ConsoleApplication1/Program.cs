@@ -15,7 +15,6 @@ namespace P3Database
             Console.WriteLine("Starting Database..");
             Dat.StartDatabase();
             Console.WriteLine("Database created!");
-            //string sql = "INSERT OR REPLACE INTO properties (Address, Type, Latitude, Longitude, Size, Rooms, Bathrooms, Basement, Floors, Sold, YearBuilt) values
             Console.Read();
         }
     }
