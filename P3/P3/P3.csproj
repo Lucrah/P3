@@ -69,6 +69,7 @@
     <Compile Include="Helpers\CloseWindowBehavior.cs" />
     <Compile Include="Helpers\ICloseableVM.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
+    <Compile Include="Models\BaseINPCModel.cs" />
     <Compile Include="Models\DummyModel.cs" />
     <Compile Include="Viewmodels\DummyViewModel.cs" />
     <Compile Include="Viewmodels\ViewModelGraphScreen1.cs" />
