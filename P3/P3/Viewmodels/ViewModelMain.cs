@@ -21,6 +21,7 @@ namespace P3.Viewmodels
         private ViewModelPropertyScreen _vmProperty = new ViewModelPropertyScreen();
         private ViewModelResultScreen _vmResultScreen = new ViewModelResultScreen();
         private ViewModelGraphScreen _vmGraphScreen = new ViewModelGraphScreen();
+
         #region inpccurrentviewmodel
         private INotifyPropertyChanged _currentViewModel;
         public INotifyPropertyChanged CurrentViewModel
@@ -29,7 +30,7 @@ namespace P3.Viewmodels
           set
           {
             _currentViewModel = value;
-            RaisePropertyChanged(() => CurrentViewModel);
+            RaisePropertyChanged();
           }
         }
 
@@ -39,10 +40,10 @@ namespace P3.Viewmodels
           {
             return new INotifyPropertyChanged[]
                                {
-                                   _vmSearch,
-                                   _vmProperty,
-                                   _vmResultScreen,
-                                   _vmGraphScreen
+                                   (INotifyPropertyChanged)_vmSearch,
+                                   (INotifyPropertyChanged)_vmProperty,
+                                   (INotifyPropertyChanged)_vmResultScreen,
+                                   (INotifyPropertyChanged)_vmGraphScreen
                                };
           }
         }
@@ -74,7 +75,6 @@ namespace P3.Viewmodels
             }
         }
         #endregion
-
         #region Actual UI logic
         private void togglefullscreencommand()
         {
