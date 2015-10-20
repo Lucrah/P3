@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.IO;
 
-namespace P3Database
+namespace P3
 {
     public class Database
     {
@@ -21,7 +21,7 @@ namespace P3Database
 
         private void InitDatabase()
         {
-            string file = AppDomain.CurrentDomain.BaseDirectory + "P3 RealEstate" + ".sqlite";
+            string file = AppDomain.CurrentDomain + "P3 RealEstate" + ".sqlite";
             if (!File.Exists(file))
                 SQLiteConnection.CreateFile("P3 RealEstate" + ".sqlite");
 

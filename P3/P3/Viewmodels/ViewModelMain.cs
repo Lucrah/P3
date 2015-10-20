@@ -13,6 +13,7 @@ namespace P3.Viewmodels
 {
     class ViewModelMain : ViewModelBase
     {
+        private Database Dat;
         #region ICommand and Relay
         private RelayCommand _GotoDummyWindowCommand;
         public ICommand GotoDummyWindowCommand
@@ -29,8 +30,11 @@ namespace P3.Viewmodels
         #endregion
         private void GotoDummyWindow()
         {
+            Console.WriteLine("database");
             var win = new DummyView();
             win.Show();
+            Dat = new Database();
+            Dat.StartDatabase();
         }
     }
 }
