@@ -14,7 +14,7 @@ namespace P3.Helpers
      /// 
      /// </summary>
     public class RelayCommand : ICommand
-    {
+    { 
         private readonly bool _RunOnBackGroudThread;
         /// <summary>
         /// Predicate that that evaluates if this command can be executed

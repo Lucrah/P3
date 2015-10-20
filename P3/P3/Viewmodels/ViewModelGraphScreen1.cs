@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace P3.Viewmodels
 {
-    class ViewModelGraphScreen1
+    class ViewModelGraphScreen
     {
+
     }
 }
+ 

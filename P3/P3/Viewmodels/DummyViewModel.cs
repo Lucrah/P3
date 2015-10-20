@@ -11,21 +11,66 @@ using P3.Helpers;
 
 namespace P3.Viewmodels
 {
-    class DummyViewModel : ViewModelBase, ICloseableVM
+    class DummyViewModel : ViewModelBase
     {
-        public event EventHandler CloseWindowEvent;
-        #region ICommand and Relay
-        private RelayCommand _CloseWindowCommand;
-        public ICommand CloseWindowCommand
+        public ObservableCollection<DummyModel> People { get; set; }
+
+        object _selectedPerson;
+        public object SelectedPerson
         {
-            get { if (_CloseWindowCommand == null) { _CloseWindowCommand = new RelayCommand(param => exit()); } return _CloseWindowCommand; }
+            get { return _selectedPerson; }
+            set {
+                    if (_selectedPerson != value) 
+                    {
+                        _selectedPerson = value;
+                        RaisePropertyChanged();
+                    }
+                }
         }
 
-        #endregion
-        void exit()
+        private int _Age;
+        public int Age
         {
-            if (CloseWindowEvent != null)
-                CloseWindowEvent(this, null);
+            get { return _Age; }
+            set { _Age = value; RaisePropertyChanged(); }
+        }
+
+        private string _name;
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                if (_name != value)
+                {
+                    _name = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+        private AccessLevel _userAccessLevel;
+        public AccessLevel UserAccessLevel
+        {
+            get { return _userAccessLevel; }
+            set
+            {
+                if (_userAccessLevel != value)
+                {
+                    _userAccessLevel = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public DummyViewModel()
+        {
+            People = new ObservableCollection<DummyModel>
+            {
+                new DummyModel {Age = 20, Name = "Gert", UserAccessLevel = (AccessLevel)0},
+                new DummyModel {Age = 20, Name = "Bent", UserAccessLevel = (AccessLevel)1},
+                new DummyModel {Age = 20, Name = "Lars", UserAccessLevel = (AccessLevel)2},
+                new DummyModel {Age = 20, Name = "Kurt", UserAccessLevel = (AccessLevel)3},
+            };
         }
     }
 }

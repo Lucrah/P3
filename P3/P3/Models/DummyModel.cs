@@ -15,7 +15,7 @@ namespace P3.Models
         Developer = 3
 	};
 
-    class DummyModel : INotifyPropertyChanged
+    class DummyModel : BaseINPCModel, INotifyPropertyChanged
     {
         //Contaning a few properties, a couple of actions, for learning purposes
 
@@ -25,7 +25,7 @@ namespace P3.Models
             _age = age;
             _name = name;
             _userAccessLevel = useraccessLevel;
-        }
+        } 
 
         private int _age;
         public int Age
@@ -70,16 +70,6 @@ namespace P3.Models
         }
 
        
-        #region INPC
-        //This part needs to be implemented in all models, and viewmodels. Viewmodels inherit it from viewmodelbase though.
-        void RaisePropertyChanged(string propertyThatChanged)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyThatChanged));
-            }
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-        #endregion
+        
     }
 }

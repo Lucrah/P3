@@ -5,17 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using P3.Models;
 using P3.Helpers;
 using P3.Views;
 
 namespace P3.Viewmodels
-{
-    class ViewModelMain : ViewModelBase
+{ 
+    class ViewModelMain : ViewModelBase , INotifyPropertyChanged
     {
-        private Database Dat;
+
+      //Aggregation of the viewmodels
+        private ViewModelSearchScreen VMSearch = new ViewModelSearchScreen();
+        private ViewModelPropertyScreen VMProperty = new ViewModelPropertyScreen();
+        private ViewModelResultScreen VMResultScreen = new ViewModelResultScreen();
+        private ViewModelGraphScreen VMGraphScreen = new ViewModelGraphScreen();
+        #region inpccurrentviewmodel
+        #endregion
         #region ICommand and Relay
+
         private RelayCommand _GotoDummyWindowCommand;
+
         public ICommand GotoDummyWindowCommand
         {
             get
@@ -27,14 +38,31 @@ namespace P3.Viewmodels
                 return _GotoDummyWindowCommand;
             }
         }
+
+        private RelayCommand _ToggleFullscreenCommand;
+        public ICommand ToggleFullScreenCommand
+        {
+            get
+            {
+                if (_ToggleFullscreenCommand == null)
+                    _ToggleFullscreenCommand = new RelayCommand(param => this.togglefullscreencommand());
+                return _ToggleFullscreenCommand;
+            }
+        }
         #endregion
+
+        #region Actual UI logic
+        private void togglefullscreencommand()
+        {
+                ToggleFullScreen = false;
+                ToggleFullScreen = true;
+        }
         private void GotoDummyWindow()
         {
-            Console.WriteLine("database");
             var win = new DummyView();
             win.Show();
-            Dat = new Database();
-            Dat.StartDatabase();
+            CloseTrigger = true;
         }
+        #endregion
     }
 }

@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace ConsoleApplication1
+namespace P3
 {
   class Funktionality
   {
     #region
-    public static void getCoordinates(Listing listing)
+    public static void getCoordinates(Listing listing) 
     {
       System.Threading.Thread.Sleep(1000);
       double[] geoCode = new double[2] { 0.0, 0.0 };
@@ -23,21 +23,20 @@ namespace ConsoleApplication1
       XmlNodeList parentNode = doc.GetElementsByTagName("location");
       foreach (XmlNode childrenNode in parentNode)
       {
-        geoCode[0] = Convert.ToDouble(childrenNode.SelectSingleNode("lat").InnerText);
-        geoCode[1] = Convert.ToDouble(childrenNode.SelectSingleNode("lng").InnerText);
+        listing.Lat = Convert.ToDouble(childrenNode.SelectSingleNode("lat").InnerText);
+        listing.Lng = Convert.ToDouble(childrenNode.SelectSingleNode("lng").InnerText);
       }
-
-      listing.GetGeoCode(geoCode);
     }
 
 
     public static double convertToDistance(Listing a, Listing b)
     {
-      double theDistance = (Math.Sin(DegreesToRadians(a.coordinates.lat)) *
-            Math.Sin(DegreesToRadians(b.coordinates.lat)) +
-            Math.Cos(DegreesToRadians(a.coordinates.lat)) *
-            Math.Cos(DegreesToRadians(b.coordinates.lat)) *
-            Math.Cos(DegreesToRadians(a.coordinates.lng - b.coordinates.lng)));
+      //Haversine formula for calculating distance between lat/long points
+      double theDistance = (Math.Sin(DegreesToRadians(a.Lat)) *
+            Math.Sin(DegreesToRadians(b.Lat)) +
+            Math.Cos(DegreesToRadians(a.Lat)) *
+            Math.Cos(DegreesToRadians(b.Lat)) *
+            Math.Cos(DegreesToRadians(a.Lng - b.Lng)));
 
       return Convert.ToDouble((RadiansToDegrees(Math.Acos(theDistance)))) * 69.09 * 1.6093;
     }
