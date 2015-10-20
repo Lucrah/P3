@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace P3.Views
 {
     /// <summary>
-    /// Interaction logic for PropertyInfoScreen.xaml
+    /// Interaction logic for SearchScreenView.xaml
     /// </summary>
-    public partial class PropertyInfoScreen : Window
+    public partial class SearchScreenView : UserControl
     {
-        public PropertyInfoScreen()
+        public SearchScreenView()
         {
             InitializeComponent();
         }

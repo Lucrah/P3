@@ -85,23 +85,23 @@
     <Compile Include="Views\DummyView.xaml.cs">
       <DependentUpon>DummyView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GraphScreen.xaml.cs">
-      <DependentUpon>GraphScreen.xaml</DependentUpon>
+    <Compile Include="Views\GraphScreenView.xaml.cs">
+      <DependentUpon>GraphScreenView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PropertyInfoScreen.xaml.cs">
-      <DependentUpon>PropertyInfoScreen.xaml</DependentUpon>
+    <Compile Include="Views\PropertyInfoView.xaml.cs">
+      <DependentUpon>PropertyInfoView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ResultScreen.xaml.cs">
-      <DependentUpon>ResultScreen.xaml</DependentUpon>
+    <Compile Include="Views\ResultScreenView.xaml.cs">
+      <DependentUpon>ResultScreenView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SearchScreen.xaml.cs">
-      <DependentUpon>SearchScreen.xaml</DependentUpon>
+    <Compile Include="Views\SearchScreenView.xaml.cs">
+      <DependentUpon>SearchScreenView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\DummyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GraphScreen.xaml">
+    <Page Include="Views\GraphScreenView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -118,15 +118,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\PropertyInfoScreen.xaml">
+    <Page Include="Views\PropertyInfoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ResultScreen.xaml">
+    <Page Include="Views\ResultScreenView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SearchScreen.xaml">
+    <Page Include="Views\SearchScreenView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

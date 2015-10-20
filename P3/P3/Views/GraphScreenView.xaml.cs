@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace P3.Views
 {
     /// <summary>
-    /// Interaction logic for ResultScreen.xaml
+    /// Interaction logic for GraphScreenView.xaml
     /// </summary>
-    public partial class ResultScreen : Window
+    public partial class GraphScreenView : UserControl
     {
-        public ResultScreen()
+        public GraphScreenView()
         {
             InitializeComponent();
         }
