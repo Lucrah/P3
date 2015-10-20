@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Table]
 (
-	    [StreetName]     VARCHAR (50) NULL,
+	[StreetName]     VARCHAR (50) NULL,
     [HouseNumber]    INT          NULL,
     [AreaCode]       INT          NULL,
     [City]           VARCHAR (50) NULL,
