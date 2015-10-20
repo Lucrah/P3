@@ -17,11 +17,35 @@ namespace P3.Viewmodels
     {
 
       //Aggregation of the viewmodels
-        private ViewModelSearchScreen VMSearch = new ViewModelSearchScreen();
-        private ViewModelPropertyScreen VMProperty = new ViewModelPropertyScreen();
-        private ViewModelResultScreen VMResultScreen = new ViewModelResultScreen();
-        private ViewModelGraphScreen VMGraphScreen = new ViewModelGraphScreen();
+        private ViewModelSearchScreen _vmSearch = new ViewModelSearchScreen();
+        private ViewModelPropertyScreen _vmProperty = new ViewModelPropertyScreen();
+        private ViewModelResultScreen _vmResultScreen = new ViewModelResultScreen();
+        private ViewModelGraphScreen _vmGraphScreen = new ViewModelGraphScreen();
         #region inpccurrentviewmodel
+        private INotifyPropertyChanged _currentViewModel;
+        public INotifyPropertyChanged CurrentViewModel
+        {
+          get { return _currentViewModel; }
+          set
+          {
+            _currentViewModel = value;
+            RaisePropertyChanged(() => CurrentViewModel);
+          }
+        }
+
+        public IEnumerable<INotifyPropertyChanged> ViewModelsToSwitch
+        {
+          get
+          {
+            return new INotifyPropertyChanged[]
+                               {
+                                   _vmSearch,
+                                   _vmProperty,
+                                   _vmResultScreen,
+                                   _vmGraphScreen
+                               };
+          }
+        }
         #endregion
         #region ICommand and Relay
 
