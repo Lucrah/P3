@@ -1,0 +1,11 @@
+﻿USE [C:\USERS\KRISTOFFERM\DOCUMENTS\GITHUB\P3\P3\P3\P3\DATA\P3DB.MDF]
+GO
+BULK INSERT [dbo].[CurrentListings]
+FROM 'C:\Users\KristofferM\Documents\GitHub\P3\P3\P3\P3\Data\til salg 20th Oct 00_33.csv'
+WITH
+(
+FIRSTROW = 2,
+FIELDTERMINATOR = ',',
+ROWTERMINATOR = '\n'
+)
+GO
