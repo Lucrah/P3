@@ -16,8 +16,12 @@
         <hlp:ToggleFullScreenBehavior ToggleFullScreen="{Binding ToggleFullScreen}"/>
     </i:Interaction.Behaviors>
     <Grid>
-        <Button Content="Test" HorizontalAlignment="Left" Margin="10,497,0,0" VerticalAlignment="Top" Width="75" Command="{Binding GotoDummyWindowCommand}"/>
-        <TabControl HorizontalAlignment="Left" Height="1080" VerticalAlignment="Top" Width="1920">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Content="Test" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Width="75" Command="{Binding GotoDummyWindowCommand}" Height="20" Grid.Row="1"/>
+        <TabControl HorizontalAlignment="Right" Height="1080" VerticalAlignment="Top" Width="1920" Grid.Row="1" Margin="0,-1.5,0,0">
             <TabControl.ItemContainerStyle>
                 <Style TargetType="{x:Type TabItem}">
                     <Style.Triggers>
@@ -28,15 +32,15 @@
                 </Style>
             </TabControl.ItemContainerStyle>
         </TabControl>
-    </Grid>   
+    </Grid>
     <Window.InputBindings>
         <KeyBinding Key="F11" Command="{Binding ToggleFullScreenCommand}"/>
     </Window.InputBindings>
-    
+
     <Window.Resources>
         <vm:ViewModelMain x:Key="ViewModelMain"/>
         <DataTemplate DataType="{x:Type vm:ViewModelSearchScreen}">
-            <views:SearchScreen/>
+
         </DataTemplate>
     </Window.Resources>
 </Window>
