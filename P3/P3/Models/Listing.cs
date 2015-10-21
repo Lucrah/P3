@@ -28,6 +28,17 @@ namespace P3
       YearBuilt = yearBuilt; 
       ListingID = Guid.NewGuid();
     }
+
+    enum propertyType
+    {
+      Villa = 0,
+      Fritidsbolig = 1,
+      Lejlighed = 2,
+      Rækkehus = 3,
+      Landejendom = 4,
+      Andelsbolig = 5                
+    };
+
     #region property
     private Guid _listingID;
     public Guid ListingID
