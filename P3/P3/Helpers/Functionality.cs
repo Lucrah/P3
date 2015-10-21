@@ -9,8 +9,11 @@ namespace P3
 {
   class Funktionality
   {
-    #region
-    public static void getCoordinates(Listing listing) 
+      //should this not be coupled directly onto listing.cs to keep it as close to data as possible
+      //Or maybe even put it in BaseINPCModel, so that any listing, as long as it has an adress it can get coords 4 u
+
+      #region wtf is this region why no name
+      public static void getCoordinates(Listing listing) 
     {
       System.Threading.Thread.Sleep(1000);
       double[] geoCode = new double[2] { 0.0, 0.0 };

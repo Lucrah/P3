@@ -44,7 +44,7 @@ namespace P3
     public Guid ListingID
     {
       get { return _listingID; }
-      set { _listingID = value; }
+        set { _listingID = value; RaisePropertyChanged(); }
     }
 
     

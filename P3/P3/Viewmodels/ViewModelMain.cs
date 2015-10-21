@@ -48,10 +48,23 @@ namespace P3.Viewmodels
           }
         }
         #endregion
+        #region http://stackoverflow.com/questions/19654295/wpf-mvvm-navigate-views
         #region ICommand and Relay
 
-        private RelayCommand _GotoDummyWindowCommand;
+        private RelayCommand _Initialization;
+        public ICommand InitializationCommand
+        {
+            get
+            {
+                if (_Initialization == null)
+                {
+                    _Initialization = new RelayCommand(param => this.Initialization());
+                }
+                return _Initialization;
+            }
+        }
 
+        private RelayCommand _GotoDummyWindowCommand;
         public ICommand GotoDummyWindowCommand
         {
             get
@@ -75,7 +88,7 @@ namespace P3.Viewmodels
             }
         }
         #endregion
-        #region Actual UI logic
+        #region Command Implementations / Actual UI Logic
         private void togglefullscreencommand()
         {
                 ToggleFullScreen = false;
@@ -86,6 +99,11 @@ namespace P3.Viewmodels
             var win = new DummyView();
             win.Show();
             CloseTrigger = true;
+        }
+
+        private void Initialization()
+        {
+            //Maybe auto run of scripts to read from db here? Maybe it could be coupled up to our dropboxes. Maybe prompt user for database location. Maybe not, to emulate real life data shit.
         }
         #endregion
     }

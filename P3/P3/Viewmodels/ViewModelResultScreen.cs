@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace P3.Viewmodels
 {
-    class ViewModelResultScreen
+    class ViewModelResultScreen : ViewModelBase
     {
     }
 }

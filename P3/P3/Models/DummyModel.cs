@@ -36,7 +36,7 @@ namespace P3.Models
                 if (_age != value)
                 {
                     _age = value;
-                    RaisePropertyChanged("Age");
+                    RaisePropertyChanged();
                 }
             }
         }
@@ -50,7 +50,7 @@ namespace P3.Models
                 if (_name != value)
                 {
                     _name = value;
-                    RaisePropertyChanged("Name");
+                    RaisePropertyChanged();
                 }
             }
         }
@@ -64,7 +64,7 @@ namespace P3.Models
                 if (_userAccessLevel != value)
                 {
                     _userAccessLevel = value;
-                    RaisePropertyChanged("UserAccessLevel");
+                    RaisePropertyChanged();
                 }
             }
         }

@@ -80,10 +80,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Helpers\CloseWindowBehavior.cs" />
+    <Compile Include="Behaviour\CloseWindowBehavior.cs" />
     <Compile Include="Helpers\Functionality.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
-    <Compile Include="Helpers\ToggleFullScreenBehavior.cs" />
+    <Compile Include="Behaviour\ToggleFullScreenBehavior.cs" />
     <Compile Include="Models\Apartment.cs" />
     <Compile Include="Models\BaseINPCModel.cs" />
     <Compile Include="Models\CommercialProperty.cs" />
@@ -177,13 +177,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Data\P3DB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\P3DB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>P3DB.mdf</DependentUpon>
-    </Content>
     <Content Include="Query\CurrentListingTable.sql" />
     <Content Include="Query\FilterAndCorrectCurrentListings.sql" />
     <Content Include="Query\FilterAndCorrectLegacyListings.sql" />
