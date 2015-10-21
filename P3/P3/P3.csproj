@@ -179,7 +179,7 @@
     <Folder Include="Query\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\Listing.sql" />
+    <Content Include="Data\CurrentListingTable.sql" />
     <Content Include="Data\P3DB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
