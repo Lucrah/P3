@@ -175,11 +175,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Query\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Data\CurrentListingTable.sql" />
     <Content Include="Data\P3DB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -187,6 +184,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>P3DB.mdf</DependentUpon>
     </Content>
+    <Content Include="Query\CurrentListingTable.sql" />
+    <Content Include="Query\FilterAndCorrectCurrentListings.sql" />
+    <Content Include="Query\FilterAndCorrectLegacyListings.sql" />
+    <Content Include="Query\LegacyListingTable.sql" />
     <Resource Include="Data\TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
