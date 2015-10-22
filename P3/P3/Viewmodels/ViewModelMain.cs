@@ -15,7 +15,7 @@ namespace P3.Viewmodels
 { 
     class ViewModelMain : ViewModelBase , INotifyPropertyChanged
     {
-
+        public ViewModelBase ViewModel { get; set; }
       //Aggregation of the viewmodels
         private ViewModelSearchScreen _vmSearch = new ViewModelSearchScreen();
         private ViewModelPropertyScreen _vmProperty = new ViewModelPropertyScreen();
@@ -48,7 +48,9 @@ namespace P3.Viewmodels
           }
         }
         #endregion
-        #region http://stackoverflow.com/questions/19654295/wpf-mvvm-navigate-views
+        #region 
+
+        #endregion
         #region ICommand and Relay
 
         private RelayCommand _Initialization;

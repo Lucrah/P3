@@ -20,6 +20,7 @@ namespace P3.Viewmodels
          * If you were to use collections with INotifyPropertyChanged, use dispatcher, or the changes will not go through to the view. Something about it being of different threads i think.
          * Link to this: http://blogs.msdn.com/b/davidrickard/archive/2010/04/01/using-the-dispatcher-with-mvvm.aspx
          */
+
         internal void RaisePropertyChanged([CallerMemberName]String propertyName = "")
         {
             if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); }
