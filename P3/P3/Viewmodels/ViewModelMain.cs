@@ -85,13 +85,24 @@ namespace P3.Viewmodels
             get
             {
                 if (_ToggleFullscreenCommand == null)
-                    _ToggleFullscreenCommand = new RelayCommand(param => this.togglefullscreencommand());
+                    _ToggleFullscreenCommand = new RelayCommand(param => this.Togglefullscreen());
                 return _ToggleFullscreenCommand;
+            }
+        }
+
+        private RelayCommand _DisplaySearchViewCommand;
+        public ICommand DisplaySearchViewCommand
+        {
+            get 
+            {
+                if (_DisplaySearchViewCommand == null)
+                    _DisplaySearchViewCommand = new RelayCommand(param => this.DisplaySearchWindow());
+                return _DisplaySearchViewCommand;
             }
         }
         #endregion
         #region Command Implementations / Actual UI Logic
-        private void togglefullscreencommand()
+        private void Togglefullscreen()
         {
                 ToggleFullScreen = false;
                 ToggleFullScreen = true;
@@ -103,9 +114,14 @@ namespace P3.Viewmodels
             CloseTrigger = true;
         }
 
+        private void DisplaySearchWindow()
+        {
+
+        }
         private void Initialization()
         {
             //Maybe auto run of scripts to read from db here? Maybe it could be coupled up to our dropboxes. Maybe prompt user for database location. Maybe not, to emulate real life data shit.
+            //Rasmus, call your shit in here.
         }
         #endregion
     }
