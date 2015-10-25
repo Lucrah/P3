@@ -18,6 +18,7 @@ namespace P3.Viewmodels
 
         public ViewModelMain()
         {
+            ViewModel = new ViewModelSearchScreen();
         }
         public ViewModelBase ViewModel { get; set; }
       //Aggregation of the viewmodels
@@ -95,10 +96,47 @@ namespace P3.Viewmodels
         }
 
         private RelayCommand _DisplaySearchViewCommand;
-        //public ICommand DisplaySearchViewCommand
-        //{
+        public ICommand DisplaySearchViewCommand
+        {
+             get
+            {
+                if (_DisplaySearchViewCommand == null)
+                    _DisplaySearchViewCommand = new RelayCommand(param => this.DisplaySearchView());
+                return _DisplaySearchViewCommand;
+            }
+        }
 
-        //}
+        private RelayCommand _DisplayGraphViewCommand;
+        public ICommand DisplayGraphViewCommand
+        {
+            get
+            {
+                if (_DisplayGraphViewCommand == null)
+                    _DisplayGraphViewCommand = new RelayCommand(param => this.DisplayGraphView());
+                return _DisplayGraphViewCommand;
+            }
+        }
+        private RelayCommand _DisplayPropertyViewCommand;
+        public ICommand DisplayPropertyViewCommand
+        {
+            get
+            {
+                if (_DisplayPropertyViewCommand == null)
+                    _DisplayPropertyViewCommand = new RelayCommand(param => this.DisplayPropertyView());
+                return _DisplayPropertyViewCommand;
+            }
+        }
+        private RelayCommand _DisplayResultViewCommand;
+        public ICommand DisplayResultViewCommand
+        {
+            get
+            {
+                if (_DisplayResultViewCommand == null)
+                    _DisplayResultViewCommand = new RelayCommand(param => this.DisplayResultView());
+                return _DisplayResultViewCommand;
+            }
+        }
+
         #endregion
         #region Command Implementations / Actual UI Logic
         private void Togglefullscreen()
@@ -112,16 +150,32 @@ namespace P3.Viewmodels
             win.Show();
             CloseTrigger = true;
         }
-
-        private void DisplaySearchWindow()
-        {
-
-        }
         private void Initialization()
         {
             //Maybe auto run of scripts to read from db here? Maybe it could be coupled up to our dropboxes. Maybe prompt user for database location. Maybe not, to emulate real life data shit.
             //Rasmus, call your shit in here.
         }
         #endregion
+
+        #region Shift windows with this
+        //Maybe make single function that uses the callermembername attribute instead of one for each view? idk if it makes difference.
+        private void DisplaySearchView()
+        {
+            ViewModel = new ViewModelSearchScreen();
+        }
+        private void DisplayGraphView()
+        {
+            ViewModel = new ViewModelGraphScreen();
+        }
+        private void DisplayPropertyView()
+        {
+            ViewModel = new ViewModelPropertyScreen();
+        }
+        private void DisplayResultView()
+        {
+            ViewModel = new ViewModelResultScreen();
+        }
+        #endregion
+
     }
 }
