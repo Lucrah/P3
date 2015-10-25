@@ -16,5 +16,13 @@
 				<ee:MagnifyEffect/>
 			</Grid.Effect>
 		</Grid>
+		<CheckBox Content="Vis et eller andet" HorizontalAlignment="Left" Margin="78,716.333,0,0" VerticalAlignment="Top"/>
+		<CheckBox Content="Vis noget andet" HorizontalAlignment="Left" Margin="78,742.666,0,0" VerticalAlignment="Top"/>
+		<RadioButton Content="1 måned" HorizontalAlignment="Left" Margin="78,773,0,0" VerticalAlignment="Top"/>
+		<RadioButton Content="3 måneder" HorizontalAlignment="Left" Margin="78,793.96,0,0" VerticalAlignment="Top"/>
+		<RadioButton Content="6 måneder" HorizontalAlignment="Left" Margin="78,814.92,0,0" VerticalAlignment="Top"/>
+		<RadioButton Content="1 år" HorizontalAlignment="Left" Margin="78,835.88,0,0" VerticalAlignment="Top"/>
+		<RadioButton Content="2 år" HorizontalAlignment="Left" Margin="78,856.84,0,0" VerticalAlignment="Top"/>
+		<RadioButton Content="4 år" HorizontalAlignment="Left" Margin="78,877.8,0,0" VerticalAlignment="Top"/>
 	</Grid>
 </UserControl>
