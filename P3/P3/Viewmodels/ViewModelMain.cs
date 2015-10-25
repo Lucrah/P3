@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Interactivity;
 using P3.Models;
 using P3.Helpers;
 using P3.Views;
@@ -18,10 +19,10 @@ namespace P3.Viewmodels
 
         public ViewModelMain()
         {
-            ViewModel = new ViewModelSearchScreen();
+            CurrentViewModel = new ViewModelSearchScreen();
         }
-        public ViewModelBase ViewModel { get; set; }
-      //Aggregation of the viewmodels
+        private ViewModelBase _ViewModel;
+
         private ViewModelSearchScreen _vmSearch = new ViewModelSearchScreen();
         private ViewModelPropertyScreen _vmProperty = new ViewModelPropertyScreen();
         private ViewModelResultScreen _vmResultScreen = new ViewModelResultScreen();
@@ -53,9 +54,6 @@ namespace P3.Viewmodels
           }
         }
         #endregion
-        #region 
-
-        #endregion
         #region ICommand and Relay
 
         private RelayCommand _Initialization;
@@ -83,60 +81,6 @@ namespace P3.Viewmodels
                 return _GotoDummyWindowCommand;
             }
         }
-
-        private RelayCommand _ToggleFullscreenCommand;
-        public ICommand ToggleFullScreenCommand
-        {
-            get
-            {
-                if (_ToggleFullscreenCommand == null)
-                    _ToggleFullscreenCommand = new RelayCommand(param => this.Togglefullscreen());
-                return _ToggleFullscreenCommand;
-            }
-        }
-
-        private RelayCommand _DisplaySearchViewCommand;
-        public ICommand DisplaySearchViewCommand
-        {
-             get
-            {
-                if (_DisplaySearchViewCommand == null)
-                    _DisplaySearchViewCommand = new RelayCommand(param => this.DisplaySearchView());
-                return _DisplaySearchViewCommand;
-            }
-        }
-
-        private RelayCommand _DisplayGraphViewCommand;
-        public ICommand DisplayGraphViewCommand
-        {
-            get
-            {
-                if (_DisplayGraphViewCommand == null)
-                    _DisplayGraphViewCommand = new RelayCommand(param => this.DisplayGraphView());
-                return _DisplayGraphViewCommand;
-            }
-        }
-        private RelayCommand _DisplayPropertyViewCommand;
-        public ICommand DisplayPropertyViewCommand
-        {
-            get
-            {
-                if (_DisplayPropertyViewCommand == null)
-                    _DisplayPropertyViewCommand = new RelayCommand(param => this.DisplayPropertyView());
-                return _DisplayPropertyViewCommand;
-            }
-        }
-        private RelayCommand _DisplayResultViewCommand;
-        public ICommand DisplayResultViewCommand
-        {
-            get
-            {
-                if (_DisplayResultViewCommand == null)
-                    _DisplayResultViewCommand = new RelayCommand(param => this.DisplayResultView());
-                return _DisplayResultViewCommand;
-            }
-        }
-
         #endregion
         #region Command Implementations / Actual UI Logic
         private void Togglefullscreen()
@@ -156,26 +100,51 @@ namespace P3.Viewmodels
             //Rasmus, call your shit in here.
         }
         #endregion
+        #region WindowShiftingICommand
+        private RelayCommand _DisplaySearchViewCommand;
+        public ICommand DisplaySearchViewCommand
+        {
+            get
+            {
+                if (_DisplaySearchViewCommand == null)
+                    _DisplaySearchViewCommand = new RelayCommand(param => CurrentViewModel = new ViewModelSearchScreen());
+                return _DisplaySearchViewCommand;
+            }
+        }
 
-        #region Shift windows with this
-        //Maybe make single function that uses the callermembername attribute instead of one for each view? idk if it makes difference.
-        private void DisplaySearchView()
+        private RelayCommand _DisplayGraphViewCommand;
+        public ICommand DisplayGraphViewCommand
         {
-            ViewModel = new ViewModelSearchScreen();
+            get
+            {
+                if (_DisplayGraphViewCommand == null)
+                    _DisplayGraphViewCommand = new RelayCommand(param => CurrentViewModel = new ViewModelGraphScreen());
+                return _DisplayGraphViewCommand;
+            }
         }
-        private void DisplayGraphView()
+        private RelayCommand _DisplayPropertyViewCommand;
+        public ICommand DisplayPropertyViewCommand
         {
-            ViewModel = new ViewModelGraphScreen();
+            get
+            {
+                if (_DisplayPropertyViewCommand == null)
+                    _DisplayPropertyViewCommand = new RelayCommand(param => CurrentViewModel = new ViewModelPropertyScreen());
+                return _DisplayPropertyViewCommand;
+            }
         }
-        private void DisplayPropertyView()
+        private RelayCommand _DisplayResultViewCommand;
+        public ICommand DisplayResultViewCommand
         {
-            ViewModel = new ViewModelPropertyScreen();
-        }
-        private void DisplayResultView()
-        {
-            ViewModel = new ViewModelResultScreen();
+            get
+            {
+                if (_DisplayResultViewCommand == null)
+                    _DisplayResultViewCommand = new RelayCommand(param => CurrentViewModel = new ViewModelResultScreen());
+                return _DisplayResultViewCommand;
+            }
         }
         #endregion
+
+
 
     }
 }

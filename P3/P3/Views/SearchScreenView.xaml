@@ -3,10 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:P3.Views"
+             xmlns:local="clr-namespace:P3"
+             xmlns:vm="clr-namespace:P3.Viewmodels"
+		     xmlns:hlp="clr-namespace:P3.Helpers"
+             xmlns:views="clr-namespace:P3.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="1920" d:DesignWidth="1080" Width="1920" Height="1080">
+             d:DesignHeight="1920" d:DesignWidth="1080" Width="1920" Height="1080"
+             >
     <Grid Width="1920" Height="1080">
-            
+        <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-3.477,0.699" Command="{Binding DisplayGraphViewCommand}"/>
     </Grid>
 </UserControl>

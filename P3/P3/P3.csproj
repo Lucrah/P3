@@ -113,6 +113,7 @@
     <Compile Include="Views\SearchScreenView.xaml.cs">
       <DependentUpon>SearchScreenView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ShellViewModel.cs" />
     <Page Include="Views\DummyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
