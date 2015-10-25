@@ -15,6 +15,10 @@ namespace P3.Viewmodels
 { 
     class ViewModelMain : ViewModelBase , INotifyPropertyChanged
     {
+
+        public ViewModelMain()
+        {
+        }
         public ViewModelBase ViewModel { get; set; }
       //Aggregation of the viewmodels
         private ViewModelSearchScreen _vmSearch = new ViewModelSearchScreen();
