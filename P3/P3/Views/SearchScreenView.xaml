@@ -9,8 +9,12 @@
              xmlns:views="clr-namespace:P3.Views"
              mc:Ignorable="d" 
              d:DesignHeight="1920" d:DesignWidth="1080" Width="1920" Height="1080"
+             DataContext="{DynamicResource ViewModelSearchScreen}"
              >
-    <Grid Width="1920" Height="1080">
-        <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-3.477,0.699" Command="{Binding DisplayGraphViewCommand}"/>
+    <Grid Width="1920" Height="1080" Background="White">
+        <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-3.477,0.699" Command="{}"/>
     </Grid>
+    <UserControl.Resources>
+        <vm:ViewModelSearchScreen x:Key="ViewModelSearchScreen"/>
+    </UserControl.Resources>
 </UserControl>

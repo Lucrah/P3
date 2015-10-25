@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace P3.Viewmodels
 {
-    class ViewModelSearchScreen : ViewModelBase
+    class ViewModelSearchScreen : ViewModelMain
     {
+
     }
 } 
  
