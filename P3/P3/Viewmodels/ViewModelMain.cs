@@ -95,9 +95,8 @@ namespace P3.Viewmodels
         {
             get 
             {
-                if (_DisplaySearchViewCommand == null)
-                    _DisplaySearchViewCommand = new RelayCommand(param => this.DisplaySearchWindow());
-                return _DisplaySearchViewCommand;
+                get { return new RelayCommand(action => ViewModel = new ViewModelSearchScreen(), 
+                canExecute => !IsViewModelOfType<Person>()); }
             }
         }
         #endregion
