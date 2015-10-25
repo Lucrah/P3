@@ -91,14 +91,10 @@ namespace P3.Viewmodels
         }
 
         private RelayCommand _DisplaySearchViewCommand;
-        public ICommand DisplaySearchViewCommand
-        {
-            get 
-            {
-                get { return new RelayCommand(action => ViewModel = new ViewModelSearchScreen(), 
-                canExecute => !IsViewModelOfType<Person>()); }
-            }
-        }
+        //public ICommand DisplaySearchViewCommand
+        //{
+
+        //}
         #endregion
         #region Command Implementations / Actual UI Logic
         private void Togglefullscreen()
