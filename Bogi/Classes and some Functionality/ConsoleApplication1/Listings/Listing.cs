@@ -8,19 +8,19 @@ namespace ConsoleApplication1
 {
   class Listing 
   {
-    public Listing(string streetName, int houseNumber, int areaCode, string city)
+    public Listing(string streetName, int houseNumber, int areaCode)
     {
       StreetName = streetName;
       AreaCode = areaCode;
-      Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode) + " " + city; 
-      AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode) + "+" + city;
+      Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode); 
+      AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + "+" + Convert.ToString(areaCode);
     }
     public Listing(string streetName, int houseNumber, int areaCode, string city,  int priceOfHouse, int sizeOfHouse, int yearBuilt)
     {
       StreetName = streetName;
       AreaCode = areaCode;
       Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode) + " " + city; 
-      AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode) + "+" + city; //used for GeoCode lookups.
+      AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + "+" + Convert.ToString(areaCode); //used for GeoCode lookups.
       Price = priceOfHouse;
       Size = sizeOfHouse;
       YearBuilt = yearBuilt;
@@ -83,14 +83,29 @@ namespace ConsoleApplication1
       set { _yearBuilt = value; }
     }
 
-    public Coordinates coordinates = new Coordinates();
-#endregion 
+    private double _lat;
+
+    public double Lat
+    {
+      get { return _lat; }
+      set { _lat = value; }
+    }
+
+    private double _lng;
+
+    public double Lng
+    {
+      get { return _lng; }
+      set { _lng = value; }
+    }
+
+    #endregion
 
 
     public void GetGeoCode(double[] a)
     {
-      coordinates.lat = a[0];
-      coordinates.lng = a[1];
+      Lat = a[0];
+      Lng = a[1];
     }
 
   }

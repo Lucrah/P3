@@ -8,7 +8,7 @@ namespace ConsoleApplication1
 {
   class House : Listing
   {
-     public House(string streetName, int houseNumber, int areaCode, string city) : base(streetName, houseNumber, areaCode, city)
+     public House(string streetName, int houseNumber, int areaCode) : base(streetName, houseNumber, areaCode)
     {
       
     }

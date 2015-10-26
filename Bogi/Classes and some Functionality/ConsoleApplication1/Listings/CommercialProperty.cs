@@ -8,7 +8,7 @@ namespace ConsoleApplication1.Listings
 {
   class CommercialProperty : Listing
   {
-    public CommercialProperty(string streetName, int houseNumber, int areaCode, string city) : base(streetName, houseNumber, areaCode, city)
+    public CommercialProperty(string streetName, int houseNumber, int areaCode) : base(streetName, houseNumber, areaCode)
     {
       
     }
