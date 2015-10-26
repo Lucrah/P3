@@ -5,16 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="1920">
-    <Grid Background="White">
-        <DockPanel Width="1920" Height="300" Background="LightBlue" Margin="0,0,0,780">
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center">
-                <Button x:Name="ShowGrapScreen" Content="GraphScreen" Width="118" Height="96"/>
-                <Button x:Name="ShowPropertyInfo" Content="PropertyInfo" Width="98" Height="99"/>
-                <Button x:Name="ShowResultScreen" Content="ResultScreen" Width="83" Height="98"/>
-                <Button x:Name="ShowSearchScreen" Content="SearchScreen" Width="50" Height="96"/>
-                <ContentControl x:Name="ActiveItem"/>
-            </StackPanel>
+    <Grid Background="#FF1F1F1F">
+    	<Rectangle Fill="#FF005430" HorizontalAlignment="Left" Height="79" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="1900">
+    		<Rectangle.Effect>
+    			<DropShadowEffect/>
+    		</Rectangle.Effect>
+    	</Rectangle>
+    	<Image HorizontalAlignment="Left" Height="79" Margin="1490.374,10,0,0" VerticalAlignment="Top" Width="404.626" Source="logo.png"/>
+        <Grid HorizontalAlignment="Left" Height="990" Margin="0,89,0,0" VerticalAlignment="Top" Width="1920">
+            <ContentControl x:Name="ActiveItem"/>
+        </Grid>
+        <DataGridCellsPresenter HorizontalAlignment="Left" Height="1.5" Margin="1087.5,-222,0,0" VerticalAlignment="Top" Width="12"/>
+        <DockPanel HorizontalAlignment="Left" Height="79" Margin="10,10,0,0" VerticalAlignment="Top" Width="1480.374" LastChildFill="False">
+        	<Button x:Name="ShowSearchScreen" Content="SearchScreen" Height="29.5" VerticalAlignment="Top" Width="96" RenderTransformOrigin="0.443,1.949"/>
+            <Button x:Name="ShowPropertyInfo" Content="ResultScreen" Height="29.5" VerticalAlignment="Top" Width="96"/>
+            <Button x:Name="ShowResultScreen" Content="PropertyInfo" Height="29.5" VerticalAlignment="Top" Width="96"/>
+            <Button x:Name="ShowGraphScreen" Content="GraphScreen" Height="29.5" VerticalAlignment="Top" Width="96"/>
         </DockPanel>
-
     </Grid>
 </UserControl>

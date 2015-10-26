@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:P3.Views"
              xmlns:ee="http://schemas.microsoft.com/expression/2010/effects" x:Class="P3.Views.GraphScreenView"
              mc:Ignorable="d" 
-             d:DesignHeight="1080" d:DesignWidth="1920">
-	<Grid Background="#FF1F1F1F">
+             d:DesignHeight="1080" d:DesignWidth="1920" Height="990">
+	<Grid Background="#FF1F1F1F" Height="990">
         <Grid HorizontalAlignment="Left" Height="604" Margin="78,96,0,0" VerticalAlignment="Top" Width="802" Background="Black">
 		</Grid>
 		<CheckBox Content="Vis et eller andet" HorizontalAlignment="Left" Margin="78,716.333,0,0" VerticalAlignment="Top"/>
@@ -18,16 +18,5 @@
 		<RadioButton Content="1 år" HorizontalAlignment="Left" Margin="78,835.88,0,0" VerticalAlignment="Top"/>
 		<RadioButton Content="2 år" HorizontalAlignment="Left" Margin="78,856.84,0,0" VerticalAlignment="Top"/>
 		<RadioButton Content="4 år" HorizontalAlignment="Left" Margin="78,877.8,0,0" VerticalAlignment="Top"/>
-		<Rectangle Fill="#FF005430" HorizontalAlignment="Left" Height="79" Margin="10,28.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="1900">
-			<Rectangle.Effect>
-				<DropShadowEffect/>
-			</Rectangle.Effect>
-		</Rectangle>
-		<Image HorizontalAlignment="Left" Height="79" Margin="1489.472,28.5,0,0" VerticalAlignment="Top" Width="404.626" Source="logo.png"/>
-		<Button Content="Tilbage" HorizontalAlignment="Left" Margin="22.5,50.05,0,0" VerticalAlignment="Top" Width="125" Height="28.95">
-			<Button.Effect>
-				<DropShadowEffect/>
-			</Button.Effect>
-		</Button>
 	</Grid>
 </UserControl>

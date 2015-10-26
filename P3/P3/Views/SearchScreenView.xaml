@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:P3"
              mc:Ignorable="d" 
-             d:DesignHeight="1920" d:DesignWidth="1820">
-    <Grid Width="1820" Height="1920" Background="#FFF5F3F3">
+             d:DesignHeight="1920" d:DesignWidth="1820" Width="1920" Height="978">
+    <Grid Width="1920" Height="990" Background="#FFF5F3F3">
         <Button Content="Search" HorizontalAlignment="Left" Margin="1328,276.214,0,0" VerticalAlignment="Top" Width="75"/>
         <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label Content="Type:" HorizontalAlignment="Left" Margin="1196.605,82.04,0,0" VerticalAlignment="Top"/>
