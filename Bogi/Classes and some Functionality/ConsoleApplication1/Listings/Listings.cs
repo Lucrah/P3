@@ -34,7 +34,7 @@ namespace ConsoleApplication1.Listings
       if (!listingDB.ContainsKey(address))
       {
         //new Listing something ... funktion som defineret i importListings();
-        Listing something = new Listing(streetName, houseNumber, areaCode, city);
+        Listing something = new Listing(streetName, houseNumber, areaCode);
         Funktionality.getCoordinates(something);
         //tilføj til DB
       }
