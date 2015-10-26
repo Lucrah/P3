@@ -5,8 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:P3.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="1920" d:DesignWidth="1080" Height="990" Width="1920">
-    <Grid Background="#FFFFFDFD">
+             d:DesignHeight="1920" d:DesignWidth="1080" Height="990" Width="1900">
+    <Grid Background="#FF1F1F1F">
+    	<Grid.Effect>
+    		<DropShadowEffect/>
+    	</Grid.Effect>
         <Button Content="Tilbage til Søg" HorizontalAlignment="Left" Margin="100.5,35.96,0,0" VerticalAlignment="Top" Width="112"/>
         <Button Content="Næste" HorizontalAlignment="Left" Margin="344,359,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Content="Se valgte" HorizontalAlignment="Left" Margin="344,397,0,0" VerticalAlignment="Top" Width="75"/>

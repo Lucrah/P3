@@ -22,5 +22,7 @@ namespace P3
         {
             DisplayRootViewFor<ShellViewModel>();
         }
+        #region MEF
+        #endregion
     }
 }

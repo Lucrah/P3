@@ -6,8 +6,11 @@
              xmlns:local="clr-namespace:P3.Views"
              xmlns:ee="http://schemas.microsoft.com/expression/2010/effects" x:Class="P3.Views.GraphScreenView"
              mc:Ignorable="d" 
-             d:DesignHeight="1080" d:DesignWidth="1920" Height="990">
+             d:DesignHeight="1080" d:DesignWidth="1920" Height="990" Width="1900">
 	<Grid Background="#FF1F1F1F" Height="990">
+		<Grid.Effect>
+			<DropShadowEffect/>
+		</Grid.Effect>
         <Grid HorizontalAlignment="Left" Height="604" Margin="78,96,0,0" VerticalAlignment="Top" Width="802" Background="Black">
 		</Grid>
 		<CheckBox Content="Vis et eller andet" HorizontalAlignment="Left" Margin="78,716.333,0,0" VerticalAlignment="Top"/>

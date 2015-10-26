@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+
 using Caliburn.Micro;
 
 namespace P3.ViewModels
@@ -24,6 +27,20 @@ namespace P3.ViewModels
         public void ShowSearchScreen()
         {
             ActivateItem(new SearchScreenViewModel());
+        }
+        public void ToggleFullScreen(Window window)
+        {
+            
+            if (window.WindowState == WindowState.Maximized)
+            {
+                window.WindowStyle = WindowStyle.SingleBorderWindow;
+                window.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                window.WindowStyle = WindowStyle.None;
+                window.WindowState = WindowState.Maximized;
+            }
         }
     }
 }

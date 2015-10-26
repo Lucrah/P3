@@ -6,8 +6,11 @@
              xmlns:local="clr-namespace:P3.Views"
              xmlns:ee="http://schemas.microsoft.com/expression/2010/effects" x:Class="P3.Views.PropertyInfoView"
              mc:Ignorable="d" 
-             d:DesignHeight="1080" d:DesignWidth="1920" Height="990">
-	<Grid Background="#FF1F1F1F">
+             d:DesignHeight="1080" d:DesignWidth="1920" Height="990" Width="1900">
+	<Grid Background="#FF1F1F1F" Width="1900">
+		<Grid.Effect>
+			<DropShadowEffect/>
+		</Grid.Effect>
 		<Grid.OpacityMask>
 			<RadialGradientBrush>
 				<GradientStop Color="Black" Offset="0"/>

@@ -67,6 +67,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ApplicationBootStrapper.cs" />
+    <Compile Include="Behaviour\CloseWindowBehavior.cs" />
+    <Compile Include="Behaviour\ToggleFullScreenBehavior.cs" />
     <Compile Include="Helpers\Functionality.cs" />
     <Compile Include="Helpers\Import.cs" />
     <Compile Include="Models\Apartment.cs" />
