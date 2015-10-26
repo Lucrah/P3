@@ -20,9 +20,8 @@ namespace ConsoleApplication1
         Funktionality.getCoordinates(item.Value);
         Console.WriteLine(item.Value.Lat);
         Console.WriteLine(item.Value.Lng);
-        Console.WriteLine(item.Value.Price);
-        Console.WriteLine(item.Value.Size);
-        Console.WriteLine(item.Value.StreetName);
+        Console.WriteLine(item.Value.AddressForURL);
+        
       }
       //Listing listing1 = new House("Rendsburggade", 28, 9000);
       //Listing listing2 = new Apartment("Selma Lagerløfs vej", 300, 9220);

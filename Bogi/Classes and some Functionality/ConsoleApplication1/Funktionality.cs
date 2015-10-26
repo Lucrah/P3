@@ -68,7 +68,7 @@ namespace ConsoleApplication1
 
         static public void importSold(Dictionary<string, Listing> dict)
         {
-            var reader = new StreamReader(File.OpenRead(savefile + "Solgte.csv"), Encoding.Default);
+            var reader = new StreamReader(File.OpenRead(savefile + "HackSolgte.csv"), Encoding.UTF8);
               while (!reader.EndOfStream)
               {
                 for (int i = 0; i < 1; i++)
@@ -76,8 +76,13 @@ namespace ConsoleApplication1
                   string something = reader.ReadLine();
                 }
                 var line = reader.ReadLine();
-                string[] values = line.Split(',');
-                int room;
+               
+                if (line == null)
+                {
+          break;
+                }
+        string[] values = line.Split(',');
+        int room;
                 if (values[0] == "-")
                 {
                   room = 0;
