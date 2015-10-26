@@ -18,8 +18,8 @@
         <DataGridCellsPresenter HorizontalAlignment="Left" Height="1.5" Margin="1087.5,-222,0,0" VerticalAlignment="Top" Width="12"/>
         <DockPanel HorizontalAlignment="Left" Height="79" Margin="10,10,0,0" VerticalAlignment="Top" Width="1480.374" LastChildFill="False">
         	<Button x:Name="ShowSearchScreen" Content="SearchScreen" Height="29.5" VerticalAlignment="Top" Width="96" RenderTransformOrigin="0.443,1.949"/>
-            <Button x:Name="ShowPropertyInfo" Content="ResultScreen" Height="29.5" VerticalAlignment="Top" Width="96"/>
-            <Button x:Name="ShowResultScreen" Content="PropertyInfo" Height="29.5" VerticalAlignment="Top" Width="96"/>
+            <Button x:Name="ShowResultScreen" Content="ResultScreen" Height="29.5" VerticalAlignment="Top" Width="96"/>
+            <Button x:Name="ShowPropertyInfo" Content="PropertyInfo" Height="29.5" VerticalAlignment="Top" Width="96"/>
             <Button x:Name="ShowGraphScreen" Content="GraphScreen" Height="29.5" VerticalAlignment="Top" Width="96"/>
         </DockPanel>
     </Grid>
