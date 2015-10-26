@@ -8,14 +8,14 @@ namespace ConsoleApplication1
 {
   class House : Listing
   {
-     public House(string streetName, int houseNumber, int areaCode) : base(streetName, houseNumber, areaCode)
+     public House(string streetName, string houseNumber, int areaCode) : base(streetName, houseNumber, areaCode)
     {
       
     }
 
-    public House(string streetName, int houseNumber, int areaCode, string city,  int priceOfHouse, int sizeOfHouse, int numberOfRooms, 
-                 int numberOfBathrooms, int sizeOfProperty, int sizeOfBasement, int numberOfFloors, int yearBuilt) : base(streetName, 
-                 houseNumber, areaCode, city, priceOfHouse, sizeOfHouse, yearBuilt) 
+    public House(string streetName, string houseNumber, int areaCode,  int priceOfHouse, int sizeOfHouse, int numberOfRooms, 
+                 int numberOfBathrooms, int sizeOfProperty, int sizeOfBasement, int numberOfFloors, int yearBuilt, DateTime salesDate) : base(streetName, 
+                 houseNumber, areaCode, priceOfHouse, sizeOfHouse, yearBuilt, salesDate) 
     {
       NumberOfRooms = numberOfRooms;
       NumberOfBathrooms = numberOfBathrooms;

@@ -11,7 +11,7 @@ namespace ConsoleApplication1
 {
   class Funktionality
   {
-        string savefile;
+    static public string savefile;
     #region
     public static void getCoordinates(Listing listing)
     {
@@ -55,7 +55,7 @@ namespace ConsoleApplication1
     }
         #endregion
 
-        private void ImportPath()
+        static public void ImportPath()
         {
             
             string rel_path = Directory.GetCurrentDirectory();
@@ -66,23 +66,67 @@ namespace ConsoleApplication1
             savefile = rel_path.Remove(rel_path.Length - 1) + @"Data\";
         }
 
-        private void importSold()
+        static public void importSold(Dictionary<string, Listing> dict)
         {
             var reader = new StreamReader(File.OpenRead(savefile + "Solgte.csv"), Encoding.Default);
-            while (!reader.EndOfStream)
-            {
+              while (!reader.EndOfStream)
+              {
+                for (int i = 0; i < 1; i++)
+                {
+                  string something = reader.ReadLine();
+                }
                 var line = reader.ReadLine();
                 string[] values = line.Split(',');
-
-                int room = Convert.ToInt32(values[0]);
+                int room;
+                if (values[0] == "-")
+                {
+                  room = 0;
+                }
+                else
+                {
+                  room = Convert.ToInt32(values[0]);
+                }
                 string salesType = values[1];
-                int sizeHouse = Convert.ToInt32(values[2]);
-                string uncleanSqrPrice = values[3];
+                int sizeHouse;
+                if (values[2] == "-")
+                {
+                  sizeHouse = 0;
+                }
+                else
+                {
+                  sizeHouse = Convert.ToInt32(values[2]);
+                }
+                string uncleanSqrPrice;
+                if (values[3] == "-")
+                {
+                  uncleanSqrPrice = "0";
+                }
+                else
+                {
+                  uncleanSqrPrice = values[3];
+                }
                 int cleansqrprice = Convert.ToInt32(uncleanSqrPrice.Replace(".", ""));
-                int yearBuilt = Convert.ToInt32(values[4]);
+                int yearBuilt;
+                if (values[4] == "-")
+                {
+                  yearBuilt = 0;
+                }
+                else
+                {
+                  yearBuilt = Convert.ToInt32(values[4]);
+                }
                 string uncleanPrice = values[5];
+                if (values[5] == "-")
+                {
+                  uncleanPrice = "0";
+                }
+                else
+                {
+                  uncleanPrice = values[5];
+                }   
                 int cleanPrice = Convert.ToInt32(uncleanPrice.Replace(".", ""));
-                string adresse = values[6];
+                DateTime salesDate = Convert.ToDateTime(values[6]);
+                string adresse = values[7];
                 string streetName = String.Empty;
                 string houseNumber = String.Empty;
                 Match regexMatch = Regex.Match(adresse, "\\d");
@@ -92,8 +136,12 @@ namespace ConsoleApplication1
                     streetName = adresse.Substring(0, digitStartIndex);
                     houseNumber = adresse.Substring(digitStartIndex);
                 }
-                string propertyType = values[7];
-                int areaCode = Convert.ToInt32(values[8]);
+                string propertyType = values[8];
+                int areaCode = Convert.ToInt32(values[9]);
+
+        Listing listing = new Listing(streetName, houseNumber, areaCode, cleanPrice, sizeHouse, yearBuilt, salesDate);
+        dict.Add(listing.Address, listing);
+        Console.WriteLine(dict.Count);
             }
         }
     }

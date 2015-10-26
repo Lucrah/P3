@@ -27,7 +27,7 @@ namespace ConsoleApplication1.Listings
 
 
     //skal måske flyttes til functionality
-    public Dictionary<string, Listing> searchForProperty(double distance, string streetName, int houseNumber, int areaCode, string city, Dictionary<string, Listing> listingDB)
+    public Dictionary<string, Listing> searchForProperty(double distance, string streetName, string houseNumber, int areaCode, string city, Dictionary<string, Listing> listingDB)
     {
       string address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode) + " " + city;
       Dictionary<string, Listing> result = new Dictionary<string, Listing>();

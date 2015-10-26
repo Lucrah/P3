@@ -8,24 +8,34 @@ namespace ConsoleApplication1
 {
   class Listing 
   {
-    public Listing(string streetName, int houseNumber, int areaCode)
+    public Listing(string streetName, string houseNumber, int areaCode)
     {
       StreetName = streetName;
       AreaCode = areaCode;
       Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode); 
       AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + "+" + Convert.ToString(areaCode);
     }
-    public Listing(string streetName, int houseNumber, int areaCode, string city,  int priceOfHouse, int sizeOfHouse, int yearBuilt)
+    public Listing(string streetName, string houseNumber, int areaCode,  int priceOfHouse, int sizeOfHouse, int yearBuilt, DateTime salesDate)
     {
       StreetName = streetName;
       AreaCode = areaCode;
-      Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode) + " " + city; 
+      Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode); 
       AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + "+" + Convert.ToString(areaCode); //used for GeoCode lookups.
       Price = priceOfHouse;
       Size = sizeOfHouse;
       YearBuilt = yearBuilt;
+      salesDate = SalesDate;
     }
     #region property
+    private DateTime _salesDate;
+
+    public DateTime SalesDate
+    {
+      get { return _salesDate; }
+      set { _salesDate = value; }
+    }
+
+
     private int _areaCode;
 
     public int AreaCode

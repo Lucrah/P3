@@ -8,14 +8,14 @@ namespace ConsoleApplication1.Listings
 {
   class CommercialProperty : Listing
   {
-    public CommercialProperty(string streetName, int houseNumber, int areaCode) : base(streetName, houseNumber, areaCode)
+    public CommercialProperty(string streetName, string houseNumber, int areaCode) : base(streetName, houseNumber, areaCode)
     {
       
     }
 
-     public CommercialProperty(string streetName, int houseNumber, int areaCode, string city,  int priceOfHouse, int sizeOfHouse, 
-                 int sizeOfStorage, int sizeOfProperty, int sizeOfBasement, int numberOfFloors, int yearBuilt) : base(streetName, 
-                 houseNumber, areaCode, city, priceOfHouse, sizeOfHouse, yearBuilt) 
+     public CommercialProperty(string streetName, string houseNumber, int areaCode,  int priceOfHouse, int sizeOfHouse, 
+                 int sizeOfStorage, int sizeOfProperty, int sizeOfBasement, int numberOfFloors, int yearBuilt, DateTime salesDate) : base(streetName, 
+                 houseNumber, areaCode, priceOfHouse, sizeOfHouse, yearBuilt, salesDate) 
     {
       SizeOfStorage = sizeOfStorage;
       SizeOfProperty = sizeOfProperty;
