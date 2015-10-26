@@ -11,8 +11,14 @@
              d:DesignHeight="1920" d:DesignWidth="1080" Width="1920" Height="1080"
              DataContext="{DynamicResource ViewModelSearchScreen}"
              >
-    <Grid Width="1920" Height="1080" Background="White">
-        <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-3.477,0.699" Command="{}"/>
+    <Grid Width="1920" Height="1080" Background="#FF1F1F1F">
+        <Button Content="Søg!" HorizontalAlignment="Left" Margin="1808,1043.54,0,0" VerticalAlignment="Top" Width="102" RenderTransformOrigin="-3.477,0.699" Command="{Binding DisplayGraphViewCommand}" Height="26.46"/>
+        <Rectangle Fill="#FF005430" HorizontalAlignment="Left" Height="79" Margin="10,28.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="1900">
+        	<Rectangle.Effect>
+        		<DropShadowEffect/>
+        	</Rectangle.Effect>
+        </Rectangle>
+        <Image HorizontalAlignment="Left" Height="79" Margin="1489.472,28.5,0,0" VerticalAlignment="Top" Width="404.626" Source="logo.png"/>
     </Grid>
     <UserControl.Resources>
         <vm:ViewModelSearchScreen x:Key="ViewModelSearchScreen"/>

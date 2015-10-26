@@ -15,6 +15,7 @@ namespace P3.Viewmodels
 {
     class ViewModelBase : INotifyPropertyChanged
     {
+
         /*
          * Dont ever make a constructor in a viewmodel, it breaks the view - viewmodel connection, as it is only possible to do because a viemodel specifically have no constructor
          * Base for all viewmodels, implements INotifyPropertyChanged
@@ -54,5 +55,6 @@ namespace P3.Viewmodels
             }
         }
         #endregion
+
     }
 }

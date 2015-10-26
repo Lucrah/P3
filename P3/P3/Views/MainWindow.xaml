@@ -15,14 +15,12 @@
         <hlp:CloseWindowBehavior CloseTrigger="{Binding CloseTrigger}"/>
         <hlp:ToggleFullScreenBehavior ToggleFullScreen="{Binding ToggleFullScreen}"/>
     </i:Interaction.Behaviors>
-    <Grid>
-        <DockPanel>
-            <Border DockPanel.Dock="Left" BorderBrush="Black" BorderThickness="0,0,1,0">
-                <ItemsControl ItemsSource="{Binding ViewModelsToSwitch}"/>
-            </Border>
-            <ContentControl Content="{Binding CurrentViewModel}"/>
-        </DockPanel>
-    </Grid>
+    <DockPanel Background="#FF745252">
+        <Border DockPanel.Dock="Left" BorderBrush="Black" BorderThickness="0,0,1,0">
+            <ItemsControl ItemsSource="{Binding ViewModelsToSwitch}" Background="Black"/>
+        </Border>
+        <ContentControl Content="{Binding CurrentViewModel}"/>
+    </DockPanel>
     <Window.InputBindings>
         <KeyBinding Key="F11" Command="{Binding ToggleFullScreenCommand}"/>
     </Window.InputBindings>

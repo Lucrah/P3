@@ -14,46 +14,16 @@ using P3.Views;
 
 namespace P3.Viewmodels
 { 
-    class ViewModelMain : ViewModelBase , INotifyPropertyChanged
+    class ViewModelMain : ViewModelBase
     {
-
-        public ViewModelMain()
-        {
-            CurrentViewModel = new ViewModelSearchScreen();
-        }
-        private ViewModelBase _ViewModel;
-
         private ViewModelSearchScreen _vmSearch = new ViewModelSearchScreen();
         private ViewModelPropertyScreen _vmProperty = new ViewModelPropertyScreen();
         private ViewModelResultScreen _vmResultScreen = new ViewModelResultScreen();
         private ViewModelGraphScreen _vmGraphScreen = new ViewModelGraphScreen();
-
-        #region inpccurrentviewmodel
-        private INotifyPropertyChanged _currentViewModel;
-        public INotifyPropertyChanged CurrentViewModel
+        public ViewModelMain()
         {
-          get { return _currentViewModel; }
-          set
-          {
-            _currentViewModel = value;
-            RaisePropertyChanged();
-          }
+            CurrentViewModel = new ViewModelSearchScreen();
         }
-
-        public IEnumerable<INotifyPropertyChanged> ViewModelsToSwitch
-        {
-          get
-          {
-            return new INotifyPropertyChanged[]
-                               {
-                                   (INotifyPropertyChanged)_vmSearch,
-                                   (INotifyPropertyChanged)_vmProperty,
-                                   (INotifyPropertyChanged)_vmResultScreen,
-                                   (INotifyPropertyChanged)_vmGraphScreen
-                               };
-          }
-        }
-        #endregion
         #region ICommand and Relay
 
         private RelayCommand _Initialization;
@@ -140,6 +110,33 @@ namespace P3.Viewmodels
                 if (_DisplayResultViewCommand == null)
                     _DisplayResultViewCommand = new RelayCommand(param => CurrentViewModel = new ViewModelResultScreen());
                 return _DisplayResultViewCommand;
+            }
+        }
+        #endregion
+        #region inpccurrentviewmodel
+
+        private INotifyPropertyChanged _currentViewModel;
+        public INotifyPropertyChanged CurrentViewModel
+        {
+            get { return _currentViewModel; }
+            set
+            {
+                _currentViewModel = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public IEnumerable<INotifyPropertyChanged> ViewModelsToSwitch
+        {
+            get
+            {
+                return new INotifyPropertyChanged[]
+                               {
+                                   (INotifyPropertyChanged)_vmSearch,
+                                   (INotifyPropertyChanged)_vmProperty,
+                                   (INotifyPropertyChanged)_vmResultScreen,
+                                   (INotifyPropertyChanged)_vmGraphScreen
+                               };
             }
         }
         #endregion
