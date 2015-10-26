@@ -12,7 +12,7 @@
              DataContext="{DynamicResource ViewModelSearchScreen}"
              >
     <Grid Width="1920" Height="1080" Background="#FF1F1F1F">
-        <Button Content="Søg!" HorizontalAlignment="Left" Margin="1808,1043.54,0,0" VerticalAlignment="Top" Width="102" RenderTransformOrigin="-3.477,0.699" Command="{Binding DisplayGraphViewCommand}" Height="26.46"/>
+        <Button Content="Søg!" HorizontalAlignment="Left" Margin="1808,1043.54,0,0" VerticalAlignment="Top" Width="102" RenderTransformOrigin="-3.477,0.699" Command="{Binding ToggleFullScreen}" Height="26.46"/>
         <Rectangle Fill="#FF005430" HorizontalAlignment="Left" Height="79" Margin="10,28.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="1900">
         	<Rectangle.Effect>
         		<DropShadowEffect/>
