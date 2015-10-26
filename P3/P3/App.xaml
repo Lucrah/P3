@@ -16,7 +16,7 @@
             <v:PropertyInfoView/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:ViewModelGraphScreen}">
-            <v:GraphScreenView/>
+            <v:GraphScreenView Width="1920" Height="1080"/>
         </DataTemplate>
     </Application.Resources>
 </Application>

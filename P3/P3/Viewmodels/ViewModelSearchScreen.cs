@@ -8,10 +8,7 @@ namespace P3.Viewmodels
 {
     class ViewModelSearchScreen : ViewModelBase
     {
-      public ViewModelSearchScreen()
-      {
 
-      }  
     }
 } 
  

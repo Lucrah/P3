@@ -15,34 +15,16 @@
         <hlp:CloseWindowBehavior CloseTrigger="{Binding CloseTrigger}"/>
         <hlp:ToggleFullScreenBehavior ToggleFullScreen="{Binding ToggleFullScreen}"/>
     </i:Interaction.Behaviors>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0*"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Button Content="Test" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Width="75" Command="{Binding GotoDummyWindowCommand}" Height="20" Grid.Row="1"/>
-        <TabControl HorizontalAlignment="Right" Height="1080" VerticalAlignment="Top" Width="1920" Grid.Row="1" Margin="0,-1.5,0,0">
-            <TabControl.ItemContainerStyle>
-                <Style TargetType="{x:Type TabItem}">
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TabControl}}, Path=Items.Count}" Value="1">
-                            <Setter Property="Visibility" Value="Collapsed"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TabControl.ItemContainerStyle>
-            <ContentControl Content="{Binding ViewModel}"
-            <Button Content="Videre til næste my frend" HorizontalAlignment="Left" Margin="718,320,0,0" VerticalAlignment="Top" Width="532" Command="{Binding }" Height="153"/>
-        </TabControl>
-    </Grid>
+    <DockPanel Background="#FF745252">
+        <Border DockPanel.Dock="Left" BorderBrush="Black" BorderThickness="0,0,1,0">
+            <ItemsControl ItemsSource="{Binding ViewModelsToSwitch}" Background="Black"/>
+        </Border>
+        <ContentControl Content="{Binding CurrentViewModel}"/>
+    </DockPanel>
     <Window.InputBindings>
         <KeyBinding Key="F11" Command="{Binding ToggleFullScreenCommand}"/>
     </Window.InputBindings>
-
     <Window.Resources>
         <vm:ViewModelMain x:Key="ViewModelMain"/>
-        <DataTemplate DataType="{x:Type vm:ViewModelSearchScreen}">
-
-        </DataTemplate>
     </Window.Resources>
 </Window>
