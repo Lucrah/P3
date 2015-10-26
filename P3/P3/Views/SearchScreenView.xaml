@@ -5,8 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:P3.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="1920" d:DesignWidth="1080">
-    <Grid Width="1920" Height="1080">
+             d:DesignHeight="1920" d:DesignWidth="1820">
+    <Grid Width="1820" Height="1920" Background="#FFF5F3F3">
+    	<Button Content="Search" HorizontalAlignment="Left" Margin="1328,276.214,0,0" VerticalAlignment="Top" Width="75"/>
+    	<Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+    	<Label Content="Type:" HorizontalAlignment="Left" Margin="1196.605,82.04,0,0" VerticalAlignment="Top"/>
+    	<CheckBox Content="Lejlighed" HorizontalAlignment="Left" Margin="1196.605,113,0,0" VerticalAlignment="Top"/>
+    	<CheckBox Content="Hus" HorizontalAlignment="Left" Margin="1196.605,133.098,0,0" VerticalAlignment="Top"/>
+    	<CheckBox Content="Virksomhedsejendom" HorizontalAlignment="Left" Margin="1196.605,153.196,0,0" VerticalAlignment="Top"/>
+    	<Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+    	<Label Content="Adresse:" HorizontalAlignment="Left" Margin="1196.605,33.08,0,0" VerticalAlignment="Top"/>
+    	<TextBox HorizontalAlignment="Left" Height="23" Margin="1196.605,59.04,0,0" TextWrapping="Wrap" Text="Adresse" VerticalAlignment="Top" Width="120"/>
+    	<Label Content="Afstand fra adresse" HorizontalAlignment="Left" Margin="1196.605,173.294,0,0" VerticalAlignment="Top"/>
+    	<Slider HorizontalAlignment="Left" Margin="1196.605,204.254,0,0" VerticalAlignment="Top" Width="144"/>
+    	<Label Content="Kvm" HorizontalAlignment="Left" Margin="1196.605,227.254,0,0" VerticalAlignment="Top"/>
+    	<Slider HorizontalAlignment="Left" Margin="1196.605,253.214,0,0" VerticalAlignment="Top" Width="144"/>
+    	<ToggleButton Content="ToggleButton" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+    	<ToggleButton Content="Søg kun på vejnavn" HorizontalAlignment="Left" Margin="1361,204.254,0,0" VerticalAlignment="Top"/>
             
     </Grid>
 </UserControl>
