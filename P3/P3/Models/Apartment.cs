@@ -27,7 +27,7 @@ namespace P3
     public int NumberOfRooms
     {
       get { return _numberOfRooms; }
-      private set { _numberOfRooms = value; RaisePropertyChanged(); }
+        private set { _numberOfRooms = value; NotifyOfPropertyChange(); }
     }
 
     private int _numberOfBathrooms;
@@ -35,7 +35,7 @@ namespace P3
     public int NumberOfBathrooms
     {
       get { return _numberOfBathrooms; }
-      private set { _numberOfBathrooms = value; RaisePropertyChanged(); }
+        private set { _numberOfBathrooms = value; NotifyOfPropertyChange(); }
     }
 
     private int _floorNumber;
@@ -43,7 +43,7 @@ namespace P3
     public int FloorNumber
     {
       get { return _floorNumber; }
-      private set { _floorNumber = value; RaisePropertyChanged(); }
+        private set { _floorNumber = value; NotifyOfPropertyChange(); }
     }
 
   }

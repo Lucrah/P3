@@ -14,11 +14,8 @@
 				<GradientStop Color="White" Offset="1"/>
 			</RadialGradientBrush>
 		</Grid.OpacityMask>
-		<Image HorizontalAlignment="Left" Height="444" Margin="56,127,0,0" VerticalAlignment="Top" Width="591.134" OpacityMask="#FFE21B1B" Source="pack://siteoforigin:,,,/Views/Koala.jpg">
-			<Image.Effect>
-				<ee:MagnifyEffect/>
-			</Image.Effect>
-		</Image>
+        <Image HorizontalAlignment="Left" Height="444" Margin="56,127,0,0" VerticalAlignment="Top" Width="591.134" OpacityMask="#FFE21B1B" Source="pack://siteoforigin:,,,/Views/Koala.jpg">
+        </Image>
 		<GroupBox Header="Info&#xA;" HorizontalAlignment="Left" Height="48" Margin="56,594,0,0" VerticalAlignment="Top" Width="591.134" Foreground="White">
 			<Grid HorizontalAlignment="Left" Height="25" Margin="0,-15,-2,0" VerticalAlignment="Top" Width="581.134">
 				<Label x:Name="Adress" Content="Adresse&#xD;&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="63.993" Height="28.46" Margin="0,0,0,-3.46" Foreground="White"/>

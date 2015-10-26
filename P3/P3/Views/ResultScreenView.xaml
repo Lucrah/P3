@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:P3.Views"
              mc:Ignorable="d" 
              d:DesignHeight="1920" d:DesignWidth="1080">
-    <Grid Background="#FF1F1F1F">
+    <Grid Background="#FFFFFDFD">
+        <Button Content="Tilbage til Søg" HorizontalAlignment="Left" Margin="100.5,35.96,0,0" VerticalAlignment="Top" Width="112"/>
         <Button Content="Næste" HorizontalAlignment="Left" Margin="344,359,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Content="Se valgte" HorizontalAlignment="Left" Margin="344,397,0,0" VerticalAlignment="Top" Width="75"/>
         <RichTextBox HorizontalAlignment="Left" Height="100" Margin="319,100,0,0" VerticalAlignment="Top" Width="175">
@@ -17,7 +18,7 @@
             </FlowDocument>
         </RichTextBox>
         <Image Margin="125,97.96,785,1720" Source="pack://siteoforigin:,,,/Views/Koala.jpg" Stretch="Fill"/>
-        <CheckBox Content="Vælg" HorizontalAlignment="Left" Margin="527,133,0,0" VerticalAlignment="Top" Background="White" Foreground="#FFFBF9F9"/>
+        <CheckBox Content="Vælg" HorizontalAlignment="Left" Margin="527,133,0,0" VerticalAlignment="Top"/>
         <Image Margin="125,228,785,1592" Source="pack://siteoforigin:,,,/Views/Penguins.jpg" Stretch="Fill"/>
         <RichTextBox HorizontalAlignment="Left" Height="100" Margin="319,228,0,0" VerticalAlignment="Top" Width="175">
             <FlowDocument>
@@ -26,15 +27,6 @@
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <CheckBox Content="Vælg" HorizontalAlignment="Left" Margin="527,264,0,0" VerticalAlignment="Top" Foreground="#FFFBF7F7"/>
-        <Grid Width="1920" Height="1080" Background="#FF1F1F1F" Margin="-794,421.96,-46,418.04">
-            <Rectangle Fill="#FF005430" HorizontalAlignment="Left" Height="79" Margin="49.098,-421.5,-29.098,0" Stroke="Black" VerticalAlignment="Top" Width="1900">
-                <Rectangle.Effect>
-                    <DropShadowEffect/>
-                </Rectangle.Effect>
-            </Rectangle>
-            <Image HorizontalAlignment="Left" Height="80" Margin="1467,-422,0,0" VerticalAlignment="Top" Width="404" Source="logo.png"/>
-        </Grid>
-        <Button Content="Tilbage til Søg" HorizontalAlignment="Left" Margin="19.5,22.96,0,0" VerticalAlignment="Top" Width="112"/>
+        <CheckBox Content="Vælg" HorizontalAlignment="Left" Margin="527,264,0,0" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

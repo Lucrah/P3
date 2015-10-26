@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Caliburn.Micro;
 
-namespace P3.Viewmodels
+namespace P3.ViewModels
 {
-    class ViewModelResultScreen : ViewModelBase
+    class PropertyInfoViewModel : Screen
     {
     }
 }
- 

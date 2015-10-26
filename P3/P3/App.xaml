@@ -2,21 +2,15 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:P3"
-             xmlns:vm="clr-namespace:P3.Viewmodels"
-             xmlns:v="clr-namespace:P3.Views"
-             StartupUri="Views/MainWindow.xaml">
+             >
     <Application.Resources>
-        <DataTemplate DataType="{x:Type vm:ViewModelSearchScreen}">
-        <v:SearchScreenView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:ViewModelResultScreen}">
-            <v:ResultScreenView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:ViewModelPropertyScreen}">
-            <v:PropertyInfoView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:ViewModelGraphScreen}">
-            <v:GraphScreenView Width="1920" Height="1080"/>
-        </DataTemplate>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <local:ApplicationBootStrapper x:Key="bootstrapper"/>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+         
     </Application.Resources>
 </Application>

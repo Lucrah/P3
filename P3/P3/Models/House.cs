@@ -29,7 +29,7 @@ namespace P3
     public int NumberOfRooms
     {
       get { return _numberOfRooms; }
-      private set { _numberOfRooms = value; RaisePropertyChanged(); }
+        private set { _numberOfRooms = value; NotifyOfPropertyChange(); }
     } 
 
     private int _numberOfBathrooms;
@@ -37,7 +37,7 @@ namespace P3
     public int NumberOfBathrooms
     {
       get { return _numberOfBathrooms; }
-      private set { _numberOfBathrooms = value; RaisePropertyChanged(); }
+        private set { _numberOfBathrooms = value; NotifyOfPropertyChange(); }
     }
 
     private int _sizeOfProperty;
@@ -45,7 +45,7 @@ namespace P3
     public int SizeOfProperty
     {
       get { return _sizeOfProperty; }
-      private set { _sizeOfProperty = value; RaisePropertyChanged(); }
+        private set { _sizeOfProperty = value; NotifyOfPropertyChange(); }
     }
 
     private int _sizeOfBasement;
@@ -53,7 +53,7 @@ namespace P3
     public int SizeOfBasement
     {
       get { return _sizeOfBasement; }
-      private set { _sizeOfBasement = value; RaisePropertyChanged(); }
+        private set { _sizeOfBasement = value; NotifyOfPropertyChange(); }
     }
 
     private int _numberOfFloors;
@@ -61,7 +61,7 @@ namespace P3
     public int NumberOfFloors
     {
       get { return _numberOfFloors; }
-      set { _numberOfFloors = value; RaisePropertyChanged(); }
+        set { _numberOfFloors = value; NotifyOfPropertyChange(); }
     }
 
     /*private bool _andelsbolig;

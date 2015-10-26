@@ -28,7 +28,7 @@ namespace P3.Listings
      public int SizeOfProperty
      {
        get { return _sizeOfProperty; }
-       private set { _sizeOfProperty = value; RaisePropertyChanged(); }
+         private set { _sizeOfProperty = value; NotifyOfPropertyChange(); }
      }
 
      private int _sizeOfBasement;
@@ -36,7 +36,7 @@ namespace P3.Listings
      public int SizeOfBasement
      {
        get { return _sizeOfBasement; }
-       private set { _sizeOfBasement = value; RaisePropertyChanged(); }
+         private set { _sizeOfBasement = value; NotifyOfPropertyChange(); }
      }
 
      private int _numberOfFloors;
@@ -44,7 +44,7 @@ namespace P3.Listings
      public int NumberOfFloors
      {
        get { return _numberOfFloors; }
-       set { _numberOfFloors = value; RaisePropertyChanged(); }
+         set { _numberOfFloors = value; NotifyOfPropertyChange(); }
      }
 
      private int _sizeOfStorage;
@@ -52,7 +52,7 @@ namespace P3.Listings
      public int SizeOfStorage
      {
        get { return _sizeOfStorage; }
-       private set { _sizeOfStorage = value; RaisePropertyChanged(); }
+         private set { _sizeOfStorage = value; NotifyOfPropertyChange(); }
      }
 
     /* private bool _warehouseBuilding;

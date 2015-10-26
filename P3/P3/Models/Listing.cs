@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using P3.Models;
+using Caliburn.Micro;
 
 namespace P3
 {
-  class Listing : BaseINPCModel
+  class Listing : PropertyChangedBase
   {
     public Listing(string streetName, int houseNumber, int areaCode, string city)
     {
@@ -44,7 +44,7 @@ namespace P3
     public Guid ListingID
     {
       get { return _listingID; }
-        set { _listingID = value; RaisePropertyChanged(); }
+        set { _listingID = value; NotifyOfPropertyChange(); }
     }
 
     
@@ -54,20 +54,20 @@ namespace P3
     public double Lat
     {
       get { return _lat; }
-      set { _lat = value; RaisePropertyChanged(); }
+        set { _lat = value; NotifyOfPropertyChange(); }
     }
     private double _lng;
     public double Lng
     {
       get { return _lng; }
-      set { _lng = value; RaisePropertyChanged(); }
+        set { _lng = value; NotifyOfPropertyChange(); }
     }
     private int _areaCode;
 
     public int AreaCode
     {
       get { return _areaCode; }
-      set { _areaCode = value; RaisePropertyChanged();}
+        set { _areaCode = value; NotifyOfPropertyChange(); }
     }
 
     
@@ -76,7 +76,7 @@ namespace P3
     public string StreetName
     {
       get { return _streetName; }
-      set { _streetName = value; RaisePropertyChanged();}
+        set { _streetName = value; NotifyOfPropertyChange(); }
     }
 
     private string _address;
@@ -84,7 +84,7 @@ namespace P3
     public string Address
     {
       get { return _address; }
-      private set { _address = value; RaisePropertyChanged();}
+        private set { _address = value; NotifyOfPropertyChange(); }
     }
 
     private string _addressForURL;
@@ -92,7 +92,7 @@ namespace P3
     public string AddressForURL
     {
       get { return _addressForURL; }
-      private set { _addressForURL = value; RaisePropertyChanged(); }
+        private set { _addressForURL = value; NotifyOfPropertyChange(); }
     }
     
     private int _price;
@@ -100,7 +100,7 @@ namespace P3
     public int Price
     {
       get { return _price; }
-      private set { _price = value; RaisePropertyChanged(); }
+        private set { _price = value; NotifyOfPropertyChange(); }
     }
     
     private int _size;
@@ -108,7 +108,7 @@ namespace P3
     public int Size
     {
       get { return _size; }
-      private set { _size = value; RaisePropertyChanged(); }
+        private set { _size = value; NotifyOfPropertyChange(); }
     }
 
     private int _yearBuilt;
@@ -116,7 +116,7 @@ namespace P3
     public int YearBuilt
     {
       get { return _yearBuilt; }
-      set { _yearBuilt = value; RaisePropertyChanged(); }
+        set { _yearBuilt = value; NotifyOfPropertyChange(); }
     }
 
 #endregion 

@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace P3.Views
 {
     /// <summary>
-    /// Interaction logic for DummyView.xaml
+    /// Interaction logic for ShellView.xaml
     /// </summary>
-    public partial class DummyView : Window
+    public partial class ShellView : UserControl
     {
-        public DummyView()
+        public ShellView()
         {
             InitializeComponent();
         }
