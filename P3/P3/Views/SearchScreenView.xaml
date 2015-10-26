@@ -8,38 +8,29 @@
 		     xmlns:hlp="clr-namespace:P3.Helpers"
              xmlns:views="clr-namespace:P3.Views"
              mc:Ignorable="d" 
-<<<<<<< HEAD
              d:DesignHeight="1920" d:DesignWidth="1820">
-    <Grid Width="1820" Height="1920" Background="#FFF5F3F3">
-    	<Button Content="Search" HorizontalAlignment="Left" Margin="1328,276.214,0,0" VerticalAlignment="Top" Width="75"/>
-    	<Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-    	<Label Content="Type:" HorizontalAlignment="Left" Margin="1196.605,82.04,0,0" VerticalAlignment="Top"/>
-    	<CheckBox Content="Lejlighed" HorizontalAlignment="Left" Margin="1196.605,113,0,0" VerticalAlignment="Top"/>
-    	<CheckBox Content="Hus" HorizontalAlignment="Left" Margin="1196.605,133.098,0,0" VerticalAlignment="Top"/>
-    	<CheckBox Content="Virksomhedsejendom" HorizontalAlignment="Left" Margin="1196.605,153.196,0,0" VerticalAlignment="Top"/>
-    	<Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-    	<Label Content="Adresse:" HorizontalAlignment="Left" Margin="1196.605,33.08,0,0" VerticalAlignment="Top"/>
-    	<TextBox HorizontalAlignment="Left" Height="23" Margin="1196.605,59.04,0,0" TextWrapping="Wrap" Text="Adresse" VerticalAlignment="Top" Width="120"/>
-    	<Label Content="Afstand fra adresse" HorizontalAlignment="Left" Margin="1196.605,173.294,0,0" VerticalAlignment="Top"/>
-    	<Slider HorizontalAlignment="Left" Margin="1196.605,204.254,0,0" VerticalAlignment="Top" Width="144"/>
-    	<Label Content="Kvm" HorizontalAlignment="Left" Margin="1196.605,227.254,0,0" VerticalAlignment="Top"/>
-    	<Slider HorizontalAlignment="Left" Margin="1196.605,253.214,0,0" VerticalAlignment="Top" Width="144"/>
-    	<ToggleButton Content="ToggleButton" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-    	<ToggleButton Content="Søg kun på vejnavn" HorizontalAlignment="Left" Margin="1361,204.254,0,0" VerticalAlignment="Top"/>
-            
-=======
-             d:DesignHeight="1920" d:DesignWidth="1080" Width="1920" Height="1080"
-             DataContext="{DynamicResource ViewModelSearchScreen}"
-             >
-    <Grid Width="1920" Height="1080" Background="#FF1F1F1F">
-        <Button Content="Søg!" HorizontalAlignment="Left" Margin="1808,1043.54,0,0" VerticalAlignment="Top" Width="102" RenderTransformOrigin="-3.477,0.699" Command="{Binding ToggleFullScreen}" Height="26.46"/>
-        <Rectangle Fill="#FF005430" HorizontalAlignment="Left" Height="79" Margin="10,28.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="1900">
+    <Grid Width="1820" Height="1920" Background="#FF1F1F1F">
+    	<Button Content="Search" HorizontalAlignment="Left" Margin="510,386,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Type:" HorizontalAlignment="Left" Margin="420,150.842,0,0" VerticalAlignment="Top" Foreground="#FFF9F7F7"/>
+    	<CheckBox Content="Lejlighed" HorizontalAlignment="Left" Margin="420,181.802,0,0" VerticalAlignment="Top" Foreground="#FFFBF9F9"/>
+    	<CheckBox Content="Hus" HorizontalAlignment="Left" Margin="420,201.901,0,0" VerticalAlignment="Top" Foreground="#FFF7F1F1"/>
+    	<CheckBox Content="Virksomhedsejendom" HorizontalAlignment="Left" Margin="420,222,0,0" VerticalAlignment="Top" Foreground="#FFFBF9F9"/>
+        <Label Content="Adresse:" HorizontalAlignment="Left" Margin="420,91.882,0,0" VerticalAlignment="Top" Foreground="#FFFBF7F7"/>
+    	<TextBox HorizontalAlignment="Left" Height="23" Margin="420,122.842,0,0" TextWrapping="Wrap" Text="Adresse" VerticalAlignment="Top" Width="120"/>
+    	<Label Content="Afstand fra adresse" HorizontalAlignment="Left" Margin="420,251.04,0,0" VerticalAlignment="Top" Foreground="#FFFDFBFB"/>
+    	<Slider HorizontalAlignment="Left" Margin="420,282,0,0" VerticalAlignment="Top" Width="144"/>
+    	<Label Content="Kvm" HorizontalAlignment="Left" Margin="420,313.04,0,0" VerticalAlignment="Top" Foreground="#FFFDF9F9"/>
+    	<Slider HorizontalAlignment="Left" Margin="420,344,0,0" VerticalAlignment="Top" Width="144"/>
+        <ToggleButton Content="Søg kun på vejnavn" HorizontalAlignment="Left" Margin="569,280.04,0,0" VerticalAlignment="Top"/>
+        <Grid Width="1920" Height="1080" Background="#FF1F1F1F" Margin="-21,445,-79,395">
+        <Rectangle Fill="#FF005430" HorizontalAlignment="Left" Height="79" Margin="10,-446.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="1900">
         	<Rectangle.Effect>
         		<DropShadowEffect/>
         	</Rectangle.Effect>
         </Rectangle>
-        <Image HorizontalAlignment="Left" Height="79" Margin="1489.472,28.5,0,0" VerticalAlignment="Top" Width="404.626" Source="logo.png"/>
->>>>>>> origin/master
+        <Button Content="Søg!" HorizontalAlignment="Left" Margin="1808,1043.54,0,0" VerticalAlignment="Top" Width="102" RenderTransformOrigin="-3.477,0.699" Command="{Binding ToggleFullScreen}" Height="26.46"/>
+            <Image HorizontalAlignment="Left" Height="79" Margin="1431.472,-446.5,0,0" VerticalAlignment="Top" Width="404.626" Source="logo.png"/>
+        </Grid>
     </Grid>
     <UserControl.Resources>
         <vm:ViewModelSearchScreen x:Key="ViewModelSearchScreen"/>
