@@ -7,6 +7,7 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
 using Caliburn.Micro;
+using P3.Interfaces;
 using P3.ViewModels;
 
 namespace P3
@@ -21,7 +22,7 @@ namespace P3
 
         protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)
         {
-            DisplayRootViewFor<ShellViewModel>();
+            DisplayRootViewFor<IShell>();
         }
         #region MEF
         protected override void Configure()
@@ -40,7 +41,7 @@ namespace P3
         protected override object GetInstance(Type serviceType, string key)
         {
             string contract = string.IsNullOrEmpty(key) ? AttributedModelServices.GetContractName(serviceType) : key;
-            var exports = container.GetExportedValues<object>(contract);
+            var exports = _container.GetExportedValues<object>(contract);
 
             if (exports.Count() > 0)
             {
@@ -48,6 +49,16 @@ namespace P3
             }
 
             throw new Exception(string.Format("Could not locate any instances of contract {0}.", contract));
+        }
+
+        protected override IEnumerable<object> GetAllInstances(Type serviceType)
+        {
+          return _container.GetExportedValues<object>(AttributedModelServices.GetContractName(serviceType));
+        }
+
+        protected override void BuildUp(object instance)
+        {
+          _container.SatisfyImportsOnce(instance);
         }
         #endregion
     }

@@ -4,26 +4,37 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Threading.Tasks;
+using System.Dynamic;
 using System.Windows.Controls;
-
+using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Primitives;
+using System.ComponentModel.Composition.Hosting;
 using Caliburn.Micro;
+using P3.Interfaces;
 
 namespace P3.ViewModels
 {
-    class ShellViewModel : Conductor<object>, IViewAware
+    [Export(typeof(IShell))]
+    public class ShellViewModel : Conductor<object>, IShell
     {
         #region Fields 
         private readonly IEventAggregator _eventAggregator;
+        private readonly IWindowManager _windowManager;
         #endregion
         #region Ctor/s
         //This is just used to gain a reference to the eventAggregator in the bootstrapper. We can then use this to publish events on the right thread, or something like that.
-        public ShellViewModel(IEventAggregator eventAggregator)
+        [ImportingConstructor]
+        public ShellViewModel(IWindowManager windowManager)
         {
-            _eventAggregator = eventAggregator;
-
-            //This is how you publish an event.
-
+          _windowManager = windowManager;
         }
+        //[ImportingConstructor]
+        //public ShellViewModel(IEventAggregator eventAggregator,IWindowManager windowManager)
+        //{
+        //    _eventAggregator = eventAggregator;
+        //    _windowManager = windowManager;
+        //    //This is how you publish an event:
+        //}
         #endregion
         #region NavigateFunctions
         /*Shows how to display an item(in this case a usercontrol)
@@ -49,18 +60,21 @@ namespace P3.ViewModels
         }
         #endregion
 
-        public void ToggleFullScreen(Window window)
+        public void ToggleFullScreen()
         {
-            if (window.WindowState == WindowState.Maximized)
+          //Trying to pass in settings to the window
+          dynamic settings = new ExpandoObject();
+            if (settings.WindowState == WindowState.Maximized)
             {
-                window.WindowStyle = WindowStyle.SingleBorderWindow;
-                window.WindowState = WindowState.Normal;
+                settings.WindowStyle = WindowStyle.SingleBorderWindow;
+                settings.WindowState = WindowState.Normal;
             }
             else
             {
-                window.WindowStyle = WindowStyle.None;
-                window.WindowState = WindowState.Maximized;
+                settings.WindowStyle = WindowStyle.None;
+                settings.WindowState = WindowState.Maximized;
             }
+            _windowManager.ShowWindow(new ShellViewModel(_windowManager), null, settings);
         }
     }
 }
