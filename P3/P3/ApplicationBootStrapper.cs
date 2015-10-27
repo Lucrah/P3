@@ -36,6 +36,19 @@ namespace P3
 
             _container.Compose(batch);
         }
+
+        protected override object GetInstance(Type serviceType, string key)
+        {
+            string contract = string.IsNullOrEmpty(key) ? AttributedModelServices.GetContractName(serviceType) : key;
+            var exports = container.GetExportedValues<object>(contract);
+
+            if (exports.Count() > 0)
+            {
+                return exports.First();
+            }
+
+            throw new Exception(string.Format("Could not locate any instances of contract {0}.", contract));
+        }
         #endregion
     }
 }
