@@ -13,6 +13,7 @@ namespace P3
 {
     class ApplicationBootStrapper : BootstrapperBase
     {
+        private CompositionContainer _container;
         public ApplicationBootStrapper()
         {
             Initialize();
@@ -23,6 +24,18 @@ namespace P3
             DisplayRootViewFor<ShellViewModel>();
         }
         #region MEF
+        protected override void Configure()
+        {
+            _container = new CompositionContainer(new AggregateCatalog(AssemblySource.Instance.Select(x => new AssemblyCatalog(x)).OfType<ComposablePartCatalog>()));
+
+            //Collects values/stuff that has to go in our container
+            CompositionBatch batch = new CompositionBatch();
+            batch.AddExportedValue<IWindowManager>(new WindowManager());
+            batch.AddExportedValue<IEventAggregator>(new EventAggregator());
+            batch.AddExportedValue(_container);
+
+            _container.Compose(batch);
+        }
         #endregion
     }
 }

@@ -10,8 +10,27 @@ using Caliburn.Micro;
 
 namespace P3.ViewModels
 {
-    class ShellViewModel : Conductor<object>
+    class ShellViewModel : Conductor<object>, IViewAware
     {
+        #region Fields 
+        private readonly IEventAggregator _eventAggregator;
+        #endregion
+        #region Ctor/s
+        //This is just used to gain a reference to the eventAggregator in the bootstrapper. We can then use this to publish events on the right thread, or something like that.
+        public ShellViewModel(IEventAggregator eventAggregator)
+        {
+            _eventAggregator = eventAggregator;
+
+            //This is how you publish an event.
+
+        }
+        #endregion
+        #region NavigateFunctions
+        /*Shows how to display an item(in this case a usercontrol)
+         *you then do something like this on a button:
+         * <Button x:Name="ShowResultScreen" Content="ResultScreen" Height="29.5" VerticalAlignment="Top" Width="96"/>
+         * And really, this can be used to bind any function to any button/other control.
+         * */
         public void ShowGraphScreen()
         {
             ActivateItem(new GraphScreenViewModel());
@@ -28,9 +47,10 @@ namespace P3.ViewModels
         {
             ActivateItem(new SearchScreenViewModel());
         }
+        #endregion
+
         public void ToggleFullScreen(Window window)
         {
-            
             if (window.WindowState == WindowState.Maximized)
             {
                 window.WindowStyle = WindowStyle.SingleBorderWindow;
