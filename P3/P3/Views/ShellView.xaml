@@ -10,22 +10,19 @@
              WindowState="{Binding Path=WState, Mode=TwoWay}"
              WindowStyle="{Binding Path=WStyle, Mode=TwoWay}"
              ResizeMode="{Binding Path=WRSize, Mode=TwoWay}"
-             WindowStartupLocation="CenterScreen" ToolTip="What a pretty application u got there." Topmost="True" MaxWidth="1920" MaxHeight="1080" SizeToContent="WidthAndHeight" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-	<Window.Effect>
-		<DropShadowEffect RenderingBias="Quality"/>
-	</Window.Effect>
-    <Viewbox>
+             WindowStartupLocation="CenterScreen" ToolTip="What a pretty application u got there." MaxWidth="1920" MaxHeight="1080" SizeToContent="WidthAndHeight" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SnapsToDevicePixels="True" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Viewbox Margin="0" MaxWidth="1920" MaxHeight="1080" ClipToBounds="True" SnapsToDevicePixels="True" Stretch="UniformToFill">
         <Grid Background="#FF1F1F1F" ClipToBounds="True">
-            <Grid HorizontalAlignment="Left" Height="990" Margin="0,89,0,0" VerticalAlignment="Top" Width="1900">
-                <ContentControl x:Name="ActiveItem"/>
+            <Grid Margin="0,119,0,-3.094" MaxWidth="1920" MaxHeight="1080" ClipToBounds="True">
+                <ContentControl x:Name="ActiveItem" ClipToBounds="True" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
             </Grid>
             <DataGridCellsPresenter HorizontalAlignment="Left" Height="1.5" Margin="1087.5,-222,0,0" VerticalAlignment="Top" Width="12"/>
             <Grid Margin="10,10,10,960" Background="#FF005430">
                 <Grid.Effect>
                     <DropShadowEffect/>
                 </Grid.Effect>
-                <Image Height="79" Margin="1475.374,0,10,0" Source="logo.png"/>
-                <Button x:Name="ShowSearchScreen" Content="SearchScreen" Height="29" RenderTransformOrigin="0.443,1.949" Margin="65.583,41.5,1736.417,9.5" MinWidth="90" MinHeight="29" Width="90"/>
+                <Image Height="79" Margin="1411.333,0,45.953,1" Source="logo.png"/>
+                <Button x:Name="ShowSearchScreen" Content="SearchScreen" RenderTransformOrigin="0.443,1.949" Margin="65.583,41.5,1702.417,1" MinWidth="90" MinHeight="29"/>
                 <Button x:Name="ShowResultScreen" Content="ResultScreen" Height="29" Margin="352.083,41.5,1449.917,9.5" Width="90" MinWidth="90" MinHeight="29"/>
                 <Button x:Name="ShowPropertyInfo" Content="PropertyInfo" Height="29" Margin="638.583,41,1163.417,10" MinWidth="90" MinHeight="25" Width="90"/>
                 <Button x:Name="ShowGraphScreen"  Content="GraphScreen" Height="29.5" Margin="914.667,41,887.333,9.5" MinWidth="90" MinHeight="29" Width="90"/>
