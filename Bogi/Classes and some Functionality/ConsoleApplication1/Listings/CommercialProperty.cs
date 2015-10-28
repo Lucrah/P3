@@ -13,8 +13,8 @@ namespace ConsoleApplication1.Listings
       
     }
 
-     public CommercialProperty(string streetName, string houseNumber, int areaCode,  int priceOfHouse, int sizeOfHouse, 
-                 int sizeOfStorage, int sizeOfProperty, int sizeOfBasement, int numberOfFloors, int yearBuilt, DateTime salesDate) : base(streetName, 
+     public CommercialProperty(int id, string streetName, string houseNumber, int areaCode,  int priceOfHouse, int sizeOfHouse, 
+                 int sizeOfStorage, int sizeOfProperty, int sizeOfBasement, int numberOfFloors, int yearBuilt, DateTime salesDate) : base(id, streetName, 
                  houseNumber, areaCode, priceOfHouse, sizeOfHouse, yearBuilt, salesDate) 
     {
       SizeOfStorage = sizeOfStorage;

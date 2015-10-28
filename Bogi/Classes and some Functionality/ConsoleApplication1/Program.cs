@@ -17,10 +17,11 @@ namespace ConsoleApplication1
 
       foreach (var item in dict)
       {
-        Funktionality.getCoordinates(item.Value);
-        Console.WriteLine(item.Value.Lat);
-        Console.WriteLine(item.Value.Lng);
-        Console.WriteLine(item.Value.AddressForURL);
+                Console.WriteLine(item.Value.AddressForURL);
+                Funktionality.getCoordinates(item.Value);
+                Console.WriteLine(item.Value.Lat);
+                Console.WriteLine(item.Value.Lng);
+        
         
       }
       //Listing listing1 = new House("Rendsburggade", 28, 9000);

@@ -15,7 +15,7 @@ namespace ConsoleApplication1
     #region
     public static void getCoordinates(Listing listing)
     {
-      System.Threading.Thread.Sleep(1000);
+      System.Threading.Thread.Sleep(500);
       double[] geoCode = new double[2] { 0, 0 };
 
       string address = "http://maps.googleapis.com/maps/api/geocode/xml?address=" + listing.AddressForURL + "&sensor=false";
@@ -71,17 +71,11 @@ namespace ConsoleApplication1
             var reader = new StreamReader(File.OpenRead(savefile + "HackSolgte.csv"), Encoding.UTF8);
               while (!reader.EndOfStream)
               {
-                for (int i = 0; i < 1; i++)
-                {
-                  string something = reader.ReadLine();
-                }
                 var line = reader.ReadLine();
-               
-                if (line == null)
-                {
-          break;
-                }
+          
         string[] values = line.Split(',');
+
+                int id = dict.Count;
         int room;
                 if (values[0] == "-")
                 {
@@ -139,13 +133,15 @@ namespace ConsoleApplication1
                 {
                     int digitStartIndex = regexMatch.Index;
                     streetName = adresse.Substring(0, digitStartIndex);
-                    houseNumber = adresse.Substring(digitStartIndex);
+                    string uncleanHouseNumber = adresse.Substring(digitStartIndex);
+                    string[] uncleanHousenumber = uncleanHouseNumber.Split(' ');
+                    houseNumber = uncleanHousenumber[0];
                 }
                 string propertyType = values[8];
                 int areaCode = Convert.ToInt32(values[9]);
 
-        Listing listing = new Listing(streetName, houseNumber, areaCode, cleanPrice, sizeHouse, yearBuilt, salesDate);
-        dict.Add(listing.Address, listing);
+        Listing listing = new Listing(id ,streetName, houseNumber, areaCode, cleanPrice, sizeHouse, yearBuilt, salesDate);
+        dict.Add(Convert.ToString(listing.ID), listing);
         Console.WriteLine(dict.Count);
             }
         }

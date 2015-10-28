@@ -15,12 +15,13 @@ namespace ConsoleApplication1
       Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode); 
       AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + "+" + Convert.ToString(areaCode);
     }
-    public Listing(string streetName, string houseNumber, int areaCode,  int priceOfHouse, int sizeOfHouse, int yearBuilt, DateTime salesDate)
+    public Listing(int id, string streetName, string houseNumber, int areaCode,  int priceOfHouse, int sizeOfHouse, int yearBuilt, DateTime salesDate)
     {
+            ID = id;
       StreetName = streetName;
       AreaCode = areaCode;
       Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode); 
-      AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + "+" + Convert.ToString(areaCode); //used for GeoCode lookups.
+      AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + "+" + Convert.ToString(areaCode)+ "+" + "Denmark"; //used for GeoCode lookups.
       Price = priceOfHouse;
       Size = sizeOfHouse;
       YearBuilt = yearBuilt;
@@ -43,9 +44,16 @@ namespace ConsoleApplication1
       get { return _areaCode; }
       set { _areaCode = value; }
     }
+        private int _iD;
 
-    
-    private string _streetName;
+        public int ID
+        {
+            get { return _iD; }
+            set { _iD = value; }
+        }
+
+
+        private string _streetName;
 
     public string StreetName
     {
