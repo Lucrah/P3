@@ -19,14 +19,14 @@ namespace ConsoleApplication1
 
       foreach (var item in dict)
       {
-<<<<<<< HEAD
+
                 Console.WriteLine(item.Value.AddressForURL);
                 Funktionality.getCoordinates(item.Value);
                 Console.WriteLine(item.Value.Lat);
                 Console.WriteLine(item.Value.Lng);
         
         
-=======
+
         Funktionality.getCoordinates(item.Value);
       }
       Console.WriteLine("done getting coordinates");
@@ -37,7 +37,7 @@ namespace ConsoleApplication1
       foreach (var item in dictOut)
       {
         Console.WriteLine(item.Value.AddressForURL);
->>>>>>> origin/master
+
       }
 
 
