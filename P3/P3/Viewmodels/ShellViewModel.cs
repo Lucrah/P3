@@ -140,8 +140,9 @@ namespace P3.ViewModels
                 }
                 else
                 {
-                    WState = WindowState.Maximized;
                     WStyle = WindowStyle.None;
+                    WState = WindowState.Maximized;
+
                     WRSize = ResizeMode.NoResize;
                 }
             }

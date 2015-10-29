@@ -22,14 +22,14 @@
                     <DropShadowEffect/>
                 </Grid.Effect>
                 <Image Margin="1401.333,0,10,0" Source="logo.png"/>
-                <Button x:Name="ShowSearchScreen" Content="SearchScreen" Margin="65.583,17.78,1661.049,34.019" MinWidth="90" MinHeight="29" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Button x:Name="ShowSearchScreen" Content="SearchScreen" Margin="66,18,0,0" MinWidth="90" MinHeight="29" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Height="29" Width="137"/>
                 <Button x:Name="ShowResultScreen" Content="ResultScreen" Margin="360.892,17.78,1319.225,34.019" MinWidth="90" MinHeight="29" FontSize="16"/>
                 <Button x:Name="ShowPropertyInfo" Content="PropertyInfo" Margin="679.204,17.78,1037.659,34.019" MinWidth="90" MinHeight="29" FontSize="16"/>
                 <Button x:Name="ShowGraphScreen"  Content="GraphScreen" Margin="1028.699,17.78,712.246,34.019" MinWidth="90" MinHeight="29" FontSize="16"/>
             </Grid>
         </Grid>
     </Viewbox>
-    
+
     <!--Example of how to bind a function to a button-->
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="KeyDown">
