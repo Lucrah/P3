@@ -10,22 +10,22 @@
              WindowState="{Binding Path=WState, Mode=TwoWay}"
              WindowStyle="{Binding Path=WStyle, Mode=TwoWay}"
              ResizeMode="{Binding Path=WRSize, Mode=TwoWay}"
-             WindowStartupLocation="CenterScreen" ToolTip="What a pretty application u got there." MaxWidth="1920" MaxHeight="1080" SizeToContent="WidthAndHeight" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SnapsToDevicePixels="True" HorizontalAlignment="Center" VerticalAlignment="Center">
-    <Viewbox Margin="0" MaxWidth="1920" MaxHeight="1080" ClipToBounds="True" SnapsToDevicePixels="True" Stretch="UniformToFill">
-        <Grid Background="#FF1F1F1F" ClipToBounds="True">
-            <Grid Margin="0,119,0,-3.094" MaxWidth="1920" MaxHeight="1080" ClipToBounds="True">
-                <ContentControl x:Name="ActiveItem" ClipToBounds="True" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+             WindowStartupLocation="CenterScreen" ToolTip="What a pretty application u got there." MaxWidth="1920" MaxHeight="1080" SizeToContent="WidthAndHeight" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SnapsToDevicePixels="True" HorizontalAlignment="Left" VerticalAlignment="Top" d:DesignWidth="1884" Width="1920">
+    <Viewbox Margin="0" MaxWidth="1920" MaxHeight="1080" SnapsToDevicePixels="True" Stretch="UniformToFill" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <Grid Background="#FF1F1F1F" VerticalAlignment="Top" HorizontalAlignment="Left" SnapsToDevicePixels="False">
+            <Grid Margin="0,119,0,-3.094" MaxWidth="1920" MaxHeight="1080" VerticalAlignment="Top" HorizontalAlignment="Left" SnapsToDevicePixels="False">
+                <ContentControl x:Name="ActiveItem" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" SnapsToDevicePixels="False"/>
             </Grid>
             <DataGridCellsPresenter HorizontalAlignment="Left" Height="1.5" Margin="1087.5,-222,0,0" VerticalAlignment="Top" Width="12"/>
-            <Grid Margin="10,10,10,960" Background="#FF005430">
+            <Grid Margin="10,10,10,960" Background="#FF005430" HorizontalAlignment="Left" Width="1851.5" VerticalAlignment="Top" SnapsToDevicePixels="True">
                 <Grid.Effect>
                     <DropShadowEffect/>
                 </Grid.Effect>
-                <Image Height="79" Margin="1411.333,0,45.953,1" Source="logo.png"/>
-                <Button x:Name="ShowSearchScreen" Content="SearchScreen" RenderTransformOrigin="0.443,1.949" Margin="65.583,41.5,1702.417,1" MinWidth="90" MinHeight="29"/>
-                <Button x:Name="ShowResultScreen" Content="ResultScreen" Height="29" Margin="352.083,41.5,1449.917,9.5" Width="90" MinWidth="90" MinHeight="29"/>
-                <Button x:Name="ShowPropertyInfo" Content="PropertyInfo" Height="29" Margin="638.583,41,1163.417,10" MinWidth="90" MinHeight="25" Width="90"/>
-                <Button x:Name="ShowGraphScreen"  Content="GraphScreen" Height="29.5" Margin="914.667,41,887.333,9.5" MinWidth="90" MinHeight="29" Width="90"/>
+                <Image Margin="1401.333,0,10,0" Source="logo.png"/>
+                <Button x:Name="ShowSearchScreen" Content="SearchScreen" Margin="65.583,17.78,1661.049,34.019" MinWidth="90" MinHeight="29" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Button x:Name="ShowResultScreen" Content="ResultScreen" Margin="360.892,17.78,1319.225,34.019" MinWidth="90" MinHeight="29" FontSize="16"/>
+                <Button x:Name="ShowPropertyInfo" Content="PropertyInfo" Margin="679.204,17.78,1037.659,34.019" MinWidth="90" MinHeight="29" FontSize="16"/>
+                <Button x:Name="ShowGraphScreen"  Content="GraphScreen" Margin="1028.699,17.78,712.246,34.019" MinWidth="90" MinHeight="29" FontSize="16"/>
             </Grid>
         </Grid>
     </Viewbox>
