@@ -21,7 +21,19 @@
         <Label Content="Kvm" HorizontalAlignment="Left" Margin="1196.605,227.254,0,0" VerticalAlignment="Top" d:IsHidden="True"/>
         <Slider HorizontalAlignment="Left" Margin="1196.605,253.214,0,0" VerticalAlignment="Top" Width="144" d:IsHidden="True"/>
         <ToggleButton Content="Søg kun på vejnavn" HorizontalAlignment="Left" Margin="1361,204.254,0,0" VerticalAlignment="Top" d:IsHidden="True"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,25.13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Indtast Adresse" Foreground="White" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontSize="24" Width="180.333" Height="33.91"/>
-        <TextBox HorizontalAlignment="Left" Height="30" Margin="10,66.09,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="346" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,25.13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Indtast Adresse" Foreground="White" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontSize="26.667" Width="228.333" Height="40.96"/>
+        <TextBox HorizontalAlignment="Left" Height="41.91" Margin="10,66.09,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="409" FontSize="16"/>
+        <Grid HorizontalAlignment="Left" Height="113.214" Margin="10,133.098,0,0" VerticalAlignment="Top" Width="549" Background="#FF005430">
+        	<CheckBox Content="Hus" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Height="22.96" Width="137" FontSize="18.667" Focusable="False"/>
+        	<CheckBox Content="Villa" HorizontalAlignment="Left" Margin="10,55.111,0,0" VerticalAlignment="Top" Height="22.96" Width="137" FontSize="18.667"/>
+        	<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="62,0,0,0" Height="30" Width="389" FontSize="21.333" Text="                         Hus type"/>
+        	<CheckBox Content="Liebhaverejendom" HorizontalAlignment="Left" Margin="10,80.254,0,0" VerticalAlignment="Top" Height="32.96" Width="170" FontSize="18.667"/>
+        	<CheckBox Content="Lystejendom" HorizontalAlignment="Left" Margin="365.58,30,0,0" VerticalAlignment="Top" Height="22.96" Width="137.42" FontSize="18.667"/>
+        	<CheckBox Content="Helårsejendom" HorizontalAlignment="Left" Margin="365.58,55.111,0,0" VerticalAlignment="Top" Height="22.96" Width="147.42" FontSize="18.667"/>
+        	<CheckBox Content="Nedlagt Landbrug" HorizontalAlignment="Left" Margin="365.58,80.254,0,0" VerticalAlignment="Top" Height="32.96" Width="173.42" FontSize="18.667"/>
+        	<CheckBox Content="Ejerlejlighed" HorizontalAlignment="Left" Margin="193,30,0,0" VerticalAlignment="Top" Height="22.96" Width="137.58" FontSize="18.667"/>
+        	<CheckBox Content="Andelsbolig" HorizontalAlignment="Left" Margin="193,55.111,0,0" VerticalAlignment="Top" Height="22.96" Width="137.58" FontSize="18.667"/>
+        	<CheckBox Content="Rækkehus" HorizontalAlignment="Left" Margin="193,80.254,0,0" VerticalAlignment="Top" Height="32.96" Width="137.58" FontSize="18.667"/>
+        </Grid>
     </Grid>
 </UserControl>

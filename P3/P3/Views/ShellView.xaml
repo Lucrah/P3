@@ -13,9 +13,7 @@
              WindowStartupLocation="CenterScreen" ToolTip="What a pretty application u got there." MaxWidth="1920" MaxHeight="1080" SizeToContent="WidthAndHeight" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SnapsToDevicePixels="True" HorizontalAlignment="Left" VerticalAlignment="Top" d:DesignWidth="1884" Width="1920">
     <Viewbox Margin="0" MaxWidth="1920" MaxHeight="1080" SnapsToDevicePixels="True" Stretch="UniformToFill" VerticalAlignment="Top" HorizontalAlignment="Left">
         <Grid Background="#FF1F1F1F" VerticalAlignment="Top" HorizontalAlignment="Left" SnapsToDevicePixels="False">
-            <Grid Margin="0,119,0,-3.094" MaxWidth="1920" MaxHeight="1080" VerticalAlignment="Top" HorizontalAlignment="Left" SnapsToDevicePixels="False">
-                <ContentControl x:Name="ActiveItem" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" SnapsToDevicePixels="False"/>
-            </Grid>
+            <Grid Margin="0,119,0,-3.094" MaxWidth="1920" MaxHeight="1080" VerticalAlignment="Top" HorizontalAlignment="Left" SnapsToDevicePixels="False"/>
             <DataGridCellsPresenter HorizontalAlignment="Left" Height="1.5" Margin="1087.5,-222,0,0" VerticalAlignment="Top" Width="12"/>
             <Grid Margin="10,10,10,960" Background="#FF005430" HorizontalAlignment="Left" Width="1851.5" VerticalAlignment="Top" SnapsToDevicePixels="True">
                 <Grid.Effect>
@@ -27,6 +25,7 @@
                 <Button x:Name="ShowPropertyInfo" Content="PropertyInfo" Margin="679.204,17.78,1037.659,34.019" MinWidth="90" MinHeight="29" FontSize="16"/>
                 <Button x:Name="ShowGraphScreen"  Content="GraphScreen" Margin="1028.699,17.78,712.246,34.019" MinWidth="90" MinHeight="29" FontSize="16"/>
             </Grid>
+            <ContentControl x:Name="ActiveItem" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top" SnapsToDevicePixels="False" Height="945" Margin="10,95.799,0,0"/>
         </Grid>
     </Viewbox>
 
