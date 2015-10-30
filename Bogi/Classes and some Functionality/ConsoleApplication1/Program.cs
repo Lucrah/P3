@@ -24,6 +24,7 @@ namespace ConsoleApplication1
                 Funktionality.getCoordinates(item.Value);
                 Console.WriteLine(item.Value.Lat);
                 Console.WriteLine(item.Value.Lng);
+                Funktionality.SaveUpdate(item.Value);
         
         
 

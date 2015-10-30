@@ -11,14 +11,16 @@ namespace ConsoleApplication1
     public Listing(string streetName, string houseNumber, int areaCode)
     {
       StreetName = streetName;
+      HouseNumber = houseNumber;
       AreaCode = areaCode;
       Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode); 
       AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + "+" + Convert.ToString(areaCode);
     }
-    public Listing(int id, string streetName, string houseNumber, int areaCode,  int priceOfHouse, int sizeOfHouse, int yearBuilt, DateTime salesDate)
+    public Listing(int id, string streetName, string houseNumber,int numberOfRooms, int areaCode,  int priceOfHouse, int sizeOfHouse, int yearBuilt, string salesDate, int sqrPrice)
     {
             ID = id;
       StreetName = streetName;
+      HouseNumber = houseNumber;
       AreaCode = areaCode;
       Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode); 
       AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + "+" + Convert.ToString(areaCode)+ "+" + "Denmark"; //used for GeoCode lookups.
@@ -28,14 +30,37 @@ namespace ConsoleApplication1
       salesDate = SalesDate;
     }
     #region property
-    private DateTime _salesDate;
+    private string _salesDate;
 
-    public DateTime SalesDate
+    public string SalesDate
     {
       get { return _salesDate; }
       set { _salesDate = value; }
     }
 
+    private int _rooms;
+
+    public int Rooms
+    {
+        get { return _rooms; }
+        set { _rooms = value; }
+    }
+
+    private int _sqrPrice;
+
+    public int Sqrprice
+    {
+        get { return _sqrPrice; }
+        set { _sqrPrice = value; }
+    }
+
+    private string _houseNumber;
+
+    public string HouseNumber
+    {
+        get { return _houseNumber; }
+        set { _houseNumber = value; }
+    }
 
     private int _areaCode;
 

@@ -68,7 +68,7 @@ namespace ConsoleApplication1
 
         static public void importSold(Dictionary<string, Listing> dict)
         {
-            var reader = new StreamReader(File.OpenRead(savefile + "HackSolgte.csv"), Encoding.UTF8);
+            var reader = new StreamReader(File.OpenRead(savefile + "HackSolgte.001"), Encoding.UTF8);
               while (!reader.EndOfStream)
               {
                 var line = reader.ReadLine();
@@ -124,7 +124,7 @@ namespace ConsoleApplication1
                   uncleanPrice = values[5];
                 }   
                 int cleanPrice = Convert.ToInt32(uncleanPrice.Replace(".", ""));
-                DateTime salesDate = Convert.ToDateTime(values[6]);
+                string salesDate = values[6];
                 string adresse = values[7];
                 string streetName = String.Empty;
                 string houseNumber = String.Empty;
@@ -140,10 +140,27 @@ namespace ConsoleApplication1
                 string propertyType = values[8];
                 int areaCode = Convert.ToInt32(values[9]);
 
-        Listing listing = new Listing(id ,streetName, houseNumber, areaCode, cleanPrice, sizeHouse, yearBuilt, salesDate);
+        Listing listing = new Listing(id ,streetName, houseNumber,room, areaCode, cleanPrice, sizeHouse, yearBuilt, salesDate,cleansqrprice);
         dict.Add(Convert.ToString(listing.ID), listing);
         Console.WriteLine(dict.Count);
             }
+        }
+        public static void SaveUpdate(Listing property)
+        {
+            if (!File.Exists(savefile + "ImportedProperties.csv"))
+            {
+                File.Create(savefile + "ImportedProperties.csv");
+                TextWriter tw = new StreamWriter(savefile + "ImportedProperties.csv");
+                tw.WriteLine("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10}", property.ID, property.StreetName, property.HouseNumber, property.AreaCode, property.YearBuilt, property.Rooms, property.Price, property.Sqrprice, property.Lng, property.Lng);
+                tw.Close();
+            }
+            else if (File.Exists(savefile + "ImportedProperties.csv"))
+            {
+                TextWriter tw = new StreamWriter(savefile + "ImportedProperties.csv", true);
+                tw.WriteLine("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10}",  property.ID,  property.StreetName,  property.HouseNumber,  property.AreaCode, property.YearBuilt , property.Rooms,  property.Price,  property.Sqrprice, property.Lng, property.Lng);
+                tw.Close();
+            }
+
         }
     }
 }

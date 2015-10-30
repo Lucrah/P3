@@ -14,7 +14,7 @@ namespace ConsoleApplication1
     }
 
     public Apartment(int id ,string streetName, string houseNumber, int areaCode,  int priceOfHouse, int sizeOfHouse, int numberOfRooms, 
-                 int numberOfBathrooms, int floorNumber, int yearBuilt, DateTime salesDate) : base(id, streetName, houseNumber, areaCode, priceOfHouse, sizeOfHouse, yearBuilt, salesDate) 
+                 int numberOfBathrooms, int floorNumber, int yearBuilt, string salesDate, int sqrPrice) : base(id, streetName, houseNumber, numberOfRooms, areaCode, priceOfHouse, sizeOfHouse, yearBuilt, salesDate,sqrPrice) 
     {
       NumberOfRooms = numberOfRooms;
       NumberOfBathrooms = numberOfBathrooms;
