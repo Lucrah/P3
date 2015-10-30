@@ -68,7 +68,7 @@ namespace ConsoleApplication1
 
         static public void importSold(Dictionary<string, Listing> dict)
         {
-            var reader = new StreamReader(File.OpenRead(savefile + "HackSolgte.002"), Encoding.UTF8);
+            var reader = new StreamReader(File.OpenRead(savefile + "Bogi1.csv"), Encoding.UTF8);
               while (!reader.EndOfStream)
               {
                 var line = reader.ReadLine();
@@ -147,18 +147,12 @@ namespace ConsoleApplication1
         }
         public static void SaveUpdate(Listing property)
         {
-            if (!File.Exists(savefile + "ImportedProperties_Bogi1.csv"))
-            {
-                StreamWriter tw = new StreamWriter(savefile + "ImportedProperties_Bogi1.csv");
-                tw.WriteLine("{0} {1} {2}{3} {4} {5} {6} {7} {8} {9} {10} {11} {12}", property.ID, property.PropertyType, property.StreetName, property.HouseNumber, property.AreaCode, property.YearBuilt, property.Rooms, property.Price, property.Sqrprice, property.SalesDate, property.SalesType, property.Lng, property.Lng);
-                tw.Close();
-            }
-            else if (File.Exists(savefile + "ImportedProperties_Bogi1.csv"))
-            {
-                StreamWriter tw = new StreamWriter(savefile + "ImportedProperties_Bogi1.csv", true);
-                tw.WriteLine("{0} {1} {2}{3} {4} {5} {6} {7} {8} {9} {10} {11} {12}",  property.ID, property.PropertyType, property.StreetName,  property.HouseNumber,  property.AreaCode, property.YearBuilt , property.Rooms,  property.Price,  property.Sqrprice, property.SalesDate, property.SalesType, property.Lng, property.Lng);
-                tw.Close();
-            }
+
+          using (StreamWriter tw = new StreamWriter(savefile + "ImportedProperties_Bogi1.csv", true))
+          {
+            tw.WriteLine("{0} {1} {2}{3} {4} {5} {6} {7} {8} {9} {10} {11} {12}", property.ID, property.PropertyType, property.StreetName, property.HouseNumber, property.AreaCode, 
+              property.YearBuilt, property.Rooms,property.Price, property.Sqrprice, property.SalesDate, property.SalesType, property.Lng, property.Lng);
+          }
 
         }
     }
