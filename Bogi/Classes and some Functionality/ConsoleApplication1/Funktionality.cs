@@ -15,7 +15,7 @@ namespace ConsoleApplication1
     #region
     public static void getCoordinates(Listing listing)
     {
-      System.Threading.Thread.Sleep(500);
+      System.Threading.Thread.Sleep(250);
       double[] geoCode = new double[2] { 0, 0 };
 
       string address = "http://maps.googleapis.com/maps/api/geocode/xml?address=" + listing.AddressForURL + "&sensor=false";
@@ -68,7 +68,7 @@ namespace ConsoleApplication1
 
         static public void importSold(Dictionary<string, Listing> dict)
         {
-            var reader = new StreamReader(File.OpenRead(savefile + "HackSolgte.001"), Encoding.UTF8);
+            var reader = new StreamReader(File.OpenRead(savefile + "HackSolgte.002"), Encoding.UTF8);
               while (!reader.EndOfStream)
               {
                 var line = reader.ReadLine();
@@ -140,24 +140,23 @@ namespace ConsoleApplication1
                 string propertyType = values[8];
                 int areaCode = Convert.ToInt32(values[9]);
 
-        Listing listing = new Listing(id ,streetName, houseNumber,room, areaCode, cleanPrice, sizeHouse, yearBuilt, salesDate,cleansqrprice);
+        Listing listing = new Listing(id, streetName, houseNumber, room, areaCode, cleanPrice, sizeHouse, yearBuilt, salesDate, cleansqrprice, salesType, propertyType);
         dict.Add(Convert.ToString(listing.ID), listing);
         Console.WriteLine(dict.Count);
             }
         }
         public static void SaveUpdate(Listing property)
         {
-            if (!File.Exists(savefile + "ImportedProperties.csv"))
+            if (!File.Exists(savefile + "ImportedProperties_Bogi1.csv"))
             {
-                File.Create(savefile + "ImportedProperties.csv");
-                TextWriter tw = new StreamWriter(savefile + "ImportedProperties.csv");
-                tw.WriteLine("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10}", property.ID, property.StreetName, property.HouseNumber, property.AreaCode, property.YearBuilt, property.Rooms, property.Price, property.Sqrprice, property.Lng, property.Lng);
+                StreamWriter tw = new StreamWriter(savefile + "ImportedProperties_Bogi1.csv");
+                tw.WriteLine("{0} {1} {2}{3} {4} {5} {6} {7} {8} {9} {10} {11} {12}", property.ID, property.PropertyType, property.StreetName, property.HouseNumber, property.AreaCode, property.YearBuilt, property.Rooms, property.Price, property.Sqrprice, property.SalesDate, property.SalesType, property.Lng, property.Lng);
                 tw.Close();
             }
-            else if (File.Exists(savefile + "ImportedProperties.csv"))
+            else if (File.Exists(savefile + "ImportedProperties_Bogi1.csv"))
             {
-                TextWriter tw = new StreamWriter(savefile + "ImportedProperties.csv", true);
-                tw.WriteLine("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10}",  property.ID,  property.StreetName,  property.HouseNumber,  property.AreaCode, property.YearBuilt , property.Rooms,  property.Price,  property.Sqrprice, property.Lng, property.Lng);
+                StreamWriter tw = new StreamWriter(savefile + "ImportedProperties_Bogi1.csv", true);
+                tw.WriteLine("{0} {1} {2}{3} {4} {5} {6} {7} {8} {9} {10} {11} {12}",  property.ID, property.PropertyType, property.StreetName,  property.HouseNumber,  property.AreaCode, property.YearBuilt , property.Rooms,  property.Price,  property.Sqrprice, property.SalesDate, property.SalesType, property.Lng, property.Lng);
                 tw.Close();
             }
 

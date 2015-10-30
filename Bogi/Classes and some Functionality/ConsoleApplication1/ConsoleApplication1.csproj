@@ -42,9 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Funktionality.cs" />
-    <Compile Include="Listings\Apartment.cs" />
-    <Compile Include="Listings\CommercialProperty.cs" />
-    <Compile Include="Listings\House.cs" />
     <Compile Include="Listings\Listing.cs" />
     <Compile Include="Listings\Listings.cs" />
     <Compile Include="Program.cs" />

@@ -28,18 +28,18 @@ namespace ConsoleApplication1
         
         
 
-        Funktionality.getCoordinates(item.Value);
+        
       }
-      Console.WriteLine("done getting coordinates");
+      Console.WriteLine("done getting coordinates and saving to file");
 
-      dictOut = Search.SearchForProperty("Rendsburggade", "28", 9000, 1, 3, 35, 60, "10-05-2010", "10-05-2015", 10000, ref dict);
-      Console.WriteLine(dictOut.Count());
-      Console.WriteLine("done searching");
-      foreach (var item in dictOut)
-      {
-        Console.WriteLine(item.Value.AddressForURL);
-
-      }
+      //dictOut = Search.SearchForProperty("Rendsburggade", "28", 9000, 1, 3, 35, 60, "10-05-2010", "10-05-2015", 10000, ref dict);
+      //Console.WriteLine(dictOut.Count());
+      //Console.WriteLine("done searching");
+      //foreach (var item in dictOut)
+      //{
+      //  Console.WriteLine(item.Value.AddressForURL);
+      //
+      //}
 
 
       //Listing listing1 = new House("Rendsburggade", 28, 9000);

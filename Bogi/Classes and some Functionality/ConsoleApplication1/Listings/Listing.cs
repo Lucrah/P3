@@ -16,7 +16,7 @@ namespace ConsoleApplication1
       Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode); 
       AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + "+" + Convert.ToString(areaCode);
     }
-    public Listing(int id, string streetName, string houseNumber,int numberOfRooms, int areaCode,  int priceOfHouse, int sizeOfHouse, int yearBuilt, string salesDate, int sqrPrice)
+    public Listing(int id, string streetName, string houseNumber,int numberOfRooms, int areaCode,  int priceOfHouse, int sizeOfHouse, int yearBuilt, string salesDate, int sqrPrice, string salesType, string propertyType)
     {
             ID = id;
       StreetName = streetName;
@@ -27,9 +27,31 @@ namespace ConsoleApplication1
       Price = priceOfHouse;
       Size = sizeOfHouse;
       YearBuilt = yearBuilt;
-      salesDate = SalesDate;
+      SalesDate = salesDate;
+      SalesType = salesType;
+      Rooms = numberOfRooms;
+      Sqrprice = sqrPrice;
+      PropertyType = propertyType;
     }
     #region property
+    private string _propertyType;
+
+    public string PropertyType
+    {
+      get { return _propertyType; }
+      set { _propertyType = value; }
+    }
+
+
+    private string _salesType;
+
+    public string SalesType
+    {
+      get { return _salesType; }
+      set { _salesType = value; }
+    }
+
+
     private string _salesDate;
 
     public string SalesDate
