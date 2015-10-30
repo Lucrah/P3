@@ -133,7 +133,6 @@ namespace P3.ViewModels
                 if (WState == WindowState.Maximized)
                 {
                     WState = WindowState.Normal;
-                    //The below setting somehow makes the window have a small border after the first f11 toggle. Dunno why m$ pls fix
                     WStyle = WindowStyle.ThreeDBorderWindow;
                     WRSize = ResizeMode.CanResize;
                     
@@ -142,7 +141,6 @@ namespace P3.ViewModels
                 {
                     WStyle = WindowStyle.None;
                     WState = WindowState.Maximized;
-
                     WRSize = ResizeMode.NoResize;
                 }
             }
