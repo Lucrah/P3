@@ -68,7 +68,7 @@ namespace ConsoleApplication1
 
         static public void importSold(Dictionary<string, Listing> dict)
         {
-            var reader = new StreamReader(File.OpenRead(savefile + "Bogi1.csv"), Encoding.UTF8);
+            var reader = new StreamReader(File.OpenRead(savefile + "Kristoffer2.csv"), Encoding.UTF8);
               while (!reader.EndOfStream)
               {
                 var line = reader.ReadLine();
@@ -148,7 +148,7 @@ namespace ConsoleApplication1
         public static void SaveUpdate(Listing property)
         {
 
-          using (StreamWriter tw = new StreamWriter(savefile + "ImportedProperties_Bogi1.csv", true))
+          using (StreamWriter tw = new StreamWriter(savefile + "ImportedProperties_Kristoffer2.csv", true))
           {
             tw.WriteLine("{0} {1} {2}{3} {4} {5} {6} {7} {8} {9} {10} {11} {12}", property.ID, property.PropertyType, property.StreetName, property.HouseNumber, property.AreaCode, 
               property.YearBuilt, property.Rooms,property.Price, property.Sqrprice, property.SalesDate, property.SalesType, property.Lng, property.Lng);
