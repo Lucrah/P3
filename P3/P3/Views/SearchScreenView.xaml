@@ -7,33 +7,50 @@
              mc:Ignorable="d" 
              d:DesignHeight="1920" d:DesignWidth="1820" Width="1900" Height="978">
     <Grid Width="1900" Height="990" Background="#FF1F1F1F">
-    	<Grid.Effect>
-    		<DropShadowEffect/>
-    	</Grid.Effect><Button Content="Search" HorizontalAlignment="Left" Margin="1328,276.214,0,0" VerticalAlignment="Top" Width="75" d:IsHidden="True"/>
-        <Label Content="Type:" HorizontalAlignment="Left" Margin="1196.605,82.04,0,0" VerticalAlignment="Top" d:IsHidden="True"/>
-        <CheckBox Content="Lejlighed" HorizontalAlignment="Left" Margin="1196.605,113,0,0" VerticalAlignment="Top" d:IsHidden="True"/>
-        <CheckBox Content="Hus" HorizontalAlignment="Left" Margin="1196.605,133.098,0,0" VerticalAlignment="Top" d:IsHidden="True"/>
-        <CheckBox Content="Virksomhedsejendom" HorizontalAlignment="Left" Margin="1196.605,153.196,0,0" VerticalAlignment="Top" d:IsHidden="True"/>
-        <Label Content="Adresse:" HorizontalAlignment="Left" Margin="1196.605,33.08,0,0" VerticalAlignment="Top" d:IsHidden="True"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="1196.605,59.04,0,0" TextWrapping="Wrap" Text="Adresse" VerticalAlignment="Top" Width="120" d:IsHidden="True"/>
-        <Label Content="Afstand fra adresse" HorizontalAlignment="Left" Margin="1196.605,173.294,0,0" VerticalAlignment="Top" d:IsHidden="True"/>
-        <Slider HorizontalAlignment="Left" Margin="1196.605,204.254,0,0" VerticalAlignment="Top" Width="144" d:IsHidden="True"/>
-        <Label Content="Kvm" HorizontalAlignment="Left" Margin="1196.605,227.254,0,0" VerticalAlignment="Top" d:IsHidden="True"/>
-        <Slider HorizontalAlignment="Left" Margin="1196.605,253.214,0,0" VerticalAlignment="Top" Width="144" d:IsHidden="True"/>
-        <ToggleButton Content="Søg kun på vejnavn" HorizontalAlignment="Left" Margin="1361,204.254,0,0" VerticalAlignment="Top" d:IsHidden="True"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="132*"/>
+            <RowDefinition Height="116*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="112*"/>
+            <RowDefinition Height="29*"/>
+            <RowDefinition Height="112*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="428*"/>
+        </Grid.RowDefinitions>
         <TextBlock HorizontalAlignment="Left" Margin="10,25.13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Indtast Adresse" Foreground="White" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontSize="26.667" Width="228.333" Height="40.96"/>
         <TextBox HorizontalAlignment="Left" Height="41.91" Margin="10,66.09,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="409" FontSize="16"/>
-        <Grid HorizontalAlignment="Left" Height="113.214" Margin="10,133.098,0,0" VerticalAlignment="Top" Width="549" Background="#FF005430">
-        	<CheckBox Content="Hus" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Height="22.96" Width="137" FontSize="18.667" Focusable="False"/>
-        	<CheckBox Content="Villa" HorizontalAlignment="Left" Margin="10,55.111,0,0" VerticalAlignment="Top" Height="22.96" Width="137" FontSize="18.667"/>
-        	<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="62,0,0,0" Height="30" Width="389" FontSize="21.333" Text="                         Hus type"/>
-        	<CheckBox Content="Liebhaverejendom" HorizontalAlignment="Left" Margin="10,80.254,0,0" VerticalAlignment="Top" Height="32.96" Width="170" FontSize="18.667"/>
-        	<CheckBox Content="Lystejendom" HorizontalAlignment="Left" Margin="365.58,30,0,0" VerticalAlignment="Top" Height="22.96" Width="137.42" FontSize="18.667"/>
-        	<CheckBox Content="Helårsejendom" HorizontalAlignment="Left" Margin="365.58,55.111,0,0" VerticalAlignment="Top" Height="22.96" Width="147.42" FontSize="18.667"/>
-        	<CheckBox Content="Nedlagt Landbrug" HorizontalAlignment="Left" Margin="365.58,80.254,0,0" VerticalAlignment="Top" Height="32.96" Width="173.42" FontSize="18.667"/>
-        	<CheckBox Content="Ejerlejlighed" HorizontalAlignment="Left" Margin="193,30,0,0" VerticalAlignment="Top" Height="22.96" Width="137.58" FontSize="18.667"/>
-        	<CheckBox Content="Andelsbolig" HorizontalAlignment="Left" Margin="193,55.111,0,0" VerticalAlignment="Top" Height="22.96" Width="137.58" FontSize="18.667"/>
-        	<CheckBox Content="Rækkehus" HorizontalAlignment="Left" Margin="193,80.254,0,0" VerticalAlignment="Top" Height="32.96" Width="137.58" FontSize="18.667"/>
+        <Grid HorizontalAlignment="Left" Height="113.214" Margin="10,1.098,0,0" VerticalAlignment="Top" Width="549" Background="#FF005430" Grid.Row="1">
+            <CheckBox Content="Hus" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Height="22.96" Width="137" FontSize="18.667" Focusable="False"/>
+            <CheckBox Content="Villa" HorizontalAlignment="Left" Margin="10,55.111,0,0" VerticalAlignment="Top" Height="22.96" Width="137" FontSize="18.667"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="62,0,0,0" Height="30" Width="389" FontSize="21.333" Text="                         Hus type"/>
+            <CheckBox Content="Liebhaverejendom" HorizontalAlignment="Left" Margin="10,80.254,0,0" VerticalAlignment="Top" Height="32.96" Width="170" FontSize="18.667"/>
+            <CheckBox Content="Lystejendom" HorizontalAlignment="Left" Margin="365.58,30,0,0" VerticalAlignment="Top" Height="22.96" Width="137.42" FontSize="18.667"/>
+            <CheckBox Content="Helårsejendom" HorizontalAlignment="Left" Margin="365.58,55.111,0,0" VerticalAlignment="Top" Height="25.143" Width="148.42" FontSize="18.667"/>
+            <CheckBox Content="Nedlagt Landbrug" HorizontalAlignment="Left" Margin="365.58,80.254,0,0" VerticalAlignment="Top" Height="32.96" Width="173.42" FontSize="18.667"/>
+            <CheckBox Content="Ejerlejlighed" HorizontalAlignment="Left" Margin="193,30,0,0" VerticalAlignment="Top" Height="22.96" Width="137.58" FontSize="18.667"/>
+            <CheckBox Content="Andelsbolig" HorizontalAlignment="Left" Margin="193,55.111,0,0" VerticalAlignment="Top" Height="25.143" Width="137.58" FontSize="18.667"/>
+            <CheckBox Content="Rækkehus" HorizontalAlignment="Left" Margin="193,80.254,0,0" VerticalAlignment="Top" Height="32.96" Width="137.58" FontSize="18.667"/>
         </Grid>
+        <Grid HorizontalAlignment="Left" Height="113.214" Margin="10,0.098,0,0" VerticalAlignment="Top" Width="549" Background="#FF005430" Grid.Row="3" Grid.RowSpan="2">
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="62,0,0,0" Height="30" Width="389" FontSize="21.333"><Run Text="                         "/><Run Language="da-dk" Text="Pris"/></TextBlock>
+            <RadioButton Content="Solgt" HorizontalAlignment="Left" Margin="495.556,32.427,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.971,0.619"/>
+            <RadioButton Content="Til Salg" HorizontalAlignment="Left" Margin="495.16,61.337,0,0" VerticalAlignment="Top"/>
+            <DockPanel HorizontalAlignment="Left" Height="38.5" LastChildFill="False" Margin="10,64.714,0,10" VerticalAlignment="Center" Width="470.66">
+                <Slider HorizontalAlignment="Left" VerticalAlignment="Top" Width="412" Height="32" TickPlacement="BottomRight" TickFrequency="1000000" Maximum="100000000" IsSnapToTickEnabled="True" DockPanel.Dock="Left" Name="PriceSliderValue"/>
+                <TextBox Height="17.167" TextWrapping="Wrap" VerticalAlignment="Top" Width="56.667" FontSize="8" Text="{Binding Path=PriceSliderValue, Mode=TwoWay}"/>
+            </DockPanel>
+            <TextBlock HorizontalAlignment="Left" Margin="10,43.754,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="da-dk" Text="1mio."/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="377.382,43.754,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="da-dk" Text="100mio."/></TextBlock>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="113.214" Margin="10,0.319,0,0" VerticalAlignment="Top" Width="549" Background="#FF005430" Grid.Row="5" Grid.RowSpan="2">
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="62,0,0,0" Height="30" Width="389" FontSize="21.333"><Run Text="                         "/><Run Language="da-dk" Text="Radius"/><LineBreak/><Run Language="da-dk"/></TextBlock>
+            <DockPanel HorizontalAlignment="Left" Height="38.5" LastChildFill="False" Margin="10,64.714,0,10" VerticalAlignment="Center" Width="470.66">
+            	<Slider HorizontalAlignment="Left" VerticalAlignment="Top" Width="412" Height="32" TickPlacement="BottomRight" TickFrequency="100" Maximum="5000" IsSnapToTickEnabled="True" DockPanel.Dock="Left" x:Name="AreaSliderValue"/>
+            	<TextBox Height="17.167" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" FontSize="8" Text="{Binding AreaSliderValue, Mode=TwoWay}"/>
+            </DockPanel>
+            <TextBlock HorizontalAlignment="Left" Margin="10,45.942,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="13.772" RenderTransformOrigin="0.448,0.194"><Run Language="da-dk" Text="100m"/><LineBreak/><Run Language="da-dk"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="381.999,50.942,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="13.772" RenderTransformOrigin="0.448,0.194"><Run Language="da-dk" Text="5000m"/></TextBlock>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="113.214" Margin="10,0,0,0" VerticalAlignment="Top" Width="549" Background="#FF005430" Grid.Row="7"/>
     </Grid>
 </UserControl>

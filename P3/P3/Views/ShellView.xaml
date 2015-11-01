@@ -16,9 +16,6 @@
             <Grid Margin="0,119,0,-3.094" MaxWidth="1920" MaxHeight="1080" VerticalAlignment="Top" HorizontalAlignment="Left" SnapsToDevicePixels="False"/>
             <DataGridCellsPresenter HorizontalAlignment="Left" Height="1.5" Margin="1087.5,-222,0,0" VerticalAlignment="Top" Width="12"/>
             <Grid Margin="10,10,10,960" Background="#FF005430" HorizontalAlignment="Left" Width="1851.5" VerticalAlignment="Top" SnapsToDevicePixels="True">
-                <Grid.Effect>
-                    <DropShadowEffect/>
-                </Grid.Effect>
                 <Image Margin="1401.333,0,10,0" Source="logo.png"/>
                 <Button x:Name="ShowSearchScreen" Content="SearchScreen" Margin="66,18,0,0" MinWidth="90" MinHeight="29" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Height="29" Width="137"/>
                 <Button x:Name="ShowResultScreen" Content="ResultScreen" Margin="360.892,17.78,1319.225,34.019" MinWidth="90" MinHeight="29" FontSize="16"/>
