@@ -35,7 +35,7 @@
             <CheckBox Content="Liebhaverejendom" HorizontalAlignment="Left" Margin="10,80.254,0,0" VerticalAlignment="Top" Height="32.96" Width="170" FontSize="18.667"/>
             <CheckBox Content="Lystejendom" HorizontalAlignment="Left" Margin="365.58,30,0,0" VerticalAlignment="Top" Height="22.96" Width="137.42" FontSize="18.667"/>
             <CheckBox Content="Helårsejendom" HorizontalAlignment="Left" Margin="365.58,55.111,0,0" VerticalAlignment="Top" Height="25.143" Width="148.42" FontSize="18.667"/>
-            <CheckBox Content="Nedlagt landbrug" HorizontalAlignment="Left" Margin="365.58,80.254,0,0" VerticalAlignment="Top" Height="32.96" Width="173.42" FontSize="18.667"/>
+            <CheckBox Content="Nedlagt Landbrug" HorizontalAlignment="Left" Margin="365.58,80.254,0,0" VerticalAlignment="Top" Height="32.96" Width="173.42" FontSize="18.667"/>
             <CheckBox Content="Ejerlejlighed" HorizontalAlignment="Left" Margin="193,30,0,0" VerticalAlignment="Top" Height="22.96" Width="137.58" FontSize="18.667"/>
             <CheckBox Content="Andelsbolig" HorizontalAlignment="Left" Margin="193,55.111,0,0" VerticalAlignment="Top" Height="25.143" Width="137.58" FontSize="18.667"/>
             <CheckBox Content="Rækkehus" HorizontalAlignment="Left" Margin="193,80.254,0,0" VerticalAlignment="Top" Height="32.96" Width="137.58" FontSize="18.667"/>
@@ -76,12 +76,12 @@
         	<TextBox HorizontalAlignment="Left" Height="23" Margin="226,80.214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62"/>
         	<TextBlock HorizontalAlignment="Left" Margin="180,87.254,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="da-dk" Text="Andet"/></TextBlock>
         </Grid>
-        <Button Content="Søg" HorizontalAlignment="Left" Margin="424,66.09,0,0" Style="{DynamicResource SimpleButton}" VerticalAlignment="Top" Width="135" Height="41.91" FontSize="24"/>
+        <Button x:Name="GetResults" Content="Søg" HorizontalAlignment="Left" Margin="424,66.09,0,0" Style="{DynamicResource SimpleButton}" VerticalAlignment="Top" Width="135" Height="41.91" FontSize="24" />
         <Grid HorizontalAlignment="Left" Height="113.214" Margin="10,0,0,0" VerticalAlignment="Top" Width="549" Background="#FF005430" Grid.Row="9">
         	<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="62,0,0,0" Height="30" Width="389" FontSize="21.333"><Run Text="                         "/><Run Language="da-dk" Text="Størrelse"/></TextBlock>
         	<DockPanel HorizontalAlignment="Left" Height="38.5" LastChildFill="False" Margin="10,64.714,0,10" VerticalAlignment="Center" Width="470.66">
-        		<Slider HorizontalAlignment="Left" VerticalAlignment="Top" Width="412" Height="32" TickPlacement="BottomRight" TickFrequency="100" Maximum="10000" IsSnapToTickEnabled="True" DockPanel.Dock="Left" x:Name="SizeSliderValue"/>
-        		<TextBox Height="17.167" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" FontSize="8" Text="{Binding SizeSliderValue, Mode=TwoWay}"/>
+        		<Slider HorizontalAlignment="Left" VerticalAlignment="Top" Width="412" Height="32" TickPlacement="BottomRight" TickFrequency="100" Maximum="5000" IsSnapToTickEnabled="True" DockPanel.Dock="Left" x:Name="AreaSliderValue1"/>
+        		<TextBox Height="17.167" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" FontSize="8" Text="{Binding AreaSliderValue, Mode=TwoWay}"/>
         	</DockPanel>
         	<TextBlock HorizontalAlignment="Left" Margin="10,43.754,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="da-dk" Text="10 m^2"/></TextBlock>
         	<TextBlock HorizontalAlignment="Left" Margin="362,43.754,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.055,0.384"><Run Language="da-dk" Text="10000 m^2"/></TextBlock>
@@ -95,14 +95,13 @@
         	<TextBlock HorizontalAlignment="Left" Margin="195,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         	<TextBlock HorizontalAlignment="Left" Margin="195,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="da-dk" Text="Værelser"/></TextBlock>
         	<TextBox HorizontalAlignment="Left" Height="20" Margin="257,30.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48"/>
-        	<ComboBox HorizontalAlignment="Left" Margin="419,29,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding SavedSettingsCollection}"/>
+        	<ComboBox HorizontalAlignment="Left" Margin="419,29,0,0" VerticalAlignment="Top" Width="120"/>
         	<TextBlock HorizontalAlignment="Left" Margin="419,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Height="20"><Run Language="da-dk" Text="Vælg tidligere søgning"/><LineBreak/><Run Language="da-dk"/></TextBlock>
-        	<Button Content="Gem søgning" HorizontalAlignment="Left" Margin="419,68,0,0" VerticalAlignment="Top" Width="120" x:Name="SaveSearchSettings"/>
+        	<Button Content="Gem søgning" HorizontalAlignment="Left" Margin="419,75,0,0" VerticalAlignment="Top" Width="120"/>
         	<TextBlock HorizontalAlignment="Left" Margin="191.743,73.01,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="da-dk" Text="GrundAreal"/></TextBlock>
         	<TextBox HorizontalAlignment="Left" Height="20" Margin="257,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48"/>
         </Grid>
-		<Grid Grid.Column="2" HorizontalAlignment="Left" Height="960" Margin="10,25.13,0,0" Grid.RowSpan="12" VerticalAlignment="Top" Width="1300.069">
-			<ContentControl x:Name="ActiveItem"/>
-		</Grid>
+        <ContentControl x:Name="ResultScreen" Grid.Column="2" HorizontalAlignment="Left" Height="960" Margin="10,25.13,0,0" Grid.RowSpan="12" VerticalAlignment="Top" Width="1300.069">
+		</ContentControl>
     </Grid>
 </UserControl>

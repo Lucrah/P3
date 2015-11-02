@@ -5,24 +5,36 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using P3.Models;
 using Caliburn.Micro;
+using MySql.Data.MySqlClient;
 
 namespace P3.ViewModels
 {
-    class SearchScreenViewModel : Screen
+    class SearchScreenViewModel : Conductor<object>.Collection.AllActive
     {
         #region Fields
 
         private BindableCollection<SearchSettingModel> _savedSettingsCollection;
         private string Path;
+        private Screen _resultScreen; 
 
         #endregion
 
         #region Public 
 
+        public Screen ResultScreen
+        {
+            get { return _resultScreen; }
+            set
+            {
+                _resultScreen = value;
+                NotifyOfPropertyChange(() => ResultScreen);
+            }
+        }
         public BindableCollection<SearchSettingModel> SavedSettingsCollection
         {
             get { return _savedSettingsCollection;}
@@ -70,7 +82,17 @@ namespace P3.ViewModels
             rel_path = rel_path.Replace(dir_info, "");
             var path = rel_path.Remove(rel_path.Length - 1) + @"Data\";
             return path;
-        } 
+        }
+
+        public void GetResults()
+        {
+            ResultScreen  = new ResultScreenViewModel();
+        }
+
+        private void QueryDB()
+        {
+            
+        }
 
 
         #region SearchWindowProperties
