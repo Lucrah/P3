@@ -5,31 +5,47 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:P3.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="1920" d:DesignWidth="1080" Height="990" Width="1900" VerticalAlignment="Top" HorizontalAlignment="Left">
+             d:DesignHeight="1920" d:DesignWidth="1080" Height="960" Width="1278" VerticalAlignment="Top" HorizontalAlignment="Left">
     <Grid Background="#FF1F1F1F">
-    	<Grid.Effect>
-    		<DropShadowEffect/>
-    	</Grid.Effect>
-        <Button Content="Tilbage til Søg" HorizontalAlignment="Left" Margin="100.5,35.96,0,0" VerticalAlignment="Top" Width="112"/>
-        <Button Content="Næste" HorizontalAlignment="Left" Margin="344,359,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Se valgte" HorizontalAlignment="Left" Margin="344,397,0,0" VerticalAlignment="Top" Width="75"/>
-        <RichTextBox HorizontalAlignment="Left" Height="100" Margin="319,100,0,0" VerticalAlignment="Top" Width="175">
-            <FlowDocument>
-                <Paragraph>
-                    <Run Text="Info omkring hus"/>
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
-        <Image Margin="125,97.96,785,1720" Source="pack://siteoforigin:,,,/Views/Koala.jpg" Stretch="Fill"/>
-        <CheckBox Content="Vælg" HorizontalAlignment="Left" Margin="527,133,0,0" VerticalAlignment="Top"/>
-        <Image Margin="125,228,785,1592" Source="pack://siteoforigin:,,,/Views/Penguins.jpg" Stretch="Fill"/>
-        <RichTextBox HorizontalAlignment="Left" Height="100" Margin="319,228,0,0" VerticalAlignment="Top" Width="175">
-            <FlowDocument>
-                <Paragraph>
-                    <Run Text="Info omkring hus"/>
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
-        <CheckBox Content="Vælg" HorizontalAlignment="Left" Margin="527,264,0,0" VerticalAlignment="Top"/>
+        <Grid.Effect>
+            <DropShadowEffect/>
+        </Grid.Effect>
+        <ListView HorizontalAlignment="Left" Height="950" VerticalAlignment="Top" Width="1268" SelectionChanged="ListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
+        </ListView>
     </Grid>
 </UserControl>

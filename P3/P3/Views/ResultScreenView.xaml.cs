@@ -24,5 +24,15 @@ namespace P3.Views
         {
             InitializeComponent();
         }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ListViewItem_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
