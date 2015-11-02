@@ -125,6 +125,11 @@ namespace P3.ViewModels
         #endregion
 
         #region Functionality
+
+        public void Initialize()
+        {
+
+        }
         public void ToggleFullScreenF11(ActionExecutionContext context)
         {
             var keyArgs = context.EventArgs as KeyEventArgs;

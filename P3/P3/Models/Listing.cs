@@ -7,7 +7,7 @@ using Caliburn.Micro;
 
 namespace P3
 {
-  class Listing : PropertyChangedBase
+  public class Listing : PropertyChangedBase
   {
     public Listing(string streetName, int houseNumber, int areaCode, string city)
     {
@@ -29,7 +29,7 @@ namespace P3
       ListingID = Guid.NewGuid();
     }
 
-    enum propertyType
+    public enum PropertyType
     {
       Villa = 0,
       Fritidsbolig = 1,

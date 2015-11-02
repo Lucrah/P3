@@ -10,7 +10,7 @@
         <Grid.Effect>
             <DropShadowEffect/>
         </Grid.Effect>
-        <ListView HorizontalAlignment="Left" Height="950" VerticalAlignment="Top" Width="1268" SelectionChanged="ListView_SelectionChanged">
+        <ListView HorizontalAlignment="Left" Height="950" VerticalAlignment="Top" Width="1268" SelectionChanged="ListView_SelectionChanged" ItemsSource="{Binding Path=SearchResults, Mode=TwoWay}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>

@@ -77,6 +77,7 @@
     <Compile Include="Models\House.cs" />
     <Compile Include="Models\Listing.cs" />
     <Compile Include="Models\Listings.cs" />
+    <Compile Include="Models\SearchSettingModel.cs" />
     <Compile Include="ViewModels\GraphScreenViewModel.cs" />
     <Compile Include="ViewModels\PropertyInfoViewModel.cs" />
     <Compile Include="ViewModels\ResultScreenViewModel.cs" />
