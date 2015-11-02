@@ -35,7 +35,7 @@
             <CheckBox Content="Liebhaverejendom" HorizontalAlignment="Left" Margin="10,80.254,0,0" VerticalAlignment="Top" Height="32.96" Width="170" FontSize="18.667"/>
             <CheckBox Content="Lystejendom" HorizontalAlignment="Left" Margin="365.58,30,0,0" VerticalAlignment="Top" Height="22.96" Width="137.42" FontSize="18.667"/>
             <CheckBox Content="Helårsejendom" HorizontalAlignment="Left" Margin="365.58,55.111,0,0" VerticalAlignment="Top" Height="25.143" Width="148.42" FontSize="18.667"/>
-            <CheckBox Content="Nedlagt Landbrug" HorizontalAlignment="Left" Margin="365.58,80.254,0,0" VerticalAlignment="Top" Height="32.96" Width="173.42" FontSize="18.667"/>
+            <CheckBox Content="Nedlagt landbrug" HorizontalAlignment="Left" Margin="365.58,80.254,0,0" VerticalAlignment="Top" Height="32.96" Width="173.42" FontSize="18.667"/>
             <CheckBox Content="Ejerlejlighed" HorizontalAlignment="Left" Margin="193,30,0,0" VerticalAlignment="Top" Height="22.96" Width="137.58" FontSize="18.667"/>
             <CheckBox Content="Andelsbolig" HorizontalAlignment="Left" Margin="193,55.111,0,0" VerticalAlignment="Top" Height="25.143" Width="137.58" FontSize="18.667"/>
             <CheckBox Content="Rækkehus" HorizontalAlignment="Left" Margin="193,80.254,0,0" VerticalAlignment="Top" Height="32.96" Width="137.58" FontSize="18.667"/>

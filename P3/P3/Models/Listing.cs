@@ -39,7 +39,7 @@ namespace P3
       Rækkehus = 5,
       Lystejendom = 6,
       Helårsejendom = 7,
-      Landejendom = 8                      
+      NedlagtLandbrug = 8                      
     };
 
     #region property
