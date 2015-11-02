@@ -7,6 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="1920" d:DesignWidth="1820" Width="1900" Height="978">
     <Grid Width="1900" Height="990" Background="#FF1F1F1F">
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="559*"/>
+    		<ColumnDefinition Width="30*"/>
+    		<ColumnDefinition Width="1308*"/>
+    	</Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="132*"/>
             <RowDefinition Height="116*"/>
@@ -17,7 +22,9 @@
             <RowDefinition Height="30*"/>
             <RowDefinition Height="114*"/>
             <RowDefinition Height="30*"/>
-            <RowDefinition Height="285*"/>
+            <RowDefinition Height="113*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="139*"/>
         </Grid.RowDefinitions>
         <TextBlock HorizontalAlignment="Left" Margin="10,25.13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Indtast Adresse" Foreground="White" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontSize="26.667" Width="228.333" Height="40.96"/>
         <TextBox HorizontalAlignment="Left" Height="41.91" Margin="10,66.09,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="409" FontSize="16"/>
@@ -35,14 +42,14 @@
         </Grid>
         <Grid HorizontalAlignment="Left" Height="113.214" Margin="10,0.098,0,0" VerticalAlignment="Top" Width="549" Background="#FF005430" Grid.Row="3" Grid.RowSpan="2">
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="62,0,0,0" Height="30" Width="389" FontSize="21.333"><Run Text="                         "/><Run Language="da-dk" Text="Pris"/></TextBlock>
-            <RadioButton Content="Solgt" HorizontalAlignment="Left" Margin="437.216,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.971,0.619"/>
-            <RadioButton Content="Til Salg" HorizontalAlignment="Left" Margin="436.994,25.96,0,0" VerticalAlignment="Top"/>
             <DockPanel HorizontalAlignment="Left" Height="38.5" LastChildFill="False" Margin="10,64.714,0,10" VerticalAlignment="Center" Width="470.66">
                 <Slider HorizontalAlignment="Left" VerticalAlignment="Top" Width="412" Height="32" TickPlacement="BottomRight" TickFrequency="1000000" Maximum="100000000" IsSnapToTickEnabled="True" DockPanel.Dock="Left" Name="PriceSliderValue"/>
                 <TextBox Height="17.167" TextWrapping="Wrap" VerticalAlignment="Top" Width="56.667" FontSize="8" Text="{Binding Path=PriceSliderValue, Mode=TwoWay}"/>
             </DockPanel>
             <TextBlock HorizontalAlignment="Left" Margin="10,43.754,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="da-dk" Text="1mio."/></TextBlock>
             <TextBlock HorizontalAlignment="Left" Margin="377.382,43.754,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="da-dk" Text="100mio."/></TextBlock>
+            <CheckBox Content="Solgt" HorizontalAlignment="Left" Margin="436.216,14.04,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="Til Salg" HorizontalAlignment="Left" Margin="436.216,35,0,0" VerticalAlignment="Top"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="113.214" Margin="10,0.319,0,0" VerticalAlignment="Top" Width="549" Background="#FF005430" Grid.Row="5" Grid.RowSpan="2">
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="62,0,0,0" Height="30" Width="389" FontSize="21.333"><Run Text="                         "/><Run Language="da-dk" Text="Radius"/><LineBreak/><Run Language="da-dk"/></TextBlock>
@@ -61,10 +68,41 @@
         </Grid>
         <Grid HorizontalAlignment="Left" Height="113.214" Margin="10,0,0,0" VerticalAlignment="Top" Width="549" Background="#FF005430" Grid.Row="7">
         	<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="62,0,0,0" Height="30" Width="389" FontSize="21.333"><Run Text="                         "/><Run Language="da-dk" Text="Liggetid"/><LineBreak/><Run Language="da-dk"/></TextBlock>
+        	<RadioButton Content="1-3 måneder" Height="19.214" VerticalAlignment="Top" Margin="110.83,54,354.116,0"/>
+        	<RadioButton Content="&lt; 1 måned" Height="19.214" VerticalAlignment="Top" Margin="10,54,465.17,0"/>
+        	<RadioButton Content="3-6 måneder" Height="19.214" VerticalAlignment="Top" Margin="214.83,54,250.116,0"/>
+        	<RadioButton Content="6-12 måneder" Height="19.214" VerticalAlignment="Top" Margin="320.83,54,131.17,0"/>
+        	<RadioButton Content="&gt; 12 måneder" Height="19.214" VerticalAlignment="Top" Margin="422.83,54,29.116,0"/>
+        	<TextBox HorizontalAlignment="Left" Height="23" Margin="226,80.214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62"/>
+        	<TextBlock HorizontalAlignment="Left" Margin="180,87.254,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="da-dk" Text="Andet"/></TextBlock>
         </Grid>
         <Button Content="Søg" HorizontalAlignment="Left" Margin="424,66.09,0,0" Style="{DynamicResource SimpleButton}" VerticalAlignment="Top" Width="135" Height="41.91" FontSize="24"/>
         <Grid HorizontalAlignment="Left" Height="113.214" Margin="10,0,0,0" VerticalAlignment="Top" Width="549" Background="#FF005430" Grid.Row="9">
-        	<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="62,0,0,0" Height="30" Width="389" FontSize="21.333"><Run Text="                         "/><Run Language="da-dk" Text="Diverse"/></TextBlock>
+        	<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="62,0,0,0" Height="30" Width="389" FontSize="21.333"><Run Text="                         "/><Run Language="da-dk" Text="Størrelse"/></TextBlock>
+        	<DockPanel HorizontalAlignment="Left" Height="38.5" LastChildFill="False" Margin="10,64.714,0,10" VerticalAlignment="Center" Width="470.66">
+        		<Slider HorizontalAlignment="Left" VerticalAlignment="Top" Width="412" Height="32" TickPlacement="BottomRight" TickFrequency="100" Maximum="5000" IsSnapToTickEnabled="True" DockPanel.Dock="Left" x:Name="AreaSliderValue1"/>
+        		<TextBox Height="17.167" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" FontSize="8" Text="{Binding AreaSliderValue, Mode=TwoWay}"/>
+        	</DockPanel>
+        	<TextBlock HorizontalAlignment="Left" Margin="10,43.754,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="da-dk" Text="10 m^2"/></TextBlock>
+        	<TextBlock HorizontalAlignment="Left" Margin="362,43.754,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.055,0.384"><Run Language="da-dk" Text="10000 m^2"/></TextBlock>
         </Grid>
+        <Grid HorizontalAlignment="Left" Height="113.214" Margin="10,0,0,0" VerticalAlignment="Top" Width="549" Background="#FF005430" Grid.Row="11">
+        	<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="62,0,0,0" Height="30" Width="389" FontSize="21.333"><Run Text="                         "/><Run Language="da-dk" Text="Diverse"/></TextBlock>
+        	<TextBlock HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="da-dk" Text="PrisPrKvm"/></TextBlock>
+        	<TextBox HorizontalAlignment="Left" Height="20" Margin="72,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48"/>
+        	<TextBlock HorizontalAlignment="Left" Margin="10,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="da-dk" Text="ByggeÅr"/></TextBlock>
+        	<TextBox HorizontalAlignment="Left" Height="20" Margin="72,65.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48"/>
+        	<TextBlock HorizontalAlignment="Left" Margin="195,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        	<TextBlock HorizontalAlignment="Left" Margin="195,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="da-dk" Text="Værelser"/></TextBlock>
+        	<TextBox HorizontalAlignment="Left" Height="20" Margin="257,30.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48"/>
+        	<ComboBox HorizontalAlignment="Left" Margin="419,29,0,0" VerticalAlignment="Top" Width="120"/>
+        	<TextBlock HorizontalAlignment="Left" Margin="419,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Height="20"><Run Language="da-dk" Text="Vælg tidligere søgning"/><LineBreak/><Run Language="da-dk"/></TextBlock>
+        	<Button Content="Gem søgning" HorizontalAlignment="Left" Margin="419,75,0,0" VerticalAlignment="Top" Width="120"/>
+        	<TextBlock HorizontalAlignment="Left" Margin="191.743,73.01,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="da-dk" Text="GrundAreal"/></TextBlock>
+        	<TextBox HorizontalAlignment="Left" Height="20" Margin="257,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48"/>
+        </Grid>
+		<Grid Grid.Column="2" HorizontalAlignment="Left" Height="960" Margin="10,25.13,0,0" Grid.RowSpan="12" VerticalAlignment="Top" Width="1300.069">
+			<ContentControl x:Name="ActiveItem"/>
+		</Grid>
     </Grid>
 </UserControl>

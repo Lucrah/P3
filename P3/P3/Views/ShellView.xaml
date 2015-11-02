@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:cal="http://www.caliburnproject.org"
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-             xmlns:bhv="clr-namespace:P3.Behaviour"
              mc:Ignorable="d" 
              WindowState="{Binding Path=WState, Mode=TwoWay}"
              WindowStyle="{Binding Path=WStyle, Mode=TwoWay}"

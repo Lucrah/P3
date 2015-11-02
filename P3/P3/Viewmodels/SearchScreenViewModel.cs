@@ -9,6 +9,7 @@ namespace P3.ViewModels
 {
     class SearchScreenViewModel : Screen
     {
+
         #region SearchWindowProperties
 
         private double _priceSliderValue;
