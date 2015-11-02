@@ -119,10 +119,15 @@ namespace P3
         set { _yearBuilt = value; NotifyOfPropertyChange(); }
     }
 
-#endregion 
+#endregion
+
+      public override string ToString()
+      {
+          return Address + ", " + AreaCode + ", " + Price + ", " + Size + ", " + YearBuilt;
+      }
 
 
-    public void GetGeoCode(double[] a)
+      public void GetGeoCode(double[] a)
     {
       Lat = a[0];
       Lng = a[1];

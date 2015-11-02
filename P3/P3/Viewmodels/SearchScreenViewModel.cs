@@ -47,12 +47,12 @@ namespace P3.ViewModels
         private void Initialize()
         {
             Path = GetPath();
-            SavedSettingsCollection = GetSearchSettings();
+            //SavedSettingsCollection = GetSearchSettings();
         }
 
         private BindableCollection<SearchSettingModel> GetSearchSettings()
         {
-            BindableCollection<SearchSettingModel> PreviousSearches;
+            BindableCollection<SearchSettingModel> PreviousSearches = new BindableCollection<SearchSettingModel>();
             //vi skal scanne data mappen i /p3/data for config filen, og så adde en til den collection lige oven over for hver vi finder.
             using (var sr = new StreamReader(File.OpenRead(Path) + "", Encoding.Default))
             {

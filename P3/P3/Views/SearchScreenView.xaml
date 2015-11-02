@@ -95,9 +95,9 @@
         	<TextBlock HorizontalAlignment="Left" Margin="195,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         	<TextBlock HorizontalAlignment="Left" Margin="195,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="da-dk" Text="Værelser"/></TextBlock>
         	<TextBox HorizontalAlignment="Left" Height="20" Margin="257,30.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48"/>
-        	<ComboBox HorizontalAlignment="Left" Margin="419,29,0,0" VerticalAlignment="Top" Width="120"/>
+        	<ComboBox HorizontalAlignment="Left" Margin="419,29,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding SavedSettingsCollection}"/>
         	<TextBlock HorizontalAlignment="Left" Margin="419,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Height="20"><Run Language="da-dk" Text="Vælg tidligere søgning"/><LineBreak/><Run Language="da-dk"/></TextBlock>
-        	<Button Content="Gem søgning" HorizontalAlignment="Left" Margin="419,68,0,0" VerticalAlignment="Top" Width="120"/>
+        	<Button Content="Gem søgning" HorizontalAlignment="Left" Margin="419,68,0,0" VerticalAlignment="Top" Width="120" x:Name="SaveSearchSettings"/>
         	<TextBlock HorizontalAlignment="Left" Margin="191.743,73.01,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="da-dk" Text="GrundAreal"/></TextBlock>
         	<TextBox HorizontalAlignment="Left" Height="20" Margin="257,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48"/>
         </Grid>

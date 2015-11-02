@@ -10,42 +10,6 @@
         <Grid.Effect>
             <DropShadowEffect/>
         </Grid.Effect>
-        <ListView HorizontalAlignment="Left" Height="950" VerticalAlignment="Top" Width="1268" SelectionChanged="ListView_SelectionChanged" ItemsSource="{Binding Path=SearchResults, Mode=TwoWay}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-            <ListViewItem Content="ListViewItem" Margin="0" Selected="ListViewItem_Selected" Height="30"/>
-        </ListView>
+        <ListView HorizontalAlignment="Left" Height="950" VerticalAlignment="Top" Width="1268" ItemsSource="{Binding Path=SearchResults, Mode=OneWay}"/>
     </Grid>
 </UserControl>

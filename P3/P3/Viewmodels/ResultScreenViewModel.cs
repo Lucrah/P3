@@ -9,7 +9,13 @@ namespace P3.ViewModels
 {
     class ResultScreenViewModel : Screen
     {
+        #region ctor
 
+        public ResultScreenViewModel()
+        {
+            SearchResults.Add(new Listing("Vesterbro", 4, 9000, "Aalborg", 5000000, 50, 1999));
+        }
+        #endregion
         #region Fields
 
         private BindableCollection<Listing> _searchResults;
@@ -28,5 +34,6 @@ namespace P3.ViewModels
             }
         }  
         #endregion
+
     }
 }
