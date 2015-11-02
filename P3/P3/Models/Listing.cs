@@ -29,14 +29,17 @@ namespace P3
       ListingID = Guid.NewGuid();
     }
 
-    public enum PropertyType
+    public enum PropertyTypeEnum
     {
-      Villa = 0,
-      Fritidsbolig = 1,
-      Lejlighed = 2,
-      Rækkehus = 3,
-      Landejendom = 4,
-      Andelsbolig = 5                
+      Hus = 0,
+      Villa = 1,
+      Liebhaveejendom = 2,
+      Ejerlejlighed = 3,
+      Andelsbolig = 4,
+      Rækkehus = 5,
+      Lystejendom = 6,
+      Helårsejendom = 7,
+      Landejendom = 8                      
     };
 
     #region property
@@ -44,79 +47,70 @@ namespace P3
     public Guid ListingID
     {
       get { return _listingID; }
-        set { _listingID = value; NotifyOfPropertyChange(); }
+      set { _listingID = value; NotifyOfPropertyChange(); }
     }
-
     
-    
-
     private double _lat;
     public double Lat
     {
       get { return _lat; }
-        set { _lat = value; NotifyOfPropertyChange(); }
+      set { _lat = value; NotifyOfPropertyChange(); }
     }
+
     private double _lng;
     public double Lng
     {
       get { return _lng; }
-        set { _lng = value; NotifyOfPropertyChange(); }
+      set { _lng = value; NotifyOfPropertyChange(); }
     }
-    private int _areaCode;
 
+    private int _areaCode;
     public int AreaCode
     {
       get { return _areaCode; }
-        set { _areaCode = value; NotifyOfPropertyChange(); }
+      set { _areaCode = value; NotifyOfPropertyChange(); }
     }
 
-    
     private string _streetName;
-
     public string StreetName
     {
       get { return _streetName; }
-        set { _streetName = value; NotifyOfPropertyChange(); }
+      set { _streetName = value; NotifyOfPropertyChange(); }
     }
 
     private string _address;
-
     public string Address
     {
       get { return _address; }
-        private set { _address = value; NotifyOfPropertyChange(); }
+      private set { _address = value; NotifyOfPropertyChange(); }
     }
 
     private string _addressForURL;
-
     public string AddressForURL
     {
       get { return _addressForURL; }
-        private set { _addressForURL = value; NotifyOfPropertyChange(); }
+      private set { _addressForURL = value; NotifyOfPropertyChange(); }
     }
     
     private int _price;
-
     public int Price
     {
       get { return _price; }
-        private set { _price = value; NotifyOfPropertyChange(); }
+      private set { _price = value; NotifyOfPropertyChange(); }
     }
     
     private int _size;
-
     public int Size
     {
       get { return _size; }
-        private set { _size = value; NotifyOfPropertyChange(); }
+      private set { _size = value; NotifyOfPropertyChange(); }
     }
 
     private int _yearBuilt;
-
     public int YearBuilt
     {
       get { return _yearBuilt; }
-        set { _yearBuilt = value; NotifyOfPropertyChange(); }
+      set { _yearBuilt = value; NotifyOfPropertyChange(); }
     }
 
 #endregion
