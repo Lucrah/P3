@@ -10,6 +10,21 @@
         <Grid.Effect>
             <DropShadowEffect/>
         </Grid.Effect>
-        <ListView HorizontalAlignment="Left" Height="950" VerticalAlignment="Top" Width="1268" ItemsSource="{Binding Path=SearchResults, Mode=OneWay}"/>
+        <ListView HorizontalAlignment="Left" Height="950" VerticalAlignment="Top" Width="1268" ItemsSource="{Binding Path=SearchResults, Mode=OneWay}" SelectedItem="{Binding Path=SelectedListing}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="Name: " />
+                        <TextBlock Text="{Binding Path=Adress}" FontWeight="Bold" />
+                        <TextBlock Text=", " />
+                        <TextBlock Text="Age: " />
+                        <TextBlock Text="{Binding Age}" FontWeight="Bold" />
+                        <TextBlock Text=" (" />
+                        <TextBlock Text="{Binding Mail}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
+                        <TextBlock Text=")" />
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </UserControl>

@@ -13,7 +13,7 @@ namespace P3.Models
     {
         #region Fields
         //skal rettes til med flere types i listing.cs
-        private Listing.PropertyType _propertyType;
+        private Listing.PropertyTypeEnum _propertyType;
         private int _price;
         private int _radius;
         private DateTime _downTime;
@@ -33,7 +33,7 @@ namespace P3.Models
 
         #region Public
 
-        public Listing.PropertyType PropertyType
+        public Listing.PropertyTypeEnum PropertyType
         {
             get { return _propertyType; }
             set

@@ -13,12 +13,14 @@ namespace P3.ViewModels
 
         public ResultScreenViewModel()
         {
+            _searchResults = new BindableCollection<Listing>();
             SearchResults.Add(new Listing("Vesterbro", 4, 9000, "Aalborg", 5000000, 50, 1999));
         }
         #endregion
         #region Fields
 
         private BindableCollection<Listing> _searchResults;
+        private Listing _selectedListing;
 
         #endregion
 
@@ -32,7 +34,18 @@ namespace P3.ViewModels
                 _searchResults = value;
                 NotifyOfPropertyChange(() => SearchResults);
             }
-        }  
+        }
+
+        public Listing SelectedListing
+        {
+            get { return _selectedListing; }
+            set
+            {
+                _selectedListing = value;
+                NotifyOfPropertyChange(() => SelectedListing);
+            }
+        }
+
         #endregion
 
     }
