@@ -22,10 +22,15 @@ namespace P3.ViewModels
          * So, with this, we can bind the views controls to ActivateItem, which will then reflect whatever we set it to in the viewmodel. 
          * http://caliburnmicro.com/documentation/composition
          * We use this shellviewmodel class and the corresponding shellview as a base window to host our other windows.
+         * Why? Because its kinda convenient that we host our other windows inside this one, so we dont have to create f.eks.
+         * a new top bar for each window, and instead just have one for all windows.
+         * IF YOU ARE DOING SOMETHING PURELY ABOUT THE UI, DO IT IN THE CODE BEHIND OF THe WINDOW.
          */
         #region Fields
+        //This region, is normal fields for this class, in contrast to those that should correspond to a property on the mainwindow.
         private readonly IEventAggregator _eventAggregator;
         private readonly IWindowManager _windowManager;
+      //private BindableCollection<Listing>
         #endregion
 
         #region MainWindowPropertyFields
@@ -88,7 +93,8 @@ namespace P3.ViewModels
 
         #region Ctor/s
         //This is just used to gain a reference to the eventAggregator in the bootstrapper. We can then use this to publish events on the right thread, or something like that.
-        [ImportingConstructor]
+        //Anything put in this constructor, will happen before creation of the mainwindow. Could be used to create a loading screen?
+      [ImportingConstructor]
         public ShellViewModel()
         {
             _windowManager = IoC.Get<IWindowManager>();

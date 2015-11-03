@@ -8,6 +8,7 @@ using System.Windows;
 
 namespace P3.Behaviour
 {
+  [Obsolete]
     public class CloseWindowBehavior : Behavior<Window>
 	{
 		public bool CloseTrigger

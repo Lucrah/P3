@@ -8,6 +8,7 @@ using System.Windows;
 
 namespace P3.Behaviour
 {
+  [Obsolete]
     public class ToggleFullScreenBehavior : Behavior<Window>
 	{
 		public bool ToggleFullScreen

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using P3.Helpers;
 
 namespace P3.Listings
 {
@@ -41,7 +42,7 @@ namespace P3.Listings
 
       foreach (KeyValuePair<string, Listing> listing in listingDB)
       {
-        if (distance >= Funktionality.convertToDistance(listing.Value, listingDB[address]))
+        if (distance >= Funktionality.ConvertToDistance(listing.Value, listingDB[address]))
         {
           result.Add(listing.Key, listing.Value);
         }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace P3
+namespace P3.Helpers
 {
   class Funktionality
   {
@@ -32,7 +32,7 @@ namespace P3
     }
 
 
-    public static double convertToDistance(Listing a, Listing b)
+    public static double ConvertToDistance(Listing a, Listing b)
     {
       //Haversine formula for calculating distance between lat/long points
       double theDistance = (Math.Sin(DegreesToRadians(a.Lat)) *

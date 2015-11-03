@@ -13,6 +13,7 @@ using P3.ViewModels;
 namespace P3
 {
     //Used to customize the setup of the framework(Caliburn Micro). Tells the framework where to start, and what to do. 
+    //We use this  
     class ApplicationBootStrapper : BootstrapperBase
     {
         private CompositionContainer _container;
@@ -24,7 +25,7 @@ namespace P3
         protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)
         {
             //Tells Caliburn Micro(CM) to display the root view of the specified type. You can have a base view, and then other views up the visual tree....
-            //or something like that. Google it i dont remember.
+            //or something like that. Google it i dont remember. Something about a bubble?
             DisplayRootViewFor<IShell>();
         }
         #region MEF
@@ -39,6 +40,7 @@ namespace P3
          *  [ImportingConstructor]
          *  public AppViewModel(IWindowManager windowManager)
          * which will make the framework put in the applications instance of the windowmanager, for use in whatever you want to.
+         * This 
          */
         protected override void Configure()
         {
