@@ -1,0 +1,34 @@
+﻿<controls:MetroWindow x:Name="MæglerHelper" x:Class="P3.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:P3.Views"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+                      
+        BorderThickness="0"
+        GlowBrush="Black"
+        ResizeMode="CanResizeWithGrip"
+        WindowTransitionsEnabled="False"
+        WindowStartupLocation="Manual"
+        WindowState="Maximized"
+        SaveWindowPosition="True"
+        WindowTitleBrush="DarkGray"
+                      
+        Title="{Binding Path=WindowTitle}" Height="1080" Width="1920" Background="{x:Null}" MinWidth="1280" MinHeight="1024">
+    <Grid Background="#FF1F1F1F">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="373*"/>
+            <ColumnDefinition Width="105*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="83*"/>
+            <RowDefinition Height="959*"/>
+        </Grid.RowDefinitions>
+        <controls:MetroContentControl x:Name="ActiveItem" Background="#FF1F1F1F" MaxWidth="1920" MaxHeight="1086" d:LayoutOverrides="TopMargin, BottomMargin" Grid.Row="2" Grid.ColumnSpan="2" Margin="-4.078,0,0,0"/>
+        <DockPanel LastChildFill="False" Background="#FF005430" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Image x:Name="image" Grid.RowSpan="2" Source="logo.png" Grid.Column="1" Margin="0,0,10,0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
+    </Grid>
+</controls:MetroWindow>
