@@ -37,13 +37,14 @@ namespace ConsoleApplication1
     {
       double theDistance = (Math.Sin(DegreesToRadians(a.Lat)) *
             Math.Sin(DegreesToRadians(b.Lat)) +
-            Math.Cos(DegreesToRadians(a.Lat)) *
+            Math.Cos(DegreesToRadians(a.Lat)) *       //Haversine formula
             Math.Cos(DegreesToRadians(b.Lat)) *
             Math.Cos(DegreesToRadians(a.Lng - b.Lng)));
-
-      return Convert.ToDouble((RadiansToDegrees(Math.Acos(theDistance)))) * 69.09 * 1.6093;
+                                                                            
+      return Convert.ToDouble((RadiansToDegrees(Math.Acos(theDistance)))) * 69.09 * 1.6093; // the distance unit is 69.09 wich returns distance in miles.. there are 1.6 kilometers in a mile. so return is in km.
     }
 
+    
     static public double RadiansToDegrees(double angle)
     {
       return angle * (180.0 / Math.PI);
