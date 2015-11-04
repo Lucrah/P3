@@ -11,46 +11,58 @@
              >
     <Grid Background="#FF1F1F1F">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="117*"/>
-            <RowDefinition Height="20.107"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="102*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="19.976"/>
-            <RowDefinition Height="369*"/>
-            <RowDefinition Height="71*"/>
+            <RowDefinition Height="978"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="550"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="textBox" Height="23" Margin="4.5,0,131.5,0" TextWrapping="Wrap" VerticalAlignment="Bottom" controls:TextBoxHelper.Watermark="Indtast adresse, by, postnr..." AllowDrop="True" controls:TextBoxHelper.ClearTextButton="True" Panel.ZIndex="1"/>
-        <Button x:Name="button" Content="Søg" Margin="0,14,5.5,0.7" HorizontalAlignment="Right" Width="121" d:LayoutOverrides="Height" Panel.ZIndex="1"/>
-        <Border BorderThickness="2" Grid.RowSpan="10" Margin="0,5.833,0,0.001" IsEnabled="False" Background="#FF2C2C2C">
+        <TextBox x:Name="textBox" Margin="4.5,14,131.5,0" TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Indtast adresse, by, postnr..." AllowDrop="True" controls:TextBoxHelper.ClearTextButton="True" Panel.ZIndex="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Height="26" VerticalAlignment="Top"/>
+        <Button x:Name="button" Content="Søg" Margin="0,14,5.5,0" HorizontalAlignment="Right" Width="121" d:LayoutOverrides="LeftMargin, RightMargin" Panel.ZIndex="1" VerticalAlignment="Top"/>
+        <Border BorderThickness="2" Margin="0,5.833,0,70.924" Background="#FF2C2C2C" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
             <Border.Effect>
                 <DropShadowEffect/>
             </Border.Effect>
             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="13*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="28*"/>
+                    <RowDefinition Height="27*"/>
                     <RowDefinition Height="20"/>
-                    <RowDefinition Height="221*"/>
+                    <RowDefinition Height="24*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="126*"/>
                     <RowDefinition Height="20*"/>
-                    <RowDefinition Height="601*"/>
+                    <RowDefinition Height="100*"/>
+                    <RowDefinition Height="487*"/>
                 </Grid.RowDefinitions>
-                <Rectangle Fill="#FF005430" Height="100" Margin="0,-0.003,0,0" Stroke="Black" VerticalAlignment="Top" Grid.Row="2" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" StrokeThickness="0"/>
-                <Rectangle Fill="#FF005430" Height="100" Margin="0,0,0,-0.343" Stroke="Black" VerticalAlignment="Bottom" Grid.Row="2" StrokeThickness="0" d:LayoutOverrides="LeftMargin, RightMargin"/>
-                <Rectangle Fill="#FF005430" Height="100" Margin="0,-0.316,0,0" Stroke="Black" VerticalAlignment="Top" Grid.Row="4" StrokeThickness="0" d:LayoutOverrides="LeftMargin, RightMargin"/>
-                <Rectangle Fill="#FF005430" Margin="0,121.226,0,0" Stroke="Black" Grid.Row="4" StrokeThickness="0" d:LayoutOverrides="LeftMargin, RightMargin" Height="100" VerticalAlignment="Top"/>
-                <Rectangle Fill="#FF005430" Margin="0,239.014,0,266.834" Stroke="Black" Grid.Row="4" StrokeThickness="0"/>
-                <Rectangle Fill="#FF005430" Margin="0,0,0,147.33" Stroke="Black" Grid.Row="4" StrokeThickness="0" Height="100.001" VerticalAlignment="Bottom"/>
-                <Rectangle Fill="#FF005430" Margin="0,0,0,25.788" Stroke="Black" Grid.Row="4" StrokeThickness="0" Height="100" VerticalAlignment="Bottom"/>
+                <Rectangle Fill="#FF005430" Margin="0,0.07,0,-7.777" Stroke="Black" Grid.Row="2" d:LayoutOverrides="LeftMargin, RightMargin" StrokeThickness="0" Grid.RowSpan="5" Grid.ColumnSpan="2"/>
+                <Rectangle Fill="#FF005430" Margin="0,30.965,0,-0.343" Stroke="Black" Grid.Row="7" StrokeThickness="0" d:LayoutOverrides="LeftMargin, RightMargin" Grid.ColumnSpan="2"/>
+                <Rectangle Fill="#FF005430" Margin="0,-0.316,0,-0.102" Stroke="Black" Grid.Row="9" StrokeThickness="0" d:LayoutOverrides="LeftMargin, RightMargin" Grid.ColumnSpan="2"/>
+                <Rectangle Fill="#FF005430" Margin="0,21.644,0,0" Stroke="Black" Grid.Row="10" StrokeThickness="0" d:LayoutOverrides="LeftMargin, RightMargin" Height="100" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                <Rectangle Fill="#FF005430" Margin="0,139.432,0,0" Stroke="Black" Grid.Row="10" StrokeThickness="0" Height="80.31" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                <Rectangle Fill="#FF005430" Margin="0,239.245,0,147.328" Stroke="Black" Grid.Row="10" StrokeThickness="0" Grid.ColumnSpan="2"/>
+                <Rectangle Fill="#FF005430" Margin="0,0,0,25.786" Stroke="Black" Grid.Row="10" StrokeThickness="0" Height="100" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+                <CheckBox x:Name="checkBox" Content=" Villa" Margin="13,0,35,5.546" Grid.Row="4" FontSize="16" Foreground="White"/>
+                <TextBlock x:Name="textBlock" Grid.Row="2" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Grid.Column="1" HorizontalAlignment="Left" Width="70"><Run Text="Hustype"/><LineBreak/><Run/></TextBlock>
+                <CheckBox x:Name="checkBox_Copy" Content=" Liebhaverejendom" Margin="13,0,30,5.546" Grid.Row="5" FontSize="16" Foreground="White"/>
+                <CheckBox x:Name="checkBox_Copy1" Content=" Fritidsejendom" Margin="13,0,35,5.546" Grid.Row="6" FontSize="16" Foreground="White"/>
+                <CheckBox x:Name="checkBox_Copy2" Content=" Andelsbolig" Margin="0,5.546,0,0" Grid.Row="4" FontSize="16" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Width="160"/>
+                <CheckBox x:Name="checkBox_Copy3" Content=" Rækkehus" Margin="0,5.546,0,0" Grid.Row="5" FontSize="16" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Width="165"/>
+                <CheckBox x:Name="checkBox_Copy4" Content=" Nedlagt Landbrug" Margin="0,5.546,0,0" Grid.Row="6" FontSize="16" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Width="160"/>
+                <TextBlock x:Name="textBlock1" HorizontalAlignment="Right" Margin="0,0,10,1.343" Grid.Row="5" TextWrapping="Wrap" Text="Vælg en eller flere." Width="119.5" Foreground="White" Grid.Column="1"/>
+                <TextBlock x:Name="textBlock_Copy" Grid.Row="2" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Grid.Column="1" HorizontalAlignment="Left" Width="70"><Run Text="Hustype"/><LineBreak/><Run/></TextBlock>
+                <TextBlock x:Name="textBlock_Copy1" Grid.Row="7" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Grid.Column="1" HorizontalAlignment="Left" Width="70" Height="23.952" Margin="0,30.965,0,0" VerticalAlignment="Top" Text="Pris"/>
+                <controls:RangeSlider Margin="10,0,138,38.287" Grid.Row="7" VerticalAlignment="Bottom" Grid.ColumnSpan="2" TickPlacement="BottomRight" IsMoveToPointEnabled="True">
+                </controls:RangeSlider>
             </Grid>
         </Border>
-        <Border BorderThickness="2" Grid.RowSpan="10" Margin="10,5.833,0,0.001" IsEnabled="False" Background="#FF2C2C2C" Grid.Column="1">
+        <Border BorderThickness="2" Margin="10,5.833,0,70.924" IsEnabled="False" Background="#FF2C2C2C" Grid.Column="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
             <Border.Effect>
                 <DropShadowEffect/>
             </Border.Effect>
