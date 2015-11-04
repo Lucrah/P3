@@ -19,7 +19,7 @@
 		</Grid.OpacityMask>
         <Image HorizontalAlignment="Left" Height="444" Margin="56,127,0,0" VerticalAlignment="Top" Width="591.134" OpacityMask="#FFE21B1B" Source="pack://siteoforigin:,,,/Views/Koala.jpg">
         </Image>
-		<GroupBox Header="Info&#xA;" HorizontalAlignment="Left" Height="48" Margin="1136,242,0,0" VerticalAlignment="Top" Width="591.134" Foreground="White">
+		<GroupBox Header="Info&#xA;" HorizontalAlignment="Left" Height="48" Margin="1035,468,0,0" VerticalAlignment="Top" Width="842.134" Foreground="White">
 			<Grid HorizontalAlignment="Left" Height="25" Margin="0,-15,-2,0" VerticalAlignment="Top" Width="581.134">
 				<Label x:Name="Adress" Content="Adresse&#xD;&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="63.993" Height="28.46" Margin="0,0,0,-3.46" Foreground="White"/>
 				<Label x:Name="CityZipcode" Content="Postnummer&#xD;&#xA;" HorizontalAlignment="Left" Margin="290,0,0,-0.96" Foreground="White"/>
@@ -27,7 +27,7 @@
 				<Label x:Name="CaseNumber" Content="Sagsnummer" HorizontalAlignment="Left" Margin="394,0,0,-0.96" Foreground="White"/>
 			</Grid>
 		</GroupBox>
-		<GroupBox Header="Detaljer&#xA;" HorizontalAlignment="Left" Height="48" Margin="1136,295,0,0" VerticalAlignment="Top" Width="591.134" Foreground="White">
+		<GroupBox Header="Detaljer&#xA;" HorizontalAlignment="Left" Height="48" Margin="1035,521,0,0" VerticalAlignment="Top" Width="842.134" Foreground="White">
 			<Grid HorizontalAlignment="Left" Height="25" Margin="0,-15,-2,0" VerticalAlignment="Top" Width="581.134">
 				<Label x:Name="BuildYear" Content="Byggeår&#xA;" HorizontalAlignment="Left" Width="63.993" Margin="0,0,0,-3.46" Foreground="White"/>
 				<Label x:Name="SqmPrice" Content="kvm pris&#xA;" HorizontalAlignment="Left" Margin="122.353,0,0,-0.96" Foreground="White"/>
@@ -37,11 +37,12 @@
 				<Label x:Name="NumberOfRooms" Content="Rum&#xA;" HorizontalAlignment="Left" Margin="435,0,0,-0.96" Width="34" Foreground="White"/>
 			</Grid>
 		</GroupBox>
-		<GroupBox Header="Yderligere informationer, som ikke er nævnt ovenfor&#xA;" HorizontalAlignment="Left" Height="80" Margin="1136,348,0,0" VerticalAlignment="Top" Width="591.134" Foreground="White">
-			<TextBox HorizontalAlignment="Left" Height="50" Margin="0,-13.95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="572" BorderThickness="0" Foreground="White"/>
+		<GroupBox Header="Yderligere informationer, som ikke er nævnt ovenfor" HorizontalAlignment="Left" Height="80" Margin="1035,574,0,0" VerticalAlignment="Top" Width="842.134" Foreground="White">
+			<TextBox HorizontalAlignment="Left" Height="54" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="812"/>
 		</GroupBox>
-		<GroupBox Header="Beskrivelse af ejendom&#xA;" HorizontalAlignment="Left" Height="241" Margin="1136,433,0,0" VerticalAlignment="Top" Width="591.134" Foreground="White">
-			<TextBox HorizontalAlignment="Left" Height="213" Margin="0,-13.95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="572" BorderThickness="0" Foreground="White"/>
+		<GroupBox Header="Beskrivelse af ejendom&#xA;" HorizontalAlignment="Left" Height="241" Margin="1035,659,0,0" VerticalAlignment="Top" Width="842.134" Foreground="White">
+			<TextBox HorizontalAlignment="Left" Height="194" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="809.5" BorderThickness="0" Foreground="White"/>
 		</GroupBox>
+		<TextBox HorizontalAlignment="Left" Height="0" Margin="948,654,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="6"/>
 	</Grid>
 </UserControl>
