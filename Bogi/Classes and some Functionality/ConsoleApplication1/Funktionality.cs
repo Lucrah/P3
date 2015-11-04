@@ -68,14 +68,13 @@ namespace ConsoleApplication1
 
         static public void importSold(Dictionary<string, Listing> dict)
         {
-            var reader = new StreamReader(File.OpenRead(savefile + "rasmus1.csv"), Encoding.UTF8);
+            var reader = new StreamReader(File.OpenRead(savefile + "bogi1.csv"), Encoding.UTF8);
               while (!reader.EndOfStream)
               {
                 var line = reader.ReadLine();
           
         string[] values = line.Split(',');
 
-                int id = dict.Count;
         int room;
                 if (values[0] == "-")
                 {
@@ -132,7 +131,7 @@ namespace ConsoleApplication1
                 if (regexMatch.Success)
                 {
                     int digitStartIndex = regexMatch.Index;
-                    streetName = adresse.Substring(0, digitStartIndex);
+                    streetName = adresse.Substring(0, digitStartIndex - 1);
                     string uncleanHouseNumber = adresse.Substring(digitStartIndex);
                     string[] uncleanHousenumber = uncleanHouseNumber.Split(' ');
                     houseNumber = uncleanHousenumber[0];
@@ -140,17 +139,16 @@ namespace ConsoleApplication1
                 string propertyType = values[8];
                 int areaCode = Convert.ToInt32(values[9]);
 
-        Listing listing = new Listing(id, streetName, houseNumber, room, areaCode, cleanPrice, sizeHouse, yearBuilt, salesDate, cleansqrprice, salesType, propertyType);
+        Listing listing = new Listing(streetName, houseNumber, room, areaCode, cleanPrice, sizeHouse, yearBuilt, salesDate, cleansqrprice, salesType, propertyType);
         dict.Add(Convert.ToString(listing.ID), listing);
-        Console.WriteLine(dict.Count);
             }
         }
         public static void SaveUpdate(Listing property)
         {
 
-          using (StreamWriter tw = new StreamWriter(savefile + "ImportedProperties_rasmus2.csv", true))
+          using (StreamWriter tw = new StreamWriter(savefile + "ImportedProperties_Bogi1.csv", true))
           {
-            tw.WriteLine("{0} {1} {2}{3} {4} {5} {6} {7} {8} {9} {10} {11} {12}", property.ID, property.PropertyType, property.StreetName, property.HouseNumber, property.AreaCode, 
+            tw.WriteLine("{0};{1};{2};{3};{4};{5};{6};{7};{8};{9};{10};{11};{12}", property.ID, property.PropertyType, property.StreetName, property.HouseNumber, property.AreaCode, 
               property.YearBuilt, property.Rooms,property.Price, property.Sqrprice, property.SalesDate, property.SalesType, property.Lng, property.Lng);
           }
 

@@ -8,6 +8,7 @@ namespace ConsoleApplication1
 {
   class Listing 
   {
+    private static int id = 1;
     public Listing(string streetName, string houseNumber, int areaCode)
     {
       StreetName = streetName;
@@ -16,9 +17,9 @@ namespace ConsoleApplication1
       Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode); 
       AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + "+" + Convert.ToString(areaCode);
     }
-    public Listing(int id, string streetName, string houseNumber,int numberOfRooms, int areaCode,  int priceOfHouse, int sizeOfHouse, int yearBuilt, string salesDate, int sqrPrice, string salesType, string propertyType)
+    public Listing(string streetName, string houseNumber,int numberOfRooms, int areaCode,  int priceOfHouse, int sizeOfHouse, int yearBuilt, string salesDate, int sqrPrice, string salesType, string propertyType)
     {
-            ID = id;
+      ID = id;
       StreetName = streetName;
       HouseNumber = houseNumber;
       AreaCode = areaCode;
@@ -32,6 +33,7 @@ namespace ConsoleApplication1
       Rooms = numberOfRooms;
       Sqrprice = sqrPrice;
       PropertyType = propertyType;
+      id++;
     }
     #region property
     private string _propertyType;
