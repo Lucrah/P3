@@ -1,16 +1,22 @@
-﻿<Window x:Name="MainWindow" x:Class="P3.Views.ShellView"
+﻿<controls:MetroWindow x:Class="P3.Views.ShellView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:cal="http://www.caliburnproject.org"
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
-             WindowState="{Binding Path=WState, Mode=TwoWay}"
-             WindowStyle="{Binding Path=WStyle, Mode=TwoWay}"
-             ResizeMode="{Binding Path=WRSize, Mode=TwoWay}"
-             WindowStartupLocation="CenterScreen" ToolTip="What a pretty application u got there." MaxWidth="1920" MaxHeight="1080" SizeToContent="WidthAndHeight" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SnapsToDevicePixels="True" HorizontalAlignment="Left" VerticalAlignment="Top" d:DesignWidth="1884" Width="1920">
-    <Viewbox Margin="0" MaxWidth="1920" MaxHeight="1080" SnapsToDevicePixels="True" Stretch="UniformToFill" VerticalAlignment="Top" HorizontalAlignment="Left">
+             Title="MainWindow" Height="1077" Width="1920" 
+        WindowStartupLocation="Manual" 
+        SizeToContent="WidthAndHeight" 
+        Topmost="True"
+        BorderThickness="1"
+        SaveWindowPosition="True"
+        GlowBrush="{DynamicResource AccentColorBrush}"
+        ToolTip="so pretteh"        
+             >
+    <Viewbox Margin="0,0,-2,-32.912" MaxWidth="1920" MaxHeight="1080" SnapsToDevicePixels="True" Stretch="UniformToFill" VerticalAlignment="Top" HorizontalAlignment="Left">
         <Grid Background="#FF1F1F1F" VerticalAlignment="Top" HorizontalAlignment="Left" SnapsToDevicePixels="False">
             <Grid Margin="0,119,0,-3.094" MaxWidth="1920" MaxHeight="1080" VerticalAlignment="Top" HorizontalAlignment="Left" SnapsToDevicePixels="False"/>
             <DataGridCellsPresenter HorizontalAlignment="Left" Height="1.5" Margin="1087.5,-222,0,0" VerticalAlignment="Top" Width="12"/>
@@ -19,7 +25,7 @@
                 <Button x:Name="ShowSearchScreen" Content="SearchScreen" Margin="66,18,0,0" MinWidth="90" MinHeight="29" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Height="29" Width="137"/>
                 <Button x:Name="ShowResultScreen" Content="ResultScreen" Margin="360.892,17.78,1319.225,34.019" MinWidth="90" MinHeight="29" FontSize="16"/>
                 <Button x:Name="ShowPropertyInfo" Content="PropertyInfo" Margin="679.204,17.78,1037.659,34.019" MinWidth="90" MinHeight="29" FontSize="16"/>
-                <Button x:Name="ShowGraphScreen"  Content="GraphScreen" Margin="1028.699,17.78,712.246,34.019" MinWidth="90" MinHeight="29" FontSize="16"/>
+                <Button x:Name="ShowGraphScreen"  Content="GraphScreen" Margin="1029,18,686.5,34" MinWidth="90" MinHeight="29" FontSize="16"/>
             </Grid>
             <ContentControl x:Name="ActiveItem" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top" SnapsToDevicePixels="False" Height="945" Margin="10,95.799,0,0"/>
         </Grid>
@@ -33,4 +39,4 @@
             </cal:ActionMessage>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-</Window>
+</controls:MetroWindow>

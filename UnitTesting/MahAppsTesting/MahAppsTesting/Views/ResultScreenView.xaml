@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="MahAppsTesting.Views.ResultScreenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MahAppsTesting.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="1920" d:DesignWidth="1080" Height="960" Width="1278" VerticalAlignment="Top" HorizontalAlignment="Left">
+    <Grid Background="#FF1F1F1F">
+        <Grid.Effect>
+            <DropShadowEffect/>
+        </Grid.Effect>
+        <ListView HorizontalAlignment="Left" Height="950" VerticalAlignment="Top" Width="1268" ItemsSource="{Binding Path=SearchResults, Mode=OneWay}" SelectedItem="{Binding Path=SelectedListing}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="Name: " />
+                        <TextBlock Text="{Binding Path=Adress}" FontWeight="Bold" />
+                        <TextBlock Text=", " />
+                        <TextBlock Text="Age: " />
+                        <TextBlock Text="{Binding Age}" FontWeight="Bold" />
+                        <TextBlock Text=" (" />
+                        <TextBlock Text="{Binding Mail}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
+                        <TextBlock Text=")" />
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</UserControl>
