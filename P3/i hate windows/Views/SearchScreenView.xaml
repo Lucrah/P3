@@ -14,12 +14,13 @@
             <RowDefinition Height="978"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="550"/>
+            <ColumnDefinition Width="420"/>
+            <ColumnDefinition Width="130"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="textBox" Margin="4.5,14,131.5,0" TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Indtast adresse, by, postnr..." AllowDrop="True" controls:TextBoxHelper.ClearTextButton="True" Panel.ZIndex="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Height="26" VerticalAlignment="Top"/>
-        <Button x:Name="button" Content="Søg" Margin="0,14,5.5,0" HorizontalAlignment="Right" Width="121" d:LayoutOverrides="LeftMargin, RightMargin" Panel.ZIndex="1" VerticalAlignment="Top"/>
-        <Border BorderThickness="2" Margin="0,5.833,0,70.924" Background="#FF2C2C2C" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+        <TextBox x:Name="textBox" Margin="4.5,14,1.5,0" TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Indtast adresse, by, postnr..." AllowDrop="True" controls:TextBoxHelper.ClearTextButton="True" Panel.ZIndex="1" d:LayoutOverrides="TopMargin, BottomMargin" Height="26" VerticalAlignment="Top"/>
+        <Button x:Name="GetResults" Content="Søg" Margin="3.5,14,5.5,0" Panel.ZIndex="1" VerticalAlignment="Top" Grid.Column="1"/>
+        <Border BorderThickness="2" Margin="0,5.833,0,70.924" Background="#FF2C2C2C" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Grid.ColumnSpan="2">
             <Border.Effect>
                 <DropShadowEffect/>
             </Border.Effect>
@@ -36,45 +37,63 @@
                     <RowDefinition Height="30*"/>
                     <RowDefinition Height="30*"/>
                     <RowDefinition Height="30*"/>
-                    <RowDefinition Height="126*"/>
+                    <RowDefinition Height="96*"/>
+                    <RowDefinition Height="29*"/>
                     <RowDefinition Height="20*"/>
                     <RowDefinition Height="100*"/>
-                    <RowDefinition Height="487*"/>
+                    <RowDefinition Height="71*"/>
+                    <RowDefinition Height="415*"/>
                 </Grid.RowDefinitions>
                 <Rectangle Fill="#FF005430" Margin="0,0.07,0,-7.777" Stroke="Black" Grid.Row="2" d:LayoutOverrides="LeftMargin, RightMargin" StrokeThickness="0" Grid.RowSpan="5" Grid.ColumnSpan="2"/>
-                <Rectangle Fill="#FF005430" Margin="0,30.965,0,-0.343" Stroke="Black" Grid.Row="7" StrokeThickness="0" d:LayoutOverrides="LeftMargin, RightMargin" Grid.ColumnSpan="2"/>
-                <Rectangle Fill="#FF005430" Margin="0,-0.316,0,-0.102" Stroke="Black" Grid.Row="9" StrokeThickness="0" d:LayoutOverrides="LeftMargin, RightMargin" Grid.ColumnSpan="2"/>
-                <Rectangle Fill="#FF005430" Margin="0,21.644,0,0" Stroke="Black" Grid.Row="10" StrokeThickness="0" d:LayoutOverrides="LeftMargin, RightMargin" Height="100" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                <Rectangle Fill="#FF005430" Margin="0,139.432,0,0" Stroke="Black" Grid.Row="10" StrokeThickness="0" Height="80.31" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                <Rectangle Fill="#FF005430" Margin="0,239.245,0,147.328" Stroke="Black" Grid.Row="10" StrokeThickness="0" Grid.ColumnSpan="2"/>
-                <Rectangle Fill="#FF005430" Margin="0,0,0,25.786" Stroke="Black" Grid.Row="10" StrokeThickness="0" Height="100" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+                <Rectangle Fill="#FF005430" Margin="0,30.965,0,-0.343" Stroke="Black" Grid.Row="7" StrokeThickness="0" d:LayoutOverrides="LeftMargin, RightMargin" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+                <Rectangle Fill="#FF005430" Margin="0,-0.316,0,-0.102" Stroke="Black" Grid.Row="10" StrokeThickness="0" d:LayoutOverrides="LeftMargin, RightMargin" Grid.ColumnSpan="2"/>
+                <Rectangle Fill="#FF005430" Margin="0,-49.415,0,0" Stroke="Black" Grid.Row="12" StrokeThickness="0" d:LayoutOverrides="LeftMargin, RightMargin" Height="100" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                <Rectangle Fill="#FF005430" Margin="0,68.373,0,0" Stroke="Black" Grid.Row="12" StrokeThickness="0" Height="80.31" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                <Rectangle Fill="#FF005430" Margin="0,168.186,0,147.328" Stroke="Black" Grid.Row="12" StrokeThickness="0" Grid.ColumnSpan="2"/>
+                <Rectangle Fill="#FF005430" Margin="0,0,0,25.786" Stroke="Black" Grid.Row="12" StrokeThickness="0" Height="100" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
                 <CheckBox x:Name="checkBox" Content=" Villa" Margin="13,0,35,5.546" Grid.Row="4" FontSize="16" Foreground="White"/>
                 <TextBlock x:Name="textBlock" Grid.Row="2" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Grid.Column="1" HorizontalAlignment="Left" Width="70"><Run Text="Hustype"/><LineBreak/><Run/></TextBlock>
                 <CheckBox x:Name="checkBox_Copy" Content=" Liebhaverejendom" Margin="13,0,30,5.546" Grid.Row="5" FontSize="16" Foreground="White"/>
                 <CheckBox x:Name="checkBox_Copy1" Content=" Fritidsejendom" Margin="13,0,35,5.546" Grid.Row="6" FontSize="16" Foreground="White"/>
-                <CheckBox x:Name="checkBox_Copy2" Content=" Andelsbolig" Margin="0,5.546,0,0" Grid.Row="4" FontSize="16" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Width="160"/>
-                <CheckBox x:Name="checkBox_Copy3" Content=" Rækkehus" Margin="0,5.546,0,0" Grid.Row="5" FontSize="16" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Width="165"/>
-                <CheckBox x:Name="checkBox_Copy4" Content=" Nedlagt Landbrug" Margin="0,5.546,0,0" Grid.Row="6" FontSize="16" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Width="160"/>
-                <TextBlock x:Name="textBlock1" HorizontalAlignment="Right" Margin="0,0,10,1.343" Grid.Row="5" TextWrapping="Wrap" Text="Vælg en eller flere." Width="119.5" Foreground="White" Grid.Column="1"/>
+                <CheckBox x:Name="checkBox_Copy2" Content=" Andelsbolig" Margin="0,0,0,5.546" Grid.Row="4" FontSize="16" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Width="160"/>
+                <CheckBox x:Name="checkBox_Copy3" Content=" Rækkehus" Margin="0,0,0,5.546" Grid.Row="5" FontSize="16" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Width="165"/>
+                <CheckBox x:Name="checkBox_Copy4" Content=" Nedlagt Landbrug" Margin="0,0,0,5.546" Grid.Row="6" FontSize="16" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Width="160"/>
+                <TextBlock x:Name="textBlock1" Margin="0,0,10,1.343" Grid.Row="5" TextWrapping="Wrap" Text="Vælg en eller flere." Foreground="White" Grid.Column="1" HorizontalAlignment="Right" Width="119.5"/>
                 <TextBlock x:Name="textBlock_Copy" Grid.Row="2" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Grid.Column="1" HorizontalAlignment="Left" Width="70"><Run Text="Hustype"/><LineBreak/><Run/></TextBlock>
-                <TextBlock x:Name="textBlock_Copy1" Grid.Row="7" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Grid.Column="1" HorizontalAlignment="Left" Width="70" Height="23.952" Margin="0,30.965,0,0" VerticalAlignment="Top" Text="Pris"/>
-                <controls:RangeSlider Margin="10,0,138,38.287" Grid.Row="7" VerticalAlignment="Bottom" Grid.ColumnSpan="2" TickPlacement="BottomRight" IsMoveToPointEnabled="True">
-                </controls:RangeSlider>
+                <TextBlock x:Name="textBlock_Copy1" Grid.Row="7" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Grid.Column="1" HorizontalAlignment="Left" Width="70" Margin="0,30.965,0,41.542" Text="Pris"/>
+                <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="10,0,0,-0.004" Grid.Row="7" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="White" Width="50"><Run Text="500"/><Run Text="."/><Run Text="000"/></TextBlock>
+                <TextBlock x:Name="textBlock2_Copy" Margin="150,0,138,-0.004" Grid.Row="7" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="White" Grid.Column="1" Text="100 mio."/>
+                <controls:RangeSlider x:Name="PriceSliderValue" Margin="10,5.002,138,0" Grid.Row="8" Grid.ColumnSpan="2" Maximum="10000000" TickPlacement="BottomRight" TickFrequency="100000" IsSnapToTickEnabled="True"/>
+                <TextBox x:Name="textBox1" Text="{Binding Path=PriceSliderValue, Mode=TwoWay}" Grid.Column="1" Margin="0,0,59.5,3.004" Grid.Row="8" TextWrapping="Wrap" Height="16" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="70"/>
+                <CheckBox x:Name="checkBox_Copy5" Content="Solgt" Margin="0,30.023,64.5,41.542" Grid.Row="7" FontSize="16" Foreground="White" Grid.Column="1" HorizontalAlignment="Right" Width="65"/>
+                <CheckBox x:Name="checkBox_Copy6" Content="Til Salg" Margin="0,0,54.5,20.438" Grid.Row="7" FontSize="16" Foreground="White" Grid.Column="1" Height="24.462" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"/>
+                <TextBlock x:Name="textBlock_Copy2" Grid.Row="10" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Grid.Column="1" HorizontalAlignment="Left" Width="85" Text="Størrelse" Height="23.519" VerticalAlignment="Top"/>
+                <controls:RangeSlider x:Name="PriceSliderValue_Copy" Margin="10,0,138,0" Grid.Row="10" Grid.ColumnSpan="2" Maximum="10000000" TickPlacement="BottomRight" TickFrequency="100000" IsSnapToTickEnabled="True" Height="24.006" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="textBlock2_Copy1" HorizontalAlignment="Left" Margin="10,0,0,24.002" Grid.Row="10" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="White" Width="50" Text="10 m^2"/>
+                <TextBlock x:Name="textBlock2_Copy2" Margin="130,0,138,20.99" Grid.Row="10" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="White" Grid.Column="1"><Run Text="100"/><Run Text="00 m^2"/></TextBlock>
+                <TextBox x:Name="textBox1_Copy" Text="{Binding PriceSliderValue, Mode=TwoWay}" Grid.Column="1" Margin="0,0,59.5,3.938" Grid.Row="10" TextWrapping="Wrap" Height="16" VerticalAlignment="Bottom" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Right" Width="70"/>
+                <TextBlock x:Name="textBlock_Copy3" Grid.Row="11" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Grid.Column="1" HorizontalAlignment="Left" Width="85" Text="Liggetid" Margin="0,21.644,0,19.961"/>
+                <RadioButton x:Name="radioButton" Content="&lt; 1 Måned" Margin="10,0,0,0" Grid.Row="12" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White"/>
+                <RadioButton x:Name="radioButton_Copy" Content="1-3 Måneder" Grid.Row="12" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="White" Margin="0,0,10,0"/>
+                <RadioButton x:Name="radioButton_Copy1" Content="3-6 Måneder" Grid.Row="12" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1" Foreground="White" Margin="5,0,0,0"/>
+                <RadioButton x:Name="radioButton_Copy2" Content="6-12 Måneder" Margin="115,0,123,0" Grid.Row="12" VerticalAlignment="Top" Grid.Column="1" Foreground="White"/>
+                <RadioButton x:Name="radioButton_Copy3" Content="&gt; 12 Måneder" Margin="0,0,10,0" Grid.Row="12" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right" Foreground="White"/>
+                <TextBlock x:Name="textBlock_Copy4" Grid.Row="12" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Grid.Column="1" HorizontalAlignment="Left" Width="85" Text="Radius" Margin="0,68.373,0,0" Height="29.415" VerticalAlignment="Top"/>
+                <controls:RangeSlider x:Name="PriceSliderValue_Copy1" Margin="13,124.677,135,0" Grid.Row="12" Grid.ColumnSpan="2" Maximum="10000000" TickPlacement="BottomRight" TickFrequency="100000" IsSnapToTickEnabled="True" Height="24.006" VerticalAlignment="Top"/>
+                <TextBlock x:Name="textBlock2_Copy3" HorizontalAlignment="Left" Margin="13,108.717,0,0" Grid.Row="12" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Width="50" Text="10 m^2"/>
+                <TextBlock x:Name="textBlock2_Copy4" Margin="130,111.727,138,0" Grid.Row="12" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Grid.Column="1"><Run Text="100"/><Run Text="00 m^2"/></TextBlock>
+                <TextBox x:Name="textBox1_Copy1" Text="{Binding PriceSliderValue, Mode=TwoWay}" Grid.Column="1" Margin="0,0,59.5,270.076" Grid.Row="12" TextWrapping="Wrap" Height="16" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="70"/>
+                <CheckBox x:Name="checkBox_Copy7" Content="Samme Vej" Margin="0,68.373,28,0" Grid.Row="12" FontSize="16" Foreground="White" Grid.Column="1" Height="24.462" VerticalAlignment="Top" HorizontalAlignment="Right" Width="105"/>
+                <CheckBox x:Name="checkBox_Copy8" Content="Samme PostNr" Margin="0,89.577,4,0" Grid.Row="12" FontSize="16" Foreground="White" Grid.Column="1" Height="24.462" VerticalAlignment="Top" HorizontalAlignment="Right" Width="129"/>
+                <TextBlock x:Name="textBlock_Copy5" Grid.Row="12" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Grid.Column="1" Text="PrisPrKvM / GrundAreal" Margin="-40,168.186,0,0" Height="29.415" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
             </Grid>
         </Border>
-        <Border BorderThickness="2" Margin="10,5.833,0,70.924" IsEnabled="False" Background="#FF2C2C2C" Grid.Column="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+        <Border BorderThickness="2" Margin="10,5.833,0,70.924" IsEnabled="False" Background="#FF2C2C2C" Grid.Column="2" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+            <ContentControl x:Name="ResultScreen" Grid.Column="2" HorizontalAlignment="Left" Height="901.243" Margin="-2" Grid.RowSpan="12" VerticalAlignment="Top" Width="1340">
+            </ContentControl>
             <Border.Effect>
                 <DropShadowEffect/>
             </Border.Effect>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="28*"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="221*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="601*"/>
-                </Grid.RowDefinitions>
-            </Grid>
         </Border>
 
     </Grid>

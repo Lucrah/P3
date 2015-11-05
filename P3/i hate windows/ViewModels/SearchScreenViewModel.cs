@@ -55,6 +55,7 @@ namespace P3.ViewModels
         #region Functions
         private void Initialize()
         {
+            SizeSliderValue = 1000000;
             Path = GetPath();
             //SavedSettingsCollection = GetSearchSettings();
         }
