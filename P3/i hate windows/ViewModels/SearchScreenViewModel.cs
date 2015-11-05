@@ -41,6 +41,9 @@ namespace P3.ViewModels
             }
 
         }
+
+        
+
         #endregion
 
         #region ctor/s
@@ -55,7 +58,16 @@ namespace P3.ViewModels
         #region Functions
         private void Initialize()
         {
-            SizeSliderValue = 1000000;
+            //Initialize different values here, to what their default should be on the UI
+            PriceSliderLowerValue = 500000;
+            PriceSliderHigherValue = 800000;
+            SizeSliderLowerValue = 10;
+            SizeSliderHigherValue = 50;
+            AreaSliderLowerValue = 100;
+            AreaSliderHigherValue = 200;
+
+
+            
             Path = GetPath();
             //SavedSettingsCollection = GetSearchSettings();
         }
@@ -94,41 +106,77 @@ namespace P3.ViewModels
 
         #region SearchWindowProperties
 
-        private double _priceSliderValue;
-        private double _areaSliderValue;
-        private double _sizeSliderValue;
+        private double _priceSliderLowerValue;
+        private double _priceSliderHigherValue;
+        private double _areaSliderLowerValue;
+        private double _areaSliderHigherValue;
+        private double _sizeSliderLowerValue;
+        private double _sizeSliderHigherValue;
         #endregion
         #region SearchWindowPublicProperties
-        public double PriceSliderValue
+        public double PriceSliderLowerValue
         {
-            get { return _priceSliderValue; }
+            get { return _priceSliderLowerValue; }
             set
             {
-                _priceSliderValue = value;
-                NotifyOfPropertyChange(() => PriceSliderValue);
+                _priceSliderLowerValue = value;
+                NotifyOfPropertyChange(() => PriceSliderLowerValue);
             }
         }
 
-        public double SizeSliderValue
+        public double PriceSliderHigherValue
         {
-            get { return _sizeSliderValue; }
+            get
+            {
+                return _priceSliderHigherValue;
+            }
+
             set
             {
-                _sizeSliderValue = value;
-                NotifyOfPropertyChange(() => SizeSliderValue);
+                _priceSliderHigherValue = value;
+                NotifyOfPropertyChange(() => PriceSliderHigherValue);
             }
         }
 
-        public double AreaSliderValue
+        public double AreaSliderLowerValue
         {
-            get { return _areaSliderValue; }
+            get { return _areaSliderLowerValue; }
             set
             {
-                _areaSliderValue = value;
-                NotifyOfPropertyChange(() => AreaSliderValue);
+                _areaSliderLowerValue = value;
+                NotifyOfPropertyChange(() => AreaSliderLowerValue);
             }
         }
 
+        public double AreaSliderHigherValue
+        {
+            get { return _areaSliderHigherValue; }
+            set
+            {
+                _areaSliderHigherValue = value; 
+                NotifyOfPropertyChange(() => AreaSliderHigherValue);
+            }
+        }
+
+        public double SizeSliderLowerValue
+        {
+            get { return _sizeSliderLowerValue; }
+            set
+            {
+                _sizeSliderLowerValue = value;
+                NotifyOfPropertyChange(()=> SizeSliderLowerValue);
+            }
+        }
+
+        public double SizeSliderHigherValue
+        {
+            get { return _sizeSliderHigherValue; }
+            set
+            {
+                _sizeSliderHigherValue = value;
+                NotifyOfPropertyChange(() => SizeSliderHigherValue);
+            }
+        }
         #endregion
     }
 }
