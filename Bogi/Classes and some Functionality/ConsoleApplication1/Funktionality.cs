@@ -150,7 +150,7 @@ namespace ConsoleApplication1
           using (StreamWriter tw = new StreamWriter(savefile + "ImportedProperties_Bogi1.csv", true))
           {
             tw.WriteLine("{0};{1};{2};{3};{4};{5};{6};{7};{8};{9};{10};{11};{12}", property.ID, property.PropertyType, property.StreetName, property.HouseNumber, property.AreaCode, 
-              property.YearBuilt, property.Rooms,property.Price, property.Sqrprice, property.SalesDate, property.SalesType, property.Lng, property.Lng);
+              property.YearBuilt, property.Rooms,property.Price, property.Sqrprice, property.SalesDate, property.SalesType, property.Lat, property.Lng);
           }
 
         }
