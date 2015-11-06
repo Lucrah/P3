@@ -30,9 +30,7 @@ namespace P3.Views
         private void FullScreen(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.F11)
-            {
                 WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
-            }
         }
     }
 }
