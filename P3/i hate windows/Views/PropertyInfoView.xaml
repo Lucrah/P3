@@ -6,43 +6,45 @@
              xmlns:local="clr-namespace:P3.Views"
              xmlns:ee="http://schemas.microsoft.com/expression/2010/effects" x:Class="P3.Views.PropertyInfoView"
              mc:Ignorable="d" 
-             d:DesignHeight="1080" d:DesignWidth="1920" Height="990" Width="1900">
-	<Grid Background="#FF1F1F1F" Width="1900">
-		<Grid.Effect>
-			<DropShadowEffect/>
-		</Grid.Effect>
-		<Grid.OpacityMask>
-			<RadialGradientBrush>
-				<GradientStop Color="Black" Offset="0"/>
-				<GradientStop Color="White" Offset="1"/>
-			</RadialGradientBrush>
-		</Grid.OpacityMask>
-        <Image HorizontalAlignment="Left" Height="444" Margin="56,127,0,0" VerticalAlignment="Top" Width="591.134" OpacityMask="#FFE21B1B" Source="pack://siteoforigin:,,,/Views/Koala.jpg">
-        </Image>
-		<GroupBox Header="Info&#xA;" HorizontalAlignment="Left" Height="48" Margin="1035,468,0,0" VerticalAlignment="Top" Width="842.134" Foreground="White">
-			<Grid HorizontalAlignment="Left" Height="25" Margin="0,-15,-2,0" VerticalAlignment="Top" Width="581.134">
-				<Label x:Name="Adress" Content="Adresse&#xD;&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="63.993" Height="28.46" Margin="0,0,0,-3.46" Foreground="White"/>
-				<Label x:Name="CityZipcode" Content="Postnummer&#xD;&#xA;" HorizontalAlignment="Left" Margin="290,0,0,-0.96" Foreground="White"/>
-				<Label x:Name="CityDistrict" Content="Bydel&#xD;&#xA;" HorizontalAlignment="Left" Margin="168,0,0,-0.96" VerticalAlignment="Top" Foreground="White"/>
-				<Label x:Name="CaseNumber" Content="Sagsnummer" HorizontalAlignment="Left" Margin="394,0,0,-0.96" Foreground="White"/>
-			</Grid>
-		</GroupBox>
-		<GroupBox Header="Detaljer&#xA;" HorizontalAlignment="Left" Height="48" Margin="1035,521,0,0" VerticalAlignment="Top" Width="842.134" Foreground="White">
-			<Grid HorizontalAlignment="Left" Height="25" Margin="0,-15,-2,0" VerticalAlignment="Top" Width="581.134">
-				<Label x:Name="BuildYear" Content="Byggeår&#xA;" HorizontalAlignment="Left" Width="63.993" Margin="0,0,0,-3.46" Foreground="White"/>
-				<Label x:Name="SqmPrice" Content="kvm pris&#xA;" HorizontalAlignment="Left" Margin="122.353,0,0,-0.96" Foreground="White"/>
-				<Label x:Name="HousingArea" Content="Boligareal&#xD;&#xA;" HorizontalAlignment="Left" Margin="54.993,0,0,-0.96" Foreground="White"/>
-				<Label x:Name="Price" Content="Pris" HorizontalAlignment="Left" Margin="234.56,-0.96,0,0" Foreground="White"/>
-				<Label x:Name="PropertyArea" Content="Grundareal&#xD;&#xA;" HorizontalAlignment="Left" Margin="343,0,0,-0.96" Width="71" Foreground="White"/>
-				<Label x:Name="NumberOfRooms" Content="Rum&#xA;" HorizontalAlignment="Left" Margin="435,0,0,-0.96" Width="34" Foreground="White"/>
-			</Grid>
-		</GroupBox>
-		<GroupBox Header="Yderligere informationer, som ikke er nævnt ovenfor" HorizontalAlignment="Left" Height="80" Margin="1035,574,0,0" VerticalAlignment="Top" Width="842.134" Foreground="White">
-			<TextBox HorizontalAlignment="Left" Height="54" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="812"/>
-		</GroupBox>
-		<GroupBox Header="Beskrivelse af ejendom&#xA;" HorizontalAlignment="Left" Height="241" Margin="1035,659,0,0" VerticalAlignment="Top" Width="842.134" Foreground="White">
-			<TextBox HorizontalAlignment="Left" Height="194" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="809.5" BorderThickness="0" Foreground="White"/>
-		</GroupBox>
-		<TextBox HorizontalAlignment="Left" Height="0" Margin="948,654,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="6"/>
-	</Grid>
+             d:DesignHeight="901" d:DesignWidth="1340" Height="901" Width="1340">
+    <Grid Background="#FF1F1F1F" Width="1340">
+        <Grid.Effect>
+            <DropShadowEffect/>
+        </Grid.Effect>
+        <Grid.OpacityMask>
+            <RadialGradientBrush>
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </RadialGradientBrush>
+        </Grid.OpacityMask>
+        <GroupBox Header="Info&#xA;" HorizontalAlignment="Left" Height="72" Margin="24,402.433,0,0" VerticalAlignment="Top" Width="1292.134" Foreground="White" RenderTransformOrigin="0.501,0.686">
+            <DockPanel x:Name="InfoDock" LastChildFill="False" Margin="0,0,-2,0" Height="25" VerticalAlignment="Top">
+                <TextBlock x:Name="Adress" TextWrapping="Wrap" Text="Adresse" Width="120" Margin="0,0,0,10" Height="16"/>
+                <TextBlock x:Name="CityDistrict" TextWrapping="Wrap" Text="Bydel" Width="120" Margin="0,0,0,10" Height="16"/>
+                <TextBlock x:Name="CityZipcode" TextWrapping="Wrap" Text="Postnummer" Width="120" Margin="0,0,0,10" Height="16"/>
+                <TextBlock x:Name="CaseNumber" TextWrapping="Wrap" Text="Sagsnummer" Width="120" Margin="0,0,0,9" Height="16"/>
+
+            </DockPanel>
+        </GroupBox>
+        <GroupBox Header="Yderligere informationer, som ikke er nævnt ovenfor" HorizontalAlignment="Left" Height="80" Margin="24,594.1,0,0" VerticalAlignment="Top" Width="1292.134" Foreground="White">
+            <TextBox x:Name="FurtherInfo" Margin="0,0,0,0" TextWrapping="Wrap"/>
+        </GroupBox>
+        <GroupBox Header="Beskrivelse af ejendom&#xA;" HorizontalAlignment="Left" Height="184" Margin="24,707,0,0" VerticalAlignment="Top" Width="1292.134" Foreground="White">
+            <TextBox x:Name="PropertyDesc" HorizontalAlignment="Left" Height="188" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="1282.134" BorderThickness="0" Foreground="White"/>
+        </GroupBox>
+        <GroupBox Header="Detaljer&#xA;" HorizontalAlignment="Left" Height="72" Margin="24,499.6,0,0" VerticalAlignment="Top" Width="1292.134" Foreground="White" RenderTransformOrigin="0.501,0.686">
+            <DockPanel x:Name="InfoDock1" LastChildFill="False" Margin="0,0,-2,0" Height="25" VerticalAlignment="Top">
+                <TextBlock x:Name="BuildYear" TextWrapping="Wrap" Text="Byggeår" Width="120" Margin="0,0,0,10" Height="16"/>
+                <TextBlock x:Name="SqmPrice" TextWrapping="Wrap" Text="Kvm pris" Width="120" Margin="0,0,0,10" Height="16"/>
+                <TextBlock x:Name="HousingArea" TextWrapping="Wrap" Text="Boligareal" Width="120" Margin="0,0,0,10" Height="16"/>
+                <TextBlock x:Name="Price" TextWrapping="Wrap" Text="Pris" Width="120" Margin="0,0,0,9" Height="16"/>
+                <TextBlock x:Name="PropertyArea" TextWrapping="Wrap" Text="Grundareal" Width="120" Margin="0,0,0,9" Height="16"/>
+                <TextBlock x:Name="NumberOfRooms" TextWrapping="Wrap" Text="Rum" Width="120" Margin="0,0,0,9" Height="16"/>
+
+            </DockPanel>
+        </GroupBox>
+        <Image x:Name="Image1" HorizontalAlignment="Center" Height="280" Margin="479.5,50,479.5,0" VerticalAlignment="Top" Width="373" Source="/i hate windows;component/Resources/Koala.jpg"/>
+        <Image x:Name="Image2" Height="280" Margin="24,50,0,0" VerticalAlignment="Top" Source="/i hate windows;component/Resources/Penguins.jpg" HorizontalAlignment="Left" Width="373"/>
+        <Image x:Name="Image3" Height="280" Margin="0,50,24,0" VerticalAlignment="Top" Source="/i hate windows;component/Resources/Penguins.jpg" HorizontalAlignment="Right" Width="373"/>
+    </Grid>
 </UserControl>
