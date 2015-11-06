@@ -17,7 +17,7 @@
                 <GradientStop Color="White" Offset="1"/>
             </RadialGradientBrush>
         </Grid.OpacityMask>
-        <GroupBox Header="Info&#xA;" HorizontalAlignment="Left" Height="72" Margin="24,402.433,0,0" VerticalAlignment="Top" Width="1292.134" Foreground="White" RenderTransformOrigin="0.501,0.686">
+        <GroupBox Header="Info&#xA;" HorizontalAlignment="Left" Height="72" Margin="24,402.433,0,0" VerticalAlignment="Top" Width="1292.134" Foreground="White" RenderTransformOrigin="0.501,0.686" Background="#FF005430">
             <DockPanel x:Name="InfoDock" LastChildFill="False" Margin="0,0,-2,0" Height="25" VerticalAlignment="Top">
                 <TextBlock x:Name="Adress" TextWrapping="Wrap" Text="Adresse" Width="120" Margin="0,0,0,10" Height="16"/>
                 <TextBlock x:Name="CityDistrict" TextWrapping="Wrap" Text="Bydel" Width="120" Margin="0,0,0,10" Height="16"/>
@@ -26,13 +26,13 @@
 
             </DockPanel>
         </GroupBox>
-        <GroupBox Header="Yderligere informationer, som ikke er nævnt ovenfor" HorizontalAlignment="Left" Height="80" Margin="24,594.1,0,0" VerticalAlignment="Top" Width="1292.134" Foreground="White">
+        <GroupBox Header="Yderligere informationer, som ikke er nævnt ovenfor" HorizontalAlignment="Left" Height="80" Margin="24,594.1,0,0" VerticalAlignment="Top" Width="1292.134" Foreground="White" Background="#FF005430">
             <TextBox x:Name="FurtherInfo" Margin="0,0,0,0" TextWrapping="Wrap"/>
         </GroupBox>
-        <GroupBox Header="Beskrivelse af ejendom&#xA;" HorizontalAlignment="Left" Height="184" Margin="24,707,0,0" VerticalAlignment="Top" Width="1292.134" Foreground="White">
+        <GroupBox Header="Beskrivelse af ejendom&#xA;" HorizontalAlignment="Left" Height="184" Margin="24,707,0,0" VerticalAlignment="Top" Width="1292.134" Foreground="White" Background="#FF005430">
             <TextBox x:Name="PropertyDesc" HorizontalAlignment="Left" Height="188" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="1282.134" BorderThickness="0" Foreground="White"/>
         </GroupBox>
-        <GroupBox Header="Detaljer&#xA;" HorizontalAlignment="Left" Height="72" Margin="24,499.6,0,0" VerticalAlignment="Top" Width="1292.134" Foreground="White" RenderTransformOrigin="0.501,0.686">
+        <GroupBox Header="Detaljer&#xA;" HorizontalAlignment="Left" Height="72" Margin="24,499.6,0,0" VerticalAlignment="Top" Width="1292.134" Foreground="White" RenderTransformOrigin="0.501,0.686" Background="#FF005430">
             <DockPanel x:Name="InfoDock1" LastChildFill="False" Margin="0,0,-2,0" Height="25" VerticalAlignment="Top">
                 <TextBlock x:Name="BuildYear" TextWrapping="Wrap" Text="Byggeår" Width="120" Margin="0,0,0,10" Height="16"/>
                 <TextBlock x:Name="SqmPrice" TextWrapping="Wrap" Text="Kvm pris" Width="120" Margin="0,0,0,10" Height="16"/>
