@@ -19,7 +19,7 @@
         </Grid.OpacityMask>
         <GroupBox Header="Info&#xA;" HorizontalAlignment="Left" Height="72" Margin="24,402.433,0,0" VerticalAlignment="Top" Width="1292.134" Foreground="White" RenderTransformOrigin="0.501,0.686" Background="#FF005430">
             <DockPanel x:Name="InfoDock" LastChildFill="False" Margin="0,0,-2,0" Height="25" VerticalAlignment="Top">
-                <TextBlock x:Name="Adress" TextWrapping="Wrap" Text="Adresse" Width="120" Margin="0,0,0,10" Height="16"/>
+                <TextBlock x:Name="Address" TextWrapping="Wrap" Text="Adresse" Width="120" Margin="0,0,0,10" Height="16"/>
                 <TextBlock x:Name="CityDistrict" TextWrapping="Wrap" Text="Bydel" Width="120" Margin="0,0,0,10" Height="16"/>
                 <TextBlock x:Name="CityZipcode" TextWrapping="Wrap" Text="Postnummer" Width="120" Margin="0,0,0,10" Height="16"/>
                 <TextBlock x:Name="CaseNumber" TextWrapping="Wrap" Text="Sagsnummer" Width="120" Margin="0,0,0,9" Height="16"/>

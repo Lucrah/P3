@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:P3.Views"
              mc:Ignorable="d" 
              d:DesignHeight="901.243" d:DesignWidth="1340" Height="901.243" Width="1340" VerticalAlignment="Top" HorizontalAlignment="Left">
-    <ListView x:Name="SearchResults" Background="#FF2C2C2C" BorderThickness="0">
+    <ListView ItemsSource="{Binding Path=SearchResults}" Background="#FF2C2C2C" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <WrapPanel>
@@ -17,12 +17,13 @@
         </ListView.ItemTemplate>
         <ListView.View>
             <GridView>
-                <GridViewColumn Header="Hustype"/>
-                <GridViewColumn Header="Adresse"/>
-                <GridViewColumn Header="Størrelse"/>
-				<GridViewColumn Header="Pris"/>
-				<GridViewColumn Header="Liggetid"/>
-				<GridViewColumn Header="Solgt/Til Salg"/>
+                <GridViewColumn Header="Hustype" DisplayMemberBinding="{Binding Path=PropertyType}"/>
+                <GridViewColumn Header="Adresse" DisplayMemberBinding="{Binding Path=Address}"/>
+                <GridViewColumn Header="Størrelse" DisplayMemberBinding="{Binding Path=Size}"/>
+				<GridViewColumn Header="Pris" DisplayMemberBinding="{Binding Path=Price}"/>
+				<GridViewColumn Header="Liggetid" DisplayMemberBinding="{Binding Path=LieTime}"/>
+				<GridViewColumn Header="Solgt/Til Salg" DisplayMemberBinding="{Binding Path=ForSale}"/>
+                <GridViewColumn Header="Byggeår" DisplayMemberBinding="{Binding Path=YearBuilt}"/>
             </GridView>
         </ListView.View>
     </ListView>

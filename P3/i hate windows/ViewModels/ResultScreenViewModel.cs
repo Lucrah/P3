@@ -15,7 +15,8 @@ namespace P3.ViewModels
         public ResultScreenViewModel()
         {
             _searchResults = new BindableCollection<Listing>();
-            SearchResults.Add(new Listing("Vesterbro", 53, 9000, "Aalborg", 5000000, 50, 1999));
+            SearchResults.Add(new Listing("Vesterbro", 53, 9000, "Aalborg", 5000, 50, 1999));
+            SearchResults.Add(new Listing("Blegkilde Alle", 30, 9000, "Aalborg", 7000, 50, 1999));
         }
         #endregion
         #region Fields

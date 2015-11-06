@@ -40,6 +40,8 @@ namespace P3.Models
 
         #region property
         private PropertyTypeEnum _propertyType;
+      private bool _forSale;
+      private int _lieTime;
     private Guid _listingID;
     public Guid ListingID
     {
@@ -121,6 +123,32 @@ namespace P3.Models
             {
                 _propertyType = value;
                 NotifyOfPropertyChange(() => PropertyType);
+            }
+        }
+
+        public int LieTime
+        {
+            get
+            {
+                return _lieTime;
+            }
+
+            set
+            {
+                _lieTime = value;
+            }
+        }
+
+        public bool ForSale
+        {
+            get
+            {
+                return _forSale;
+            }
+
+            set
+            {
+                _forSale = value;
             }
         }
 
