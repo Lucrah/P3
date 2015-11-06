@@ -6,19 +6,12 @@
              xmlns:local="clr-namespace:P3.Views"
              mc:Ignorable="d" 
              d:DesignHeight="901.243" d:DesignWidth="1340" Height="901.243" Width="1340" VerticalAlignment="Top" HorizontalAlignment="Left">
-    <ListView x:Name="SearchResults6" Background="#FF2C2C2C" BorderThickness="0">
+    <ListView x:Name="SearchResults" Background="#FF2C2C2C" BorderThickness="0">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <WrapPanel>
-					<TextBlock Text="{Binding SearchResults_Address}" FontWeight="Bold" />
+					<TextBlock x:Name="SearchResults_Address" FontWeight="Bold" />
 					<TextBlock Text=" (" />
-                    <TextBlock Text="{Binding Adress}" FontWeight="Bold" />
-                    <TextBlock Text=" (" />
-                    <TextBlock Text="{Binding Size}" FontWeight="Bold" />
-					<TextBlock Text=" (" />
-                    <TextBlock Text="{Binding Liggetid}" />
-                    <TextBlock Text=" (" />
-					<TextBlock Text="{Binding YearBuilt}"/>
                 </WrapPanel>
             </DataTemplate>
         </ListView.ItemTemplate>
