@@ -38,7 +38,8 @@ namespace P3.Models
       NedlagtLandbrug = 8                      
     };
 
-    #region property
+        #region property
+        private PropertyTypeEnum _propertyType;
     private Guid _listingID;
     public Guid ListingID
     {
@@ -109,9 +110,23 @@ namespace P3.Models
       set { _yearBuilt = value; NotifyOfPropertyChange(); }
     }
 
-#endregion
+        public PropertyTypeEnum PropertyType
+        {
+            get
+            {
+                return _propertyType;
+            }
 
-      public override string ToString()
+            set
+            {
+                _propertyType = value;
+                NotifyOfPropertyChange(() => PropertyType);
+            }
+        }
+
+        #endregion
+
+        public override string ToString()
       {
           return Address + ", " + AreaCode + ", " + Price + ", " + Size + ", " + YearBuilt;
       }

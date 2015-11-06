@@ -6,18 +6,19 @@
              xmlns:local="clr-namespace:P3.Views"
              mc:Ignorable="d" 
              d:DesignHeight="901.243" d:DesignWidth="1340" Height="901.243" Width="1340" VerticalAlignment="Top" HorizontalAlignment="Left">
-    <ListView x:Name="listView" Background="#FF2C2C2C" BorderThickness="0" ItemsSource="{Binding Path=SearchResults, Mode=OneWay}" SelectedItem="{Binding Path=SelectedListing}">
+    <ListView x:Name="SearchResults6" Background="#FF2C2C2C" BorderThickness="0">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <WrapPanel>
-                    <TextBlock Text="Name: " />
-                    <TextBlock Text="{Binding Path=Adress}" FontWeight="Bold" />
-                    <TextBlock Text=", " />
-                    <TextBlock Text="Age: " />
-                    <TextBlock Text="{Binding Age}" FontWeight="Bold" />
+					<TextBlock Text="{Binding SearchResults_Address}" FontWeight="Bold" />
+					<TextBlock Text=" (" />
+                    <TextBlock Text="{Binding Adress}" FontWeight="Bold" />
                     <TextBlock Text=" (" />
-                    <TextBlock Text="{Binding Mail}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
-                    <TextBlock Text=")" />
+                    <TextBlock Text="{Binding Size}" FontWeight="Bold" />
+					<TextBlock Text=" (" />
+                    <TextBlock Text="{Binding Liggetid}" />
+                    <TextBlock Text=" (" />
+					<TextBlock Text="{Binding YearBuilt}"/>
                 </WrapPanel>
             </DataTemplate>
         </ListView.ItemTemplate>
