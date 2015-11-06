@@ -23,9 +23,12 @@
         </ListView.ItemTemplate>
         <ListView.View>
             <GridView>
+                <GridViewColumn Header="Hustype"/>
                 <GridViewColumn Header="Adresse"/>
-                <GridViewColumn Header="ZipCode"/>
-                <GridViewColumn Header="more columns"/>
+                <GridViewColumn Header="Størrelse"/>
+				<GridViewColumn Header="Pris"/>
+				<GridViewColumn Header="Liggetid"/>
+				<GridViewColumn Header="Solgt/Til Salg"/>
             </GridView>
         </ListView.View>
     </ListView>
