@@ -1,33 +1,129 @@
-﻿<UserControl x:Class="P3.Views.ResultScreenView"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:P3.Views"
+             xmlns:cal="http://www.caliburnproject.org" x:Class="P3.Views.ResultScreenView"
              mc:Ignorable="d" 
              d:DesignHeight="901.243" d:DesignWidth="1340" Height="901.243" Width="1340" VerticalAlignment="Top" HorizontalAlignment="Left">
 
-    <ListView x:Name="ResultListView" ItemsSource="{Binding Path=SearchResults}" Background="#FF2C2C2C" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
+    <ListView ItemsSource="{Binding SearchResults}" Background="#FF2C2C2C" SelectedItem="{Binding SelectedSearchResult}">
+        <ListView.ItemContainerStyle>
+            <Style TargetType="{x:Type ListViewItem}">
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True" >
+                        <Setter Property="Foreground" Value="White"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ListView.ItemContainerStyle>
         <ListView.ContextMenu>
             <ContextMenu >
                 <MenuItem Header="Vis Boliginfo..."
-                          Command="{Binding ShowPropertyInfo}"
-                          CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}"/>
+					Command="{Binding ShowPropertyInfo}"
+					CommandParameter="{Binding PlacementTarget.SelectedItem, RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}}"/>
             </ContextMenu>
         </ListView.ContextMenu>
         <ListView.View>
             <GridView>
-                <GridViewColumn Header="Hustype" DisplayMemberBinding="{Binding Path=PropertyType}"/>
-                <GridViewColumn Header="Adresse" DisplayMemberBinding="{Binding Path=Address}"/>
-                <GridViewColumn Header="Størrelse" DisplayMemberBinding="{Binding Path=Size}"/>
-                <GridViewColumn Header="Pris" DisplayMemberBinding="{Binding Path=Price}"/>
-                <GridViewColumn Header="Liggetid" DisplayMemberBinding="{Binding Path=LieTime}"/>
-                <GridViewColumn Header="Solgt/Til Salg" DisplayMemberBinding="{Binding Path=ForSale}"/>
-                <GridViewColumn Header="Byggeår" DisplayMemberBinding="{Binding Path=YearBuilt}"/>
-                <GridViewColumn Header="GUID" DisplayMemberBinding="{Binding Path=ListingId}"/>
-                <GridViewColumn Header="Lat" DisplayMemberBinding="{Binding Path=Lat}"/>
-                <GridViewColumn Header="Long" DisplayMemberBinding="{Binding Path=Long}"/>
+                <GridViewColumn Header="Hustype">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="6,2,6,2">
+                                <TextBlock Text="{Binding PropertyType}" Foreground="#FF979797"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+                <GridViewColumn Header="Adresse">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="6,2,6,2">
+                                <TextBlock Text="{Binding Address}" Foreground="#FF979797" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+                <GridViewColumn Header="Størrelse">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="6,2,6,2">
+                                <TextBlock Text="{Binding Size}" Foreground="#FF979797"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+                <GridViewColumn Header="Pris">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="6,2,6,2">
+                                <TextBlock Text="{Binding Price}" Foreground="#FF979797"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+                <GridViewColumn Header="Liggetid">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="6,2,6,2">
+                                <TextBlock Text="{Binding LieTime}" Foreground="#FF979797"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+                <GridViewColumn Header="Solgt/Til Salg">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="6,2,6,2">
+                                <TextBlock Text="{Binding ForSale}" Foreground="#FF979797"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+                <GridViewColumn Header="Byggeår">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="6,2,6,2">
+                                <TextBlock Text="{Binding YearBuilt}" Foreground="#FF979797"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+                <GridViewColumn Header="Lat">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="6,2,6,2">
+                                <TextBlock Text="{Binding Lat}" Foreground="#FF979797"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+                <GridViewColumn Header="Long">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="6,2,6,2">
+                                <TextBlock Text="{Binding Long}" Foreground="#FF292828"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+                <GridViewColumn Header="GUID">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="6,2,6,2">
+                                <TextBlock Text="{Binding ListingId}" Foreground="#FF979797"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+                <GridViewColumn Header="Vælg">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate/>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
             </GridView>
         </ListView.View>
     </ListView>
+
 </UserControl>
