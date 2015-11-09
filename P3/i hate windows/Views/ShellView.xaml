@@ -13,8 +13,11 @@
         WindowTransitionsEnabled="False"
         WindowStartupLocation="Manual"
         WindowState="Maximized"
+        WindowStyle="None"
         SaveWindowPosition="True"
         WindowTitleBrush="DarkGray"
+        
+        KeyDown="FullScreen"              
                       
         Title="{Binding Path=WindowTitle}" Height="1080" Width="1920" Background="{x:Null}" MinWidth="1280" MinHeight="1024">
     <Grid Background="#FF1F1F1F">
