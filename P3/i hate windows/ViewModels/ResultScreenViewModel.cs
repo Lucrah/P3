@@ -48,6 +48,11 @@ namespace P3.ViewModels
             }
         }
 
+        public void ShowPropertyInfo(Listing SelectedItem)
+        {
+
+        }
+
         #endregion
 
     }
