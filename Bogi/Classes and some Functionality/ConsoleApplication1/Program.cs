@@ -10,36 +10,27 @@ namespace ConsoleApplication1
   {
     static void Main(string[] args)
     {
-      Dictionary<string, Listing> dict = new Dictionary<string, Listing>();
-      Dictionary<string, Listing> dictOut = new Dictionary<string, Listing>();
+      Dictionary<int, ListingSold> dictSold = new Dictionary<int, ListingSold>();
       Funktionality.ImportPath();
-      Funktionality.importSold(dict);
-      Console.WriteLine("done importing " + dict.Count + " listings. \nPress enter to start saving to file.");
+      Funktionality.importSold(dictSold);
+      Console.WriteLine("done importing " + dictSold.Count + " listings. \nPress enter to start saving to file.");
       Console.ReadKey();
-
-      foreach (var item in dict)
+      
+      double count = 0;
+      
+      foreach (var property in dictSold)
       {
-
-                Console.WriteLine("Address: " + item.Value.Address);
-                Funktionality.getCoordinates(item.Value);
-                Console.WriteLine("Lat: " + item.Value.Lat);
-                Console.WriteLine("Lng: " + item.Value.Lng);
-                Funktionality.SaveUpdate(item.Value);
-        
-        
-
+        count++;
+        Funktionality.SaveUpdateSold(property.Value);
+       
+          Console.Clear();
+          Console.WriteLine("Saving to file....");
+          Console.WriteLine((count / dictSold.Count).ToString("P"));
         
       }
       Console.WriteLine("Save to file complete.");
 
-      //dictOut = Search.SearchForProperty("Rendsburggade", "28", 9000, 1, 3, 35, 60, "10-05-2010", "10-05-2015", 10000, ref dict);
-      //Console.WriteLine(dictOut.Count());
-      //Console.WriteLine("done searching");
-      //foreach (var item in dictOut)
-      //{
-      //  Console.WriteLine(item.Value.AddressForURL);
-      //
-      //}
+  
 
       
       Console.ReadKey();

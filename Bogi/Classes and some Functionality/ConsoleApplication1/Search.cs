@@ -13,8 +13,7 @@ namespace ConsoleApplication1
     public static void SearchForProperty(string streetName, string houseNumber, int areaCode, int numberOfRoomsFrom, int numberOfRoomsTo, int sizeOfHouseFrom, int sizeOfHouseTo, string salesDateFrom, string salesDateTo, double radius)
     {
       
-      Listing search = new Listing(streetName, houseNumber, areaCode);
-      Funktionality.getCoordinates(search);
+      
 
       // http://www.plumislandmedia.net/mysql/haversine-mysql-nearest-loc/ Haversine SQL formula
 

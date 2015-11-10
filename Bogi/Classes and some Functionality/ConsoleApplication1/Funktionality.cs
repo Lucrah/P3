@@ -67,9 +67,9 @@ namespace ConsoleApplication1
             savefile = rel_path.Remove(rel_path.Length - 1) + @"Data\";
         }
 
-        static public void importSold(Dictionary<string, Listing> dict)
+        static public void importSold(Dictionary<int, ListingSold> dict)
         {
-            var reader = new StreamReader(File.OpenRead(savefile + "bogi1.csv"), Encoding.UTF8);
+            var reader = new StreamReader(File.OpenRead(savefile + "HackSolgte.csv"), Encoding.UTF8);
               while (!reader.EndOfStream)
               {
                 var line = reader.ReadLine();
@@ -140,19 +140,45 @@ namespace ConsoleApplication1
                 string propertyType = values[8];
                 int areaCode = Convert.ToInt32(values[9]);
 
-        Listing listing = new Listing(streetName, houseNumber, room, areaCode, cleanPrice, sizeHouse, yearBuilt, salesDate, cleansqrprice, salesType, propertyType);
-        dict.Add(Convert.ToString(listing.ID), listing);
+        ListingSold listing = new ListingSold(streetName, houseNumber, room, areaCode, cleanPrice, sizeHouse, yearBuilt, salesDate, cleansqrprice, salesType, propertyType);
+        dict.Add(listing.ID, listing);
             }
         }
-        public static void SaveUpdate(Listing property)
+        public static void SaveUpdateSold(ListingSold property)
         {
 
-          using (StreamWriter tw = new StreamWriter(savefile + "ImportedProperties_Bogi1.csv", true))
+          using (StreamWriter tw = new StreamWriter(savefile + "DBListings.csv", true))
           {
-            tw.WriteLine("{0};{1};{2};{3};{4};{5};{6};{7};{8};{9};{10};{11};{12};{13}", property.ID, property.PropertyType, property.StreetName, property.HouseNumber, property.AreaCode, 
-              property.YearBuilt, property.Rooms, property.Size, property.Price, property.Sqrprice, property.SalesDate, property.SalesType, property.Lat, property.Lng);
+            tw.WriteLine("{0};{1};{2};{3};{4}", property.ID, property.PropertyType, property.Size, property.Rooms, property.YearBuilt);
           }
 
+          using (StreamWriter tw = new StreamWriter(savefile + "DBAddress.csv", true))
+          {
+           tw.WriteLine("{0};{1};{2};{3};{4};{5}", property.ID, property.StreetName, property.HouseNumber, property.AreaCode,
+               property.Lat, property.Lng);
+          }
+          using (StreamWriter tw = new StreamWriter(savefile + "DBSalesInfoSold.csv", true))
+          {
+            tw.WriteLine("{0};{1};{2};{3};{4}", property.ID, property.SalesType, property.Price, property.Sqrprice, property.SalesDate);
+          }
         }
+        public static void SaveUpdateForSale(ListingForSale property)
+        {
+
+          using (StreamWriter tw = new StreamWriter(savefile + "DBListings.csv", true))
+          {
+            tw.WriteLine("{0};{1};{2};{3};{4}", property.ID, property.PropertyType, property.Size, property.Rooms, property.YearBuilt);
+          }
+
+          using (StreamWriter tw = new StreamWriter(savefile + "DBAddress.csv", true))
+          {
+            tw.WriteLine("{0};{1};{2};{3};{4};{5}", property.ID, property.StreetName, property.HouseNumber, property.AreaCode,
+                property.Lat, property.Lng);
+          }
+          using (StreamWriter tw = new StreamWriter(savefile + "DBSalesInfoForSale.csv", true))
+          {
+              tw.WriteLine("{0};{1};{2};{3};{4};{5};{6};{7};{8};{9};{10};{11};{12};{13}", property.ID,  property.Price, property.Sqrprice, property.Demurrage);
+          }
     }
+  }
 }

@@ -9,15 +9,8 @@ namespace ConsoleApplication1
   class Listing 
   {
     private static int id = 1;
-    public Listing(string streetName, string houseNumber, int areaCode)
-    {
-      StreetName = streetName;
-      HouseNumber = houseNumber;
-      AreaCode = areaCode;
-      Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode); 
-      AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + "+" + Convert.ToString(areaCode);
-    }
-    public Listing(string streetName, string houseNumber,int numberOfRooms, int areaCode,  int priceOfHouse, int sizeOfHouse, int yearBuilt, string salesDate, int sqrPrice, string salesType, string propertyType)
+    
+    public Listing(string streetName, string houseNumber,int numberOfRooms, int areaCode,  int priceOfHouse, int sizeOfHouse, int yearBuilt, int sqrPrice, string propertyType)
     {
       ID = id;
       StreetName = streetName;
@@ -28,8 +21,6 @@ namespace ConsoleApplication1
       Price = priceOfHouse;
       Size = sizeOfHouse;
       YearBuilt = yearBuilt;
-      SalesDate = salesDate;
-      SalesType = salesType;
       Rooms = numberOfRooms;
       Sqrprice = sqrPrice;
       PropertyType = propertyType;
@@ -45,22 +36,7 @@ namespace ConsoleApplication1
     }
 
 
-    private string _salesType;
-
-    public string SalesType
-    {
-      get { return _salesType; }
-      set { _salesType = value; }
-    }
-
-
-    private string _salesDate;
-
-    public string SalesDate
-    {
-      get { return _salesDate; }
-      set { _salesDate = value; }
-    }
+    
 
     private int _rooms;
 
