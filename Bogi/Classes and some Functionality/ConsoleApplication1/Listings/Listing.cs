@@ -3,16 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
+using System.Data.SqlClient;
 
 namespace ConsoleApplication1
 {
   class Listing 
   {
-    private static int id = 1;
-    
-    public Listing(string streetName, string houseNumber,int numberOfRooms, int areaCode,  int priceOfHouse, int sizeOfHouse, int yearBuilt, int sqrPrice, string propertyType)
+    private static int _id = 1;
+
+    public Listing(int id, string streetName, string houseNumber, int areaCode, decimal lat, decimal lng)
     {
       ID = id;
+      StreetName = streetName;
+      HouseNumber = houseNumber;
+      AreaCode = areaCode;
+      Lat = lat;
+      Lng = lng;
+      Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode);
+      AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + "+" + Convert.ToString(areaCode) + "+" + "Denmark";
+    }
+    
+    public Listing(string streetName, string houseNumber,int numberOfRooms, int areaCode,  int priceOfHouse, int sizeOfHouse, int sqrPrice, string propertyType)
+    {
+      ID = _id;
       StreetName = streetName;
       HouseNumber = houseNumber;
       AreaCode = areaCode;
@@ -20,11 +34,11 @@ namespace ConsoleApplication1
       AddressForURL = streetName + "+" + Convert.ToString(houseNumber) + "+" + Convert.ToString(areaCode)+ "+" + "Denmark"; //used for GeoCode lookups.
       Price = priceOfHouse;
       Size = sizeOfHouse;
-      YearBuilt = yearBuilt;
+      
       Rooms = numberOfRooms;
       Sqrprice = sqrPrice;
       PropertyType = propertyType;
-      id++;
+      _id++;
     }
     #region property
     private string _propertyType;
@@ -118,38 +132,34 @@ namespace ConsoleApplication1
       private set { _size = value; }
     }
 
-    private int _yearBuilt;
+    
 
-    public int YearBuilt
-    {
-      get { return _yearBuilt; }
-      set { _yearBuilt = value; }
-    }
+    private decimal _lat;
 
-    private double _lat;
-
-    public double Lat
+    public decimal Lat
     {
       get { return _lat; }
       set { _lat = value; }
     }
 
-    private double _lng;
+    private decimal _lng;
 
-    public double Lng
+    public decimal Lng
     {
       get { return _lng; }
       set { _lng = value; }
     }
-
+    
     #endregion
 
 
-    public void GetGeoCode(double[] a)
+    public void GetGeoCode(decimal[] a)
     {
       Lat = a[0];
       Lng = a[1];
     }
+
+    
 
   }
 }

@@ -8,10 +8,11 @@ namespace ConsoleApplication1
 {
   class ListingForSale : Listing
   {
-    public ListingForSale(string streetName, string houseNumber, int numberOfRooms, int areaCode, int priceOfHouse, int sizeOfHouse, int yearBuilt, int sqrPrice, string propertyType, int demurrage) : 
-      base(streetName, houseNumber, numberOfRooms, areaCode, priceOfHouse, sizeOfHouse, yearBuilt, sqrPrice, propertyType)
+    public ListingForSale(string streetName, string houseNumber, int numberOfRooms, int areaCode, int priceOfHouse, int sizeOfHouse, int sqrPrice, string propertyType, int demurrage) : 
+      base(streetName, houseNumber, numberOfRooms, areaCode, priceOfHouse, sizeOfHouse, sqrPrice, propertyType)
     {
       Demurrage = demurrage;
+      YearBuilt = 0;
     }
 
     private int _Demurrage;
@@ -20,6 +21,14 @@ namespace ConsoleApplication1
     {
       get { return _Demurrage; }
       set { _Demurrage = value; }
+    }
+
+    private int _yearBuilt;
+
+    public int YearBuilt
+    {
+      get { return _yearBuilt; }
+      set { _yearBuilt = value; }
     }
 
   }

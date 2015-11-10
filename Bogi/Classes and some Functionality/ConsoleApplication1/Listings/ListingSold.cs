@@ -9,10 +9,11 @@ namespace ConsoleApplication1
   class ListingSold : Listing
   {
     public ListingSold(string streetName, string houseNumber, int numberOfRooms, int areaCode, int priceOfHouse, int sizeOfHouse, 
-      int yearBuilt, string salesDate, int sqrPrice, string salesType, string propertyType) : base(streetName, houseNumber, numberOfRooms, areaCode, priceOfHouse, sizeOfHouse, yearBuilt, sqrPrice, propertyType)
+      int yearBuilt, string salesDate, int sqrPrice, string salesType, string propertyType) : base(streetName, houseNumber, numberOfRooms, areaCode, priceOfHouse, sizeOfHouse, sqrPrice, propertyType)
     {   
       SalesDate = salesDate;
       SalesType = salesType;
+      YearBuilt = yearBuilt;
     }
 
     private string _salesType;
@@ -30,6 +31,14 @@ namespace ConsoleApplication1
     {
       get { return _salesDate; }
       set { _salesDate = value; }
+    }
+
+    private int _yearBuilt;
+
+    public int YearBuilt
+    {
+      get { return _yearBuilt; }
+      set { _yearBuilt = value; }
     }
   }
 }
