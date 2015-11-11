@@ -68,6 +68,8 @@ namespace P3.ViewModels
             SizeSliderHigherValue = 50;
             AreaSliderLowerValue = 100;
             AreaSliderHigherValue = 200;
+            DowntimeLowerValue = 0;
+            DowntimeHigherValue = 12;
 
 
             
@@ -107,11 +109,6 @@ namespace P3.ViewModels
             ResultsReturned = new BindableCollection<Listing>();
             ResultScreen = new ResultScreenViewModel(ResultsReturned);
         }
-
-        private void QueryDB()
-        {
-
-        }
         #endregion
 
         #region SearchWindowProperties
@@ -122,6 +119,8 @@ namespace P3.ViewModels
         private double _areaSliderHigherValue;
         private double _sizeSliderLowerValue;
         private double _sizeSliderHigherValue;
+        private double _DowntimeLowerValue;
+        private double _DowntimeHigherValue;
         #endregion
         #region SearchWindowPublicProperties
         public double PriceSliderLowerValue
@@ -212,6 +211,32 @@ namespace P3.ViewModels
             set
             {
                 _searchSettings = value;
+            }
+        }
+
+        public double DowntimeHigherValue
+        {
+            get
+            {
+                return _DowntimeHigherValue;
+            }
+
+            set
+            {
+                _DowntimeHigherValue = value;
+            }
+        }
+
+        public double DowntimeLowerValue
+        {
+            get
+            {
+                return _DowntimeLowerValue;
+            }
+
+            set
+            {
+                _DowntimeLowerValue = value;
             }
         }
         #endregion

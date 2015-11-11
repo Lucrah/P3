@@ -13,7 +13,8 @@
     <Grid Background="#FF1F1F1F">
         <Grid.RowDefinitions>
             <RowDefinition Height="688"/>
-            <RowDefinition Height="290"/>
+            <RowDefinition Height="35.333"/>
+            <RowDefinition Height="254.667"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="420"/>
@@ -23,7 +24,7 @@
         </Grid.ColumnDefinitions>
         <TextBox x:Name="SearchInput" Margin="4.5,14,1.5,0" TextWrapping="Wrap" controls:TextBoxHelper.Watermark="Indtast adresse, by, postnr..." AllowDrop="True" controls:TextBoxHelper.ClearTextButton="True" Panel.ZIndex="1" Height="26" VerticalAlignment="Top"/>
         <Button x:Name="GetResults" Content="Søg" Margin="3.5,14,5.5,0" Panel.ZIndex="1" VerticalAlignment="Top" Grid.Column="1"/>
-        <Border BorderThickness="2" Margin="0,5.833,0,70.924" Background="#FF2C2C2C" Grid.ColumnSpan="2" Grid.RowSpan="2">
+        <Border BorderThickness="2" Margin="0,5.833,0,70.924" Background="#FF2C2C2C" Grid.ColumnSpan="2" Grid.RowSpan="3">
             <Border.Effect>
                 <DropShadowEffect/>
             </Border.Effect>
@@ -76,11 +77,6 @@
                 <TextBlock x:Name="Size_Lower_Title" HorizontalAlignment="Left" Margin="10,0,0,24.001" Grid.Row="10" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="White" Width="50" Text="10 m^2"/>
                 <TextBlock x:Name="Size_Higher_Title" Margin="130,0,138,20.989" Grid.Row="10" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="White" Grid.Column="1"><Run Text="100"/><Run Text="00 m^2"/></TextBlock>
                 <TextBlock x:Name="DownTime_Title" Grid.Row="11" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Grid.Column="1" HorizontalAlignment="Left" Width="85" Text="Liggetid" Margin="0,21.644,0,19.961"/>
-                <RadioButton x:Name="LessThan3" Content="&lt; 1 Måned" Margin="10,0,0,0" Grid.Row="12" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White"/>
-                <RadioButton x:Name="radioButton_Copy" Content="1-3 Måneder" Grid.Row="12" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="White" Margin="0,0,10,0"/>
-                <RadioButton x:Name="radioButton_Copy1" Content="3-6 Måneder" Grid.Row="12" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1" Foreground="White" Margin="5,0,0,0"/>
-                <RadioButton x:Name="radioButton_Copy2" Content="6-12 Måneder" Margin="115,0,123,0" Grid.Row="12" VerticalAlignment="Top" Grid.Column="1" Foreground="White"/>
-                <RadioButton x:Name="radioButton_Copy3" Content="&gt; 12 Måneder" Margin="0,0,10,0" Grid.Row="12" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right" Foreground="White"/>
                 <TextBlock x:Name="textBlock_Copy4" Grid.Row="12" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Grid.Column="1" HorizontalAlignment="Left" Width="85" Text="Radius" Margin="0,68.373,0,42.251"/>
                 <controls:RangeSlider x:Name="RadiusSlider" Margin="13,0,138,-8.644" Grid.Row="12" Grid.ColumnSpan="2" Maximum="10000" TickPlacement="BottomRight" TickFrequency="100" IsSnapToTickEnabled="True" Height="24.006" VerticalAlignment="Bottom" LowerValue="{Binding AreaSliderLowerValue}" UpperValue="{Binding AreaSliderHigherValue}" MinRange="100" Minimum="100"/>
                 <TextBlock x:Name="AreaSliderLowerValueBox" HorizontalAlignment="Left" Margin="13,0,0,15.362" Grid.Row="12" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="White" Width="50" Text="100m"/>
@@ -93,38 +89,45 @@
                 <TextBox x:Name="SizeSliderHigherValue" Text="{Binding SizeSliderHigherValue, Mode=TwoWay}" Grid.Column="1" Margin="0,0,21.5,3.939" Grid.Row="10" TextWrapping="Wrap" Height="16" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="51.5" d:LayoutOverrides="VerticalAlignment"/>
                 <TextBox x:Name="PriceSliderHigherValue" Text="{Binding PriceSliderHigherValue, Mode=TwoWay}" Grid.Column="1" Margin="0,0,0,2.999" Grid.Row="8" TextWrapping="Wrap" Height="16" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="66"/>
                 <TextBox x:Name="AreaSliderHigherValue" Text="{Binding AreaSliderHigherValue, Mode=TwoWay}" Grid.Column="1" Margin="0,0,3,-5.076" Grid.Row="12" TextWrapping="Wrap" Height="16" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="63" d:LayoutOverrides="VerticalAlignment"/>
-                <Border BorderThickness="1" Margin="70.375,62,17.875,0" Grid.Row="13" Height="25" VerticalAlignment="Top" Background="#FF027C47">
+                <Border BorderThickness="1" Margin="10,62,78.25,0" Grid.Row="13" Height="25" VerticalAlignment="Top" Background="#FF027C47">
                     <TextBox TextWrapping="NoWrap" FontSize="9.333" Margin="60,0.25,0.25,-3.25" Background="{x:Null}" BorderBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" BorderThickness="0"/>
                 </Border>
-                <Border BorderThickness="1" Margin="70.375,92,17.875,0" Grid.Row="13" Height="25" VerticalAlignment="Top" Background="#FF027C47">
+                <Border BorderThickness="1" Margin="10,92,78.25,0" Grid.Row="13" Height="25" VerticalAlignment="Top" Background="#FF027C47">
                     <TextBox TextWrapping="NoWrap" FontSize="9.333" Margin="60,0.25,0.25,-3.25" Background="{x:Null}" BorderBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" BorderThickness="0"/>
                 </Border>
-                <TextBlock x:Name="textBlock3_Copy" TextWrapping="Wrap" Margin="74.5,67.375,78.5,193.701" FontSize="9.333" Foreground="White" Grid.Row="13"><Run Text="Min. Pr"/><Run Text="."/><Run Text=" KvM"/></TextBlock>
-                <TextBlock x:Name="textBlock3_Copy1" TextWrapping="Wrap" Margin="74.5,96.092,78.5,164.984" FontSize="9.333" Foreground="White" Grid.Row="13"><Run Text="M"/><Run Text="ax"/><Run Text=". Pr"/><Run Text="."/><Run Text=" KvM"/></TextBlock>
-                <Border BorderThickness="1" Margin="1.25,62,217,0" Grid.Row="13" Height="25" VerticalAlignment="Top" Background="#FF027C47" Grid.Column="1">
+                <TextBlock x:Name="textBlock3_Copy" TextWrapping="Wrap" Margin="14.125,67.375,138.875,193.701" FontSize="9.333" Foreground="White" Grid.Row="13"><Run Text="Min. Pr"/><Run Text="."/><Run Text=" KvM"/></TextBlock>
+                <TextBlock x:Name="textBlock3_Copy1" TextWrapping="Wrap" Margin="14.125,96.092,138.875,164.984" FontSize="9.333" Foreground="White" Grid.Row="13"><Run Text="M"/><Run Text="ax"/><Run Text=". Pr"/><Run Text="."/><Run Text=" KvM"/></TextBlock>
+                <Border BorderThickness="1" Margin="144.917,62.562,281.333,0" Grid.Row="13" Height="25" VerticalAlignment="Top" Background="#FF027C47" Grid.ColumnSpan="2">
+                    <TextBox TextWrapping="NoWrap" FontSize="9.333" Margin="71,0.25,0.25,-3.25" Background="{x:Null}" BorderBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" BorderThickness="0"/>
+                </Border>
+                <Border BorderThickness="1" Margin="144.917,92.562,281.333,0" Grid.Row="13" Height="25" VerticalAlignment="Top" Background="#FF027C47" Grid.ColumnSpan="2">
+                    <TextBox TextWrapping="NoWrap" FontSize="9.333" Margin="71.333,0.25,0.25,-3.25" Background="{x:Null}" BorderBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" BorderThickness="0"/>
+                </Border>
+                <TextBlock x:Name="textBlock3_Copy2" TextWrapping="Wrap" Margin="149.042,67.937,330.291,193.139" FontSize="9.333" Foreground="White" Grid.Row="13" Grid.ColumnSpan="2"><Run Text="Min. "/><Run Language="da-dk" Text="Grundareal"/></TextBlock>
+                <TextBlock x:Name="textBlock3_Copy3" TextWrapping="Wrap" Margin="149.042,96.654,325.624,164.422" FontSize="9.333" Foreground="White" Grid.Row="13" Grid.ColumnSpan="2"><Run Text="M"/><Run Text="ax"/><Run Text=". "/><Run Language="da-dk" Text="Grundareal"/></TextBlock>
+                <Border BorderThickness="1" Margin="64.917,62,153.333,0" Grid.Row="13" Height="25" VerticalAlignment="Top" Background="#FF027C47" Grid.Column="1">
                     <TextBox TextWrapping="NoWrap" FontSize="9.333" Margin="60,0.25,0.25,-3.25" Background="{x:Null}" BorderBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" BorderThickness="0"/>
                 </Border>
-                <Border BorderThickness="1" Margin="1.25,92,217,0" Grid.Row="13" Height="25" VerticalAlignment="Top" Background="#FF027C47" Grid.Column="1">
+                <Border BorderThickness="1" Margin="205,62,13.25,0" Grid.Row="13" Height="25" VerticalAlignment="Top" Background="#FF027C47" Grid.Column="1">
                     <TextBox TextWrapping="NoWrap" FontSize="9.333" Margin="60,0.25,0.25,-3.25" Background="{x:Null}" BorderBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" BorderThickness="0"/>
                 </Border>
-                <TextBlock x:Name="textBlock3_Copy2" TextWrapping="Wrap" Margin="5.375,67.375,277.625,193.701" FontSize="9.333" Foreground="White" Grid.Row="13" Grid.Column="1"><Run Text="Min. "/><Run Language="da-dk" Text="Areal"/></TextBlock>
-                <TextBlock x:Name="textBlock3_Copy3" TextWrapping="Wrap" Margin="5.375,96.092,277.625,164.984" FontSize="9.333" Foreground="White" Grid.Row="13" Grid.Column="1"><Run Text="M"/><Run Text="ax"/><Run Text=". "/><Run Language="da-dk" Text="Areal"/></TextBlock>
-                <Border BorderThickness="1" Margin="140.25,62,78,0" Grid.Row="13" Height="25" VerticalAlignment="Top" Background="#FF027C47" Grid.Column="1">
-                    <TextBox TextWrapping="NoWrap" FontSize="9.333" Margin="60,0.25,0.25,-3.25" Background="{x:Null}" BorderBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" BorderThickness="0"/>
-                </Border>
-                <Border BorderThickness="1" Margin="140.25,92,78,0" Grid.Row="13" Height="25" VerticalAlignment="Top" Background="#FF027C47" Grid.Column="1">
-                    <TextBox TextWrapping="NoWrap" FontSize="9.333" Margin="60,0.25,0.25,-3.25" Background="{x:Null}" BorderBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" BorderThickness="0"/>
-                </Border>
-                <TextBlock x:Name="textBlock3_Copy4" TextWrapping="Wrap" Margin="144.375,67.375,138.625,193.701" FontSize="9.333" Foreground="White" Grid.Row="13" Grid.Column="1"><Run Language="da-dk" Text="Bygge År"/></TextBlock>
-                <TextBlock x:Name="textBlock3_Copy5" TextWrapping="Wrap" Margin="144.375,96.092,138.625,164.984" FontSize="9.333" Foreground="White" Grid.Row="13" Grid.Column="1"><Run Language="da-dk" Text="Værelser"/></TextBlock>
+                <TextBlock x:Name="textBlock3_Copy4" TextWrapping="Wrap" Margin="69.042,67.375,212.708,193.701" FontSize="9.333" Foreground="White" Grid.Row="13" Grid.Column="1"><Run Language="da-dk" Text="Min bygge År"/></TextBlock>
+                <TextBlock x:Name="textBlock3_Copy5" TextWrapping="Wrap" Margin="209.125,66.092,73.875,194.984" FontSize="9.333" Foreground="White" Grid.Row="13" Grid.Column="1"><Run Language="da-dk" Text="Værelser"/></TextBlock>
                 <TextBlock x:Name="textBlock_Copy6" Grid.Row="13" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Margin="133.25,149.29,0,0" Height="29.415" VerticalAlignment="Top" HorizontalAlignment="Left" Width="234.75" Grid.ColumnSpan="2"><Run Language="da-dk" Text="Tidligere søgninger / Grafer"/></TextBlock>
                 <Button Content="Indlæs" HorizontalAlignment="Left" Margin="10,215.659,0,0" Grid.Row="13" VerticalAlignment="Top" Width="119.5" Height="4.3"/>
                 <ComboBox HorizontalAlignment="Left" Margin="10,184.658,0,0" Grid.Row="13" VerticalAlignment="Top" Width="119.5"/>
                 <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="61,185.357,0,0" Grid.Row="13" VerticalAlignment="Top" Width="75"/>
                 <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="61,215.658,0,0" Grid.Row="13" VerticalAlignment="Top" Width="75"/>
+                <Border BorderThickness="1" Margin="64.917,92,153.333,0" Grid.Row="13" Height="25" VerticalAlignment="Top" Background="#FF027C47" Grid.Column="1">
+                	<TextBox TextWrapping="NoWrap" FontSize="9.333" Margin="60,0.25,0.25,-3.25" Background="{x:Null}" BorderBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" BorderThickness="0"/>
+                </Border>
+                <TextBlock x:Name="textBlock3_Copy6" TextWrapping="Wrap" Margin="69.042,97.375,210.291,163.699" FontSize="9.333" Foreground="White" Grid.Row="13" Grid.Column="1"><Run Language="da-dk" Text="Max bygge År"/></TextBlock>
+                <controls:RangeSlider IsSnapToTickEnabled="True" HorizontalAlignment="Left" Margin="10,20.705,0,0" Grid.Row="12" VerticalAlignment="Top" Width="398" Grid.ColumnSpan="2" Maximum="600" MinRange="1" TickPlacement="BottomRight" TickFrequency="4" LowerValue="{Binding DowntimeLowerValue}" UpperValue="{Binding DowntimeHigherValue}" />
+                <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="208.5,16.705,0,0" Grid.Row="12" TextWrapping="Wrap" VerticalAlignment="Top" Width="51.5" Text="{Binding DowntimeLowerValue, Mode=TwoWay}"/>
+                <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="265,16.705,0,0" Grid.Row="12" TextWrapping="Wrap" VerticalAlignment="Top" Width="51.5" Text="{Binding DowntimeHigherValue, Mode=TwoWay}"/>
             </Grid>
         </Border>
-        <Border BorderThickness="2" Margin="10,5.833,0,70.924" IsEnabled="true" Background="#FF2C2C2C" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <Border BorderThickness="2" Margin="10,5.833,0,70.924" IsEnabled="true" Background="#FF2C2C2C" Grid.Column="2" Grid.RowSpan="3" Grid.ColumnSpan="2">
             <Border.Effect>
                 <DropShadowEffect/>
             </Border.Effect>
