@@ -11,7 +11,7 @@ namespace P3.Models
         private int _price;
         private int _radius;
         private DateTime _downTime;
-        //typer af størrelse? hektarer and shit
+        //typer af størrelse? Lav converter options somewhere maybe contextmenu
         private int _houseSize;
         private int _pricePrSqm;
         private int _yearBuilt;
@@ -23,6 +23,11 @@ namespace P3.Models
         private bool _sameRoad;
         private bool _sameZipCode;
         private bool _sameCity;
+
+        private int _minPrKvm;
+        private int _maxPrKvm;
+        private int _minGroundSize;
+        private int _maxGroundSize;
         #endregion
 
         #region Public
@@ -151,6 +156,58 @@ namespace P3.Models
             {
                 _sameCity = value;
                 NotifyOfPropertyChange(() => SameCity);
+            }
+        }
+
+        public int MinPrKvm
+        {
+            get
+            {
+                return _minPrKvm;
+            }
+
+            set
+            {
+                _minPrKvm = value;
+            }
+        }
+
+        public int MaxPrKvm
+        {
+            get
+            {
+                return _maxPrKvm;
+            }
+
+            set
+            {
+                _maxPrKvm = value;
+            }
+        }
+
+        public int MinGroundSize
+        {
+            get
+            {
+                return _minGroundSize;
+            }
+
+            set
+            {
+                _minGroundSize = value;
+            }
+        }
+
+        public int MaxGroundSize
+        {
+            get
+            {
+                return _maxGroundSize;
+            }
+
+            set
+            {
+                _maxGroundSize = value;
             }
         }
 

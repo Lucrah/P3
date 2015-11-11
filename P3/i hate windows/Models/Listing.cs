@@ -13,7 +13,6 @@ namespace P3.Models
             Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode) + " " + city;
             AddressForUrl = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode) + "+" + city;
             ListingId = Guid.NewGuid();
-            IsSelected = false;
         }
         public Listing(string streetName, int houseNumber, int areaCode, string city, int priceOfHouse, int sizeOfHouse, int yearBuilt)
         {
@@ -25,7 +24,6 @@ namespace P3.Models
             Size = sizeOfHouse;
             YearBuilt = yearBuilt;
             ListingId = Guid.NewGuid();
-            IsSelected = true;
         }
         #endregion
     public enum PropertyTypeEnum
@@ -160,6 +158,7 @@ namespace P3.Models
             set
             {
                 _IsSelected = value;
+                NotifyOfPropertyChange(() => IsSelected);
             }
         }
         #endregion

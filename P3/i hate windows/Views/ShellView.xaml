@@ -30,7 +30,7 @@
             <RowDefinition Height="83*"/>
             <RowDefinition Height="959*"/>
         </Grid.RowDefinitions>
-        <controls:MetroContentControl x:Name="ActiveItem" Background="#FF1F1F1F" MaxWidth="1920" MaxHeight="1086" d:LayoutOverrides="TopMargin, BottomMargin" Grid.Row="2" Grid.ColumnSpan="2" Margin="-4.078,0,0,0"/>
+        <controls:MetroContentControl x:Name="ActiveItem" Background="#FF1F1F1F" MaxWidth="1920" MaxHeight="1086" d:LayoutOverrides="TopMargin, BottomMargin" Grid.Row="2" Grid.ColumnSpan="2" Margin="-4.078,0,0,0" Focusable="True"/>
         <DockPanel LastChildFill="False" Background="#FF005430" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Grid.Row="1" Grid.ColumnSpan="2"/>
         <Image x:Name="image" Grid.RowSpan="2" Source="logo.png" Grid.Column="1" Margin="0,0,10,0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
     </Grid>

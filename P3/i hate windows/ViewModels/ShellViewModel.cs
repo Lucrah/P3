@@ -57,14 +57,6 @@ namespace P3.ViewModels
         {
             ActivateItem(new GraphScreenViewModel());
         }
-        //public void ShowPropertyInfo()
-        //{
-        //    ActivateItem(new PropertyInfoViewModel());
-        //}
-        public void ShowResultScreen()
-        {
-            ActivateItem(new ResultScreenViewModel());
-        }
         public void ShowSearchScreen()
         {
             ActivateItem(new SearchScreenViewModel());

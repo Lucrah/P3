@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="901.243" d:DesignWidth="1340" Height="901.243" Width="1340" VerticalAlignment="Top" HorizontalAlignment="Left">
 
-    <ListView ItemsSource="{Binding SearchResults}" Background="#FF2C2C2C" SelectedItem="{Binding SelectedSearchResult}">
+    <ListView x:Name="ResultListView" ItemsSource="{Binding SearchResults}" Background="#FF2C2C2C" SelectedItem="{Binding SelectedSearchResult}" ContextMenuService.ShowOnDisabled="True" Initialized="OnInitialize" SelectedIndex="0">
         <ListView.ItemContainerStyle>
             <Style TargetType="{x:Type ListViewItem}">
                 <Style.Triggers>
@@ -103,7 +103,7 @@
                     <GridViewColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Margin="6,2,6,2">
-                                <TextBlock Text="{Binding Long}" Foreground="#FF292828"/>
+                                <TextBlock Text="{Binding Lng}" Foreground="#FF292828"/>
                             </StackPanel>
                         </DataTemplate>
                     </GridViewColumn.CellTemplate>
@@ -119,10 +119,20 @@
                 </GridViewColumn>
                 <GridViewColumn Header="Vælg">
                     <GridViewColumn.CellTemplate>
-                        <DataTemplate/>
+                        <DataTemplate>
+                            <CheckBox Checked="Checkbox_checked"></CheckBox>
+                        </DataTemplate>
                     </GridViewColumn.CellTemplate>
                 </GridViewColumn>
             </GridView>
         </ListView.View>
+        <ListView.Resources>
+            <Style TargetType="{x:Type GridViewColumnHeader}">
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Background" Value="#FF2C2C2C"/>
+                <Setter Property="Foreground" Value="White" />
+            </Style>
+        </ListView.Resources>
     </ListView>
 </UserControl>

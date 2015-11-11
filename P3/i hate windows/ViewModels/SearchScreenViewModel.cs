@@ -18,6 +18,9 @@ namespace P3.ViewModels
         private BindableCollection<SearchSettingModel> _savedSettingsCollection;
         private string Path;
         private Screen _resultScreen;
+        private string _searchInput;
+        //bind the individual setting buttons on the view to the properties of the below model. That will keep them always in sync, so when search button is clicked, you can just use this property. SearchSettings that is.
+        private SearchSettingModel _searchSettings;
 
         #endregion
         #region Public 
@@ -59,7 +62,7 @@ namespace P3.ViewModels
         private void Initialize()
         {
             //Initialize different values here, to what their default should be on the UI
-            PriceSliderLowerValue = 500000;
+            PriceSliderLowerValue = 0;
             PriceSliderHigherValue = 800000;
             SizeSliderLowerValue = 10;
             SizeSliderHigherValue = 50;
@@ -95,7 +98,14 @@ namespace P3.ViewModels
 
         public void GetResults()
         {
-            ResultScreen = new ResultScreenViewModel();
+            BindableCollection<Listing> ResultsReturned;
+            //Call and run query functions here
+            //SearchSettings propertien indeholder de valgte settings.
+
+
+
+            ResultsReturned = new BindableCollection<Listing>();
+            ResultScreen = new ResultScreenViewModel(ResultsReturned);
         }
 
         private void QueryDB()
@@ -105,7 +115,7 @@ namespace P3.ViewModels
         #endregion
 
         #region SearchWindowProperties
-
+        //if you want to access or set a value somewhere else do it here, like in this region and the one below. NotifyOfPropertyChange takes care of updating the view with the new values when something is set.
         private double _priceSliderLowerValue;
         private double _priceSliderHigherValue;
         private double _areaSliderLowerValue;
@@ -175,6 +185,33 @@ namespace P3.ViewModels
             {
                 _sizeSliderHigherValue = value;
                 NotifyOfPropertyChange(() => SizeSliderHigherValue);
+            }
+        }
+
+        public string SearchInput
+        {
+            get
+            {
+                return _searchInput;
+            }
+
+            set
+            {
+                _searchInput = value;
+                NotifyOfPropertyChange(() => SearchInput);
+            }
+        }
+
+        internal SearchSettingModel SearchSettings
+        {
+            get
+            {
+                return _searchSettings;
+            }
+
+            set
+            {
+                _searchSettings = value;
             }
         }
         #endregion

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using P3.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,18 @@ namespace P3.Views
         private void ListViewItem_Selected(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void OnInitialize(object sender, EventArgs e)
+        {
+            ResultListView.IsEnabled = true;
+        }
+
+        private void Checkbox_checked(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkbox = sender as CheckBox;
+            Listing selectedItem = checkbox.DataContext as Listing;
+            selectedItem.IsSelected = true;
         }
     }
 }
