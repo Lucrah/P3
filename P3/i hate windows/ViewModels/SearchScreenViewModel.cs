@@ -59,6 +59,7 @@ namespace P3.ViewModels
         #endregion
 
         #region Functions
+        //Sets default values, and gets old searches.
         private void Initialize()
         {
             //Initialize different values here, to what their default should be on the UI
@@ -74,10 +75,20 @@ namespace P3.ViewModels
 
             
             Path = GetPath();
+            //Når GetSearchSettings er lavet, så uncomment det her, og det burde virke. Der er et sted mere hvor der skal uncommentes.
+            //Remind to make functionality so that no more than 10 saved settings are stored at a time.
             //SavedSettingsCollection = GetSearchSettings();
         }
+
+        //This function is supposed to look in a subfolder of the root folder (using the getpath function), find a .csv with the 10 most recent searches, 
+        //and read those into the program, to be stored in PreviousSearches, which in turn will populate the SavedSettingsCollection when it is needed. 
+        //The SearchSettings object is bound to the ui with different databindings, and will always contain either the default values of the different parameters, 
+        //Or the values currently choosen by the user.
         private BindableCollection<SearchSettingModel> GetSearchSettings()
         {
+            //Så det du skal gøre heri, er at lave en funktion der kan læse .csv filen i mappe PreviousSearches, og så gemme det den finder i PreviousSearches.
+            //Hvis du er i tvivl om hvordan man gør, så google det, eller kig i nogen af de gamle eksamensopgaver vi har lavet. Vi har haft et projekt både i c og csharp hvor der var 
+            //delopgaver der var det her på en prik :)
             BindableCollection<SearchSettingModel> PreviousSearches = new BindableCollection<SearchSettingModel>();
             //vi skal scanne data mappen i /p3/data for config filen, og så adde en til den collection lige oven over for hver vi finder.
             using (var sr = new StreamReader(File.OpenRead(Path) + "", Encoding.Default))
@@ -87,6 +98,13 @@ namespace P3.ViewModels
 
             return PreviousSearches;
         }
+
+        //This is supposed to save the current search settings to the SavedSettingsCollection
+        private void SaveSearchSettings()
+        {
+            SavedSettingsCollection.Add(SearchSettings);
+        }
+        //Gets the file path of the current directory. Might need to modify this with appendices if you want subfolders or sumthin.
         private string GetPath()
         {
             string rel_path = Directory.GetCurrentDirectory();
@@ -108,6 +126,7 @@ namespace P3.ViewModels
 
             ResultsReturned = new BindableCollection<Listing>();
             ResultScreen = new ResultScreenViewModel(ResultsReturned);
+            SaveSearchSettings();
         }
         #endregion
 
