@@ -102,7 +102,7 @@ namespace P3.ViewModels
         //This is supposed to save the current search settings to the SavedSettingsCollection
         private void SaveSearchSettings()
         {
-            SavedSettingsCollection.Add(SearchSettings);
+            //SavedSettingsCollection.Add(SearchSettings);
         }
         //Gets the file path of the current directory. Might need to modify this with appendices if you want subfolders or sumthin.
         private string GetPath()
