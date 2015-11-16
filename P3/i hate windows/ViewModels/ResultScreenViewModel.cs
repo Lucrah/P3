@@ -5,15 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using P3.Models;
+using System.ComponentModel.Composition;
 
 namespace P3.ViewModels
 {
+    [Export(typeof(ResultScreenViewModel))]
     class ResultScreenViewModel : Screen
     {
         #region ctor
-
-        public ResultScreenViewModel(BindableCollection<Listing> ReturnedSearchResults)
+        [ImportingConstructor]
+        public ResultScreenViewModel(BindableCollection<Listing> ReturnedSearchResults, IWindowManager windowManager)
         {
+            _windowManager = windowManager;
             ReturnedSearchResults = _searchResults;
             if (SearchResults != null)
             {
@@ -28,7 +31,15 @@ namespace P3.ViewModels
         //Represents the selected SearchResult. Bound in the listview, do not rename or anything like that. 
         private Listing _selectedSearchResult;
 
+        //mef stuff, allows us to open new windows of this particular type easily
+        private readonly IWindowManager _windowManager;
+
         #endregion
+
+        public void ShowPropertyInfoNewWindow(Listing Property)
+        {
+            _windowManager.ShowWindow(new PropertyInfoViewModel(Property, _windowManager));
+        }
 
         #region Public fields
 

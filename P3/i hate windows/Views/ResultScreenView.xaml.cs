@@ -38,7 +38,6 @@ namespace P3.Views
 
         private void OnInitialize(object sender, EventArgs e)
         {
-            ResultListView.IsEnabled = true;
         }
 
         private void Checkbox_checked(object sender, RoutedEventArgs e)

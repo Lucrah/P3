@@ -5,13 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using P3.Models;
+using System.ComponentModel.Composition;
 
 namespace P3.ViewModels
 {
+    [Export(typeof(PropertyInfoViewModel))]
     class PropertyInfoViewModel : Screen
     {
-        public PropertyInfoViewModel(Listing ls)
+        //MEF shit
+        private readonly IWindowManager _windowManager;
+        [ImportingConstructor]
+        public PropertyInfoViewModel(Listing ls, IWindowManager windowManager)
         {
+            _windowManager = windowManager;
             _propertyToShow = ls;
         }
         private Listing _propertyToShow;

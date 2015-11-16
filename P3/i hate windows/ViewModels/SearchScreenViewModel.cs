@@ -8,9 +8,11 @@ using Caliburn.Micro;
 using P3.Models;
 using P3.ViewModels;
 using MySql.Data.MySqlClient;
+using System.ComponentModel.Composition;
 
 namespace P3.ViewModels
 {
+    [Export(typeof(SearchScreenViewModel))]
     class SearchScreenViewModel : Conductor<object>.Collection.OneActive
     {
         #region Fields
@@ -21,6 +23,7 @@ namespace P3.ViewModels
         private string _searchInput;
         //bind the individual setting buttons on the view to the properties of the below model. That will keep them always in sync, so when search button is clicked, you can just use this property. SearchSettings that is.
         private SearchSettingModel _searchSettings;
+        private readonly IWindowManager _windowManager;
 
         #endregion
         #region Public 
@@ -51,8 +54,10 @@ namespace P3.ViewModels
 
         #region ctor/s
 
-        public SearchScreenViewModel()
+        [ImportingConstructor]
+        public SearchScreenViewModel(IWindowManager windowManager)
         {
+            _windowManager = windowManager;
             Initialize();
         }
 
@@ -125,7 +130,7 @@ namespace P3.ViewModels
 
 
             ResultsReturned = new BindableCollection<Listing>();
-            ResultScreen = new ResultScreenViewModel(ResultsReturned);
+            ResultScreen = new ResultScreenViewModel(ResultsReturned, _windowManager);
             SaveSearchSettings();
         }
         #endregion

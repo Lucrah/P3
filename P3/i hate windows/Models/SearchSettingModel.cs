@@ -7,7 +7,6 @@ namespace P3.Models
     {
         #region Fields
         //skal rettes til med flere types i listing.cs
-        private Listing.PropertyTypeEnum _propertyType;
         private int _price;
         private int _radius;
         private DateTime _downTime;
@@ -24,6 +23,13 @@ namespace P3.Models
         private bool _sameZipCode;
         private bool _sameCity;
 
+        private bool _villa;
+        private bool _fritidsEjendom;
+        private bool _liebhaverEjendom;
+        private bool _andelsBolig;
+        private bool _rækkehus;
+        private bool _nedlagtLandbrug;
+
         private int _minPrKvm;
         private int _maxPrKvm;
         private int _minGroundSize;
@@ -32,15 +38,6 @@ namespace P3.Models
 
         #region Public
 
-        public Listing.PropertyTypeEnum PropertyType
-        {
-            get { return _propertyType; }
-            set
-            {
-                _propertyType = value;
-                NotifyOfPropertyChange(() => PropertyType);
-            }
-        }
         public int Price
         {
             get { return _price; }
@@ -164,11 +161,13 @@ namespace P3.Models
             get
             {
                 return _minPrKvm;
+                
             }
 
             set
             {
                 _minPrKvm = value;
+                NotifyOfPropertyChange(() => MinPrKvm);
             }
         }
 
@@ -182,6 +181,7 @@ namespace P3.Models
             set
             {
                 _maxPrKvm = value;
+                NotifyOfPropertyChange(() => MaxPrKvm);
             }
         }
 
@@ -195,6 +195,7 @@ namespace P3.Models
             set
             {
                 _minGroundSize = value;
+                NotifyOfPropertyChange(() => MinGroundSize);
             }
         }
 
@@ -208,6 +209,91 @@ namespace P3.Models
             set
             {
                 _maxGroundSize = value;
+                NotifyOfPropertyChange(() => MaxGroundSize);
+            }
+        }
+
+        public bool Villa
+        {
+            get
+            {
+                return _villa;
+            }
+
+            set
+            {
+                _villa = value;
+                NotifyOfPropertyChange(() => Villa);
+            }
+        }
+
+        public bool FritidsEjendom
+        {
+            get
+            {
+                return _fritidsEjendom;
+            }
+
+            set
+            {
+                _fritidsEjendom = value;
+                NotifyOfPropertyChange(() => FritidsEjendom);
+            }
+        }
+
+        public bool LiebhaverEjendom
+        {
+            get
+            {
+                return _liebhaverEjendom;
+            }
+
+            set
+            {
+                _liebhaverEjendom = value;
+                NotifyOfPropertyChange(() => LiebhaverEjendom);
+            }
+        }
+
+        public bool AndelsBolig
+        {
+            get
+            {
+                return _andelsBolig;
+            }
+
+            set
+            {
+                _andelsBolig = value;
+                NotifyOfPropertyChange(() => AndelsBolig);
+            }
+        }
+
+        public bool Rækkehus
+        {
+            get
+            {
+                return _rækkehus;
+            }
+
+            set
+            {
+                _rækkehus = value;
+                NotifyOfPropertyChange(() => Rækkehus);
+            }
+        }
+
+        public bool NedlagtLandbrug
+        {
+            get
+            {
+                return _nedlagtLandbrug;
+            }
+
+            set
+            {
+                _nedlagtLandbrug = value;
+                NotifyOfPropertyChange(() => NedlagtLandbrug);
             }
         }
 

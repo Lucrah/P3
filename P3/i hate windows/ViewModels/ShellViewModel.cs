@@ -22,8 +22,8 @@ namespace P3.ViewModels
         {
             _windowManager = IoC.Get<IWindowManager>();
             _eventAggregator = IoC.Get<IEventAggregator>();
-            WindowTitle = "MæglerHelper";
-            ActivateItem(new SearchScreenViewModel());
+            WindowTitle = "MæglerHelper v0.1337";
+            ActivateItem(new SearchScreenViewModel(_windowManager));
         }
 
         #region Fields / getset
@@ -59,7 +59,7 @@ namespace P3.ViewModels
         }
         public void ShowSearchScreen()
         {
-            ActivateItem(new SearchScreenViewModel());
+            ActivateItem(new SearchScreenViewModel(_windowManager));
         }
         #endregion
     }
