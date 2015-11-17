@@ -56,7 +56,7 @@
                 <Rectangle Fill="#FF005430" Margin="0,68.373,0,-8.644" Stroke="Black" Grid.Row="12" StrokeThickness="0" Grid.ColumnSpan="2"/>
                 <Rectangle Fill="#FF005430" Margin="0,28.147,0,0" Stroke="Black" Grid.Row="13" StrokeThickness="0" Grid.ColumnSpan="2" Height="99.601" VerticalAlignment="Top"/>
                 <Rectangle Fill="#FF005430" Margin="0,0,0,25.786" Stroke="Black" Grid.Row="13" StrokeThickness="0" Height="100" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
-                <CheckBox x:Name="SearchSettings_Villa" Content=" Villa" Margin="13,0,35,5.546" Grid.Row="4" FontSize="16" Foreground="White"/>
+                <CheckBox Name="SearchSettings_Villa" Content=" Villa" Margin="13,0,35,5.546" Grid.Row="4" FontSize="16" Foreground="White"/>
                 <TextBlock x:Name="textBlock" Grid.Row="2" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Grid.Column="1" HorizontalAlignment="Left" Width="70"><Run Text="Hustype"/><LineBreak/><Run/></TextBlock>
                 <CheckBox x:Name="SearchSettings_Liebhaver" Content=" Liebhaverejendom" Margin="13,0,30,5.546" Grid.Row="5" FontSize="16" Foreground="White"/>
                 <CheckBox x:Name="SearchSettings_FritidsEjendom" Content=" Fritidsejendom" Margin="13,0,35,5.546" Grid.Row="6" FontSize="16" Foreground="White"/>
@@ -68,8 +68,8 @@
                 <TextBlock x:Name="Pris_Titel" Grid.Row="7" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Grid.Column="1" HorizontalAlignment="Left" Width="70" Margin="0,30.965,0,41.542" Text="Pris"/>
                 <TextBlock x:Name="LowerValue" HorizontalAlignment="Left" Margin="10,0,0,-0.005" Grid.Row="7" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="White" Width="50" Text="0."></TextBlock>
                 <TextBlock x:Name="HigherValue" Margin="150,80.072,138,-0.006" Grid.Row="7" TextWrapping="Wrap" Foreground="White" Grid.Column="1" Text="30 mio." d:LayoutOverrides="Height, TopMargin, BottomMargin"/>
-                <controls:RangeSlider x:Name="PriceSliderValue" Margin="10,5.002,138,0" Grid.Row="8" Grid.ColumnSpan="2" Maximum="30000000" TickPlacement="BottomRight" TickFrequency="500000" IsSnapToTickEnabled="True" LowerValue="{Binding SearchSettings_PriceSliderLowerValue}" UpperValue="{Binding SearchSettings_PriceSliderHigherValue}" MinRange="10000" Minimum="0"/>
-                <TextBox x:Name="SearchSettings_PriceSliderLowerValue" Grid.Column="1" Margin="0,0,67,2.999" Grid.Row="8" TextWrapping="Wrap" Height="16" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="66"/>
+                <controls:RangeSlider Name="PriceSlider"  Margin="10,5.002,138,0" Grid.Row="8" Grid.ColumnSpan="2" Maximum="30000000" TickPlacement="BottomRight" TickFrequency="500000" IsSnapToTickEnabled="True" LowerValue="{Binding SearchSettings_PriceSliderLowerValue}" UpperValue="{Binding SearchSettings_PriceSliderHigherValue}" MinRange="10000" Minimum="0"/>
+                <TextBox DataContext="SearchSettings" Text="{Binding PriceSliderLowerValue}" Grid.Column="1" Margin="0,0,67,2.999" Grid.Row="8" TextWrapping="Wrap" Height="16" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="66"/>
                 <CheckBox x:Name="SearchSettings_Solgt" Content="Solgt" Margin="0,30.023,64.5,41.542" Grid.Row="7" FontSize="16" Foreground="White" Grid.Column="1" HorizontalAlignment="Right" Width="65"/>
                 <CheckBox x:Name="SearchSettings_Til_Salg" Content="Til Salg" Margin="0,0,54.5,20.438" Grid.Row="7" FontSize="16" Foreground="White" Grid.Column="1" Height="24.462" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"/>
                 <TextBlock x:Name="Størrelse_Titel" Grid.Row="10" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Grid.Column="1" HorizontalAlignment="Left" Width="85" Text="Størrelse" Height="23.519" VerticalAlignment="Top"/>

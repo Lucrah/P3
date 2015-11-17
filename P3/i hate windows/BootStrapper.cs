@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using P3.Interfaces;
+using i_hate_windows.Helpers;
 
 namespace P3
 {
@@ -16,6 +17,7 @@ namespace P3
         private CompositionContainer _container;
         public BootStrapper()
         {
+            LogManager.GetLog = type => new Debugger(type);
             Initialize();
         }
 
