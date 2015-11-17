@@ -9,6 +9,7 @@ using P3.Models;
 using P3.ViewModels;
 using MySql.Data.MySqlClient;
 using System.ComponentModel.Composition;
+using P3.Helpers;
 
 namespace P3.ViewModels
 {
@@ -16,7 +17,7 @@ namespace P3.ViewModels
     class SearchScreenViewModel : Conductor<object>.Collection.OneActive
     {
         #region Fields that are not searchsettings
-
+        Funktionality func = new Funktionality();
         private BindableCollection<SearchSettingModel> _savedSettingsCollection;
         private string Path;
         private Screen _resultScreen;
@@ -33,6 +34,7 @@ namespace P3.ViewModels
         {
             _windowManager = windowManager;
             Initialize();
+            
         }
 
         #endregion
@@ -89,11 +91,10 @@ namespace P3.ViewModels
             BindableCollection<Listing> ResultsReturned;
             //Call and run query functions here
             //SearchSettings propertien indeholder de valgte settings.
-
-
-
             ResultsReturned = new BindableCollection<Listing>();
-            ResultsReturned.Add(new Listing("fuck", 1337, 1337, "homo"));
+
+            ResultsReturned = func.StaticSearch();
+            
             ResultScreen = new ResultScreenViewModel(ResultsReturned, _windowManager);
             SaveSearchSettings();
         }

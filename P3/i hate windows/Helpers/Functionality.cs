@@ -4,6 +4,7 @@ using P3.Models;
 using MySql.Data.MySqlClient;
 using Dapper;
 using System.Collections.Generic;
+using Caliburn.Micro;
 
 namespace P3.Helpers
 {
@@ -51,27 +52,35 @@ namespace P3.Helpers
             return angle * (180.0 / Math.PI);
         }
 
-<<<<<<< HEAD
 
-    ListingForSale foo = new ListingForSale("foo", "1", 1, 1, 1, 1, 1, "1", 1);
 
-  }
-=======
         static public double DegreesToRadians(double angle)
         {
             return Math.PI * angle / 180.0;
         }
         #endregion
 
-        void StaticSearch()
+        public BindableCollection<Listing> StaticSearch()
         {
-            List<IListing> list = new List<IListing>();
+            BindableCollection<Listing> Results = new BindableCollection<Listing>();
+            List<Listing> listForSale = new List<Listing>();
+            List<Listing> listSold = new List<Listing>();
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                list = connection.Query<ListingForSale>("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS sizeOfProperty, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfoforsale.Price AS price, salesinfoforsale.PriceSqr AS priceSqr, salesinfoforsale.Demurrage AS demurrage FROM address, listings, salesinfoforsale WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfoforsale.IDSalesInfoForSale").ToList();
-            }
+                listForSale = connection.Query<Listing>("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS size, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfoforsale.Price AS price, salesinfoforsale.PriceSqr AS priceSqr, salesinfoforsale.Demurrage AS demurrage FROM address, listings, salesinfoforsale WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfoforsale.IDSalesInfoForSale LIMIT 25").AsList();
+                listSold = connection.Query<Listing>("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS size, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfosold.SalesType AS salesType, salesinfosold.Price AS price, salesinfosold.PriceSqr AS priceSqr, salesinfosold.SalesDate AS salesDate FROM address, listings, salesinfosold WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfosold.IDSalesInfoSold LIMIT 25").AsList();
 
+            }
+            foreach (var ForSale in listForSale)
+            {
+                Results.Add(ForSale);
+            }
+            foreach (var Sold in listSold)
+            {
+                Results.Add(Sold);
+            }
+            return Results;
         }
     }
->>>>>>> origin/master
+
 }

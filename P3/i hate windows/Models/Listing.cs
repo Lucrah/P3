@@ -48,13 +48,8 @@ namespace P3.Models
     private int _size;
     private int _lieTime;
     private int _yearBuilt;
-<<<<<<< HEAD
     private int _id;
     private int _numberOfRooms;
-=======
-    private Guid _listingId;
-
->>>>>>> origin/master
     private int _areaCode;
     private string _streetName;
     private string _address;
@@ -149,7 +144,7 @@ namespace P3.Models
     public DateTime SalesDate
     {
         get { return _salesDate; }
-        set { _salesDate = value; NotifyOfPropertyChange; }
+        set { _salesDate = value; NotifyOfPropertyChange(); }
     }
     public string PropertyType
     {
