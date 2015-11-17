@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:P3.Views"
+        xmlns:flyouts="clr-namespace:i_hate_windows.Views.Flyouts"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
                       
@@ -20,6 +21,13 @@
         KeyDown="FullScreen"              
                       
         Title="{Binding Path=WindowTitle}" Height="1080" Width="1920" Background="{x:Null}" MinWidth="1280" MinHeight="1024">
+    <controls:MetroWindow.Flyouts>
+        <controls:FlyoutsControl>
+            <controls:Flyout Position="Left">
+                <controls:MetroContentControl x:Name="FlyoutLeftView"/>
+            </controls:Flyout>
+        </controls:FlyoutsControl>
+    </controls:MetroWindow.Flyouts>
     <Grid Background="#FF1F1F1F">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="373*"/>

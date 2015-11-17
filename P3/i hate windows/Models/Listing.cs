@@ -50,6 +50,12 @@ namespace P3.Models
     private int _yearBuilt;
     private int _id;
     private int _numberOfRooms;
+<<<<<<< HEAD
+=======
+
+    private Guid _listingId;
+
+>>>>>>> origin/master
     private int _areaCode;
     private string _streetName;
     private string _address;

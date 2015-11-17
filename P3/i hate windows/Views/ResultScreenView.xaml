@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="901.243" d:DesignWidth="1340" Height="901.243" Width="1340" VerticalAlignment="Top" HorizontalAlignment="Left">
 
-    <ListView x:Name="ResultListView" ItemsSource="{Binding SearchResults}" Background="#FF2C2C2C" SelectedItem="{Binding SelectedSearchResult}" ContextMenuService.ShowOnDisabled="True" Initialized="OnInitialize" SelectedIndex="0">
+    <ListView x:Name="ResultListView" ItemsSource="{Binding SearchResults}" Background="#FF2C2C2C" SelectedItem="{Binding SelectedSearchResult}" ContextMenuService.ShowOnDisabled="True" Initialized="OnInitialize" SelectedIndex="0" ScrollViewer.VerticalScrollBarVisibility="Visible">
         <ListView.ItemContainerStyle>
             <Style TargetType="{x:Type ListViewItem}">
                 <Style.Triggers>
@@ -19,10 +19,8 @@
             </Style>
         </ListView.ItemContainerStyle>
         <ListView.ContextMenu>
-            <ContextMenu >
-                <MenuItem Header="Vis boliginfo i nyt vindue..."
-					Command="{Binding ShowPropertyInfoNewWindow}"
-					CommandParameter="{Binding PlacementTarget.SelectedItem, RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}}"/>
+            <ContextMenu Name="cm" cal:Action.TargetWithoutContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
+                <MenuItem Header="Vis boliginfo i nyt vindue..." cal:Message.Attach="ShowPropertyInfoNewWindow($dataContext)"/>
             </ContextMenu>
         </ListView.ContextMenu>
         <ListView.View>
