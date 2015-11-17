@@ -44,8 +44,6 @@ namespace P3.Models
     private int _yearBuilt;
     private Guid _listingId;
 
-
-
     private int _areaCode;
     private string _streetName;
     private string _address;

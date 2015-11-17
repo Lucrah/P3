@@ -24,9 +24,10 @@ namespace P3.Models
         private double _priceSliderLowerValue;
         private double _priceSliderHigherValue;
 
+        //Radius around the address, not the size of the property or the house itself.
         private double _areaSliderLowerValue;
-        
         private double _areaSliderHigherValue;
+
         private double _DowntimeLowerValue;
         private double _DowntimeHigherValue;
         private double _sizeSliderLowerValue;
@@ -54,6 +55,8 @@ namespace P3.Models
         private int _maxPrKvm;
         private int _minGroundSize;
         private int _maxGroundSize;
+
+        private string _searchInput;
         #endregion
 
         #region Public
@@ -391,7 +394,19 @@ namespace P3.Models
                 NotifyOfPropertyChange(() => DowntimeHigherValue);
             }
         }
+        public string SearchInput
+        {
+            get
+            {
+                return _searchInput;
+            }
 
+            set
+            {
+                _searchInput = value;
+                NotifyOfPropertyChange(() => SearchInput);
+            }
+        }
         #endregion
 
 
