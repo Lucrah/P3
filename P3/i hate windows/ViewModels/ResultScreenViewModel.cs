@@ -36,9 +36,9 @@ namespace P3.ViewModels
 
         #endregion
 
-        public void ShowPropertyInfoNewWindow(Listing Property)
+        public void ShowPropertyInfoNewWindow()
         {
-            _windowManager.ShowWindow(new PropertyInfoViewModel(Property, _windowManager));
+            _windowManager.ShowWindow(new PropertyInfoViewModel(SelectedSearchResult, _windowManager));
         }
 
         public void PrintChoosen()

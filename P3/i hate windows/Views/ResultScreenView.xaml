@@ -19,9 +19,9 @@
             </Style>
         </ListView.ItemContainerStyle>
         <ListView.ContextMenu>
-            <ContextMenu Name="cm" cal:Action.TargetWithoutContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
+            <ContextMenu Name="cm" cal:Action.TargetWithoutContext="{Binding DataContext, RelativeSource={RelativeSource Self}}">
                 <MenuItem Header="Vis boliginfo..." />
-                <MenuItem Header="Vis boliginfo i nyt vindue..." cal:Message.Attach="ShowPropertyInfoNewWindow($dataContext)"/>
+                <MenuItem Header="Vis boliginfo i nyt vindue..." cal:Message.Attach="ShowPropertyInfoNewWindow"/>
                 <MenuItem Header="Print Valgte..." cal:Message.Attach="PrintChoosen"/>
             </ContextMenu>
         </ListView.ContextMenu>
