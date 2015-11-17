@@ -41,6 +41,11 @@ namespace P3.ViewModels
             _windowManager.ShowWindow(new PropertyInfoViewModel(Property, _windowManager));
         }
 
+        public void PrintChoosen()
+        {
+            //implement pls
+        }
+
         #region Public fields
 
         //Has to be bindableCollection, del af caliburn
