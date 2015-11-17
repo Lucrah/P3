@@ -109,7 +109,7 @@ namespace P3.ViewModels
         #region SearchWindowPublicProperties
 
 
-        internal SearchSettingModel SearchSettings
+        public SearchSettingModel SearchSettings
         {
             get
             {

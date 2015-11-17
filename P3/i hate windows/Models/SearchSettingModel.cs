@@ -16,7 +16,6 @@ namespace P3.Models
             AreaSliderHigherValue = 200;
             DowntimeLowerValue = 0;
             DowntimeHigherValue = 12;
-            Villa = true;
         }
         #region Fields
 
@@ -28,8 +27,8 @@ namespace P3.Models
         private double _areaSliderLowerValue;
         private double _areaSliderHigherValue;
 
-        private double _DowntimeLowerValue;
-        private double _DowntimeHigherValue;
+        private double _downtimeLowerValue;
+        private double _downtimeHigherValue;
         private double _sizeSliderLowerValue;
         private double _sizeSliderHigherValue;
 
@@ -241,7 +240,7 @@ namespace P3.Models
             }
         }
 
-        public bool AndelsBolig
+        public bool Andelsbolig
         {
             get
             {
@@ -251,7 +250,7 @@ namespace P3.Models
             set
             {
                 _andelsBolig = value;
-                NotifyOfPropertyChange(() => AndelsBolig);
+                NotifyOfPropertyChange(() => Andelsbolig);
             }
         }
 
@@ -366,34 +365,6 @@ namespace P3.Models
                 NotifyOfPropertyChange(() => SizeSliderHigherValue);
             }
         }
-
-        public double DowntimeLowerValue
-        {
-            get
-            {
-                return _DowntimeLowerValue;
-            }
-
-            set
-            {
-                _DowntimeLowerValue = value;
-                NotifyOfPropertyChange(() => DowntimeLowerValue);
-            }
-        }
-
-        public double DowntimeHigherValue
-        {
-            get
-            {
-                return _DowntimeHigherValue;
-            }
-
-            set
-            {
-                _DowntimeHigherValue = value;
-                NotifyOfPropertyChange(() => DowntimeHigherValue);
-            }
-        }
         public string SearchInput
         {
             get
@@ -405,6 +376,34 @@ namespace P3.Models
             {
                 _searchInput = value;
                 NotifyOfPropertyChange(() => SearchInput);
+            }
+        }
+
+        public double DowntimeLowerValue
+        {
+            get
+            {
+                return _downtimeLowerValue;
+            }
+
+            set
+            {
+                _downtimeLowerValue = value;
+                NotifyOfPropertyChange(() => DowntimeLowerValue);
+            }
+        }
+
+        public double DowntimeHigherValue
+        {
+            get
+            {
+                return _downtimeHigherValue;
+            }
+
+            set
+            {
+                _downtimeHigherValue = value;
+                NotifyOfPropertyChange(() => DowntimeHigherValue);
             }
         }
         #endregion

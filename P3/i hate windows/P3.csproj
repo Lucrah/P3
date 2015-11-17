@@ -111,11 +111,15 @@
     <Compile Include="Helpers\Import.cs" />
     <Compile Include="Models\Listing.cs" />
     <Compile Include="Models\SearchSettingModel.cs" />
+    <Compile Include="ViewModels\FlyoutViewModels\FlyoutLeftViewModel.cs" />
     <Compile Include="ViewModels\GraphScreenViewModel.cs" />
     <Compile Include="ViewModels\PropertyInfoViewModel.cs" />
     <Compile Include="ViewModels\ResultScreenViewModel.cs" />
     <Compile Include="ViewModels\SearchScreenViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="Views\Flyouts\FlyoutLeftView.xaml.cs">
+      <DependentUpon>FlyoutLeftView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PropertyInfoView.xaml.cs">
       <DependentUpon>PropertyInfoView.xaml</DependentUpon>
     </Compile>
@@ -164,6 +168,10 @@
     <Page Include="Simple Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Flyouts\FlyoutLeftView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PropertyInfoView.xaml">
       <Generator>MSBuild:Compile</Generator>
