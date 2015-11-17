@@ -17,7 +17,7 @@ namespace P3.ViewModels
         public ResultScreenViewModel(BindableCollection<Listing> ReturnedSearchResults, IWindowManager windowManager)
         {
             _windowManager = windowManager;
-            ReturnedSearchResults = _searchResults;
+            SearchResults = ReturnedSearchResults;
             if (SearchResults != null)
             {
                 SelectedSearchResult = SearchResults[0];

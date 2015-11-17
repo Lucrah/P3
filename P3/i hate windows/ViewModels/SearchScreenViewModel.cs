@@ -130,6 +130,7 @@ namespace P3.ViewModels
 
 
             ResultsReturned = new BindableCollection<Listing>();
+            ResultsReturned.Add(new Listing("fuck", 1337, 1337, "homo"));
             ResultScreen = new ResultScreenViewModel(ResultsReturned, _windowManager);
             SaveSearchSettings();
         }
