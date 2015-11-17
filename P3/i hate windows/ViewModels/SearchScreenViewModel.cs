@@ -15,43 +15,17 @@ namespace P3.ViewModels
     [Export(typeof(SearchScreenViewModel))]
     class SearchScreenViewModel : Conductor<object>.Collection.OneActive
     {
-        #region Fields
+        #region Fields that are not searchsettings
 
         private BindableCollection<SearchSettingModel> _savedSettingsCollection;
         private string Path;
         private Screen _resultScreen;
-        private string _searchInput;
         //bind the individual setting buttons on the view to the properties of the below model. That will keep them always in sync, so when search button is clicked, you can just use this property. SearchSettings that is.
         private SearchSettingModel _searchSettings;
+        //mef stuff
         private readonly IWindowManager _windowManager;
 
         #endregion
-        #region Public 
-
-        public Screen ResultScreen
-        {
-            get { return _resultScreen; }
-            set
-            {
-                _resultScreen = value;
-                NotifyOfPropertyChange(() => ResultScreen);
-            }
-        }
-        public BindableCollection<SearchSettingModel> SavedSettingsCollection
-        {
-            get { return _savedSettingsCollection; }
-            set
-            {
-                _savedSettingsCollection = value;
-                NotifyOfPropertyChange(() => SavedSettingsCollection);
-            }
-
-        }
-
-        
-
-        #endregion
-
         #region ctor/s
 
         [ImportingConstructor]
@@ -67,6 +41,7 @@ namespace P3.ViewModels
         //Sets default values, and gets old searches.
         private void Initialize()
         {
+            SearchSettings = new SearchSettingModel();
             Path = GetPath();
             //Når GetSearchSettings er lavet, så uncomment det her, og det burde virke. Der er et sted mere hvor der skal uncommentes.
             //Remind to make functionality so that no more than 10 saved settings are stored at a time.
@@ -132,19 +107,7 @@ namespace P3.ViewModels
 
         #endregion
         #region SearchWindowPublicProperties
-        public string SearchInput
-        {
-            get
-            {
-                return _searchInput;
-            }
 
-            set
-            {
-                _searchInput = value;
-                NotifyOfPropertyChange(() => SearchInput);
-            }
-        }
 
         internal SearchSettingModel SearchSettings
         {
@@ -153,11 +116,32 @@ namespace P3.ViewModels
                 return _searchSettings;
             }
 
-            set
+            private set
             {
                 _searchSettings = value;
+                NotifyOfPropertyChange(()=>SearchSettings);
             }
         }
         #endregion
+
+        public Screen ResultScreen
+        {
+            get { return _resultScreen; }
+            set
+            {
+                _resultScreen = value;
+                NotifyOfPropertyChange(() => ResultScreen);
+            }
+        }
+        public BindableCollection<SearchSettingModel> SavedSettingsCollection
+        {
+            get { return _savedSettingsCollection; }
+            set
+            {
+                _savedSettingsCollection = value;
+                NotifyOfPropertyChange(() => SavedSettingsCollection);
+            }
+
+        }
     }
 }
