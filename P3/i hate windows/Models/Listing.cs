@@ -6,50 +6,57 @@ namespace P3.Models
   public class Listing : PropertyChangedBase
   {
     #region Ctors
-        public Listing(string streetName, int houseNumber, int areaCode, string city)
+        public Listing(int id, string streetName, string houseNumber, int areaCode, string propertyType, int size, int numberOfRooms, int yearBuilt, int price, int priceSqr, int demurrage)
         {
+            ID = id;
             StreetName = streetName;
             AreaCode = areaCode;
-            Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode) + " " + city;
-            AddressForUrl = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode) + "+" + city;
-            ListingId = Guid.NewGuid();
-        }
-        public Listing(string streetName, int houseNumber, int areaCode, string city, int priceOfHouse, int sizeOfHouse, int yearBuilt)
-        {
-            StreetName = streetName;
-            AreaCode = areaCode;
-            Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode) + " " + city;
-            AddressForUrl = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode) + "+" + city; //used for GeoCode lookups.
-            Price = priceOfHouse;
-            Size = sizeOfHouse;
+            Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode);
+            AddressForUrl = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode);
+            HouseNumber = houseNumber;
+            PropertyType = propertyType;
+            Size = size;
+            NumberOfRooms = numberOfRooms;
             YearBuilt = yearBuilt;
-            ListingId = Guid.NewGuid();
+            Price = price;
+            PriceSqr = priceSqr;
+            Demurrage = demurrage;
         }
-        #endregion
-    public enum PropertyTypeEnum
-    {
-      Villa = 0,
-      Fritidsejendom = 1,
-      Liebhaveejendom = 2,
-      Andelsbolig = 3,
-      Rækkehus = 4,
-      NedlagtLandbrug = 5                  
-    };
-    #region property
-    private PropertyTypeEnum _propertyType;
+        public Listing(int id, string streetName, string houseNumber, int areaCode, string propertyType, int size, int numberOfRooms, int yearBuilt, string salesType, int price, int priceSqr, DateTime salesDate)
+        {
+            ID = id;
+            StreetName = streetName;
+            AreaCode = areaCode;
+            Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode);
+            AddressForUrl = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode);
+            HouseNumber = houseNumber;
+            PropertyType = propertyType;
+            Size = size;
+            NumberOfRooms = numberOfRooms;
+            YearBuilt = yearBuilt;
+            SalesType = salesType;
+            Price = price;
+            PriceSqr = priceSqr;
+            SalesDate = salesDate;
+        }
+
+    private string _propertyType;
+    private string _houseNumber;
     private int _price;
+    private int _priceSqr;
     private bool _forSale;
     private int _size;
     private int _lieTime;
     private int _yearBuilt;
-    private Guid _listingId;
-
-
-
+    private int _id;
+    private int _numberOfRooms;
     private int _areaCode;
     private string _streetName;
     private string _address;
     private string _addressForUrl;
+    private int _demurrage;
+    private string _salesType;
+    private DateTime _salesDate;
 
     private double _lat;
     private double _lng;
@@ -58,10 +65,16 @@ namespace P3.Models
 
 
 
-    public Guid ListingId
+    public int ID
     {
-      get { return _listingId; }
-      set { _listingId = value; NotifyOfPropertyChange(); }
+      get { return _id; }
+      set { _id = value; NotifyOfPropertyChange(); }
+    }
+
+    public string HouseNumber
+    {
+      get {return _houseNumber; }
+      set {_houseNumber = value; NotifyOfPropertyChange(); }
     }
     public double Lat
     {
@@ -98,6 +111,11 @@ namespace P3.Models
       get { return _price; }
       private set { _price = value; NotifyOfPropertyChange(); }
     }
+    public int PriceSqr
+    {
+        get { return _priceSqr; }
+        set { _priceSqr = value; NotifyOfPropertyChange(); }
+    }
     public int Size
     {
       get { return _size; }
@@ -108,7 +126,27 @@ namespace P3.Models
       get { return _yearBuilt; }
       set { _yearBuilt = value; NotifyOfPropertyChange(); }
     }
-    public PropertyTypeEnum PropertyType
+    public int NumberOfRooms
+    {
+        get { return _numberOfRooms; }
+        set { _numberOfRooms = value; NotifyOfPropertyChange(); }
+    }
+    public int Demurrage
+    {
+        get { return _demurrage; }
+        set { _demurrage = value; NotifyOfPropertyChange(); }
+    }
+    public string SalesType
+    {
+        get { return _salesType; }
+        set { _salesType = value; NotifyOfPropertyChange(); }
+    }
+    public DateTime SalesDate
+    {
+        get { return _salesDate; }
+        set { _salesDate = value; NotifyOfPropertyChange; }
+    }
+    public string PropertyType
     {
         get
         {

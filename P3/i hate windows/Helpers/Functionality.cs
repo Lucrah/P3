@@ -53,5 +53,8 @@ namespace P3.Helpers
     #endregion
 
 
+
+    ListingForSale foo = new ListingForSale("foo", "1", 1, 1, 1, 1, 1, "1", 1);
+
   }
 }
