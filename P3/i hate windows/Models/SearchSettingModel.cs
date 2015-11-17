@@ -5,13 +5,33 @@ namespace P3.Models
 {
     class SearchSettingModel : PropertyChangedBase
     {
+        public SearchSettingModel()
+        {
+            //Initial values for the searchSettings here. Moved from searchscreenviemodel to here bcs clarity and, bcs assemble all options 1 place.
+            PriceSliderLowerValue = 0;
+            PriceSliderHigherValue = 800000;
+            SizeSliderLowerValue = 10;
+            SizeSliderHigherValue = 50;
+            AreaSliderLowerValue = 100;
+            AreaSliderHigherValue = 200;
+            DowntimeLowerValue = 0;
+            DowntimeHigherValue = 12;
+            Villa = true;
+        }
         #region Fields
-        //skal rettes til med flere types i listing.cs
-        private int _price;
-        private int _radius;
-        private DateTime _downTime;
-        //typer af størrelse? Lav converter options somewhere maybe contextmenu
-        private int _houseSize;
+
+        //slider values
+        private double _priceSliderLowerValue;
+        private double _priceSliderHigherValue;
+
+        private double _areaSliderLowerValue;
+        
+        private double _areaSliderHigherValue;
+        private double _DowntimeLowerValue;
+        private double _DowntimeHigherValue;
+        private double _sizeSliderLowerValue;
+        private double _sizeSliderHigherValue;
+
         private int _pricePrSqm;
         private int _yearBuilt;
         private int _roomCount;
@@ -37,43 +57,6 @@ namespace P3.Models
         #endregion
 
         #region Public
-
-        public int Price
-        {
-            get { return _price; }
-            set
-            {
-                _price = value;
-                NotifyOfPropertyChange(() => Price);
-            }
-        }
-        public int Radius
-        {
-            get { return _radius; }
-            set
-            {
-                _radius = value;
-                NotifyOfPropertyChange(() => Radius);
-            }
-        }
-        public DateTime DownTime
-        {
-            get { return _downTime; }
-            set
-            {
-                _downTime = value;
-                NotifyOfPropertyChange(() => DownTime);
-            }
-        }
-        public int HouseSize
-        {
-            get { return _houseSize; }
-            set
-            {
-                _houseSize = value;
-                NotifyOfPropertyChange(() => HouseSize);
-            }
-        }
         public int PricePrSqm
         {
             get { return _pricePrSqm; }
@@ -294,6 +277,118 @@ namespace P3.Models
             {
                 _nedlagtLandbrug = value;
                 NotifyOfPropertyChange(() => NedlagtLandbrug);
+            }
+        }
+
+        public double PriceSliderLowerValue
+        {
+            get
+            {
+                return _priceSliderLowerValue;
+            }
+
+            set
+            {
+                _priceSliderLowerValue = value;
+                NotifyOfPropertyChange(() => PriceSliderLowerValue);
+            }
+        }
+
+        public double PriceSliderHigherValue
+        {
+            get
+            {
+                return _priceSliderHigherValue;
+            }
+
+            set
+            {
+                _priceSliderHigherValue = value;
+                NotifyOfPropertyChange(() => PriceSliderHigherValue);
+            }
+        }
+
+        public double AreaSliderLowerValue
+        {
+            get
+            {
+                return _areaSliderLowerValue;
+            }
+
+            set
+            {
+                _areaSliderLowerValue = value;
+                NotifyOfPropertyChange(() => AreaSliderLowerValue);
+            }
+        }
+
+        public double AreaSliderHigherValue
+        {
+            get
+            {
+                return _areaSliderHigherValue;
+            }
+
+            set
+            {
+                _areaSliderHigherValue = value;
+                NotifyOfPropertyChange(() => AreaSliderHigherValue);
+            }
+        }
+
+        public double SizeSliderLowerValue
+        {
+            get
+            {
+                return _sizeSliderLowerValue;
+            }
+
+            set
+            {
+                _sizeSliderLowerValue = value;
+                NotifyOfPropertyChange(() => SizeSliderLowerValue);
+            }
+        }
+
+        public double SizeSliderHigherValue
+        {
+            get
+            {
+                return _sizeSliderHigherValue;
+            }
+
+            set
+            {
+                _sizeSliderHigherValue = value;
+                NotifyOfPropertyChange(() => SizeSliderHigherValue);
+            }
+        }
+
+        public double DowntimeLowerValue
+        {
+            get
+            {
+                return _DowntimeLowerValue;
+            }
+
+            set
+            {
+                _DowntimeLowerValue = value;
+                NotifyOfPropertyChange(() => DowntimeLowerValue);
+            }
+        }
+
+        public double DowntimeHigherValue
+        {
+            get
+            {
+                return _DowntimeHigherValue;
+            }
+
+            set
+            {
+                _DowntimeHigherValue = value;
+                NotifyOfPropertyChange(() => DowntimeHigherValue);
             }
         }
 

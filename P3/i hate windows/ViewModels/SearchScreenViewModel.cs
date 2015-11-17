@@ -67,18 +67,6 @@ namespace P3.ViewModels
         //Sets default values, and gets old searches.
         private void Initialize()
         {
-            //Initialize different values here, to what their default should be on the UI
-            PriceSliderLowerValue = 0;
-            PriceSliderHigherValue = 800000;
-            SizeSliderLowerValue = 10;
-            SizeSliderHigherValue = 50;
-            AreaSliderLowerValue = 100;
-            AreaSliderHigherValue = 200;
-            DowntimeLowerValue = 0;
-            DowntimeHigherValue = 12;
-
-
-            
             Path = GetPath();
             //Når GetSearchSettings er lavet, så uncomment det her, og det burde virke. Der er et sted mere hvor der skal uncommentes.
             //Remind to make functionality so that no more than 10 saved settings are stored at a time.
@@ -138,80 +126,12 @@ namespace P3.ViewModels
 
         #region SearchWindowProperties
         //if you want to access or set a value somewhere else do it here, like in this region and the one below. NotifyOfPropertyChange takes care of updating the view with the new values when something is set.
-        private double _priceSliderLowerValue;
-        private double _priceSliderHigherValue;
-        private double _areaSliderLowerValue;
-        private double _areaSliderHigherValue;
-        private double _sizeSliderLowerValue;
-        private double _sizeSliderHigherValue;
-        private double _DowntimeLowerValue;
-        private double _DowntimeHigherValue;
+
+
+
+
         #endregion
         #region SearchWindowPublicProperties
-        public double PriceSliderLowerValue
-        {
-            get { return _priceSliderLowerValue; }
-            set
-            {
-                _priceSliderLowerValue = value;
-                NotifyOfPropertyChange(() => PriceSliderLowerValue);
-            }
-        }
-
-        public double PriceSliderHigherValue
-        {
-            get
-            {
-                return _priceSliderHigherValue;
-            }
-
-            set
-            {
-                _priceSliderHigherValue = value;
-                NotifyOfPropertyChange(() => PriceSliderHigherValue);
-            }
-        }
-
-        public double AreaSliderLowerValue
-        {
-            get { return _areaSliderLowerValue; }
-            set
-            {
-                _areaSliderLowerValue = value;
-                NotifyOfPropertyChange(() => AreaSliderLowerValue);
-            }
-        }
-
-        public double AreaSliderHigherValue
-        {
-            get { return _areaSliderHigherValue; }
-            set
-            {
-                _areaSliderHigherValue = value; 
-                NotifyOfPropertyChange(() => AreaSliderHigherValue);
-            }
-        }
-
-        public double SizeSliderLowerValue
-        {
-            get { return _sizeSliderLowerValue; }
-            set
-            {
-                _sizeSliderLowerValue = value;
-                NotifyOfPropertyChange(()=> SizeSliderLowerValue);
-            }
-        }
-
-        public double SizeSliderHigherValue
-        {
-            get { return _sizeSliderHigherValue; }
-            set
-            {
-                _sizeSliderHigherValue = value;
-                NotifyOfPropertyChange(() => SizeSliderHigherValue);
-            }
-        }
-
         public string SearchInput
         {
             get
@@ -236,32 +156,6 @@ namespace P3.ViewModels
             set
             {
                 _searchSettings = value;
-            }
-        }
-
-        public double DowntimeHigherValue
-        {
-            get
-            {
-                return _DowntimeHigherValue;
-            }
-
-            set
-            {
-                _DowntimeHigherValue = value;
-            }
-        }
-
-        public double DowntimeLowerValue
-        {
-            get
-            {
-                return _DowntimeLowerValue;
-            }
-
-            set
-            {
-                _DowntimeLowerValue = value;
             }
         }
         #endregion
