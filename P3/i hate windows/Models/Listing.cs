@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Caliburn.Micro;
 
 namespace P3.Models
@@ -224,9 +225,33 @@ namespace P3.Models
 
         }
         public override string ToString()
-    {
-        return Address + ", " + AreaCode + ", " + Price + ", " + Size + ", " + YearBuilt;
-    }
-    #endregion
-    }
+        {
+            return Address + ", " + AreaCode + ", " + Price + ", " + Size + ", " + YearBuilt;
+        }
+        #endregion
+
+      public string ZipCodeChecker(string zipCode)
+      {
+        string district = "";
+        string[,] zipCodeMatrix = new string[19,2]
+        {
+          {"Aalborg", "9000"}, {"Aalborg (Postboks)", "9100"}, {"Aalborg SV", "9200"}, {"Aalborg SØ", "9210"},
+          {"Aalborg Øst", "9220"}, {"Svenstrup J", "9230"}, {"Nibe", "9240"}, {"Gistrup", "9260"},
+          {"Klarup", "9270"}, {"Storvorde", "9280"}, {"Kongerslev", "9293"}, {"Vodskov", "9310"},
+          {"Gandrup", "9362"}, {"Hals", "9370"}, {"Vestbjerg", "9380"}, {"Sulsted", "9381"}, {"Tylstrup", "9382"},
+          {"Nørresundby", "9400"}, {"Vadum", "9430"}
+        };
+        for (int i = 0; i < 18; ++i)
+        {
+          if (zipCode == zipCodeMatrix[i, 1])
+          {
+            return district;
+          }
+        }
+        district = "Postnummeret findes ikke";
+        return district;
+      }
+  }
+
+
 }
