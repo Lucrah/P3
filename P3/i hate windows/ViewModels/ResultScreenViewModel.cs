@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Caliburn.Micro;
 using P3.Models;
 using System.ComponentModel.Composition;
+using i_hate_windows.Helpers;
 
 namespace P3.ViewModels
 {
@@ -14,7 +15,7 @@ namespace P3.ViewModels
     {
         #region ctor
         [ImportingConstructor]
-        public ResultScreenViewModel(BindableCollection<Listing> ReturnedSearchResults, IWindowManager windowManager)
+        public ResultScreenViewModel(BindableCollection<Listing> ReturnedSearchResults, IWindowManager windowManager, IEventAggregator eventaggregator)
         {
             _windowManager = windowManager;
             SearchResults = ReturnedSearchResults;
@@ -22,6 +23,8 @@ namespace P3.ViewModels
             {
                 SelectedSearchResult = SearchResults[0];
             }
+            _eventAggregator = eventaggregator;
+
 
         }
         #endregion
@@ -30,15 +33,21 @@ namespace P3.ViewModels
         private BindableCollection<Listing> _searchResults;
         //Represents the selected SearchResult. Bound in the listview, do not rename or anything like that. 
         private Listing _selectedSearchResult;
-
         //mef stuff, allows us to open new windows of this particular type easily
         private readonly IWindowManager _windowManager;
+        //EventAggregator, publish events to this to communicate between views.
+        private IEventAggregator _eventAggregator;
 
         #endregion
 
         public void ShowPropertyInfoNewWindow()
         {
             _windowManager.ShowWindow(new PropertyInfoViewModel(SelectedSearchResult, _windowManager));
+        }
+
+        public void ShowPropertyInfoFlyout()
+        {
+            _eventAggregator.PublishOnUIThread(new OpenFlyoutMessage(true, SelectedSearchResult));
         }
 
         public void PrintChoosen()
@@ -68,13 +77,6 @@ namespace P3.ViewModels
                 NotifyOfPropertyChange(() => SelectedSearchResult);
             }
         }
-
-        public void ShowPropertyInfo(Listing SelectedItem)
-        {
-            //Activate some kind of new window? or maybe make a flyout
-            //Maybe make this class a conductor and do it like that?
-        }
-
         #endregion
 
     }

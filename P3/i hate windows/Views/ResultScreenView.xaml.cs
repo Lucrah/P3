@@ -1,4 +1,5 @@
-﻿using P3.Models;
+﻿using MahApps.Metro.Controls;
+using P3.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

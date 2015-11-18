@@ -20,26 +20,30 @@
         
         KeyDown="FullScreen"              
                       
-        Title="{Binding Path=WindowTitle}" Height="1080" Width="1920" Background="{x:Null}" MinWidth="1280" MinHeight="1024">
+        Title="{Binding Path=WindowTitle}" Height="1080" Width="1920" Background="{x:Null}" MinWidth="1280" MinHeight="1024" AllowsTransparency="True">
     <controls:MetroWindow.Flyouts>
         <controls:FlyoutsControl>
-            <controls:Flyout Position="Left">
-                <controls:MetroContentControl x:Name="FlyoutLeftView"/>
+            <controls:Flyout Name="FlyoutView" Position="Left" IsOpen="{Binding Path=IsFlyoutOpen}" >
+                <controls:Flyout.Background>
+                    <SolidColorBrush Color="#FF1F1F1F" Opacity="0.7"></SolidColorBrush>
+                </controls:Flyout.Background>
+                <flyouts:FlyoutLeftView Initialized="OnInitialize"/>
             </controls:Flyout>
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>
     <Grid Background="#FF1F1F1F">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="373*"/>
-            <ColumnDefinition Width="105*"/>
+            <ColumnDefinition Width="435*"/>
+            <ColumnDefinition Width="311*"/>
+            <ColumnDefinition Width="210*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="8*"/>
             <RowDefinition Height="83*"/>
             <RowDefinition Height="959*"/>
         </Grid.RowDefinitions>
-        <controls:MetroContentControl x:Name="ActiveItem" Background="#FF1F1F1F" MaxWidth="1920" MaxHeight="1086" d:LayoutOverrides="TopMargin, BottomMargin" Grid.Row="2" Grid.ColumnSpan="2" Margin="-4.078,0,0,0" Focusable="True"/>
-        <DockPanel LastChildFill="False" Background="#FF005430" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Grid.Row="1" Grid.ColumnSpan="2"/>
-        <Image x:Name="image" Grid.RowSpan="2" Source="logo.png" Grid.Column="1" Margin="0,0,10,0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
+        <controls:MetroContentControl x:Name="ActiveItem" Background="#FF1F1F1F" MaxWidth="1920" MaxHeight="1086" d:LayoutOverrides="TopMargin, BottomMargin" Grid.Row="2" Grid.ColumnSpan="3" Margin="-4.078,0,0,0" Focusable="True"/>
+        <DockPanel LastChildFill="False" Background="#FF005430" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Grid.Row="1" Grid.ColumnSpan="3"/>
+        <Image x:Name="image" Grid.RowSpan="2" Source="logo.png" Grid.Column="2" Margin="0,0,10,0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
     </Grid>
 </controls:MetroWindow>

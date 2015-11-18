@@ -6,11 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using P3.Interfaces;
+using i_hate_windows.Helpers;
+using P3.Models;
 
 namespace P3.ViewModels
 {
     [Export(typeof (IShell))]
-    class ShellViewModel : Conductor<object>.Collection.OneActive, IShell
+    class ShellViewModel : Conductor<object>.Collection.OneActive, IShell, IHandle<OpenFlyoutMessage>
     {
         #region IOC Fields
         private readonly IEventAggregator _eventAggregator;
@@ -23,12 +25,14 @@ namespace P3.ViewModels
             _windowManager = IoC.Get<IWindowManager>();
             _eventAggregator = IoC.Get<IEventAggregator>();
             WindowTitle = "MæglerHelper v0.1337";
-            ActivateItem(new SearchScreenViewModel(_windowManager));
+            ActivateItem(new SearchScreenViewModel(_windowManager, _eventAggregator));
+            _eventAggregator.Subscribe(this);
         }
 
         #region Fields / getset
 
         private string _windowTitle;
+        private bool isFlyoutOpen;
 
         public string WindowTitle
         {
@@ -44,8 +48,31 @@ namespace P3.ViewModels
             }
         }
 
-        #endregion
+        public bool IsFlyoutOpen
+        {
+            get
+            {
+                return isFlyoutOpen;
+            }
 
+            set
+            {
+                isFlyoutOpen = value;
+                NotifyOfPropertyChange(() => IsFlyoutOpen);
+            }
+        }
+
+        #endregion
+        #region HandleEvents
+        //this  whole ordeal is very badly named i know. make me fix.
+        public void Handle(OpenFlyoutMessage message)
+        {
+            if (!IsFlyoutOpen)
+            {
+                IsFlyoutOpen = message.IsOpen;
+            }
+        }
+        #endregion
         #region NavigateFunctions
         /*Shows how to display an item(in this case a usercontrol)
          *you then do something like this on a button:
@@ -59,7 +86,7 @@ namespace P3.ViewModels
         }
         public void ShowSearchScreen()
         {
-            ActivateItem(new SearchScreenViewModel(_windowManager));
+            ActivateItem(new SearchScreenViewModel(_windowManager, _eventAggregator));
         }
         #endregion
     }

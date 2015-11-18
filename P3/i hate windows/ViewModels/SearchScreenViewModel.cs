@@ -18,11 +18,12 @@ namespace P3.ViewModels
     {
         #region Fields that are not searchsettings
         Funktionality func = new Funktionality();
+
         private BindableCollection<SearchSettingModel> _savedSettingsCollection;
         private string Path;
         private Screen _resultScreen;
-        //bind the individual setting buttons on the view to the properties of the below model. That will keep them always in sync, so when search button is clicked, you can just use this property. SearchSettings that is.
         private SearchSettingModel _searchSettings;
+        private IEventAggregator _eventAggregator;
         //mef stuff
         private readonly IWindowManager _windowManager;
 
@@ -30,8 +31,9 @@ namespace P3.ViewModels
         #region ctor/s
 
         [ImportingConstructor]
-        public SearchScreenViewModel(IWindowManager windowManager)
+        public SearchScreenViewModel(IWindowManager windowManager, IEventAggregator eventaggregator)
         {
+            _eventAggregator = eventaggregator;
             _windowManager = windowManager;
             Initialize();
             
@@ -95,21 +97,10 @@ namespace P3.ViewModels
 
             ResultsReturned = func.StaticSearch();
             
-            ResultScreen = new ResultScreenViewModel(ResultsReturned, _windowManager);
+            ResultScreen = new ResultScreenViewModel(ResultsReturned, _windowManager, _eventAggregator);
             SaveSearchSettings();
         }
         #endregion
-
-        #region SearchWindowProperties
-        //if you want to access or set a value somewhere else do it here, like in this region and the one below. NotifyOfPropertyChange takes care of updating the view with the new values when something is set.
-
-
-
-
-        #endregion
-        #region SearchWindowPublicProperties
-
-
         public SearchSettingModel SearchSettings
         {
             get
@@ -123,8 +114,6 @@ namespace P3.ViewModels
                 NotifyOfPropertyChange(()=>SearchSettings);
             }
         }
-        #endregion
-
         public Screen ResultScreen
         {
             get { return _resultScreen; }

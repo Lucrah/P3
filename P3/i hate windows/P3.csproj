@@ -113,6 +113,7 @@
     <Compile Include="Helpers\Debugger.cs" />
     <Compile Include="Helpers\Functionality.cs" />
     <Compile Include="Helpers\Import.cs" />
+    <Compile Include="Helpers\OpenFlyoutMessage.cs" />
     <Compile Include="Models\Listing.cs" />
     <Compile Include="Models\SearchSettingModel.cs" />
     <Compile Include="ViewModels\FlyoutViewModels\FlyoutLeftViewModel.cs" />
@@ -167,7 +168,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Views\Flyouts\Penguins.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Simple Styles.xaml">
       <Generator>MSBuild:Compile</Generator>

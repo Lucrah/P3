@@ -32,5 +32,10 @@ namespace P3.Views
             if (e.Key == Key.F11)
                 WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
         }
+
+        //disregard, i forgot how to remove these safely. fml.
+        private void OnInitialize(object sender, EventArgs e)
+        {
+        }
     }
 }
