@@ -22,6 +22,7 @@ namespace P3.Models
             Price = price;
             PriceSqr = priceSqr;
             Demurrage = demurrage;
+            Town = ZipCodeChecker(AreaCode.ToString());
         }
         public Listing(int id, string streetName, string houseNumber, int areaCode, string propertyType, int size, int numberOfRooms, int yearBuilt, string salesType, int price, int priceSqr, DateTime salesDate)
         {
@@ -39,6 +40,7 @@ namespace P3.Models
             Price = price;
             PriceSqr = priceSqr;
             SalesDate = salesDate;
+            Town = ZipCodeChecker(AreaCode.ToString());
         }
 
     private string _propertyType;
@@ -58,7 +60,7 @@ namespace P3.Models
     private int _demurrage;
     private string _salesType;
     private DateTime _salesDate;
-    private string _partOfTown;
+    private string _town;
 
     private double _lat;
     private double _lng;
@@ -93,8 +95,8 @@ namespace P3.Models
       get { return _areaCode; }
       set {
                 _areaCode = value;
-
-                NotifyOfPropertyChange();
+                Town = ZipCodeChecker(AreaCode.ToString());
+                NotifyOfPropertyChange(()=>AreaCode);
             }
     }
     public string StreetName
@@ -206,16 +208,17 @@ namespace P3.Models
             }
         }
 
-        public string PartOfTown
+        public string Town
         {
             get
             {
-                return _partOfTown;
+                return _town;
             }
 
             set
             {
-                _partOfTown = value;
+                _town = value;
+                NotifyOfPropertyChange(() => Town);
             }
         }
         #endregion
@@ -248,7 +251,7 @@ namespace P3.Models
             return district;
           }
         }
-        district = "Postnummeret findes ikke";
+        district = "Ukendt";
         return district;
       }
   }
