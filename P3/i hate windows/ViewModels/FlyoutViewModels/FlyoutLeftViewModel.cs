@@ -10,13 +10,14 @@ using P3.Models;
 
 namespace i_hate_windows.ViewModels.FlyoutViewModels
 {
-    class FlyoutLeftViewModel : Screen
+    class FlyoutLeftViewModel : Screen , IHandle<OpenFlyoutMessage>
     {
         private IEventAggregator _eventaggregator;
         private Listing _selectedItem;
         public FlyoutLeftViewModel(IEventAggregator iEventAggregator)
         {
             _eventaggregator = iEventAggregator;
+            _eventaggregator.Subscribe(this);
         }
 
         public Listing SelectedItem
