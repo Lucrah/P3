@@ -7,13 +7,17 @@ using MahApps.Metro;
 using Caliburn.Micro;
 using i_hate_windows.Helpers;
 using P3.Models;
+using System.ComponentModel.Composition;
 
-namespace i_hate_windows.ViewModels.FlyoutViewModels
+namespace i_hate_windows.ViewModels
 {
+    [Export(typeof(FlyoutLeftViewModel))]
     class FlyoutLeftViewModel : Screen , IHandle<OpenFlyoutMessage>
     {
         private IEventAggregator _eventaggregator;
         private Listing _selectedItem;
+
+        [ImportingConstructor]
         public FlyoutLeftViewModel(IEventAggregator iEventAggregator)
         {
             _eventaggregator = iEventAggregator;

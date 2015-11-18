@@ -8,6 +8,7 @@ using Caliburn.Micro;
 using P3.Interfaces;
 using i_hate_windows.Helpers;
 using P3.Models;
+using i_hate_windows.ViewModels;
 
 namespace P3.ViewModels
 {
@@ -27,12 +28,15 @@ namespace P3.ViewModels
             WindowTitle = "MæglerHelper v0.1337";
             ActivateItem(new SearchScreenViewModel(_windowManager, _eventAggregator));
             _eventAggregator.Subscribe(this);
+            FlyoutViewModel = new FlyoutLeftViewModel(_eventAggregator);
         }
 
         #region Fields / getset
 
         private string _windowTitle;
-        private bool isFlyoutOpen;
+        private bool _isFlyoutOpen;
+        private FlyoutLeftViewModel _flyoutviewmodel;
+        private Listing _selectedListing;
 
         public string WindowTitle
         {
@@ -52,16 +56,43 @@ namespace P3.ViewModels
         {
             get
             {
-                return isFlyoutOpen;
+                return _isFlyoutOpen;
             }
 
             set
             {
-                isFlyoutOpen = value;
+                _isFlyoutOpen = value;
                 NotifyOfPropertyChange(() => IsFlyoutOpen);
             }
         }
 
+        public FlyoutLeftViewModel FlyoutViewModel
+        {
+            get
+            {
+                return _flyoutviewmodel;
+            }
+
+            set
+            {
+                _flyoutviewmodel = value;
+                NotifyOfPropertyChange(() => FlyoutViewModel);
+            }
+        }
+
+        public Listing SelectedListing
+        {
+            get
+            {
+                return _selectedListing;
+            }
+
+            set
+            {
+                _selectedListing = value;
+                NotifyOfPropertyChange(() => SelectedListing);
+            }
+        }
         #endregion
         #region HandleEvents
         //this  whole ordeal is very badly named i know. make me fix.
@@ -70,6 +101,7 @@ namespace P3.ViewModels
             if (!IsFlyoutOpen)
             {
                 IsFlyoutOpen = message.IsOpen;
+                SelectedListing = message.SelectedListing;
             }
         }
         #endregion

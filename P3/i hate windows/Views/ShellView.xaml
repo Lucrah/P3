@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:P3.Views"
-        xmlns:flyouts="clr-namespace:i_hate_windows.Views.Flyouts"
+        xmlns:flyouts="clr-namespace:i_hate_windows.Views"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:cal="http://www.caliburnproject.org"
         mc:Ignorable="d"
                       
         BorderThickness="0"
@@ -21,13 +22,89 @@
         KeyDown="FullScreen"              
                       
         Title="{Binding Path=WindowTitle}" Height="1080" Width="1920" Background="{x:Null}" MinWidth="1280" MinHeight="1024" AllowsTransparency="True">
+    
     <controls:MetroWindow.Flyouts>
         <controls:FlyoutsControl>
-            <controls:Flyout Name="FlyoutView" Position="Left" IsOpen="{Binding Path=IsFlyoutOpen}" >
-                <controls:Flyout.Background>
-                    <SolidColorBrush Color="#FF1F1F1F" Opacity="0.7"></SolidColorBrush>
-                </controls:Flyout.Background>
-                <flyouts:FlyoutLeftView Initialized="OnInitialize"/>
+            <controls:Flyout>
+                <controls:Flyout.Style>
+                    <Style BasedOn="{StaticResource {x:Type controls:Flyout}}" TargetType="{x:Type controls:Flyout}">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <SolidColorBrush Color="#FF1F1F1F" Opacity="60"/>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Position" Value="Left"/>
+                        <Setter Property="IsOpen" Value="{Binding Path=IsFlyoutOpen}"/>
+                        <Setter Property="Header" Value="{Binding Path=SelectedListing.PropertyType}"/>
+                    </Style>
+                </controls:Flyout.Style>
+                <Grid Name="ContainingGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="395" />
+                        <ColumnDefinition Width="20" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="20" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
+                        <Image Height="230" Source="/i hate windows;component/Resources/Penguins.jpg" Margin="0,0,0,10"/>
+                        <Border Height="44" Background="#FF005430">
+                            <TextBlock Margin="170,7.813,179.037,7.813" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Info" FontSize="21.333" Foreground="White" Width="45.963"/>
+                        </Border>
+                        <StackPanel x:Name="InfoStack" Height="126" Orientation="Vertical" Margin="0,5,0,0">
+                            <StackPanel.Background>
+                                <SolidColorBrush Color="#FF1F1F1F" Opacity="0.7"></SolidColorBrush>
+                            </StackPanel.Background>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <TextBlock  Text="Adresse:" Width="120" Height="26" Foreground="White"/>
+                                <TextBlock Text="{Binding Path=SelectedListing.Address}"  Width="275"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <TextBlock Text="Bydel:" Width="120" Height="26" Foreground="White"/>
+                                <TextBlock   Text="{Binding Path=SelectedListing.PartOfTown}" Width="275"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <TextBlock Text="Postnummer:" Width="120" Height="26" Foreground="White"/>
+                                <TextBlock  Width="275"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <TextBlock Text="Sagsnummer" Width="120" Height="26" Foreground="White"/>
+                                <TextBlock   Width="275"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <Border Height="44" Background="#FF005430">
+                            <TextBlock Margin="80,7.813,125,7.813" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Detaljer om boligen" FontSize="21.333" Foreground="White" Width="190"/>
+                        </Border>
+                        <StackPanel x:Name="DetailsStack" Margin="0,5,0,0">
+                            <StackPanel.Background>
+                                <SolidColorBrush Color="#FF1F1F1F" Opacity="0.7"></SolidColorBrush>
+                            </StackPanel.Background>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <TextBlock  Text="Pris:" Width="120" Height="26" Foreground="White"/>
+                                <TextBlock   Width="275"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <TextBlock  Text="Areal" Width="120" Height="26" Foreground="White"/>
+                                <TextBlock   Width="275"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <TextBlock  Text="Byggeår:" Width="120" Height="26" Foreground="White"/>
+                                <TextBlock   Width="275"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <TextBlock  Text="Kvm Pris:" Width="120" Height="26" Foreground="White"/>
+                                <TextBlock   Width="275"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <TextBlock  Text="Grundareal:" Width="120" Height="26" Foreground="White"/>
+                                <TextBlock   Width="275"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
             </controls:Flyout>
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>

@@ -57,6 +57,7 @@ namespace P3.Models
     private int _demurrage;
     private string _salesType;
     private DateTime _salesDate;
+    private string _partOfTown;
 
     private double _lat;
     private double _lng;
@@ -89,7 +90,11 @@ namespace P3.Models
     public int AreaCode
     {
       get { return _areaCode; }
-      set { _areaCode = value; NotifyOfPropertyChange(); }
+      set {
+                _areaCode = value;
+
+                NotifyOfPropertyChange();
+            }
     }
     public string StreetName
     {
@@ -99,7 +104,7 @@ namespace P3.Models
     public string Address
     {
       get { return _address; }
-      private set { _address = value; NotifyOfPropertyChange(); }
+       set { _address = value; NotifyOfPropertyChange(); }
     }
     public string AddressForUrl
     {
@@ -199,8 +204,25 @@ namespace P3.Models
                 NotifyOfPropertyChange(() => IsSelected);
             }
         }
+
+        public string PartOfTown
+        {
+            get
+            {
+                return _partOfTown;
+            }
+
+            set
+            {
+                _partOfTown = value;
+            }
+        }
         #endregion
-        #region Overrides
+        #region Overrides And other stuff
+        public void DeterminePartOfTown(int areacode)
+        {
+
+        }
         public override string ToString()
     {
         return Address + ", " + AreaCode + ", " + Price + ", " + Size + ", " + YearBuilt;
