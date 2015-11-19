@@ -50,7 +50,6 @@ namespace P3.Models
     private bool _forSale;
     private int _size;
     private int _propertySize;
-    private int _lieTime;
     private int _yearBuilt;
     private int _id;
     private int _numberOfRooms;
@@ -166,19 +165,6 @@ namespace P3.Models
         {
             _propertyType = value;
             NotifyOfPropertyChange(() => PropertyType);
-        }
-    }
-    public int LieTime
-    {
-        get
-        {
-            return _lieTime;
-        }
-
-        set
-        {
-            _lieTime = value;
-            NotifyOfPropertyChange(() => LieTime);
         }
     }
     public bool ForSale
