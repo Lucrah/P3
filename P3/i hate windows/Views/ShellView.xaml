@@ -92,7 +92,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                                 <TextBlock  Text="Byggeår:" Width="120" Height="26" Foreground="White"/>
-                                <TextBlock   Width="275"/>
+                                <TextBlock  Text="{Binding SelectedListing.YearBuilt}" Width="275"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                                 <TextBlock  Text="Kvm Pris:" Width="120" Height="26" Foreground="White"/>
@@ -100,7 +100,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                                 <TextBlock  Text="Grundareal:" Width="120" Height="26" Foreground="White"/>
-                                <TextBlock   Width="275"/>
+                                <TextBlock  Text="{Binding SelectedListing.PropertySize}" Width="275"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>

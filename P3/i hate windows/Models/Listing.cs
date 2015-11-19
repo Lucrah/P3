@@ -49,6 +49,7 @@ namespace P3.Models
     private int _priceSqr;
     private bool _forSale;
     private int _size;
+    private int _propertySize;
     private int _lieTime;
     private int _yearBuilt;
     private int _id;
@@ -219,6 +220,20 @@ namespace P3.Models
             {
                 _town = value;
                 NotifyOfPropertyChange(() => Town);
+            }
+        }
+
+        public int PropertySize
+        {
+            get
+            {
+                return _propertySize;
+            }
+
+            set
+            {
+                _propertySize = value;
+                NotifyOfPropertyChange(() => PropertySize);
             }
         }
         #endregion
