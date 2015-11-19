@@ -12,7 +12,7 @@ namespace P3.Models
             ID = id;
             StreetName = streetName;
             AreaCode = areaCode;
-            Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode);
+            Address = streetName + " " + Convert.ToString(houseNumber);
             AddressForUrl = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode);
             HouseNumber = houseNumber;
             PropertyType = propertyType;
@@ -22,14 +22,14 @@ namespace P3.Models
             Price = price;
             PriceSqr = priceSqr;
             Demurrage = demurrage;
-            Town = ZipCodeChecker(AreaCode.ToString());
+            Town = ZipCodeChecker(AreaCode);
         }
         public Listing(int id, string streetName, string houseNumber, int areaCode, string propertyType, int size, int numberOfRooms, int yearBuilt, string salesType, int price, int priceSqr, DateTime salesDate)
         {
             ID = id;
             StreetName = streetName;
             AreaCode = areaCode;
-            Address = streetName + " " + Convert.ToString(houseNumber) + ", " + Convert.ToString(areaCode);
+            Address = streetName + " " + Convert.ToString(houseNumber);
             AddressForUrl = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode);
             HouseNumber = houseNumber;
             PropertyType = propertyType;
@@ -40,7 +40,7 @@ namespace P3.Models
             Price = price;
             PriceSqr = priceSqr;
             SalesDate = salesDate;
-            Town = ZipCodeChecker(AreaCode.ToString());
+            Town = ZipCodeChecker(AreaCode);
         }
 
     private string _propertyType;
@@ -65,7 +65,7 @@ namespace P3.Models
     private double _lat;
     private double _lng;
 
-   private bool _IsSelected;
+    private bool _IsSelected;
 
 
 
@@ -95,7 +95,7 @@ namespace P3.Models
       get { return _areaCode; }
       set {
                 _areaCode = value;
-                Town = ZipCodeChecker(AreaCode.ToString());
+                Town = ZipCodeChecker(AreaCode);
                 NotifyOfPropertyChange(()=>AreaCode);
             }
     }
@@ -223,17 +223,13 @@ namespace P3.Models
         }
         #endregion
         #region Overrides And other stuff
-        public void DeterminePartOfTown(int areacode)
-        {
-
-        }
         public override string ToString()
         {
             return Address + ", " + AreaCode + ", " + Price + ", " + Size + ", " + YearBuilt;
         }
         #endregion
 
-      public string ZipCodeChecker(string zipCode)
+      public string ZipCodeChecker(int zipCode)
       {
         string district = "";
         string[,] zipCodeMatrix = new string[19,2]
@@ -246,8 +242,9 @@ namespace P3.Models
         };
         for (int i = 0; i < 18; ++i)
         {
-          if (zipCode == zipCodeMatrix[i, 1])
+          if (zipCode.ToString() == zipCodeMatrix[i, 1])
           {
+            district = zipCodeMatrix[i, 0];
             return district;
           }
         }

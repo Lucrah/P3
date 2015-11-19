@@ -68,11 +68,11 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                                 <TextBlock Text="Postnummer:" Width="120" Height="26" Foreground="White"/>
-                                <TextBlock  Width="275"/>
+                                <TextBlock  Text="{Binding Path=SelectedListing.AreaCode}" Width="275"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                                 <TextBlock Text="Sagsnummer" Width="120" Height="26" Foreground="White"/>
-                                <TextBlock   Width="275"/>
+                                <TextBlock  Text="{Binding Path=SelectedListing.ID}" Width="275"/>
                             </StackPanel>
                         </StackPanel>
                         <Border Height="44" Background="#FF005430">
@@ -84,11 +84,11 @@
                             </StackPanel.Background>
                             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                                 <TextBlock  Text="Pris:" Width="120" Height="26" Foreground="White"/>
-                                <TextBlock   Width="275"/>
+                                <TextBlock  Text="{Binding SelectedListing.Price}" Width="275"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                                 <TextBlock  Text="Areal" Width="120" Height="26" Foreground="White"/>
-                                <TextBlock   Width="275"/>
+                                <TextBlock  Text="{Binding SelectedListing.Size}" Width="275"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                                 <TextBlock  Text="Byggeår:" Width="120" Height="26" Foreground="White"/>
