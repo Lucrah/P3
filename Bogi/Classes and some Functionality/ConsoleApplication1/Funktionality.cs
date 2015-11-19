@@ -28,13 +28,36 @@ namespace ConsoleApplication1
       var result = new System.Net.WebClient().DownloadString(address);
       XmlDocument doc = new XmlDocument();
       doc.LoadXml(result);
+      string status = doc.DocumentElement.SelectSingleNode("/GeocodeResponse/status").InnerText;
       XmlNodeList parentNode = doc.GetElementsByTagName("location");
-      foreach (XmlNode childrenNode in parentNode)
+      
+      if (status== "OK")
       {
-        geoCode[0] = Convert.ToDecimal(childrenNode.SelectSingleNode("lat").InnerText, new CultureInfo("en-US"));
-        geoCode[1] = Convert.ToDecimal(childrenNode.SelectSingleNode("lng").InnerText, new CultureInfo("en-US"));
+        foreach (XmlNode childrenNode in parentNode)
+        {
+          geoCode[0] = Convert.ToDecimal(childrenNode.SelectSingleNode("lat").InnerText, new CultureInfo("en-US"));
+          geoCode[1] = Convert.ToDecimal(childrenNode.SelectSingleNode("lng").InnerText, new CultureInfo("en-US"));
+        }
+        listing.GetGeoCode(geoCode);
       }
-      listing.GetGeoCode(geoCode);
+      else if (status == "ZERO_RESULTS")
+      {
+        //kast exception der fortæller at addressen ikke findes og/eller er stavet forkert.
+        Console.WriteLine("Addressen findes ikke og/eller er stavet forkert.");
+        Console.ReadKey();
+      }
+      else if (status == "OVER_QUERY_LIMIT")
+      {
+        //Kast exception der fortæller at de har opbrugt kvote af lookups.
+        Console.WriteLine("Kvote af lookups er brugt op");
+        Console.ReadKey();
+      }
+      else
+      {
+        Console.WriteLine(status);
+        Console.ReadKey();
+      }
+
     }
 
 
