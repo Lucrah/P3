@@ -23,10 +23,14 @@
         </Grid.OpacityMask>
         <GroupBox Header="Info&#xA;" HorizontalAlignment="Left" Height="72" Margin="24,402.433,0,-29.433" VerticalAlignment="Top" Width="1292.134" Foreground="White" RenderTransformOrigin="0.501,0.686" Background="#FF005430">
             <DockPanel x:Name="InfoDock" LastChildFill="False" Margin="0,0,-2,0" Height="25" VerticalAlignment="Top">
-                <TextBlock x:Name="Address" TextWrapping="Wrap" Text="Adresse" Width="120" Margin="0,0,0,10" Height="16"/>
-                <TextBlock x:Name="CityDistrict" TextWrapping="Wrap" Text="Bydel" Width="120" Margin="0,0,0,10" Height="16"/>
-                <TextBlock x:Name="CityZipcode" TextWrapping="Wrap" Text="Postnummer" Width="120" Margin="0,0,0,10" Height="16"/>
-                <TextBlock x:Name="CaseNumber" TextWrapping="Wrap" Text="Sagsnummer" Width="120" Margin="0,0,0,9" Height="16"/>
+                <TextBlock x:Name="Address" TextWrapping="Wrap" Width="52" Margin="0,0,0,9" Height="16" Text="Adresse: " TextDecorations="Underline" FontWeight="Bold"/>
+                <TextBlock x:Name="AdressText" TextWrapping="Wrap" Margin="0,0,0,10" Height="16" Text="{Binding PropertyToShow.Address}"/>
+                <TextBlock x:Name="CityDistrict" TextWrapping="Wrap" Width="40" Margin="10,0,0,9" Height="16" Text="Bydel: " TextDecorations="Underline" FontWeight="Bold"/>
+                <TextBlock x:Name="CityDistrictText" TextWrapping="Wrap" Margin="0,0,0,10" Height="16" Text="{Binding PropertyToShow.Town}"/>
+                <TextBlock x:Name="CityZipcode" TextWrapping="Wrap" Width="81" Margin="10,0,0,9" Height="16" Text="Postnummer: " TextDecorations="Underline" FontWeight="Bold"/>
+                <TextBlock x:Name="CityZipcodeText" TextWrapping="Wrap" Margin="0,0,0,10" Height="16" Text="{Binding PropertyToShow.AreaCode}"/>
+                <TextBlock x:Name="CaseNumber" TextWrapping="Wrap" Width="81" Margin="10,0,0,9" Height="16" Text="Sagsnummer: " TextDecorations="Underline" FontWeight="Bold"/>
+                <TextBlock x:Name="CaseNumberText" TextWrapping="Wrap" Margin="0,0,0,9" Height="16" Text="{Binding PropertyToShow.ID}"/>
 
             </DockPanel>
         </GroupBox>
@@ -38,12 +42,18 @@
         </GroupBox>
         <GroupBox Header="Detaljer&#xA;" HorizontalAlignment="Left" Height="72" Margin="24,54.6,0,0" VerticalAlignment="Top" Width="1292.134" Foreground="White" RenderTransformOrigin="0.501,0.686" Background="#FF005430" Grid.Row="1" d:LayoutOverrides="VerticalAlignment">
             <DockPanel x:Name="InfoDock1" LastChildFill="False" Margin="0,0,-2,0" Height="25" VerticalAlignment="Top">
-                <TextBlock x:Name="BuildYear" TextWrapping="Wrap" Text="Byggeår" Width="120" Margin="0,0,0,10" Height="16"/>
-                <TextBlock x:Name="SqmPrice" TextWrapping="Wrap" Text="Kvm pris" Width="120" Margin="0,0,0,10" Height="16"/>
-                <TextBlock x:Name="HousingArea" TextWrapping="Wrap" Text="Boligareal" Width="120" Margin="0,0,0,10" Height="16"/>
-                <TextBlock x:Name="Price" TextWrapping="Wrap" Text="Pris" Width="120" Margin="0,0,0,9" Height="16"/>
-                <TextBlock x:Name="PropertyArea" TextWrapping="Wrap" Text="Grundareal" Width="120" Margin="0,0,0,9" Height="16"/>
-                <TextBlock x:Name="NumberOfRooms" TextWrapping="Wrap" Text="Rum" Width="120" Margin="0,0,0,9" Height="16"/>
+                <TextBlock x:Name="BuildYear" TextWrapping="Wrap" Text="Byggeår: " Width="54.667" Margin="0,0,0,9" Height="16" TextDecorations="Underline" FontWeight="Bold"/>
+                <TextBlock x:Name="BuildYearText" TextWrapping="Wrap" Margin="0,0,0,10" Height="16" Text="{Binding PropertyToShow.YearBuilt}"/>
+                <TextBlock x:Name="SqmPrice" TextWrapping="Wrap" Text="Kvm pris: " Width="56.667" Margin="10,0,0,9" Height="16" TextDecorations="Underline" FontWeight="Bold"/>
+                <TextBlock x:Name="SqmPriceText" TextWrapping="Wrap" Margin="0,0,0,10" Height="16" Text="{Binding PropertyToShow.PriceSqr}"/>
+                <TextBlock x:Name="HousingArea" TextWrapping="Wrap" Text="Boligareal: " Width="64" Margin="10,0,0,9" Height="16" TextDecorations="Underline" FontWeight="Bold"/>
+                <TextBlock x:Name="HousingAreaText" TextWrapping="Wrap" Margin="0,0,0,10" Height="16" Text="{Binding PropertyToShow.Size}"/>
+                <TextBlock x:Name="Price" TextWrapping="Wrap" Text="Pris: " Width="28.667" Margin="10,0,0,9" Height="16" TextDecorations="Underline" FontWeight="Bold"/>
+                <TextBlock x:Name="PriceText" TextWrapping="Wrap" Margin="0,0,0,9" Height="16" Text="{Binding PropertyToShow.Price}"/>
+                <TextBlock x:Name="PropertyArea" TextWrapping="Wrap" Text="Grundareal: " Width="70" Margin="10,0,0,9" Height="16" TextDecorations="Underline" FontWeight="Bold"/>
+                <TextBlock x:Name="PropertyAreaText" TextWrapping="Wrap" Margin="0,0,0,9" Height="16" Text="{Binding PropertyToShow.PropertySize}"/>
+                <TextBlock x:Name="NumberOfRooms" TextWrapping="Wrap" Text="Rum: " Width="34.667" Margin="10,0,0,9" Height="16" TextDecorations="Underline" FontWeight="Bold"/>
+                <TextBlock x:Name="NumberOfRoomsText" TextWrapping="Wrap" Margin="0,0,0,9" Height="16" Text="{Binding PropertyToShow.NumberOfRooms}"/>
 
             </DockPanel>
         </GroupBox>
