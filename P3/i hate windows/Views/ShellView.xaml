@@ -30,7 +30,7 @@
                     <Style BasedOn="{StaticResource {x:Type controls:Flyout}}" TargetType="{x:Type controls:Flyout}">
                         <Setter Property="Background">
                             <Setter.Value>
-                                <SolidColorBrush Color="#FF1F1F1F" Opacity="60"/>
+                                <SolidColorBrush Color="#FF1F1F1F" Opacity="0.8"/>
                             </Setter.Value>
                         </Setter>
                         <Setter Property="Position" Value="Left"/>
