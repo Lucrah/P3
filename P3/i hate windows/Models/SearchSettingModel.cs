@@ -64,8 +64,11 @@ namespace P3.Models
             get { return _pricePrSqm; }
             set
             {
-                _pricePrSqm = value;
-                NotifyOfPropertyChange(() => PricePrSqm);
+                if(value > 0)
+                {
+                    _pricePrSqm = value;
+                    NotifyOfPropertyChange(() => PricePrSqm);
+                }
             }
         }
         public int YearBuilt
@@ -73,8 +76,12 @@ namespace P3.Models
             get { return _yearBuilt; }
             set
             {
-                _yearBuilt = value;
-                NotifyOfPropertyChange(() => YearBuilt);
+                if(value < 0 || value > DateTime.Today.Year)
+                {
+                    _yearBuilt = value;
+                    NotifyOfPropertyChange(() => YearBuilt);
+                }
+
             }
         }
         public int RoomCount
@@ -82,8 +89,11 @@ namespace P3.Models
             get { return _roomCount; }
             set
             {
-                _roomCount = value;
-                NotifyOfPropertyChange(() => RoomCount);
+                if(value > 0)
+                {
+                    _roomCount = value;
+                    NotifyOfPropertyChange(() => RoomCount);
+                }
             }
         }
         public int PropertySize
