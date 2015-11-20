@@ -67,8 +67,8 @@ namespace P3.Models
                 if(value > 0)
                 {
                     _pricePrSqm = value;
-                    NotifyOfPropertyChange(() => PricePrSqm);
                 }
+                NotifyOfPropertyChange(() => PricePrSqm);
             }
         }
         public int YearBuilt
@@ -76,12 +76,11 @@ namespace P3.Models
             get { return _yearBuilt; }
             set
             {
-                if(value < 0 || value > DateTime.Today.Year)
+                if(value > 0 && value < (DateTime.Today.Year + 1))
                 {
                     _yearBuilt = value;
-                    NotifyOfPropertyChange(() => YearBuilt);
                 }
-
+                NotifyOfPropertyChange(() => YearBuilt);
             }
         }
         public int RoomCount
@@ -92,8 +91,8 @@ namespace P3.Models
                 if(value > 0)
                 {
                     _roomCount = value;
-                    NotifyOfPropertyChange(() => RoomCount);
                 }
+                NotifyOfPropertyChange(() => RoomCount);
             }
         }
         public int PropertySize
@@ -101,7 +100,10 @@ namespace P3.Models
             get { return _propertySize; }
             set
             {
-                _propertySize = value;
+                if (value > 0)
+                {
+                    _propertySize = value;
+                }
                 NotifyOfPropertyChange(() => PropertySize);
             }
         }
@@ -128,6 +130,7 @@ namespace P3.Models
             get { return _sameRoad; }
             set
             {
+
                 _sameRoad = value;
                 NotifyOfPropertyChange(() => SameRoad);
             }
@@ -161,7 +164,10 @@ namespace P3.Models
 
             set
             {
-                _minPrKvm = value;
+                if (value > 0 || value < MaxPrKvm)
+                {
+                    _minPrKvm = value;
+                }
                 NotifyOfPropertyChange(() => MinPrKvm);
             }
         }
@@ -175,8 +181,12 @@ namespace P3.Models
 
             set
             {
-                _maxPrKvm = value;
-                NotifyOfPropertyChange(() => MaxPrKvm);
+                if (value > 0 && value > MinPrKvm)
+                {
+                    _maxPrKvm = value;
+                    NotifyOfPropertyChange(() => MaxPrKvm);
+                }
+
             }
         }
 
@@ -189,7 +199,10 @@ namespace P3.Models
 
             set
             {
-                _minGroundSize = value;
+                if (value > 0 && value < MaxGroundSize)
+                {
+                    _minGroundSize = value;
+                }
                 NotifyOfPropertyChange(() => MinGroundSize);
             }
         }
@@ -203,7 +216,10 @@ namespace P3.Models
 
             set
             {
-                _maxGroundSize = value;
+                if (value > 0 && value > MinGroundSize)
+                {
+                    _maxGroundSize = value;
+                }
                 NotifyOfPropertyChange(() => MaxGroundSize);
             }
         }
@@ -301,7 +317,10 @@ namespace P3.Models
 
             set
             {
-                _priceSliderLowerValue = value;
+                if(value > 0 && value < PriceSliderHigherValue)
+                {
+                    _priceSliderLowerValue = value;
+                }
                 NotifyOfPropertyChange(() => PriceSliderLowerValue);
             }
         }
@@ -315,7 +334,10 @@ namespace P3.Models
 
             set
             {
-                _priceSliderHigherValue = value;
+                if (value > 0 && value > PriceSliderLowerValue)
+                {
+                    _priceSliderHigherValue = value;
+                }
                 NotifyOfPropertyChange(() => PriceSliderHigherValue);
             }
         }
@@ -329,7 +351,10 @@ namespace P3.Models
 
             set
             {
-                _areaSliderLowerValue = value;
+                if(value > 0 && value < AreaSliderHigherValue)
+                {
+                    _areaSliderLowerValue = value;
+                }
                 NotifyOfPropertyChange(() => AreaSliderLowerValue);
             }
         }
@@ -343,7 +368,10 @@ namespace P3.Models
 
             set
             {
-                _areaSliderHigherValue = value;
+                if (value > 0 && value > AreaSliderLowerValue)
+                {
+                    _areaSliderHigherValue = value;
+                }
                 NotifyOfPropertyChange(() => AreaSliderHigherValue);
             }
         }
@@ -357,7 +385,10 @@ namespace P3.Models
 
             set
             {
-                _sizeSliderLowerValue = value;
+                if (value > 0 && value < SizeSliderHigherValue)
+                {
+                    _sizeSliderLowerValue = value;
+                }
                 NotifyOfPropertyChange(() => SizeSliderLowerValue);
             }
         }
@@ -371,7 +402,10 @@ namespace P3.Models
 
             set
             {
-                _sizeSliderHigherValue = value;
+                if (value > 0 && value > SizeSliderLowerValue)
+                {
+                    _sizeSliderHigherValue = value;
+                }
                 NotifyOfPropertyChange(() => SizeSliderHigherValue);
             }
         }
@@ -384,7 +418,10 @@ namespace P3.Models
 
             set
             {
-                _searchInput = value;
+                if(value != null)
+                {
+                    _searchInput = value;
+                }
                 NotifyOfPropertyChange(() => SearchInput);
             }
         }
@@ -398,7 +435,10 @@ namespace P3.Models
 
             set
             {
-                _downtimeLowerValue = value;
+                if (value >= 0 && value < DowntimeHigherValue)
+                {
+                    _downtimeLowerValue = value;
+                }
                 NotifyOfPropertyChange(() => DowntimeLowerValue);
             }
         }
@@ -412,7 +452,10 @@ namespace P3.Models
 
             set
             {
-                _downtimeHigherValue = value;
+                if (value >= 0 && value > DowntimeLowerValue)
+                {
+                    _downtimeHigherValue = value;
+                }
                 NotifyOfPropertyChange(() => DowntimeHigherValue);
             }
         }
