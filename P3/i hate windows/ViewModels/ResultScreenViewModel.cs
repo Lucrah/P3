@@ -84,61 +84,43 @@ namespace P3.ViewModels
         //den så skifter item.(input) ud med noget andet. Men jeg kunne ikke lige pt huske hvordan.
         public void SortByAdress()
         {
-            var SortedCollectionOrderedIEnumerable = from item in SearchResults orderby item.Address select item;
-            BindableCollection<Listing> SortedCollection = (BindableCollection<Listing>)SortedCollectionOrderedIEnumerable.ToObservableCollection();
-            SearchResults = SortedCollection;
+            SearchResults = (BindableCollection<Listing>)SearchResults.OrderBy(col => col.Address).ToObservableCollection();
         }
 
         public void SortByHouseType()
         {
-            var SortedCollectionOrderedIEnumerable = from item in SearchResults orderby item.PropertyType select item;
-            BindableCollection<Listing> SortedCollection = (BindableCollection<Listing>)SortedCollectionOrderedIEnumerable.ToObservableCollection();
-            SearchResults = SortedCollection;
+            SearchResults = (BindableCollection<Listing>)SearchResults.OrderBy(col => col.PropertyType).ToObservableCollection();
         }
 
         public void SortBySize()
         {
-            var SortedCollectionOrderedIEnumerable = from item in SearchResults orderby item.Size select item;
-            BindableCollection<Listing> SortedCollection = (BindableCollection<Listing>)SortedCollectionOrderedIEnumerable.ToObservableCollection();
-            SearchResults = SortedCollection;
+            SearchResults = (BindableCollection<Listing>)SearchResults.OrderBy(col => col.Size).ToObservableCollection();
         }
 
         public void SortByPrice()
         {
-            var SortedCollectionOrderedIEnumerable = from item in SearchResults orderby item.Price select item;
-            BindableCollection<Listing> SortedCollection = (BindableCollection<Listing>)SortedCollectionOrderedIEnumerable.ToObservableCollection();
-            SearchResults = SortedCollection;
+            SearchResults = (BindableCollection<Listing>)SearchResults.OrderBy(col => col.Price).ToObservableCollection();
         }
 
         public void SortByYearBuilt()
         {
-            var SortedCollectionOrderedIEnumerable = from item in SearchResults orderby item.YearBuilt select item;
-            BindableCollection<Listing> SortedCollection = (BindableCollection<Listing>)SortedCollectionOrderedIEnumerable.ToObservableCollection();
-            SearchResults = SortedCollection;
+            SearchResults = (BindableCollection<Listing>)SearchResults.OrderBy(col => col.YearBuilt).ToObservableCollection();
         }
         public void SortByDemurrage()
         {
-            var SortedCollectionOrderedIEnumerable = from item in SearchResults orderby item.Demurrage select item;
-            BindableCollection<Listing> SortedCollection = (BindableCollection<Listing>)SortedCollectionOrderedIEnumerable.ToObservableCollection();
-            SearchResults = SortedCollection;
+            SearchResults = (BindableCollection<Listing>)SearchResults.OrderBy(col => col.Demurrage).ToObservableCollection();
         }
         public void SortByTown()
         {
-            var SortedCollectionOrderedIEnumerable = from item in SearchResults orderby item.Town select item;
-            BindableCollection<Listing> SortedCollection = (BindableCollection<Listing>)SortedCollectionOrderedIEnumerable.ToObservableCollection();
-            SearchResults = SortedCollection;
+            SearchResults = (BindableCollection<Listing>)SearchResults.OrderBy(col => col.Town).ToObservableCollection();
         }
         public void SortByForSale()
         {
-            var SortedCollectionOrderedIEnumerable = from item in SearchResults orderby item.ForSale select item;
-            BindableCollection<Listing> SortedCollection = (BindableCollection<Listing>)SortedCollectionOrderedIEnumerable.ToObservableCollection();
-            SearchResults = SortedCollection;
+            SearchResults = (BindableCollection<Listing>)SearchResults.OrderBy(col => col.ForSale).ToObservableCollection();
         }
         public void SortByChoosen()
         {
-            var SortedCollectionOrderedIEnumerable = from item in SearchResults orderby item.IsSelected select item;
-            BindableCollection<Listing> SortedCollection = (BindableCollection<Listing>)SortedCollectionOrderedIEnumerable.ToObservableCollection();
-            SearchResults = SortedCollection;
+            SearchResults = (BindableCollection<Listing>)SearchResults.OrderByDescending(col => col.IsSelected).ToObservableCollection();
         }
         #endregion
     }
