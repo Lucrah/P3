@@ -52,7 +52,7 @@ namespace P3.ViewModels
 
         public void PrintChoosen()
         {
-            //implement pls
+            
         }
 
         #region Public fields

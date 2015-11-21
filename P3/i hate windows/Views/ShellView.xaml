@@ -103,6 +103,9 @@
                                 <TextBlock  Text="{Binding SelectedListing.PropertySize}" Width="275"/>
                             </StackPanel>
                         </StackPanel>
+                        <TextBlock>
+                            
+                        </TextBlock>
                     </StackPanel>
                 </Grid>
             </controls:Flyout>
