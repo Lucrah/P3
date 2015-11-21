@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using Caliburn.Micro;
+using System.ComponentModel;
 
 namespace P3.Models
 {
@@ -222,6 +223,7 @@ namespace P3.Models
                 NotifyOfPropertyChange(() => PropertySize);
             }
         }
+
         #endregion
         #region Overrides And other stuff
         public override string ToString()
@@ -252,7 +254,7 @@ namespace P3.Models
         district = "Ukendt";
         return district;
       }
-  }
+    }
 
 
 }

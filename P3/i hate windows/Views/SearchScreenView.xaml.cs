@@ -20,9 +20,31 @@ namespace P3.Views
     /// </summary>
     public partial class SearchScreenView : UserControl
     {
+        private int _errors = 0;
         public SearchScreenView()
         {
             InitializeComponent();
+        }
+
+        //dunno if dese make any difference, i think not. they can be used to make it so something cant/wont execute unless all fields are filled with valid input.
+        private void Confirm_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = _errors == 0;
+            e.Handled = true;
+        }
+        private void Confirm_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void Validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+            {
+                _errors++;
+            }
+            else
+                _errors--;
         }
     }
 }

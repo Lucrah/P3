@@ -1,48 +1,34 @@
 ﻿using System;
 using Caliburn.Micro;
+using System.ComponentModel;
 
 namespace P3.Models
 {
-    class SearchSettingModel : PropertyChangedBase
+    class SearchSettingModel : PropertyChangedBase, IDataErrorInfo
     {
         public SearchSettingModel()
         {
-            //Initial values for the searchSettings here. Moved from searchscreenviemodel to here bcs clarity and, bcs assemble all options 1 place.
-            PriceSliderLowerValue = 0;
-            PriceSliderHigherValue = 800000;
-            SizeSliderLowerValue = 10;
-            SizeSliderHigherValue = 50;
-            AreaSliderLowerValue = 100;
-            AreaSliderHigherValue = 200;
-            DowntimeLowerValue = 0;
-            DowntimeHigherValue = 12;
         }
-        #region Fields
 
-        //slider values
-        private double _priceSliderLowerValue;
-        private double _priceSliderHigherValue;
+        #region Fields / GetSet
+        //NOTE: When trying to bind to these in the views, remember to bind to the public part.
 
-        //Radius around the address, not the size of the property or the house itself.
-        private double _areaSliderLowerValue;
-        private double _areaSliderHigherValue;
+        //SliderValues
+        private double _priceSliderLowerValue = 0;
+        private double _priceSliderHigherValue = 800000;        
+        private double _areaSliderLowerValue = 100;//Radius around the address on which the search will be based, not the size of the property or the house itself.
+        private double _areaSliderHigherValue = 200;
+        private double _downtimeLowerValue = 0;
+        private double _downtimeHigherValue = 24;
+        private double _sizeSliderLowerValue = 10;
+        private double _sizeSliderHigherValue = 50;
 
-        private double _downtimeLowerValue;
-        private double _downtimeHigherValue;
-        private double _sizeSliderLowerValue;
-        private double _sizeSliderHigherValue;
-
-        private int _pricePrSqm;
-        private int _yearBuilt;
-        private int _roomCount;
-        private int _propertySize;
-
+        //CheckboxValues
         private bool _sold;
         private bool _forSale;
         private bool _sameRoad;
         private bool _sameZipCode;
         private bool _sameCity;
-
         private bool _villa;
         private bool _fritidsEjendom;
         private bool _liebhaverEjendom;
@@ -50,63 +36,59 @@ namespace P3.Models
         private bool _rækkehus;
         private bool _nedlagtLandbrug;
 
-        private int _minPrKvm;
-        private int _maxPrKvm;
-        private int _minGroundSize;
-        private int _maxGroundSize;
+        //Bottom values in SearchView
+        private int _minPrKvm = 0;
+        private int _maxPrKvm = 1000;
+        private int _minYearBuilt = 1950;
+        private int _maxYearBuilt = DateTime.Now.Year;
+        private int _minRoomCount = 0;
+        private int _maxRoomCount = 100;
+        private int _minGroundSize = 0;
+        private int _maxGroundSize = 100;
 
         private string _searchInput;
         #endregion
 
         #region Public
-        public int PricePrSqm
+
+        public int MinYearBuilt
         {
-            get { return _pricePrSqm; }
+            get { return _minYearBuilt; }
             set
             {
-                if(value > 0)
-                {
-                    _pricePrSqm = value;
-                }
-                NotifyOfPropertyChange(() => PricePrSqm);
+                _minYearBuilt = value;
+                NotifyOfPropertyChange(() => MinYearBuilt);
             }
         }
-        public int YearBuilt
+        public int MaxYearBuilt
         {
-            get { return _yearBuilt; }
+            get { return _maxYearBuilt; }
             set
             {
-                if(value > 0 && value < (DateTime.Today.Year + 1))
-                {
-                    _yearBuilt = value;
-                }
-                NotifyOfPropertyChange(() => YearBuilt);
+                _maxYearBuilt = value;
+                NotifyOfPropertyChange(() => MaxYearBuilt);
             }
         }
-        public int RoomCount
+
+        public int MinRoomCount
         {
-            get { return _roomCount; }
+            get { return _minRoomCount; }
             set
             {
-                if(value > 0)
-                {
-                    _roomCount = value;
-                }
-                NotifyOfPropertyChange(() => RoomCount);
+                _minRoomCount = value;
+                NotifyOfPropertyChange(() => MinRoomCount);
             }
         }
-        public int PropertySize
+        public int MaxRoomCount
         {
-            get { return _propertySize; }
+            get { return _maxRoomCount; }
             set
             {
-                if (value > 0)
-                {
-                    _propertySize = value;
-                }
-                NotifyOfPropertyChange(() => PropertySize);
+                _maxRoomCount = value;
+                NotifyOfPropertyChange(() => MaxRoomCount);
             }
         }
+
         public bool Sold
         {
             get { return _sold; }
@@ -164,14 +146,10 @@ namespace P3.Models
 
             set
             {
-                if (value > 0 || value < MaxPrKvm)
-                {
-                    _minPrKvm = value;
-                }
+                _minPrKvm = value;
                 NotifyOfPropertyChange(() => MinPrKvm);
             }
         }
-
         public int MaxPrKvm
         {
             get
@@ -189,7 +167,6 @@ namespace P3.Models
 
             }
         }
-
         public int MinGroundSize
         {
             get
@@ -199,14 +176,10 @@ namespace P3.Models
 
             set
             {
-                if (value > 0 && value < MaxGroundSize)
-                {
-                    _minGroundSize = value;
-                }
+                _minGroundSize = value;
                 NotifyOfPropertyChange(() => MinGroundSize);
             }
         }
-
         public int MaxGroundSize
         {
             get
@@ -216,10 +189,7 @@ namespace P3.Models
 
             set
             {
-                if (value > 0 && value > MinGroundSize)
-                {
-                    _maxGroundSize = value;
-                }
+                _maxGroundSize = value;
                 NotifyOfPropertyChange(() => MaxGroundSize);
             }
         }
@@ -237,7 +207,6 @@ namespace P3.Models
                 NotifyOfPropertyChange(() => Villa);
             }
         }
-
         public bool FritidsEjendom
         {
             get
@@ -251,7 +220,6 @@ namespace P3.Models
                 NotifyOfPropertyChange(() => FritidsEjendom);
             }
         }
-
         public bool LiebhaverEjendom
         {
             get
@@ -265,7 +233,6 @@ namespace P3.Models
                 NotifyOfPropertyChange(() => LiebhaverEjendom);
             }
         }
-
         public bool Andelsbolig
         {
             get
@@ -279,7 +246,6 @@ namespace P3.Models
                 NotifyOfPropertyChange(() => Andelsbolig);
             }
         }
-
         public bool Rækkehus
         {
             get
@@ -293,7 +259,6 @@ namespace P3.Models
                 NotifyOfPropertyChange(() => Rækkehus);
             }
         }
-
         public bool NedlagtLandbrug
         {
             get
@@ -308,6 +273,7 @@ namespace P3.Models
             }
         }
 
+
         public double PriceSliderLowerValue
         {
             get
@@ -317,14 +283,10 @@ namespace P3.Models
 
             set
             {
-                if(value > 0 && value < PriceSliderHigherValue)
-                {
-                    _priceSliderLowerValue = value;
-                }
+                _priceSliderLowerValue = value;
                 NotifyOfPropertyChange(() => PriceSliderLowerValue);
             }
         }
-
         public double PriceSliderHigherValue
         {
             get
@@ -334,10 +296,7 @@ namespace P3.Models
 
             set
             {
-                if (value > 0 && value > PriceSliderLowerValue)
-                {
-                    _priceSliderHigherValue = value;
-                }
+                _priceSliderHigherValue = value;
                 NotifyOfPropertyChange(() => PriceSliderHigherValue);
             }
         }
@@ -351,14 +310,10 @@ namespace P3.Models
 
             set
             {
-                if(value > 0 && value < AreaSliderHigherValue)
-                {
-                    _areaSliderLowerValue = value;
-                }
+                _areaSliderLowerValue = value;
                 NotifyOfPropertyChange(() => AreaSliderLowerValue);
             }
         }
-
         public double AreaSliderHigherValue
         {
             get
@@ -368,10 +323,7 @@ namespace P3.Models
 
             set
             {
-                if (value > 0 && value > AreaSliderLowerValue)
-                {
-                    _areaSliderHigherValue = value;
-                }
+                _areaSliderHigherValue = value;
                 NotifyOfPropertyChange(() => AreaSliderHigherValue);
             }
         }
@@ -385,14 +337,10 @@ namespace P3.Models
 
             set
             {
-                if (value > 0 && value < SizeSliderHigherValue)
-                {
-                    _sizeSliderLowerValue = value;
-                }
+                _sizeSliderLowerValue = value;
                 NotifyOfPropertyChange(() => SizeSliderLowerValue);
             }
         }
-
         public double SizeSliderHigherValue
         {
             get
@@ -402,27 +350,8 @@ namespace P3.Models
 
             set
             {
-                if (value > 0 && value > SizeSliderLowerValue)
-                {
-                    _sizeSliderHigherValue = value;
-                }
+                _sizeSliderHigherValue = value;
                 NotifyOfPropertyChange(() => SizeSliderHigherValue);
-            }
-        }
-        public string SearchInput
-        {
-            get
-            {
-                return _searchInput;
-            }
-
-            set
-            {
-                if(value != null)
-                {
-                    _searchInput = value;
-                }
-                NotifyOfPropertyChange(() => SearchInput);
             }
         }
 
@@ -435,14 +364,10 @@ namespace P3.Models
 
             set
             {
-                if (value >= 0 && value < DowntimeHigherValue)
-                {
-                    _downtimeLowerValue = value;
-                }
+                _downtimeLowerValue = value;
                 NotifyOfPropertyChange(() => DowntimeLowerValue);
             }
         }
-
         public double DowntimeHigherValue
         {
             get
@@ -452,11 +377,213 @@ namespace P3.Models
 
             set
             {
-                if (value >= 0 && value > DowntimeLowerValue)
-                {
-                    _downtimeHigherValue = value;
-                }
+                _downtimeHigherValue = value;
                 NotifyOfPropertyChange(() => DowntimeHigherValue);
+            }
+        }
+
+        public string SearchInput
+        {
+            get
+            {
+                return _searchInput;
+            }
+
+            set
+            {
+                _searchInput = value;
+                NotifyOfPropertyChange(() => SearchInput);
+            }
+        }
+        #endregion
+
+        #region IDataErrorInfo
+        public string this[string columnName]
+        {
+            get
+            {
+                string ToolTipErrorInfo = null;
+                switch (columnName)
+                {
+                    case "PriceSliderLowerValue":
+                        if (PriceSliderLowerValue < 0)
+                        {
+                            ToolTipErrorInfo = "Input skal være over nul.";
+                            break;
+                        }
+                        if (PriceSliderLowerValue > PriceSliderHigherValue)
+                        {
+                            ToolTipErrorInfo = "Input skal være under " + PriceSliderHigherValue;
+                            break;
+                        }
+                        break;
+                    case "PriceSliderHigherValue":
+                        if (PriceSliderHigherValue < 0)
+                        {
+                            ToolTipErrorInfo = "Input skal være over nul.";
+                            break;
+                        }
+                        if (PriceSliderHigherValue < PriceSliderLowerValue)
+                        {
+                            ToolTipErrorInfo = "Input skal være over " + PriceSliderLowerValue;
+                            break;
+                        }
+                        break;
+                    case "AreaSliderLowerValue":
+                        if (AreaSliderLowerValue < 0)
+                        {
+                            ToolTipErrorInfo = "Input skal være over nul.";
+                            break;
+                        }
+                        if (AreaSliderLowerValue > AreaSliderHigherValue)
+                        {
+                            ToolTipErrorInfo = "Input skal være under " + AreaSliderHigherValue;
+                            break;
+                        }
+                        break;
+                    case "AreaSliderHigherValue":
+                        if (AreaSliderHigherValue < 0)
+                        {
+                            ToolTipErrorInfo = "Input skal være over nul.";
+                            break;
+                        }
+                        if (AreaSliderHigherValue < AreaSliderLowerValue)
+                        {
+                            ToolTipErrorInfo = "Input skal være over " + AreaSliderLowerValue;
+                            break;
+                        }
+                        break;
+                    case "DowntimeLowerValue":
+                        if (DowntimeLowerValue < 0)
+                        {
+                            ToolTipErrorInfo = "Input skal være over nul.";
+                            break;
+                        }
+                        if (DowntimeLowerValue > DowntimeHigherValue)
+                        {
+                            ToolTipErrorInfo = "Input skal være under " + DowntimeHigherValue;
+                            break;
+                        }
+                        break;
+                    case "DowntimeHigherValue":
+                        if (DowntimeHigherValue < 0)
+                        {
+                            ToolTipErrorInfo = "Input skal være over nul.";
+                            break;
+                        }
+                        if (DowntimeHigherValue < DowntimeLowerValue)
+                        {
+                            ToolTipErrorInfo = "Input skal være over " + DowntimeLowerValue;
+                            break;
+                        }
+                        break;
+                    case "MinPrKvm":
+                        if (MinPrKvm < 0)
+                        {
+                            ToolTipErrorInfo = "Input skal være over nul.";
+                            break;
+                        }
+                        if (MinPrKvm > MaxPrKvm)
+                        {
+                            ToolTipErrorInfo = "Input skal være under " + MaxPrKvm;
+                            break;
+                        }
+                        break;
+                    case "MaxPrKvm":
+                        if (MinPrKvm < 0)
+                        {
+                            ToolTipErrorInfo = "Input skal være over nul.";
+                            break;
+                        }
+                        if (MaxPrKvm < MinPrKvm)
+                        {
+                            ToolTipErrorInfo = "Input skal være over " + MinPrKvm;
+                            break;
+                        }
+                        break;
+                    case "MinYearBuilt":
+                        if (MinYearBuilt < 0)
+                        {
+                            ToolTipErrorInfo = "Input skal være over nul.";
+                            break;
+                        }
+                        if (MinYearBuilt > MaxYearBuilt)
+                        {
+                            ToolTipErrorInfo = "Input skal være under " + MaxYearBuilt;
+                            break;
+                        }
+                        break;
+                    case "MaxYearBuilt":
+                        if (MaxYearBuilt < 0)
+                        {
+                            ToolTipErrorInfo = "Input skal være over nul.";
+                            break;
+                        }
+                        if (MaxYearBuilt < MinYearBuilt)
+                        {
+                            ToolTipErrorInfo = "Input skal være over " + MinYearBuilt;
+                            break;
+                        }
+                        break;
+                    case "MinRoomCount":
+                        if (MinRoomCount < 0)
+                        {
+                            ToolTipErrorInfo = "Input skal være over nul.";
+                            break;
+                        }
+                        if (MinRoomCount > MaxRoomCount)
+                        {
+                            ToolTipErrorInfo = "Input skal være under " + MaxRoomCount;
+                            break;
+                        }
+                        break;
+                    case "MaxRoomCount":
+                        if (MaxRoomCount < 0)
+                        {
+                            ToolTipErrorInfo = "Input skal være over nul.";
+                            break;
+                        }
+                        if (MaxRoomCount < MinRoomCount)
+                        {
+                            ToolTipErrorInfo = "Input skal være over " + MinRoomCount;
+                            break;
+                        }
+                        break;
+                    case "MinGroundSize":
+                        if (MinGroundSize < 0)
+                        {
+                            ToolTipErrorInfo = "Input skal være over nul.";
+                            break;
+                        }
+                        if (MinGroundSize > MaxGroundSize)
+                        {
+                            ToolTipErrorInfo = "Input skal være under " + MaxGroundSize;
+                            break;
+                        }
+                        break;
+                    case "MaxGroundSize":
+                        if (MaxGroundSize < 0)
+                        {
+                            ToolTipErrorInfo = "Input skal være over nul.";
+                            break;
+                        }
+                        if (MaxGroundSize < MinGroundSize)
+                        {
+                            ToolTipErrorInfo = "Input skal være over " + MinGroundSize;
+                            break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                return ToolTipErrorInfo;
+            }
+        }
+        public string Error
+        {
+            get
+            {
+                throw new NotImplementedException();
             }
         }
         #endregion
