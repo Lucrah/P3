@@ -113,6 +113,7 @@
     <Compile Include="Behaviours\CloseWindowBehavior.cs" />
     <Compile Include="Behaviours\ToggleFullScreenBehavior.cs" />
     <Compile Include="Helpers\Debugger.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\Functionality.cs" />
     <Compile Include="Helpers\Import.cs" />
     <Compile Include="Helpers\OpenFlyoutMessage.cs" />

@@ -79,5 +79,61 @@ namespace P3.ViewModels
         }
         #endregion
 
+        #region SortingMethods
+        //Jeg er rimelig sikker på at det her kan gøres bedre....med en form for selection based på input parameter hvor
+        //den så skifter item.(input) ud med noget andet. Men jeg kunne ikke lige pt huske hvordan.
+        public void SortByAdress()
+        {
+            var SortedCollectionOrderedIEnumerable = from item in SearchResults orderby item.Address select item;
+            BindableCollection<Listing> SortedCollection = (BindableCollection<Listing>)SortedCollectionOrderedIEnumerable.ToObservableCollection();
+            SearchResults = SortedCollection;
+        }
+
+        public void SortByHouseType()
+        {
+            var SortedCollectionOrderedIEnumerable = from item in SearchResults orderby item.PropertyType select item;
+            BindableCollection<Listing> SortedCollection = (BindableCollection<Listing>)SortedCollectionOrderedIEnumerable.ToObservableCollection();
+            SearchResults = SortedCollection;
+        }
+
+        public void SortBySize()
+        {
+            var SortedCollectionOrderedIEnumerable = from item in SearchResults orderby item.Size select item;
+            BindableCollection<Listing> SortedCollection = (BindableCollection<Listing>)SortedCollectionOrderedIEnumerable.ToObservableCollection();
+            SearchResults = SortedCollection;
+        }
+
+        public void SortByPrice()
+        {
+            var SortedCollectionOrderedIEnumerable = from item in SearchResults orderby item.Price select item;
+            BindableCollection<Listing> SortedCollection = (BindableCollection<Listing>)SortedCollectionOrderedIEnumerable.ToObservableCollection();
+            SearchResults = SortedCollection;
+        }
+
+        public void SortByYearBuilt()
+        {
+            var SortedCollectionOrderedIEnumerable = from item in SearchResults orderby item.YearBuilt select item;
+            BindableCollection<Listing> SortedCollection = (BindableCollection<Listing>)SortedCollectionOrderedIEnumerable.ToObservableCollection();
+            SearchResults = SortedCollection;
+        }
+        public void SortByDemurrage()
+        {
+            var SortedCollectionOrderedIEnumerable = from item in SearchResults orderby item.Demurrage select item;
+            BindableCollection<Listing> SortedCollection = (BindableCollection<Listing>)SortedCollectionOrderedIEnumerable.ToObservableCollection();
+            SearchResults = SortedCollection;
+        }
+        public void SortByTown()
+        {
+            var SortedCollectionOrderedIEnumerable = from item in SearchResults orderby item.Town select item;
+            BindableCollection<Listing> SortedCollection = (BindableCollection<Listing>)SortedCollectionOrderedIEnumerable.ToObservableCollection();
+            SearchResults = SortedCollection;
+        }
+        public void SortByForSale()
+        {
+            var SortedCollectionOrderedIEnumerable = from item in SearchResults orderby item.ForSale select item;
+            BindableCollection<Listing> SortedCollection = (BindableCollection<Listing>)SortedCollectionOrderedIEnumerable.ToObservableCollection();
+            SearchResults = SortedCollection;
+        }
+        #endregion
     }
-}
+    }

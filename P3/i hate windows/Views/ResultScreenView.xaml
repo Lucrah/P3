@@ -38,7 +38,10 @@
 						<Setter Property="TextElement.FontSize" Value="32"/>
                     </Style>
                 </GridView.ColumnHeaderContainerStyle>
-                <GridViewColumn Header="Hustype">
+                <GridViewColumn>
+                    <GridViewColumn.Header>
+                        <GridViewColumnHeader cal:Message.Attach="[Event MouseLeftButtonUp] = [Action SortByHouseType]" IsHitTestVisible="True">Type</GridViewColumnHeader>
+                    </GridViewColumn.Header>
                     <GridViewColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Margin="6,2,6,2" IsHitTestVisible="True">
@@ -47,7 +50,10 @@
                         </DataTemplate>
                     </GridViewColumn.CellTemplate>
                 </GridViewColumn>
-                <GridViewColumn Header="Adresse">
+                <GridViewColumn >
+                    <GridViewColumn.Header>
+                        <GridViewColumnHeader cal:Message.Attach="[Event MouseLeftButtonUp] = [Action SortByAdress]" IsHitTestVisible="True">Adresse</GridViewColumnHeader>
+                    </GridViewColumn.Header>
                     <GridViewColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Margin="6,2,6,2">
@@ -56,7 +62,10 @@
                         </DataTemplate>
                     </GridViewColumn.CellTemplate>
                 </GridViewColumn>
-				                <GridViewColumn Header="By">
+				<GridViewColumn>
+                    <GridViewColumn.Header>
+                        <GridViewColumnHeader cal:Message.Attach="[Event MouseLeftButtonUp] = [Action SortByTown]" IsHitTestVisible="True">By</GridViewColumnHeader>
+                    </GridViewColumn.Header>
                     <GridViewColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Margin="6,2,6,2">
@@ -72,7 +81,10 @@
                         </DataTemplate>
                     </GridViewColumn.CellTemplate>
                 </GridViewColumn>
-                <GridViewColumn Header="Størrelse">
+                <GridViewColumn >
+                    <GridViewColumn.Header>
+                        <GridViewColumnHeader cal:Message.Attach="[Event MouseLeftButtonUp] = [Action SortBySize]" IsHitTestVisible="True">Størrelse</GridViewColumnHeader>
+                    </GridViewColumn.Header>
                     <GridViewColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Margin="6,2,6,2">
@@ -81,7 +93,10 @@
                         </DataTemplate>
                     </GridViewColumn.CellTemplate>
                 </GridViewColumn>
-                <GridViewColumn Header="Pris">
+                <GridViewColumn>
+                    <GridViewColumn.Header>
+                        <GridViewColumnHeader cal:Message.Attach="[Event MouseLeftButtonUp] = [Action SortByPrice]" IsHitTestVisible="True">Pris</GridViewColumnHeader>
+                    </GridViewColumn.Header>
                     <GridViewColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Margin="6,2,6,2">
@@ -95,7 +110,10 @@
                         </DataTemplate>
                     </GridViewColumn.CellTemplate>
                 </GridViewColumn>
-                <GridViewColumn Header="Liggetid">
+                <GridViewColumn>
+                    <GridViewColumn.Header>
+                        <GridViewColumnHeader cal:Message.Attach="[Event MouseLeftButtonUp] = [Action SortByDemurrage]" IsHitTestVisible="True">Liggetid</GridViewColumnHeader>
+                    </GridViewColumn.Header>
                     <GridViewColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Margin="6,2,6,2">
@@ -104,7 +122,10 @@
                         </DataTemplate>
                     </GridViewColumn.CellTemplate>
                 </GridViewColumn>
-                <GridViewColumn Header="Solgt/Til Salg">
+                <GridViewColumn>
+                    <GridViewColumn.Header>
+                        <GridViewColumnHeader cal:Message.Attach="[Event MouseLeftButtonUp] = [Action SortByForSale]" IsHitTestVisible="True">Til Salg</GridViewColumnHeader>
+                    </GridViewColumn.Header>
                     <GridViewColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Margin="6,2,6,2">
@@ -113,7 +134,10 @@
                         </DataTemplate>
                     </GridViewColumn.CellTemplate>
                 </GridViewColumn>
-                <GridViewColumn Header="Byggeår">
+                <GridViewColumn>
+                    <GridViewColumn.Header>
+                        <GridViewColumnHeader cal:Message.Attach="[Event MouseLeftButtonUp] = [Action SortByYearBuilt]" IsHitTestVisible="True">Byggeår</GridViewColumnHeader>
+                    </GridViewColumn.Header>
                     <GridViewColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Margin="6,2,6,2">
