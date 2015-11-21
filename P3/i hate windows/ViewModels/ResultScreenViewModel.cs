@@ -134,6 +134,12 @@ namespace P3.ViewModels
             BindableCollection<Listing> SortedCollection = (BindableCollection<Listing>)SortedCollectionOrderedIEnumerable.ToObservableCollection();
             SearchResults = SortedCollection;
         }
+        public void SortByChoosen()
+        {
+            var SortedCollectionOrderedIEnumerable = from item in SearchResults orderby item.IsSelected select item;
+            BindableCollection<Listing> SortedCollection = (BindableCollection<Listing>)SortedCollectionOrderedIEnumerable.ToObservableCollection();
+            SearchResults = SortedCollection;
+        }
         #endregion
     }
     }
