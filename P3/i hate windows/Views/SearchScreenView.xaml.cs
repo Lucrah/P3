@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -45,6 +46,18 @@ namespace P3.Views
             }
             else
                 _errors--;
+        }
+
+
+        //When we want to make sure that some input is not text, bind this to the previewTextInput event in xaml.
+        public static bool NumericOnly(string text)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            return !regex.IsMatch(text);
+        }
+        private void TextInputValidation(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !NumericOnly(e.Text);
         }
     }
 }

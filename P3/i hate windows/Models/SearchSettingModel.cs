@@ -1,6 +1,7 @@
 ﻿using System;
 using Caliburn.Micro;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 
 namespace P3.Models
 {
@@ -574,11 +575,13 @@ namespace P3.Models
                         }
                         break;
                     default:
+                        //DO NOT MAKE DEFAULT CASE, IT BREAKS THE WRING INPUT TOOLTIP FOR SOME REASON
                         break;
                 }
                 return ToolTipErrorInfo;
             }
         }
+
         public string Error
         {
             get
