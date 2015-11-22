@@ -3723,7 +3723,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MæglerHelper"
         "ProductCode" = "8:{A18BC143-7A6C-4534-B954-F82C683E32B6}"
-        "PackageCode" = "8:{BFD27C64-0217-4404-9170-A592914C59F7}"
+        "PackageCode" = "8:{18B0A072-4DD4-49F6-828C-9F3EE3F0188E}"
         "UpgradeCode" = "8:{FEAE8ED2-BC09-4A38-8E6E-8A86E6001B60}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -4268,6 +4268,7 @@
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
+                "ExcludeFilter" = "8:.config"
                 }
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1C26B647EF234D4D863A8B593A48B6D2"
