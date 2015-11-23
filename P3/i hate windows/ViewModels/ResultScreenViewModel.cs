@@ -50,7 +50,7 @@ namespace P3.ViewModels
             _eventAggregator.PublishOnUIThread(new OpenFlyoutMessage(true, SelectedSearchResult));
         }
 
-        public void PrintChoosen()
+        public void PrintChosen()
         {
             
         }
@@ -118,7 +118,7 @@ namespace P3.ViewModels
         {
             SearchResults = (BindableCollection<Listing>)SearchResults.OrderBy(col => col.ForSale).ToObservableCollection();
         }
-        public void SortByChoosen()
+        public void SortByChosen()
         {
             SearchResults = (BindableCollection<Listing>)SearchResults.OrderByDescending(col => col.IsSelected).ToObservableCollection();
         }

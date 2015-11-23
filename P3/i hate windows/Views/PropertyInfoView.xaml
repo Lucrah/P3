@@ -58,10 +58,19 @@
             </DockPanel>
         </GroupBox>
         <Image x:Name="Image1" HorizontalAlignment="Center" Margin="483.5,50,483.5,115" Width="373" Source="/i hate windows;component/Resources/Koala.jpg">
+            <Image.Effect>
+                <ee:MagnifyEffect/>
+            </Image.Effect>
         </Image>
         <Image x:Name="Image2" Margin="24,50,0,115" Source="/i hate windows;component/Resources/Penguins.jpg" HorizontalAlignment="Left" Width="373">
+            <Image.Effect>
+                <ee:RippleEffect/>
+            </Image.Effect>
         </Image>
         <Image x:Name="Image3" Margin="0,50,24,115" Source="/i hate windows;component/Resources/Penguins.jpg" HorizontalAlignment="Right" Width="373">
+            <Image.Effect>
+                <ee:SwirlEffect/>
+            </Image.Effect>
         </Image>
     </Grid>
 </UserControl>

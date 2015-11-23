@@ -17,12 +17,13 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
+
         </ListView.ItemContainerStyle>
         <ListView.ContextMenu>
             <ContextMenu Name="cm" cal:Action.TargetWithoutContext="{Binding DataContext, RelativeSource={RelativeSource Self}}">
                 <MenuItem Header="Vis boliginfo..." cal:Message.Attach="ShowPropertyInfoFlyout"/>
                 <MenuItem Header="Vis boliginfo i nyt vindue..." cal:Message.Attach="ShowPropertyInfoNewWindow"/>
-                <MenuItem Header="Print Valgte..." cal:Message.Attach="PrintChoosen"/>
+                <MenuItem Header="Print Valgte..." cal:Message.Attach="PrintChosen"/>
             </ContextMenu>
         </ListView.ContextMenu>
         <ListView.View>
