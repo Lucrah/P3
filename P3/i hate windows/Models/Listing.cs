@@ -179,7 +179,6 @@ namespace P3.Models
         {
             _forSale = value;
             NotifyOfPropertyChange(() => ForSale);
-
         }
     }
 
