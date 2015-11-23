@@ -14,7 +14,7 @@ using System.Windows;
 
 namespace i_hate_windows.Helpers
 {
-    class PDFConverter : IDisposable
+    class PDFConverter
     {
         //In charge of setting up a page, and filling the first couple of pages with the list of returned results, and the next couple of pages with graphs/calculations for the mægler ./ask rasmus
         //Basically, converting 2 objects, a) a list of returned results and b) an object consisting of the graphs output by the program, into pdf format.
@@ -88,11 +88,6 @@ namespace i_hate_windows.Helpers
             return string.Format("[{0}] {1}",
             DateTime.Now.ToString("o"),
             string.Format(format, args));
-        }
-
-        public void Dispose()
-        {
-            
         }
     }
 }
