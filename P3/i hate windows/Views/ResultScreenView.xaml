@@ -16,15 +16,17 @@
                         <Setter Property="Foreground" Value="White"/>
                     </Trigger>
                 </Style.Triggers>
+                <Setter Property="ContextMenu">
+                    <Setter.Value>
+                        <ContextMenu Name="cm" cal:Action.TargetWithoutContext="{Binding DataContext, RelativeSource={RelativeSource Self}}">
+                            <MenuItem Header="Vis boliginfo..." cal:Message.Attach="ShowPropertyInfoFlyout"/>
+                            <MenuItem Header="Vis boliginfo i nyt vindue..." cal:Message.Attach="ShowPropertyInfoNewWindow"/>
+                            <MenuItem Header="Print Valgte..." cal:Message.Attach="PrintChoosen"/>
+                        </ContextMenu>
+                    </Setter.Value>
+                </Setter>
             </Style>
         </ListView.ItemContainerStyle>
-        <ListView.ContextMenu>
-            <ContextMenu Name="cm" cal:Action.TargetWithoutContext="{Binding DataContext, RelativeSource={RelativeSource Self}}">
-                <MenuItem Header="Vis boliginfo..." cal:Message.Attach="ShowPropertyInfoFlyout"/>
-                <MenuItem Header="Vis boliginfo i nyt vindue..." cal:Message.Attach="ShowPropertyInfoNewWindow"/>
-                <MenuItem Header="Print Valgte..." cal:Message.Attach="PrintChoosen"/>
-            </ContextMenu>
-        </ListView.ContextMenu>
         <ListView.View>
             <GridView AllowsColumnReorder="False">
                 <GridView.ColumnHeaderContainerStyle>
@@ -35,7 +37,7 @@
                         <Setter Property="BorderThickness" Value="0,0,0,0"/>
                         <Setter Property="Foreground" Value="White"/>
                         <Setter Property="BorderBrush" Value="{x:Null}"/>
-						<Setter Property="TextElement.FontSize" Value="32"/>
+                        <Setter Property="TextElement.FontSize" Value="32"/>
                     </Style>
                 </GridView.ColumnHeaderContainerStyle>
                 <GridViewColumn>
