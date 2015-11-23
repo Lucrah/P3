@@ -124,12 +124,12 @@
                 </GridViewColumn>
                 <GridViewColumn>
                     <GridViewColumn.Header>
-                        <GridViewColumnHeader cal:Message.Attach="[Event MouseLeftButtonUp] = [Action SortByForSale]" IsHitTestVisible="True">Til Salg</GridViewColumnHeader>
+                        <GridViewColumnHeader cal:Message.Attach="[Event MouseLeftButtonUp] = [Action SortByForSale]" IsHitTestVisible="True">Status</GridViewColumnHeader>
                     </GridViewColumn.Header>
                     <GridViewColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Margin="6,2,6,2">
-                                <TextBlock Text="{Binding ForSale}" Foreground="#FF979797" FontSize="16"/>
+                                <TextBlock Text="{Binding ForSaleSold}" Foreground="#FF979797" FontSize="16"/>
                             </StackPanel>
                         </DataTemplate>
                     </GridViewColumn.CellTemplate>
