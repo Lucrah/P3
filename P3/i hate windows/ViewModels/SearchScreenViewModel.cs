@@ -10,6 +10,7 @@ using P3.ViewModels;
 using MySql.Data.MySqlClient;
 using System.ComponentModel.Composition;
 using P3.Helpers;
+using i_hate_windows.Helpers;
 
 namespace P3.ViewModels
 {
@@ -24,6 +25,8 @@ namespace P3.ViewModels
         private Screen _resultScreen;
         private SearchSettingModel _searchSettings;
         private IEventAggregator _eventAggregator;
+        private PDFConverter pdfConverter;
+
         //mef stuff
         private readonly IWindowManager _windowManager;
 
@@ -46,6 +49,8 @@ namespace P3.ViewModels
         private void Initialize()
         {
             SearchSettings = new SearchSettingModel();
+            pdfConverter = new PDFConverter();
+            string ok = pdfConverter.GetPath();
             Path = GetPath();
             //Når GetSearchSettings er lavet, så uncomment det her, og det burde virke. Der er et sted mere hvor der skal uncommentes.
             //Remind to make functionality so that no more than 10 saved settings are stored at a time.
@@ -99,6 +104,7 @@ namespace P3.ViewModels
             
             ResultScreen = new ResultScreenViewModel(ResultsReturned, _windowManager, _eventAggregator);
             SaveSearchSettings();
+            pdfConverter.GetPath();
         }
         #endregion
         public SearchSettingModel SearchSettings
