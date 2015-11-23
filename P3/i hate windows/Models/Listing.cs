@@ -49,6 +49,8 @@ namespace P3.Models
     private int _price;
     private int _priceSqr;
     private bool _forSale;
+    private bool _sold;
+    private string _forSaleSold = "Ukendt";
     private int _size;
     private int _propertySize;
     private int _yearBuilt;
@@ -177,60 +179,98 @@ namespace P3.Models
 
         set
         {
-            _forSale = value;
-            NotifyOfPropertyChange(() => ForSale);
+          if (value)
+          {
+            ForSaleSold = "Til Salg";
+          }
+
+          _forSale = value;
+          NotifyOfPropertyChange(() => ForSale);
         }
     }
 
-        public bool IsSelected
+
+      public bool IsSelected
+      {
+          get
+          {
+              return _IsSelected;
+          }
+
+          set
+          {
+              _IsSelected = value;
+              NotifyOfPropertyChange(() => IsSelected);
+          }
+      }
+
+      public string Town
+      {
+          get
+          {
+              return _town;
+          }
+
+          set
+          {
+              _town = value;
+              NotifyOfPropertyChange(() => Town);
+          }
+      }
+
+      public int PropertySize
+      {
+          get
+          {
+              return _propertySize;
+          }
+
+          set
+          {
+              _propertySize = value;
+              NotifyOfPropertyChange(() => PropertySize);
+          }
+      }
+
+    public bool Sold
+    {
+      get
+      {
+        return _sold;
+      }
+
+      set
+      {
+        if (value)
         {
-            get
-            {
-                return _IsSelected;
-            }
-
-            set
-            {
-                _IsSelected = value;
-                NotifyOfPropertyChange(() => IsSelected);
-            }
+          ForSaleSold = "Solgt";
         }
+        _sold = value;
+        NotifyOfPropertyChange(() => Sold);
+      }
+    }
 
-        public string Town
-        {
-            get
-            {
-                return _town;
-            }
+    public string ForSaleSold
+    {
+      get
+      {
+        return _forSaleSold;
+      }
 
-            set
-            {
-                _town = value;
-                NotifyOfPropertyChange(() => Town);
-            }
-        }
+      set
+      {
+        _forSaleSold = value;
+        NotifyOfPropertyChange(() => ForSaleSold);
+      }
+    }
 
-        public int PropertySize
-        {
-            get
-            {
-                return _propertySize;
-            }
-
-            set
-            {
-                _propertySize = value;
-                NotifyOfPropertyChange(() => PropertySize);
-            }
-        }
-
-        #endregion
-        #region Overrides And other stuff
-        public override string ToString()
-        {
-            return Address + ", " + AreaCode + ", " + Price + ", " + Size + ", " + YearBuilt;
-        }
-        #endregion
+    #endregion
+    #region Overrides And other stuff
+    public override string ToString()
+      {
+          return Address + ", " + AreaCode + ", " + Price + ", " + Size + ", " + YearBuilt;
+      }
+      #endregion
 
       public string ZipCodeChecker(int zipCode)
       {
