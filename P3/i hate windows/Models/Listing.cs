@@ -272,6 +272,11 @@ namespace P3.Models
       }
       #endregion
 
+    public string ToPrintableString()
+    {
+      return Address + ", " + AreaCode + ", " + Size + ", " + Price + ", " + Demurrage + ", " + ForSaleSold + ", " +
+             YearBuilt;
+    }
       public string ZipCodeChecker(int zipCode)
       {
         string district = "";
