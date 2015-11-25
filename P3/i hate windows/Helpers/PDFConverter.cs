@@ -108,29 +108,17 @@ namespace i_hate_windows.Helpers
       string propertyString = "";
 
       if (ssm.Villa)
-      {
         propertyString += "Villa, ";
-      }
       if (ssm.FritidsEjendom)
-      {
         propertyString += "Fritidsejendom, ";
-      }
       if (ssm.LiebhaverEjendom)
-      {
         propertyString += "Liebhaverejendom, ";
-      }
       if (ssm.Andelsbolig)
-      {
         propertyString += "Andelsbolig, ";
-      }
       if (ssm.Rækkehus)
-      {
         propertyString += "Rækkehus, ";
-      }
       if (ssm.NedlagtLandbrug)
-      {
         propertyString += "Nedlagt landbrug, ";
-      }
 
       propertyString = propertyString.Remove(propertyString.Length - 2);
       return propertyString;
