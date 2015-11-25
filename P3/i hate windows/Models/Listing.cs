@@ -43,6 +43,12 @@ namespace P3.Models
             SalesDate = salesDate;
             Town = ZipCodeChecker(AreaCode);
         }
+        public Listing(string streetName, string houseNumber, int areaCode)
+        {
+            StreetName = streetName;
+            HouseNumber = houseNumber;
+            AreaCode = areaCode;
+        }
 
     private string _propertyType;
     private string _houseNumber;

@@ -81,6 +81,88 @@ namespace P3.Helpers
             }
             return Results;
         }
-    }
 
+        public static string SqlStringBuilder(SearchSettingModel input)
+        {
+            string sql = System.String.Format("SELECT * FROM p3database WHERE ");
+            if (input.SearchInput != null)
+            {
+                string[] split = input.SearchInput.Split(' ');
+                Listing SearchListing = new Listing(split[0], split[1], int.Parse(split[2]));
+                getCoordinates(SearchListing);
+                sql += System.String.Format("SELECT *, 111.045* DEGREES(ACOS(COS(RADIANS(latpoint)) * COS(RADIANS(Lat)) * COS(RADIANS(longpoint) - RADIANS(Lng)) + SIN(RADIANS(latpoint)) * SIN(RADIANS(Lat))))*1000 AS distance_in_m FROM address JOIN ( SELECT {0} AS latpoint,  {1} AS longpoint) AS p ON 1=1", SearchListing.Lat, SearchListing.Lng);
+            }
+
+            if (input.Andelsbolig == true || input.Villa == true || input.Rækkehus == true || input.LiebhaverEjendom == true || input.FritidsEjendom == true || input.NedlagtLandbrug == true)
+            {
+                string sqlOr = System.String.Format("");
+                List<bool> ejendomme = new List<bool>();
+                List<bool> TrueEjendomme = new List<bool>();
+                ejendomme.Add(input.Andelsbolig);
+                ejendomme.Add(input.Villa);
+                ejendomme.Add(input.Rækkehus);
+                ejendomme.Add(input.LiebhaverEjendom);
+                ejendomme.Add(input.FritidsEjendom);
+                ejendomme.Add(input.NedlagtLandbrug);
+                foreach (var item in ejendomme)
+                {
+                    if (item == true)
+                    {
+                        TrueEjendomme.Add(item);
+                    }
+                }
+                if (TrueEjendomme.Count > 1)
+                {
+                    int count = 1;
+                    foreach (var item in TrueEjendomme)
+                    {
+                        if (count == TrueEjendomme.Count)
+                        {
+                            sqlOr += System.String.Format("{0} AND ", item);
+                        }
+                        else
+                        {
+                            sqlOr += System.String.Format("{0} OR ", item);
+                            count++;
+                        }
+
+                    }
+                    sql += sqlOr;
+                }
+                else
+                {
+                    sql += System.String.Format("{0} AND ", TrueEjendomme.ToString());
+                }
+                
+            }
+
+            if (input.PriceSliderLowerValue != null && input.PriceSliderHigherValue != null)
+	        {
+		        sql += System.String.Format("Price >= {0} AND Price <= {1} AND ", input.PriceSliderLowerValue, input.PriceSliderHigherValue);
+	        }
+            if (input.Sold == true)
+            {
+                sql += System.String.Format("SalesDate <> NULL AND ");
+            }
+            if (input.Sold == false)
+            {
+                sql += System.String.Format("SalesDate = NULL AND ");
+            }
+            if (input.SizeSliderLowerValue != null && input.SizeSliderHigherValue != null)
+            {
+                sql += System.String.Format("Size >= {0} AND Size <= {1} AND ", input.SizeSliderLowerValue, input.SizeSliderHigherValue);
+            }
+            if (input.DowntimeLowerValue != null && input.DowntimeHigherValue != null)
+            {
+                sql += System.String.Format("Size >= {0} AND Size <= {1} AND ", input.DowntimeLowerValue, input.DowntimeHigherValue);
+            }
+            if (input.AreaSliderLowerValue != null && input.AreaSliderHigherValue != null)
+            {
+                sql += System.String.Format("having distance_in_m BETWEEN {0} AND {1} AND ", input.AreaSliderLowerValue, input.AreaSliderHigherValue);
+            }
+            
+            
+            return sql;
+        }
+    }
 }
