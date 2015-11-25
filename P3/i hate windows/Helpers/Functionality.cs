@@ -82,7 +82,18 @@ namespace P3.Helpers
             return Results;
         }
 
-        public string SqlStringBuilder(SearchSettingModel input)
+        public BindableCollection<Listing> SuperSearch(SearchSettingModel input)
+        {
+            BindableCollection<Listing> Results = new BindableCollection<Listing>();
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                Results = (BindableCollection<Listing>)connection.Query<Listing>(SqlStringBuilder(input));
+            }
+
+            return Results;
+        }
+
+        private string SqlStringBuilder(SearchSettingModel input)
         {
             string sql = System.String.Format("SELECT * FROM p3database WHERE ");
 

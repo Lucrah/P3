@@ -406,6 +406,13 @@ namespace P3.Models
                 string ToolTipErrorInfo = null;
                 switch (columnName)
                 {
+                    case "SearchInput":
+                        if (SearchInput == null || SearchInput.Split().Length < 4)
+                        {
+                            ToolTipErrorInfo = "Indtast søgning: adresse, husnr, postnr";
+                            
+                        }
+                        break;
                     case "PriceSliderLowerValue":
                         if (PriceSliderLowerValue < 0)
                         {

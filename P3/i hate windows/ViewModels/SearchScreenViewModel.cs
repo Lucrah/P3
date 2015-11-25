@@ -18,7 +18,6 @@ namespace P3.ViewModels
     class SearchScreenViewModel : Conductor<object>.Collection.OneActive
     {
         #region Fields that are not searchsettings
-        Funktionality func = new Funktionality();
 
         private BindableCollection<SearchSettingModel> _savedSettingsCollection;
         private string Path;
@@ -94,17 +93,26 @@ namespace P3.ViewModels
         public void GetResults()
         {
             BindableCollection<Listing> ResultsReturned;
+            Funktionality func = new Funktionality();
             //Call and run query functions here
             //SearchSettings propertien indeholder de valgte settings.
             ResultsReturned = new BindableCollection<Listing>();
 
-            ResultsReturned = func.StaticSearch();
+            //this one is just a static search, no user input.
+            //ResultsReturned = func.StaticSearch();
+
+            //this one should take into account all user input
+            //UN-comment once their stringbuilder is ready, until then, only staticsearch
+
+            ResultsReturned = func.SuperSearch(SearchSettings);
             
             ResultScreen = new ResultScreenViewModel(ResultsReturned, _windowManager, _eventAggregator);
+
+            //Jeppes funktioner, responsible for saving the searchsettings to a .csv so you can view recent searches.
             SaveSearchSettings();
-            PDFConverter pdfConverter = new PDFConverter(ResultsReturned, graphResults, DateTime.Now.ToString(), "resultandgraph");
             
-            pdfConverter = null;
+            //PDF skal gøres klar via options vindue, og så køres et objekt som dette. måske 
+            PDFConverter pdfConverter = new PDFConverter(ResultsReturned, graphResults, DateTime.Now.ToString(), "resultandgraph");
         }
         #endregion
         public SearchSettingModel SearchSettings
