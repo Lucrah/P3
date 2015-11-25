@@ -82,7 +82,7 @@ namespace P3.Helpers
             return Results;
         }
 
-        public static string SqlStringBuilder(SearchSettingModel input)
+        public string SqlStringBuilder(SearchSettingModel input)
         {
             string sql = System.String.Format("SELECT * FROM p3database WHERE ");
 
