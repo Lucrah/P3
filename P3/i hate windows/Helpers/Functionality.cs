@@ -92,12 +92,12 @@ namespace P3.Helpers
 
             if (input.SearchInput != null)
             {
-                sql += System.String.Format("SELECT *, 111.045* DEGREES(ACOS(COS(RADIANS(latpoint)) * COS(RADIANS(Lat)) * COS(RADIANS(longpoint) - RADIANS(Lng)) + SIN(RADIANS(latpoint)) * SIN(RADIANS(Lat))))*1000 AS distance_in_m FROM address JOIN ( SELECT {0} AS latpoint,  {1} AS longpoint) AS p ON 1=1", SearchListing.Lat, SearchListing.Lng);
+                sql += System.String.Format("SELECT *, 111.045* DEGREES(ACOS(COS(RADIANS(latpoint)) * COS(RADIANS(Lat)) * COS(RADIANS(longpoint) - RADIANS(Lng)) + SIN(RADIANS(latpoint)) * SIN(RADIANS(Lat))))*1000 AS distance_in_m FROM address JOIN ( SELECT {0} AS latpoint,  {1} AS longpoint) AS p ON 1=1 AND ", SearchListing.Lat, SearchListing.Lng);
             }
 
             if (input.Andelsbolig == true || input.Villa == true || input.Rækkehus == true || input.LiebhaverEjendom == true || input.FritidsEjendom == true || input.NedlagtLandbrug == true)
             {
-                string sqlOr = System.String.Format("");
+                string sqlOr = System.String.Format("PropertyType = ");
                 List<bool> ejendomme = new List<bool>();
                 List<bool> TrueEjendomme = new List<bool>();
                 ejendomme.Add(input.Andelsbolig);
