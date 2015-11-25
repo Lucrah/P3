@@ -97,7 +97,7 @@ namespace P3.Helpers
 
             if (input.Andelsbolig == true || input.Villa == true || input.Rækkehus == true || input.LiebhaverEjendom == true || input.FritidsEjendom == true || input.NedlagtLandbrug == true)
             {
-                string sqlOr = System.String.Format("PropertyType = ");
+                string sqlOr = System.String.Format("listings.PropertyType = ");
                 List<bool> ejendomme = new List<bool>();
                 List<bool> TrueEjendomme = new List<bool>();
                 ejendomme.Add(input.Andelsbolig);
@@ -140,23 +140,23 @@ namespace P3.Helpers
 
             if (input.PriceSliderLowerValue > 0.0 && input.PriceSliderHigherValue > 0.0)
 	        {
-		        sql += System.String.Format("Price >= {0} AND Price <= {1} AND ", input.PriceSliderLowerValue, input.PriceSliderHigherValue);
+		        sql += System.String.Format("salesinfo.Price >= {0} AND salesinfo.Price <= {1} AND ", input.PriceSliderLowerValue, input.PriceSliderHigherValue);
 	        }
             if (input.Sold == true && input.ForSale == false)
             {
-                sql += System.String.Format("SalesDate <> NULL AND ");
+                sql += System.String.Format("salesinfo.SalesDate <> NULL AND ");
             }
             if (input.Sold == false && input.ForSale == true)
             {
-                sql += System.String.Format("SalesDate = NULL AND ");
+                sql += System.String.Format("salesinfo.SalesDate = NULL AND ");
             }
             if (input.SizeSliderLowerValue > 0.0 && input.SizeSliderHigherValue > 0.0)
             {
-                sql += System.String.Format("Size >= {0} AND Size <= {1} AND ", input.SizeSliderLowerValue, input.SizeSliderHigherValue);
+                sql += System.String.Format("listings.Size >= {0} AND listings.Size <= {1} AND ", input.SizeSliderLowerValue, input.SizeSliderHigherValue);
             }
             if (input.DowntimeLowerValue > 0.0 && input.DowntimeHigherValue > 0.0)
             {
-                sql += System.String.Format("Size >= {0} AND Size <= {1} AND ", input.DowntimeLowerValue, input.DowntimeHigherValue);
+                sql += System.String.Format("listings.Size >= {0} AND listings.Size <= {1} AND ", input.DowntimeLowerValue, input.DowntimeHigherValue);
             }
             if (input.AreaSliderLowerValue > 0.0 && input.AreaSliderHigherValue > 0.0)
             {
@@ -164,14 +164,14 @@ namespace P3.Helpers
             }
             if (input.SameRoad == true)
             {
-                sql += System.String.Format("StreetName = {0} AND ", split[0]);
+                sql += System.String.Format("address.StreetName = {0} AND ", split[0]);
             }
             if (input.SameZipCode == true)
             {
-                sql += System.String.Format("AreaCode = {0} AND ", int.Parse(split[2]));
+                sql += System.String.Format("address.AreaCode = {0} AND ", int.Parse(split[2]));
             }
 
-            sql += System.String.Format("NumberOfRooms BETWEEN {0} AND {1} AND YearBuild BETWEEN {2} AND {3}",
+            sql += System.String.Format("listings.NumberOfRooms BETWEEN {0} AND {1} AND listings.YearBuild BETWEEN {2} AND {3}",
                 input.MinRoomCount, input.MaxRoomCount, input.MinYearBuilt, input.MaxYearBuilt);
             return sql;
         }
