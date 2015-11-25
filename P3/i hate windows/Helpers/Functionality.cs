@@ -85,11 +85,13 @@ namespace P3.Helpers
         public static string SqlStringBuilder(SearchSettingModel input)
         {
             string sql = System.String.Format("SELECT * FROM p3database WHERE ");
+
+            string[] split = input.SearchInput.Split(' ');
+            Listing SearchListing = new Listing(split[0], split[1], int.Parse(split[2]));
+            getCoordinates(SearchListing);
+
             if (input.SearchInput != null)
             {
-                string[] split = input.SearchInput.Split(' ');
-                Listing SearchListing = new Listing(split[0], split[1], int.Parse(split[2]));
-                getCoordinates(SearchListing);
                 sql += System.String.Format("SELECT *, 111.045* DEGREES(ACOS(COS(RADIANS(latpoint)) * COS(RADIANS(Lat)) * COS(RADIANS(longpoint) - RADIANS(Lng)) + SIN(RADIANS(latpoint)) * SIN(RADIANS(Lat))))*1000 AS distance_in_m FROM address JOIN ( SELECT {0} AS latpoint,  {1} AS longpoint) AS p ON 1=1", SearchListing.Lat, SearchListing.Lng);
             }
 
@@ -122,7 +124,7 @@ namespace P3.Helpers
                         }
                         else
                         {
-                            sqlOr += System.String.Format("{0} OR ", item);
+                            sqlOr += string.Format("{0} OR ", item);
                             count++;
                         }
 
@@ -136,7 +138,7 @@ namespace P3.Helpers
                 
             }
 
-            if (input.PriceSliderLowerValue != null && input.PriceSliderHigherValue != null)
+            if (input.PriceSliderLowerValue > 0.0 && input.PriceSliderHigherValue > 0.0)
 	        {
 		        sql += System.String.Format("Price >= {0} AND Price <= {1} AND ", input.PriceSliderLowerValue, input.PriceSliderHigherValue);
 	        }
@@ -148,20 +150,29 @@ namespace P3.Helpers
             {
                 sql += System.String.Format("SalesDate = NULL AND ");
             }
-            if (input.SizeSliderLowerValue != null && input.SizeSliderHigherValue != null)
+            if (input.SizeSliderLowerValue > 0.0 && input.SizeSliderHigherValue > 0.0)
             {
                 sql += System.String.Format("Size >= {0} AND Size <= {1} AND ", input.SizeSliderLowerValue, input.SizeSliderHigherValue);
             }
-            if (input.DowntimeLowerValue != null && input.DowntimeHigherValue != null)
+            if (input.DowntimeLowerValue > 0.0 && input.DowntimeHigherValue > 0.0)
             {
                 sql += System.String.Format("Size >= {0} AND Size <= {1} AND ", input.DowntimeLowerValue, input.DowntimeHigherValue);
             }
-            if (input.AreaSliderLowerValue != null && input.AreaSliderHigherValue != null)
+            if (input.AreaSliderLowerValue > 0.0 && input.AreaSliderHigherValue > 0.0)
             {
                 sql += System.String.Format("having distance_in_m BETWEEN {0} AND {1} AND ", input.AreaSliderLowerValue, input.AreaSliderHigherValue);
             }
-            
-            
+            if (input.SameRoad == true)
+            {
+                sql += System.String.Format("StreetName = {0} AND ", split[0]);
+            }
+            if (input.SameZipCode == true)
+            {
+                sql += System.String.Format("AreaCode = {0} AND ", int.Parse(split[2]));
+            }
+
+            sql += System.String.Format("NumberOfRooms BETWEEN {0} AND {1} AND YearBuild BETWEEN {2} AND {3}",
+                input.MinRoomCount, input.MaxRoomCount, input.MinYearBuilt, input.MaxYearBuilt);
             return sql;
         }
     }
