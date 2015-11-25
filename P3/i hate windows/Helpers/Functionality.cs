@@ -142,11 +142,11 @@ namespace P3.Helpers
 	        {
 		        sql += System.String.Format("Price >= {0} AND Price <= {1} AND ", input.PriceSliderLowerValue, input.PriceSliderHigherValue);
 	        }
-            if (input.Sold == true)
+            if (input.Sold == true && input.ForSale == false)
             {
                 sql += System.String.Format("SalesDate <> NULL AND ");
             }
-            if (input.Sold == false)
+            if (input.Sold == false && input.ForSale == true)
             {
                 sql += System.String.Format("SalesDate = NULL AND ");
             }
