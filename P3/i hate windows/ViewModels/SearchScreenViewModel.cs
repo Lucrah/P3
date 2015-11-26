@@ -106,13 +106,12 @@ namespace P3.ViewModels
 
             ResultsReturned = func.SuperSearch(SearchSettings);
             
-            ResultScreen = new ResultScreenViewModel(ResultsReturned, _windowManager, _eventAggregator);
+            ResultScreen = new ResultScreenViewModel(ResultsReturned, SearchSettings, _windowManager, _eventAggregator);
 
             //Jeppes funktioner, responsible for saving the searchsettings to a .csv so you can view recent searches.
             SaveSearchSettings();
             
-            //PDF skal gøres klar via options vindue, og så køres et objekt som dette. måske 
-            PDFConverter pdfConverter = new PDFConverter(ResultsReturned, graphResults, DateTime.Now.ToString(), "resultandgraph");
+            PDFConverter pdfConverter = new PDFConverter(ResultsReturned, SearchSettings, graphResults, DateTime.Now.ToString());
         }
         #endregion
         public SearchSettingModel SearchSettings

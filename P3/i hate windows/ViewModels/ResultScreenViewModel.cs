@@ -15,7 +15,7 @@ namespace P3.ViewModels
     {
         #region ctor
         [ImportingConstructor]
-        public ResultScreenViewModel(BindableCollection<Listing> ReturnedSearchResults, IWindowManager windowManager, IEventAggregator eventaggregator)
+        public ResultScreenViewModel(BindableCollection<Listing> ReturnedSearchResults, SearchSettingModel searchSettings, IWindowManager windowManager, IEventAggregator eventaggregator)
         {
             _windowManager = windowManager;
             SearchResults = ReturnedSearchResults;
@@ -24,6 +24,7 @@ namespace P3.ViewModels
                 SelectedSearchResult = SearchResults[0];
             }
             _eventAggregator = eventaggregator;
+            _searchSettings = searchSettings;
 
 
         }
@@ -37,6 +38,8 @@ namespace P3.ViewModels
         private readonly IWindowManager _windowManager;
         //EventAggregator, publish events to this to communicate between views.
         private IEventAggregator _eventAggregator;
+        //The searchsettings, used for creating the pdf
+        private SearchSettingModel _searchSettings;
 
         #endregion
 
@@ -52,7 +55,8 @@ namespace P3.ViewModels
 
         public void PrintChosen()
         {
-            
+            object graphresults = new object();
+            PDFConverter pdfconv = new PDFConverter(SearchResults, _searchSettings, graphresults, DateTime.Now.ToString());
         }
 
         #region Public fields
