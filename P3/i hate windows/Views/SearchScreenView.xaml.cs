@@ -1,4 +1,5 @@
-﻿using System;
+﻿using P3.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,6 +59,21 @@ namespace P3.Views
         private void TextInputValidation(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !NumericOnly(e.Text);
+        }
+
+
+        //It turned out to be way easier to do this in code behind rather than in the viewmodel, because of no support for deep property guard methods in caliburn. 
+        private void CanSearch(object sender, TextChangedEventArgs e)
+        {
+            TextBox TxtB = sender as TextBox;
+            if (!string.IsNullOrEmpty(TxtB.Text) && TxtB.Text.Split().Length > 3)
+            {
+                GetResults.IsEnabled = true;
+            }
+            else
+            {
+                GetResults.IsEnabled = false;
+            }
         }
     }
 }

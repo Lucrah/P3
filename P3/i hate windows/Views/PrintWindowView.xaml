@@ -1,0 +1,26 @@
+﻿<controls:MetroWindow x:Class="i_hate_windows.Views.PrintWindowView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:local="clr-namespace:i_hate_windows.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Width="300" Height="100"
+             Topmost="true"
+             ShowTitleBar="False"
+             ResizeMode="NoResize"
+             >
+    <Grid Background="#FF2C2C2C" Width="300" Height="100">
+    	<Grid HorizontalAlignment="Left" Height="55.333" VerticalAlignment="Top" Width="104.667" Margin="0,30,0,0">
+    		<RadioButton Content="Søgeresultater" HorizontalAlignment="Left" Margin="4.183,10,-0.193,0" VerticalAlignment="Top" Foreground="White"/>
+    		<RadioButton Content="Grafer/analyse" HorizontalAlignment="Left" Margin="4.183,33,0,0" VerticalAlignment="Top" Foreground="White"/>
+    	</Grid>
+    	<TextBlock HorizontalAlignment="Left" Margin="83.332,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White"><Run Language="da-dk" Text="Vælg print-indhold:"/></TextBlock>
+    	<Grid HorizontalAlignment="Left" Height="55.667" Margin="143.333,34,0,0" VerticalAlignment="Top" Width="144">
+    		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" Height="15.96" Foreground="White"><Run Language="da-dk" Text="Antal søgeresultater:"/></TextBlock>
+    		<TextBox HorizontalAlignment="Left" Height="15.667" Margin="5.333,20.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="28.333" FontSize="10.667"/>
+    		<RadioButton Content="Medtag alle" HorizontalAlignment="Left" Margin="47.156,24,0,0" VerticalAlignment="Top" Foreground="White"/>
+    	</Grid>
+    </Grid>
+</controls:MetroWindow>

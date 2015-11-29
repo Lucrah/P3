@@ -85,6 +85,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.1.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -137,6 +139,7 @@
     </Compile>
     <Compile Include="Behaviours\CloseWindowBehavior.cs" />
     <Compile Include="Behaviours\ToggleFullScreenBehavior.cs" />
+    <Compile Include="Helpers\BoolPropMsg.cs" />
     <Compile Include="Helpers\Debugger.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\Functionality.cs" />
@@ -147,12 +150,16 @@
     <Compile Include="Models\SearchSettingModel.cs" />
     <Compile Include="ViewModels\FlyoutLeftViewModel.cs" />
     <Compile Include="ViewModels\GraphScreenViewModel.cs" />
+    <Compile Include="ViewModels\PrintWindowViewModel.cs" />
     <Compile Include="ViewModels\PropertyInfoViewModel.cs" />
     <Compile Include="ViewModels\ResultScreenViewModel.cs" />
     <Compile Include="ViewModels\SearchScreenViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\FlyoutLeftView.xaml.cs">
       <DependentUpon>FlyoutLeftView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PrintWindowView.xaml.cs">
+      <DependentUpon>PrintWindowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PropertyInfoView.xaml.cs">
       <DependentUpon>PropertyInfoView.xaml</DependentUpon>
@@ -206,6 +213,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\FlyoutLeftView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PrintWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

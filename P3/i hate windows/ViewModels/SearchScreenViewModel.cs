@@ -11,6 +11,7 @@ using MySql.Data.MySqlClient;
 using System.ComponentModel.Composition;
 using P3.Helpers;
 using i_hate_windows.Helpers;
+using i_hate_windows.ViewModels;
 
 namespace P3.ViewModels
 {
@@ -20,11 +21,13 @@ namespace P3.ViewModels
         #region Fields that are not searchsettings
 
         private BindableCollection<SearchSettingModel> _savedSettingsCollection;
+        private BindableCollection<Listing> ResultsReturned;
         private string Path;
         private Screen _resultScreen;
         private SearchSettingModel _searchSettings;
         private IEventAggregator _eventAggregator;
         private object graphResults;
+        private bool isPrintOpen = false;
 
         //mef stuff
         private readonly IWindowManager _windowManager;
@@ -92,7 +95,6 @@ namespace P3.ViewModels
 
         public void GetResults()
         {
-            BindableCollection<Listing> ResultsReturned;
             Funktionality func = new Funktionality();
             //Call and run query functions here
             //SearchSettings propertien indeholder de valgte settings.
@@ -110,8 +112,15 @@ namespace P3.ViewModels
 
             //Jeppes funktioner, responsible for saving the searchsettings to a .csv so you can view recent searches.
             SaveSearchSettings();
-            
-            PDFConverter pdfConverter = new PDFConverter(ResultsReturned, SearchSettings, graphResults, DateTime.Now.ToString());
+        }
+
+        public void Print()
+        {
+            if (!isPrintOpen)
+            {
+                _windowManager.ShowWindow(new PrintWindowViewModel(ResultsReturned, SearchSettings, graphResults));
+                isPrintOpen = true;
+            }
         }
         #endregion
         public SearchSettingModel SearchSettings
@@ -124,9 +133,10 @@ namespace P3.ViewModels
             private set
             {
                 _searchSettings = value;
-                NotifyOfPropertyChange(()=>SearchSettings);
+                NotifyOfPropertyChange(( )=> SearchSettings);
             }
         }
+
         public Screen ResultScreen
         {
             get { return _resultScreen; }
