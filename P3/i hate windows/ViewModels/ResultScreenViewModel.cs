@@ -19,7 +19,7 @@ namespace P3.ViewModels
         {
             _windowManager = windowManager;
             SearchResults = ReturnedSearchResults;
-            if (SearchResults != null)
+            if (SearchResults != null && SearchResults.Count < 0)
             {
                 SelectedSearchResult = SearchResults[0];
             }

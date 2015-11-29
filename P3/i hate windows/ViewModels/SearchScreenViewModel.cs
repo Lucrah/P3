@@ -118,7 +118,7 @@ namespace P3.ViewModels
         {
             if (!isPrintOpen)
             {
-                _windowManager.ShowWindow(new PrintWindowViewModel(ResultsReturned, SearchSettings, graphResults));
+                _windowManager.ShowWindow(new PrintWindowViewModel(ResultsReturned, SearchSettings, graphResults, _eventAggregator));
                 isPrintOpen = true;
             }
         }
