@@ -8,162 +8,181 @@ using Caliburn.Micro;
 
 namespace P3.Helpers
 {
-    class Funktionality
+  class Funktionality
+  {
+    //should this not be coupled directly onto listing.cs to keep it as close to data as possible
+    //Or maybe even put it in BaseINPCModel, so that any listing, as long as it has an adress it can get coords 4 u
+
+    private static string connectionString = "server=localhost;user id=root;password=1234;database=p3database";
+
+    #region Cords and haversine.. haversine is obsolete... done with queries instead
+    public static void getCoordinates(Listing listing)  //need the new getcoordinates from ConsoleApplication1..
     {
-        //should this not be coupled directly onto listing.cs to keep it as close to data as possible
-        //Or maybe even put it in BaseINPCModel, so that any listing, as long as it has an adress it can get coords 4 u
+      System.Threading.Thread.Sleep(1000);
+      double[] geoCode = new double[2] { 0.0, 0.0 };
 
-        private static string connectionString = "server=localhost;user id=root;password=1234;database=p3database";
+      string address = "http://maps.googleapis.com/maps/api/geocode/xml?address=" + listing.AddressForUrl + "&sensor=false";
 
-        #region Cords and haversine.. haversine is obsolete... done with queries instead
-        public static void getCoordinates(Listing listing)  //need the new getcoordinates from ConsoleApplication1..
-        {
-            System.Threading.Thread.Sleep(1000);
-            double[] geoCode = new double[2] { 0.0, 0.0 };
-
-            string address = "http://maps.googleapis.com/maps/api/geocode/xml?address=" + listing.AddressForUrl + "&sensor=false";
-
-            var result = new System.Net.WebClient().DownloadString(address);
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml(result);
-            XmlNodeList parentNode = doc.GetElementsByTagName("location");
-            foreach (XmlNode childrenNode in parentNode)
-            {
-                listing.Lat = Convert.ToDouble(childrenNode.SelectSingleNode("lat").InnerText);
-                listing.Lng = Convert.ToDouble(childrenNode.SelectSingleNode("lng").InnerText);
-            }
-        }
+      var result = new System.Net.WebClient().DownloadString(address);
+      XmlDocument doc = new XmlDocument();
+      doc.LoadXml(result);
+      XmlNodeList parentNode = doc.GetElementsByTagName("location");
+      foreach (XmlNode childrenNode in parentNode)
+      {
+        listing.Lat = Convert.ToDouble(childrenNode.SelectSingleNode("lat").InnerText);
+        listing.Lng = Convert.ToDouble(childrenNode.SelectSingleNode("lng").InnerText);
+      }
+    }
 
 
-        public static double convertToDistance(Listing a, Listing b)
-        {
-            //Haversine formula for calculating distance between lat/long points
-            double theDistance = (Math.Sin(DegreesToRadians(a.Lat)) *
-                  Math.Sin(DegreesToRadians(b.Lat)) +
-                  Math.Cos(DegreesToRadians(a.Lat)) *
-                  Math.Cos(DegreesToRadians(b.Lat)) *
-                  Math.Cos(DegreesToRadians(a.Lng - b.Lng)));
+    public static double convertToDistance(Listing a, Listing b)
+    {
+      //Haversine formula for calculating distance between lat/long points
+      double theDistance = (Math.Sin(DegreesToRadians(a.Lat)) *
+            Math.Sin(DegreesToRadians(b.Lat)) +
+            Math.Cos(DegreesToRadians(a.Lat)) *
+            Math.Cos(DegreesToRadians(b.Lat)) *
+            Math.Cos(DegreesToRadians(a.Lng - b.Lng)));
 
-            return Convert.ToDouble((RadiansToDegrees(Math.Acos(theDistance)))) * 69.09 * 1.6093;
-        }
+      return Convert.ToDouble((RadiansToDegrees(Math.Acos(theDistance)))) * 69.09 * 1.6093;
+    }
 
-        static public double RadiansToDegrees(double angle)
-        {
-            return angle * (180.0 / Math.PI);
-        }
+    static public double RadiansToDegrees(double angle)
+    {
+      return angle * (180.0 / Math.PI);
+    }
 
 
 
-        static public double DegreesToRadians(double angle)
-        {
-            return Math.PI * angle / 180.0;
-        }
-        #endregion
+    static public double DegreesToRadians(double angle)
+    {
+      return Math.PI * angle / 180.0;
+    }
+    #endregion
 
-        public BindableCollection<Listing> StaticSearch()
-        {
-            BindableCollection<Listing> Results = new BindableCollection<Listing>();
-            List<Listing> listForSale = new List<Listing>();
-            List<Listing> listSold = new List<Listing>();
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-            {
-                listForSale = connection.Query<Listing>("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS size, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfoforsale.Price AS price, salesinfoforsale.PriceSqr AS priceSqr, salesinfoforsale.Demurrage AS demurrage FROM address, listings, salesinfoforsale WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfoforsale.IDSalesInfoForSale LIMIT 25").AsList();
-                listSold = connection.Query<Listing>("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS size, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfosold.SalesType AS salesType, salesinfosold.Price AS price, salesinfosold.PriceSqr AS priceSqr, salesinfosold.SalesDate AS salesDate FROM address, listings, salesinfosold WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfosold.IDSalesInfoSold LIMIT 25").AsList();
+    public BindableCollection<Listing> StaticSearch()
+    {
+      BindableCollection<Listing> Results = new BindableCollection<Listing>();
+      List<Listing> listForSale = new List<Listing>();
+      List<Listing> listSold = new List<Listing>();
+      using (MySqlConnection connection = new MySqlConnection(connectionString))
+      {
+        listForSale = connection.Query<Listing>("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS size, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfoforsale.Price AS price, salesinfoforsale.PriceSqr AS priceSqr, salesinfoforsale.Demurrage AS demurrage FROM address, listings, salesinfoforsale WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfoforsale.IDSalesInfoForSale LIMIT 25").AsList();
+        listSold = connection.Query<Listing>("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS size, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfosold.SalesType AS salesType, salesinfosold.Price AS price, salesinfosold.PriceSqr AS priceSqr, salesinfosold.SalesDate AS salesDate FROM address, listings, salesinfosold WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfosold.IDSalesInfoSold LIMIT 25").AsList();
 
-            }
-            foreach (var ForSale in listForSale)
-            {
-                Results.Add(ForSale);
-            }
-            foreach (var Sold in listSold)
-            {
-                Results.Add(Sold);
-            }
-            return Results;
-        }
+      }
+      foreach (var ForSale in listForSale)
+      {
+        Results.Add(ForSale);
+      }
+      foreach (var Sold in listSold)
+      {
+        Results.Add(Sold);
+      }
+      return Results;
+    }
 
-        public BindableCollection<Listing> SuperSearch(SearchSettingModel input)
-        {
-            BindableCollection<Listing> Results = new BindableCollection<Listing>();
-            List<Listing> listForSale = new List<Listing>();
-            List<Listing> listSold = new List<Listing>();
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-                  {
-                     // listSold = connection.Query<Listing>(SqlStringBuilderSold(input)).AsList();
-                      listForSale = connection.Query<Listing>(SqlStringBuilderForSale(input)).AsList();
+    public BindableCollection<Listing> SuperSearch(SearchSettingModel input)
+    {
+      BindableCollection<Listing> Results = new BindableCollection<Listing>();
+      List<Listing> listForSale = new List<Listing>();
+      List<Listing> listSold = new List<Listing>();
+      using (MySqlConnection connection = new MySqlConnection(connectionString))
+      {
+        // listSold = connection.Query<Listing>(SqlStringBuilderSold(input)).AsList();
+        listForSale = connection.Query<Listing>(SqlStringBuilderForSale(input)).AsList();
 
-                  }
-     
-            foreach (var ForSale in listForSale)
-            {
-              Results.Add(ForSale);
-            }
-            foreach (var Sold in listSold)
-            {
-              Results.Add(Sold);
-            }
+      }
 
-            return Results;
-        }
+      foreach (var ForSale in listForSale)
+      {
+        Results.Add(ForSale);
+      }
+      foreach (var Sold in listSold)
+      {
+        Results.Add(Sold);
+      }
 
-        private string SqlStringBuilderForSale(SearchSettingModel input)
-        {
-            string sql = System.String.Format("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS size, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfoforsale.Price AS price, salesinfoforsale.PriceSqr AS priceSqr, salesinfoforsale.Demurrage AS demurrage FROM address, listings, salesinfoforsale WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfoforsale.IDSalesInfoForSale AND ");
+      return Results;
+    }
 
-            string[] split = { "Unknown" };
-             Listing SearchListing;
-            if (input.SearchInput != null)
-            {
-              split = input.SearchInput.Split(' ');
-              SearchListing = new Listing(split[0], split[1], int.Parse(split[2]));
-              getCoordinates(SearchListing);
+    private string SqlStringBuilderForSale(SearchSettingModel input)
+    {
+      string sql = System.String.Format("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS size, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfoforsale.Price AS price, salesinfoforsale.PriceSqr AS priceSqr, salesinfoforsale.Demurrage AS demurrage FROM address, listings, salesinfoforsale WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfoforsale.IDSalesInfoForSale AND ");
+
+      string[] split = { "Unknown" };
+      Listing SearchListing;
+      if (input.SearchInput != null)
+      {
+        split = input.SearchInput.Split(' ');
+        SearchListing = new Listing(split[0], split[1], int.Parse(split[2]));
+        getCoordinates(SearchListing);
         //if (input.AreaSliderLowerValue > 0.0 && input.AreaSliderHigherValue > 0.0)
         //{
         //  sql += System.String.Format("SELECT *, 111.045* DEGREES(ACOS(COS(RADIANS(latpoint)) * COS(RADIANS(Lat)) * COS(RADIANS(longpoint) - RADIANS(Lng)) + SIN(RADIANS(latpoint)) * SIN(RADIANS(Lat))))*1000 AS distance_in_m FROM address JOIN ( SELECT {0} AS latpoint,  {1} AS longpoint) AS p ON 1=1 AND ", SearchListing.Lat, SearchListing.Lng);
         //}
-           }
-            
+      }
 
-            //if (input.SearchInput != null)
-            //{
-            //    //sql += System.String.Format("SELECT *, 111.045* DEGREES(ACOS(COS(RADIANS(latpoint)) * COS(RADIANS(Lat)) * COS(RADIANS(longpoint) - RADIANS(Lng)) + SIN(RADIANS(latpoint)) * SIN(RADIANS(Lat))))*1000 AS distance_in_m FROM address JOIN ( SELECT {0} AS latpoint,  {1} AS longpoint) AS p ON 1=1 AND ", SearchListing.Lat, SearchListing.Lng);
-            //}
 
-            if (input.Andelsbolig || input.Villa || input.Rækkehus || input.LiebhaverEjendom || input.FritidsEjendom || input.NedlagtLandbrug)
-            {
-                string sqlOr = System.String.Format("listings.PropertyType = ");
-                List<bool> ejendomme = new List<bool>();
-                List<bool> TrueEjendomme = new List<bool>();
-                ejendomme.Add(input.Andelsbolig);
-                ejendomme.Add(input.Villa);
-                ejendomme.Add(input.Rækkehus);
-                ejendomme.Add(input.LiebhaverEjendom);
-                ejendomme.Add(input.FritidsEjendom);
-                ejendomme.Add(input.NedlagtLandbrug);
-                int count = 1;
-                foreach (var item in ejendomme)
-                {
-                    if (item)
-                    {
-                        TrueEjendomme.Add(item);
-                    }
-                }
-               
-                foreach (var item in TrueEjendomme)
-                {
-                if (TrueEjendomme.Count == count)
-                {
-                  sqlOr += String.Format("{0} AND ", item);
-                }
-                else
-                {
-                  count++;
-                  sqlOr += String.Format("{0} OR ", item);
-                }
-                        
-                }
-                sql += sqlOr;
-            }
+      //if (input.SearchInput != null)
+      //{
+      //    //sql += System.String.Format("SELECT *, 111.045* DEGREES(ACOS(COS(RADIANS(latpoint)) * COS(RADIANS(Lat)) * COS(RADIANS(longpoint) - RADIANS(Lng)) + SIN(RADIANS(latpoint)) * SIN(RADIANS(Lat))))*1000 AS distance_in_m FROM address JOIN ( SELECT {0} AS latpoint,  {1} AS longpoint) AS p ON 1=1 AND ", SearchListing.Lat, SearchListing.Lng);
+      //}
+      string sqlOr = "(";
+      string AndOr = string.Empty;
+      string proptype = "listings.PropertyType = ";
+      List<bool> PropTypes = new List<bool> { input.Andelsbolig, input.FritidsEjendom, input.LiebhaverEjendom, input.NedlagtLandbrug, input.Rækkehus, input.Villa };
+      List<bool> PropTypeChecked = new List<bool>();
+      foreach (var item in PropTypes)
+      {
+        if (item)
+        {
+          PropTypeChecked.Add(item);
+        }
+      }
+      int count = PropTypeChecked.Count;
+
+      if (input.Andelsbolig)
+      {
+        AndOr = getAndOr(count);
+        sqlOr += proptype + "\"Andelsbolig\" " + AndOr;
+        count--;
+      }
+      if (input.Villa)
+      {
+        AndOr = getAndOr(count);
+        sqlOr += proptype + "\"Villa\" " + AndOr;
+        count--;
+      }
+      if (input.FritidsEjendom)
+      {
+        AndOr = getAndOr(count);
+        sqlOr += proptype + "\"Fritids Ejendom\" " + AndOr;
+        count--;
+      }
+      if (input.LiebhaverEjendom)
+      {
+        AndOr = getAndOr(count);
+        sqlOr += proptype + "\"Liebhaver Ejendom\" " + AndOr;
+        count--;
+      }
+      if (input.NedlagtLandbrug)
+      {
+        AndOr = getAndOr(count);
+        sqlOr += proptype + "\"Nedlagt Landbrug\" " + AndOr;
+        count--;
+      }
+      if (input.Rækkehus)
+      {
+        AndOr = getAndOr(count);
+        sqlOr += proptype + "\"Rækkehus\" " + AndOr;
+        count--;
+      }
+      sqlOr += ") AND ";
+
+
+      sql += sqlOr;
+
 
 
 
@@ -172,38 +191,38 @@ namespace P3.Helpers
       {
         sql += System.String.Format("salesinfoforsale.Price >= {0} AND salesinfoforsale.Price <= {1} AND ", input.PriceSliderLowerValue, input.PriceSliderHigherValue);
       }
-           
-		        
-	        
 
-            
-            if (input.SizeSliderHigherValue > 0.0)
-            {
-                sql += System.String.Format("listings.Size >= {0} AND listings.Size <= {1} AND ", input.SizeSliderLowerValue, input.SizeSliderHigherValue);
-            }
-            if (input.DowntimeHigherValue > 0.0)
-            {
-                sql += System.String.Format("salesinfoforsale.Demurrage >= {0} AND salesinfoforsale.Demurrage <= {1} AND ", input.DowntimeLowerValue, input.DowntimeHigherValue);
-            }
-            
-            if (input.SameRoad == true)
-            {
-                sql += System.String.Format("address.StreetName = {0} AND ", split[0]);
-            }
-            if (input.SameZipCode == true)
-            {
-                sql += System.String.Format("address.AreaCode = {0} AND ", int.Parse(split[2]));
-            }
-            sql += System.String.Format("listings.NumberOfRooms >= {0} AND listings.NumberOfRooms <= {1} LIMIT 100",
-                input.MinRoomCount, input.MaxRoomCount);
+
+
+
+
+      if (input.SizeSliderHigherValue > 0.0)
+      {
+        sql += System.String.Format("listings.Size >= {0} AND listings.Size <= {1} AND ", input.SizeSliderLowerValue, input.SizeSliderHigherValue);
+      }
+      if (input.DowntimeHigherValue > 0.0)
+      {
+        sql += System.String.Format("salesinfoforsale.Demurrage >= {0} AND salesinfoforsale.Demurrage <= {1} AND ", input.DowntimeLowerValue, input.DowntimeHigherValue);
+      }
+
+      if (input.SameRoad == true)
+      {
+        sql += System.String.Format("address.StreetName = {0} AND ", split[0]);
+      }
+      if (input.SameZipCode == true)
+      {
+        sql += System.String.Format("address.AreaCode = {0} AND ", int.Parse(split[2]));
+      }
+      sql += System.String.Format("listings.NumberOfRooms >= {0} AND listings.NumberOfRooms <= {1} LIMIT 100",
+          input.MinRoomCount, input.MaxRoomCount);
 
       //if (input.AreaSliderLowerValue > 0.0 && input.AreaSliderHigherValue > 0.0)
       //{
       //  sql += System.String.Format("HAVING distance_in_m <= {0}", input.AreaSliderHigherValue);
       //}
-      throw new Exception(sql);
-            return sql;
-        }
+      //throw new Exception(sql);
+      return sql;
+    }
 
     private string SqlStringBuilderSold(SearchSettingModel input)
     {
@@ -221,7 +240,7 @@ namespace P3.Helpers
         }
       }
 
-      
+
 
       if (input.Andelsbolig == true || input.Villa == true || input.Rækkehus == true || input.LiebhaverEjendom == true || input.FritidsEjendom == true || input.NedlagtLandbrug == true)
       {
@@ -302,6 +321,18 @@ namespace P3.Helpers
       sql += System.String.Format("listings.NumberOfRooms BETWEEN {0} AND {1} AND listings.YearBuild BETWEEN {2} AND {3}",
           input.MinRoomCount, input.MaxRoomCount, input.MinYearBuilt, input.MaxYearBuilt);
       return sql;
+    }
+
+    string getAndOr(int count)
+    {
+      if (count > 1)
+      {
+        return  "OR ";
+      }
+      else
+      {
+        return  string.Empty;
+      }
     }
   }
 }
