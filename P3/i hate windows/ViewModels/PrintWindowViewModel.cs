@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using i_hate_windows.Helpers;
 using P3.Models;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,19 @@ namespace i_hate_windows.ViewModels
         object _graphResults;
         string _whatToAppend;
 
+        public string WhatToAppend
+        {
+            get
+            {
+                return _whatToAppend;
+            }
+
+            set
+            {
+                _whatToAppend = value;
+            }
+        }
+
         [ImportingConstructor]
         public PrintWindowViewModel(BindableCollection<Listing> resultsReturned, SearchSettingModel searchSettings, object graphResults, IEventAggregator eventaggregator)
         {
@@ -29,6 +43,25 @@ namespace i_hate_windows.ViewModels
             _graphResults = graphResults;
             _eventAggregator = eventaggregator;
             _eventAggregator.Subscribe(this);
+        }
+
+        public void executePDFCreation()
+        {
+            try
+            {
+                PDFConverter pdfcon = new PDFConverter(_resultsReturned, _searchSettings, _graphResults, WhatToAppend);
+                pdfcon.ExecuteCreation();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void ClosingMsg()
+        {
+            _eventAggregator.PublishOnUIThread(new BoolPropMsg("IsPrintOpen", false));
         }
     }
 }

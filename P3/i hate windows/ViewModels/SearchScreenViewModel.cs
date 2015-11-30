@@ -16,7 +16,7 @@ using i_hate_windows.ViewModels;
 namespace P3.ViewModels
 {
     [Export(typeof(SearchScreenViewModel))]
-    class SearchScreenViewModel : Conductor<object>.Collection.OneActive
+    class SearchScreenViewModel : Conductor<object>.Collection.OneActive, IHandle<BoolPropMsg>
     {
         #region Fields that are not searchsettings
 
@@ -27,7 +27,7 @@ namespace P3.ViewModels
         private SearchSettingModel _searchSettings;
         private IEventAggregator _eventAggregator;
         private object graphResults;
-        private bool isPrintOpen = false;
+        private bool _isPrintOpen = false;
 
         //mef stuff
         private readonly IWindowManager _windowManager;
@@ -39,6 +39,7 @@ namespace P3.ViewModels
         public SearchScreenViewModel(IWindowManager windowManager, IEventAggregator eventaggregator)
         {
             _eventAggregator = eventaggregator;
+            _eventAggregator.Subscribe(this);
             _windowManager = windowManager;
             Initialize();
             
@@ -116,10 +117,19 @@ namespace P3.ViewModels
 
         public void Print()
         {
-            if (!isPrintOpen)
+            if (!IsPrintOpen)
             {
                 _windowManager.ShowWindow(new PrintWindowViewModel(ResultsReturned, SearchSettings, graphResults, _eventAggregator));
-                isPrintOpen = true;
+                //technically this should be a publishonuithread?
+                IsPrintOpen = true;
+            }
+        }
+
+        public void Handle(BoolPropMsg message)
+        {
+            if(message.Prop == "IsPrintOpen")
+            {
+                IsPrintOpen = message.Val;
             }
         }
         #endregion
@@ -155,6 +165,20 @@ namespace P3.ViewModels
                 NotifyOfPropertyChange(() => SavedSettingsCollection);
             }
 
+        }
+
+        public bool IsPrintOpen
+        {
+            get
+            {
+                return _isPrintOpen;
+            }
+
+            set
+            {
+                _isPrintOpen = value;
+                NotifyOfPropertyChange(() => IsPrintOpen);
+            }
         }
     }
 }

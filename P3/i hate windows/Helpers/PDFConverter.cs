@@ -39,9 +39,21 @@ namespace i_hate_windows.Helpers
           _graphResults = graphResults;
           PDFPath = GetPath();
           appendToPDF = whatToAppend;
-          ResultAndGraphPDF();
       }
-
+        
+      public void ExecuteCreation(string mode)
+        {
+            if (mode == "result")
+            {
+                ResultOnly();
+            }
+            else if (mode == "graph")
+            {
+                GraphOnly();
+            }
+            else
+                ResultAndGraphPDF();
+        }
       //lets start by creating a path string to the pdf folder
       public string GetPath()
       {
@@ -81,6 +93,66 @@ namespace i_hate_windows.Helpers
           }
       }
 
+        private void ResultOnly()
+        {
+            Document doc = new Document();
+            doc.SetPageSize(PageSize.A4);
+            try
+            {
+                //INITIALIZATION
+                PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(PDFPath + "/SøgeResultater.pdf", FileMode.Create));
+                doc.Open();
+                //calling the main functions to handle adding content
+                BannerAdd(doc, writer);
+                SearchInfo(doc);
+                doc.NewPage();
+                //no need to pass in that
+                ResultTable(_searchResults, doc);
+                doc.NewPage();
+                //Call function to show rasmus thing here
+
+            }
+            catch (Exception ex)
+            {
+
+                Debug.WriteLine(CreateLogMessage(ex.ToString(), "PDF ERROR"));
+            }
+            finally
+            {
+                doc.Close();
+            }
+        }
+
+        private void GraphOnly()
+        {
+            Document doc = new Document();
+            doc.SetPageSize(PageSize.A4);
+            try
+            {
+                //INITIALIZATION
+                PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(PDFPath + "/SøgeResultater.pdf", FileMode.Create));
+                doc.Open();
+                //calling the main functions to handle adding content
+                BannerAdd(doc, writer);
+                SearchInfo(doc);
+                doc.NewPage();
+                //Call function to show rasmus thing here
+                GraphAdd();
+            }
+            catch (Exception ex)
+            {
+
+                Debug.WriteLine(CreateLogMessage(ex.ToString(), "PDF ERROR"));
+            }
+            finally
+            {
+                doc.Close();
+            }
+        }
+        private void ShowPDFInDefaultApp()
+        {
+            Process.Start(PDFPath + "/SøgeResultater.pdf");
+        }
         private string SoldOrForsaleString()
         {
             string resultString;
@@ -233,6 +305,10 @@ namespace i_hate_windows.Helpers
             banner.ScaleToFit(doc.PageSize.Width, 50f);
             cb.AddImage(banner);
             cb.RestoreState();
+        }
+        private void GraphAdd()
+        {
+
         }
     }
 }
