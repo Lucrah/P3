@@ -22,6 +22,11 @@ namespace i_hate_windows.ViewModels
         object _graphResults;
         string _whatToAppend;
 
+        bool _useSearch;
+        bool _useGraph;
+        int _numberOfSearchResults;
+        bool _useAllResults;
+
         public string WhatToAppend
         {
             get
@@ -32,6 +37,59 @@ namespace i_hate_windows.ViewModels
             set
             {
                 _whatToAppend = value;
+                NotifyOfPropertyChange(() => WhatToAppend);
+            }
+        }
+        public bool UseSearch
+        {
+            get
+            {
+                return _useSearch;
+            }
+
+            set
+            {
+                _useSearch = value;
+                NotifyOfPropertyChange(() => UseSearch);
+            }
+        }
+        public bool UseGraph
+        {
+            get
+            {
+                return _useGraph;
+            }
+
+            set
+            {
+                _useGraph = value;
+                NotifyOfPropertyChange(() => UseGraph);
+            }
+        }
+        public int NumberOfSearchResults
+        {
+            get
+            {
+                return _numberOfSearchResults;
+            }
+
+            set
+            {
+                _numberOfSearchResults = value;
+                NotifyOfPropertyChange(() => NumberOfSearchResults);
+            }
+        }
+        public bool UseAllResults
+        {
+            get
+            {
+                return _useAllResults;
+            }
+
+            set
+            {
+                _useAllResults = value;
+                NotifyOfPropertyChange(() => UseAllResults);
             }
         }
 
@@ -45,12 +103,22 @@ namespace i_hate_windows.ViewModels
             _eventAggregator.Subscribe(this);
         }
 
-        public void executePDFCreation()
+        public void ExecutePDFCreation()
         {
             try
             {
                 PDFConverter pdfcon = new PDFConverter(_resultsReturned, _searchSettings, _graphResults, WhatToAppend);
-                pdfcon.ExecuteCreation();
+                if(UseSearch && !UseGraph)
+                {
+                    pdfcon.ExecuteCreation("result", NumberOfSearchResults);
+                }
+                if (UseGraph && !UseSearch)
+                {
+                    pdfcon.ExecuteCreation("graph", NumberOfSearchResults);
+                }
+                else
+                    pdfcon.ExecuteCreation("", NumberOfSearchResults);
+
             }
             catch (Exception)
             {

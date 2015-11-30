@@ -20,7 +20,7 @@ namespace P3.Models
         private double _areaSliderLowerValue = 100;//Radius around the address on which the search will be based, not the size of the property or the house itself.
         private double _areaSliderHigherValue = 200;
         private double _downtimeLowerValue = 0;
-        private double _downtimeHigherValue = 24;
+        private double _downtimeHigherValue = 500;
         private double _sizeSliderLowerValue = 10;
         private double _sizeSliderHigherValue = 50;
 

@@ -18,9 +18,9 @@ using List = System.Windows.Documents.List;
 using iTextSharp.text.pdf;
 
 namespace i_hate_windows.Helpers
+{ 
+  class PDFConverter : PropertyChangedBase
 {
-  class PDFConverter
-  {
         //In charge of setting up a page, and filling the first couple of pages with the list of returned results, and the next couple of pages with graphs/calculations for the mægler ./ask rasmus
         //Basically, converting 2 objects, a) a list of returned results and b) an object consisting of the graphs output by the program, into pdf format.
 
@@ -29,6 +29,7 @@ namespace i_hate_windows.Helpers
         private BindableCollection<Listing> _searchResults;
         private SearchSettingModel _searchInput;
         private object _graphResults;
+        private int _numberOfSearchResults;
 
         //Ctor, change this to take in rasmus's elements when they are done too
 
@@ -41,8 +42,9 @@ namespace i_hate_windows.Helpers
           appendToPDF = whatToAppend;
       }
         
-      public void ExecuteCreation(string mode)
+      public void ExecuteCreation(string mode, int numberofsearchresults)
         {
+            NumberOfSearchResults = numberofsearchresults;
             if (mode == "result")
             {
                 ResultOnly();
@@ -106,10 +108,9 @@ namespace i_hate_windows.Helpers
                 BannerAdd(doc, writer);
                 SearchInfo(doc);
                 doc.NewPage();
-                //no need to pass in that
+                //no need to pass in that doc ref prolly
                 ResultTable(_searchResults, doc);
                 doc.NewPage();
-                //Call function to show rasmus thing here
 
             }
             catch (Exception ex)
@@ -122,7 +123,6 @@ namespace i_hate_windows.Helpers
                 doc.Close();
             }
         }
-
         private void GraphOnly()
         {
             Document doc = new Document();
@@ -308,8 +308,22 @@ namespace i_hate_windows.Helpers
         }
         private void GraphAdd()
         {
+            //this can possibly be replaced by a simple merge with the output file from oxyplot.
+        }
 
+    public int NumberOfSearchResults
+    {
+        get
+        {
+            return _numberOfSearchResults;
+        }
+
+        set
+        {
+            _numberOfSearchResults = value;
+            NotifyOfPropertyChange(() => NumberOfSearchResults);
         }
     }
+}
 }
  

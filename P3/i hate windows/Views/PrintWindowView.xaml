@@ -15,15 +15,15 @@
              >
     <Grid Background="#FF2C2C2C" Margin="-3,0,-3,-3" Height="132" VerticalAlignment="Top" HorizontalAlignment="Right" Width="300">
         <Grid HorizontalAlignment="Left" Height="55.333" VerticalAlignment="Top" Width="104.667" Margin="0,30,0,0">
-            <RadioButton Content="Søgeresultater" HorizontalAlignment="Left" Margin="4.183,10,-0.193,0" VerticalAlignment="Top" Foreground="White"/>
-            <RadioButton Content="Grafer/analyse" HorizontalAlignment="Left" Margin="4.183,33,0,0" VerticalAlignment="Top" Foreground="White"/>
+            <CheckBox x:Name="UseSearch" Content="Søgeresultater" HorizontalAlignment="Left" Margin="4.183,10,-0.193,0" VerticalAlignment="Top" Foreground="White"/>
+            <CheckBox x:Name="UseGraph" Content="Grafer/analyse" HorizontalAlignment="Left" Margin="4.183,33,0,0" VerticalAlignment="Top" Foreground="White"/>
         </Grid>
         <TextBlock HorizontalAlignment="Left" Margin="83.332,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White"><Run Language="da-dk" Text="Vælg print-indhold:"/></TextBlock>
         <Grid HorizontalAlignment="Left" Height="55.667" Margin="143.333,34,0,0" VerticalAlignment="Top" Width="144">
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" Height="15.96" Foreground="White"><Run Language="da-dk" Text="Antal søgeresultater:"/></TextBlock>
-            <TextBox HorizontalAlignment="Left" Height="15.667" Margin="5.333,20.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="28.333" FontSize="10.667"/>
-            <RadioButton Content="Medtag alle" HorizontalAlignment="Left" Margin="47.156,24,0,0" VerticalAlignment="Top" Foreground="White"/>
+            <TextBox x:Name="NumberOfSearhResults" HorizontalAlignment="Left" Height="15.667" Margin="5.333,20.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="28.333" FontSize="10.667"/>
+            <CheckBox x:Name="UseAllResults" Content="Medtag alle" HorizontalAlignment="Left" Margin="47.156,24,0,0" VerticalAlignment="Top" Foreground="White"/>
         </Grid>
-        <Button x:Name="button" Content="Print" HorizontalAlignment="Left" Margin="99,101,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="ExecutePDFCreation" Content="Print" HorizontalAlignment="Left" Margin="99,101,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </controls:MetroWindow>
