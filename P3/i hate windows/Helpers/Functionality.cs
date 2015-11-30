@@ -91,6 +91,7 @@ namespace P3.Helpers
                   {
                      // listSold = connection.Query<Listing>(SqlStringBuilderSold(input)).AsList();
                       listForSale = connection.Query<Listing>(SqlStringBuilderForSale(input)).AsList();
+
                   }
      
             foreach (var ForSale in listForSale)
@@ -120,7 +121,7 @@ namespace P3.Helpers
         //{
         //  sql += System.String.Format("SELECT *, 111.045* DEGREES(ACOS(COS(RADIANS(latpoint)) * COS(RADIANS(Lat)) * COS(RADIANS(longpoint) - RADIANS(Lng)) + SIN(RADIANS(latpoint)) * SIN(RADIANS(Lat))))*1000 AS distance_in_m FROM address JOIN ( SELECT {0} AS latpoint,  {1} AS longpoint) AS p ON 1=1 AND ", SearchListing.Lat, SearchListing.Lng);
         //}
-      }
+           }
             
 
             //if (input.SearchInput != null)
@@ -128,7 +129,7 @@ namespace P3.Helpers
             //    //sql += System.String.Format("SELECT *, 111.045* DEGREES(ACOS(COS(RADIANS(latpoint)) * COS(RADIANS(Lat)) * COS(RADIANS(longpoint) - RADIANS(Lng)) + SIN(RADIANS(latpoint)) * SIN(RADIANS(Lat))))*1000 AS distance_in_m FROM address JOIN ( SELECT {0} AS latpoint,  {1} AS longpoint) AS p ON 1=1 AND ", SearchListing.Lat, SearchListing.Lng);
             //}
 
-            if (input.Andelsbolig == true || input.Villa == true || input.Rækkehus == true || input.LiebhaverEjendom == true || input.FritidsEjendom == true || input.NedlagtLandbrug == true)
+            if (input.Andelsbolig || input.Villa || input.Rækkehus || input.LiebhaverEjendom || input.FritidsEjendom || input.NedlagtLandbrug)
             {
                 string sqlOr = System.String.Format("listings.PropertyType = ");
                 List<bool> ejendomme = new List<bool>();
@@ -163,30 +164,26 @@ namespace P3.Helpers
                 }
                 sql += sqlOr;
             }
-           
-                
-                
-            
 
-            if (input.PriceSliderLowerValue > 0.0 && input.PriceSliderHigherValue > 0.0)
-	        {
-		        sql += System.String.Format("salesinfo.Price >= {0} AND salesinfo.Price <= {1} AND ", input.PriceSliderLowerValue, input.PriceSliderHigherValue);
-	        }
-            if (input.Sold == true && input.ForSale == false)
-            {
-                sql += System.String.Format("salesinfo.SalesDate <> NULL AND ");
-            }
-            if (input.Sold == false && input.ForSale == true)
-            {
-                sql += System.String.Format("salesinfo.SalesDate = NULL AND ");
-            }
-            if (input.SizeSliderLowerValue > 0.0 && input.SizeSliderHigherValue > 0.0)
+
+
+
+      if (input.PriceSliderHigherValue > 0.0)
+      {
+        sql += System.String.Format("salesinfoforsale.Price >= {0} AND salesinfoforsale.Price <= {1} AND ", input.PriceSliderLowerValue, input.PriceSliderHigherValue);
+      }
+           
+		        
+	        
+
+            
+            if (input.SizeSliderHigherValue > 0.0)
             {
                 sql += System.String.Format("listings.Size >= {0} AND listings.Size <= {1} AND ", input.SizeSliderLowerValue, input.SizeSliderHigherValue);
             }
-            if (input.DowntimeLowerValue > 0.0 && input.DowntimeHigherValue > 0.0)
+            if (input.DowntimeHigherValue > 0.0)
             {
-                sql += System.String.Format("listings.Demurrage >= {0} AND listings.Demurrage <= {1} AND ", input.DowntimeLowerValue, input.DowntimeHigherValue);
+                sql += System.String.Format("salesinfoforsale.Demurrage >= {0} AND salesinfoforsale.Demurrage <= {1} AND ", input.DowntimeLowerValue, input.DowntimeHigherValue);
             }
             
             if (input.SameRoad == true)
@@ -197,15 +194,14 @@ namespace P3.Helpers
             {
                 sql += System.String.Format("address.AreaCode = {0} AND ", int.Parse(split[2]));
             }
-            sql += System.String.Format("listings.NumberOfRooms >= {0} AND listings.NumberOfRooms <= {1} AND listings.YearBuild >= {2} AND listings.YearBuild <= {3}",
-                input.MinRoomCount, input.MaxRoomCount, input.MinYearBuilt, input.MaxYearBuilt);
+            sql += System.String.Format("listings.NumberOfRooms >= {0} AND listings.NumberOfRooms <= {1} LIMIT 100",
+                input.MinRoomCount, input.MaxRoomCount);
 
-            //if (input.AreaSliderLowerValue > 0.0 && input.AreaSliderHigherValue > 0.0)
-            //{
-            //  sql += System.String.Format("HAVING distance_in_m <= {0}", input.AreaSliderHigherValue);
-            //}
-
-        
+      //if (input.AreaSliderLowerValue > 0.0 && input.AreaSliderHigherValue > 0.0)
+      //{
+      //  sql += System.String.Format("HAVING distance_in_m <= {0}", input.AreaSliderHigherValue);
+      //}
+      throw new Exception(sql);
             return sql;
         }
 
