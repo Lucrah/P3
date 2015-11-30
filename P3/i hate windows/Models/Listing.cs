@@ -43,7 +43,42 @@ namespace P3.Models
             SalesDate = salesDate;
             Town = ZipCodeChecker(AreaCode);
         }
-        public Listing(string streetName, string houseNumber, int areaCode)
+    public Listing(int id, string streetName, string houseNumber, int areaCode, string propertyType, int size, int numberOfRooms, int yearBuilt, string salesType, int price, int priceSqr, DateTime salesDate, double distance_in_m)
+    {
+      ID = id;
+      StreetName = streetName;
+      AreaCode = areaCode;
+      Address = streetName + " " + Convert.ToString(houseNumber);
+      AddressForUrl = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode);
+      HouseNumber = houseNumber;
+      PropertyType = propertyType;
+      Size = size;
+      NumberOfRooms = numberOfRooms;
+      YearBuilt = yearBuilt;
+      SalesType = salesType;
+      Price = price;
+      PriceSqr = priceSqr;
+      SalesDate = salesDate;
+      Town = ZipCodeChecker(AreaCode);
+    }
+    public Listing(int id, string streetName, string houseNumber, int areaCode, string propertyType, int size, int numberOfRooms, int yearBuilt, int price, int priceSqr, int demurrage, double distance_in_m)
+    {
+      ID = id;
+      StreetName = streetName;
+      AreaCode = areaCode;
+      Address = streetName + " " + Convert.ToString(houseNumber);
+      AddressForUrl = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode);
+      HouseNumber = houseNumber;
+      PropertyType = propertyType;
+      Size = size;
+      NumberOfRooms = numberOfRooms;
+      YearBuilt = yearBuilt;
+      Price = price;
+      PriceSqr = priceSqr;
+      Demurrage = demurrage;
+      Town = ZipCodeChecker(AreaCode);
+    }
+    public Listing(string streetName, string houseNumber, int areaCode)
         {
             StreetName = streetName;
             HouseNumber = houseNumber;
