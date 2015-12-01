@@ -7,12 +7,26 @@ using System.Collections.Generic;
 using Caliburn.Micro;
 using System.Globalization;
 using P3.ViewModels;
-
+using System.ComponentModel.Composition;
+using i_hate_windows.ViewModels;
 
 namespace P3.Helpers
 {
+    [Export(typeof(Funktionality))]
   class Funktionality
   {
+        private IWindowManager _windowManager;
+
+        [ImportingConstructor]
+        public Funktionality(IWindowManager windowManager)
+        {
+            _windowManager = windowManager;
+            _windowManager.ShowDialog(new bogipopupViewModel("this is a popup"));
+        }
+
+
+
+
     //should this not be coupled directly onto listing.cs to keep it as close to data as possible
     //Or maybe even put it in BaseINPCModel, so that any listing, as long as it has an adress it can get coords 4 u
 
@@ -348,5 +362,6 @@ namespace P3.Helpers
         return  string.Empty;
       }
     }
-  }
+        #endregion
+    }
 }

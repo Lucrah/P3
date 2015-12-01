@@ -96,7 +96,7 @@ namespace P3.ViewModels
 
         public void GetResults()
         {
-            Funktionality func = new Funktionality();
+            Funktionality func = new Funktionality(_windowManager);
             //Call and run query functions here
             //SearchSettings propertien indeholder de valgte settings.
             ResultsReturned = new BindableCollection<Listing>();

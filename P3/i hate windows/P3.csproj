@@ -148,6 +148,7 @@
     <Compile Include="Helpers\PDFConverter.cs" />
     <Compile Include="Models\Listing.cs" />
     <Compile Include="Models\SearchSettingModel.cs" />
+    <Compile Include="ViewModels\bogipopupViewModel.cs" />
     <Compile Include="ViewModels\FlyoutLeftViewModel.cs" />
     <Compile Include="ViewModels\GraphScreenViewModel.cs" />
     <Compile Include="ViewModels\PrintWindowViewModel.cs" />
@@ -155,6 +156,9 @@
     <Compile Include="ViewModels\ResultScreenViewModel.cs" />
     <Compile Include="ViewModels\SearchScreenViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="Views\bogipopupView.xaml.cs">
+      <DependentUpon>bogipopupView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FlyoutLeftView.xaml.cs">
       <DependentUpon>FlyoutLeftView.xaml</DependentUpon>
     </Compile>
@@ -211,6 +215,10 @@
     <Page Include="Simple Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\bogipopupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\FlyoutLeftView.xaml">
       <SubType>Designer</SubType>
