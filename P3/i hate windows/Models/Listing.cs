@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using Caliburn.Micro;
 using System.ComponentModel;
+using System.Windows.Documents;
 
 namespace P3.Models
 {
@@ -111,6 +112,7 @@ namespace P3.Models
 
     private bool _IsSelected;
 
+    private FlowDocument _comments;
 
 
     public int ID
@@ -305,9 +307,23 @@ namespace P3.Models
       }
     }
 
-    #endregion
-    #region Overrides And other stuff
-    public override string ToString()
+        public FlowDocument Comments
+        {
+            get
+            {
+                return _comments;
+            }
+
+            set
+            {
+                _comments = value;
+                NotifyOfPropertyChange(() => Comments);
+            }
+        }
+
+        #endregion
+        #region Overrides And other stuff
+        public override string ToString()
       {
           return Address + ", " + AreaCode + ", " + Price + ", " + Size + ", " + YearBuilt;
       }

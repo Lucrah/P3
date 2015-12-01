@@ -7,13 +7,14 @@
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              xmlns:cal="http://www.caliburnproject.org"
              xmlns:local="clr-namespace:i_hate_windows.Views"
-             mc:Ignorable="d" d:DesignWidth="300" Width="300" Height="157.333"
+             mc:Ignorable="d" Width="300" Height="132"
              Topmost="true"
              ShowTitleBar="False"
              ResizeMode="NoResize"
+             SaveWindowPosition="True"
              cal:Message.Attach="[Event Closing] = [Action ClosingMsg]"
              >
-    <Grid Background="#FF2C2C2C" Margin="-3,0,-3,-3" Height="132" VerticalAlignment="Top" HorizontalAlignment="Right" Width="300">
+    <Grid Background="#FF2C2C2C" Height="129" VerticalAlignment="Top">
         <Grid HorizontalAlignment="Left" Height="55.333" VerticalAlignment="Top" Width="104.667" Margin="0,30,0,0">
             <CheckBox x:Name="UseSearch" Content="Søgeresultater" HorizontalAlignment="Left" Margin="4.183,10,-0.193,0" VerticalAlignment="Top" Foreground="White"/>
             <CheckBox x:Name="UseGraph" Content="Grafer/analyse" HorizontalAlignment="Left" Margin="4.183,33,0,0" VerticalAlignment="Top" Foreground="White"/>

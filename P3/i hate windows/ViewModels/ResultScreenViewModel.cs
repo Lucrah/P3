@@ -50,7 +50,7 @@ namespace P3.ViewModels
 
         public void ShowPropertyInfoFlyout()
         {
-            _eventAggregator.PublishOnUIThread(new OpenFlyoutMessage(true, SelectedSearchResult));
+            _eventAggregator.PublishOnUIThread(new IsFlyoutOpenMsg(true, SelectedSearchResult));
         }
 
         public void PrintChosen()

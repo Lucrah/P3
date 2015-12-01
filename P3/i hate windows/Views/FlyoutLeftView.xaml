@@ -74,6 +74,9 @@
                     <TextBlock   Width="275"/>
                 </StackPanel>
             </StackPanel>
+            <RichTextBox x:Name="richTextBox" Height="189">
+                <FlowDocument/>
+            </RichTextBox>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -65,6 +65,7 @@ namespace i_hate_windows.Helpers
       }
 
       //if we ever want other types of pdf, make new functions. Or maybe reuse some of the bottom ones.
+      //refactoring, a lot of code redundancy in here.
       private void ResultAndGraphPDF()
       {
             Document doc = new Document();
@@ -253,19 +254,20 @@ namespace i_hate_windows.Helpers
             resultTable.AddCell("Til salg/Solgt");
             resultTable.AddCell("Byggeår");
 
-            foreach (var item in propertyList)
+            for (int i = 0; i < NumberOfSearchResults; i++)
             {
-                if (item.IsSelected)
+                if (propertyList[1].IsSelected)
                 {
-                    resultTable.AddCell(item.PropertyType);
-                    PdfPCell adresscell = new PdfPCell(new Phrase(item.Address));
-                    resultTable.AddCell(adresscell);
-                    resultTable.AddCell(item.Town + "(" + item.AreaCode + ")");
-                    resultTable.AddCell(item.Price.ToString());
-                    resultTable.AddCell(item.Size.ToString());
-                    resultTable.AddCell(item.Demurrage.ToString());
-                    resultTable.AddCell(item.ForSaleSold);
-                    resultTable.AddCell(item.YearBuilt.ToString());
+                    var item = propertyList[i];
+                        resultTable.AddCell(item.PropertyType);
+                        PdfPCell adresscell = new PdfPCell(new Phrase(item.Address));
+                        resultTable.AddCell(adresscell);
+                        resultTable.AddCell(item.Town + "(" + item.AreaCode + ")");
+                        resultTable.AddCell(item.Price.ToString());
+                        resultTable.AddCell(item.Size.ToString());
+                        resultTable.AddCell(item.Demurrage.ToString());
+                        resultTable.AddCell(item.ForSaleSold);
+                        resultTable.AddCell(item.YearBuilt.ToString());
                 }
             }
             if (resultTable != null)

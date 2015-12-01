@@ -13,7 +13,7 @@ using i_hate_windows.ViewModels;
 namespace P3.ViewModels
 {
     [Export(typeof (IShell))]
-    class ShellViewModel : Conductor<object>.Collection.OneActive, IShell, IHandle<OpenFlyoutMessage>
+    class ShellViewModel : Conductor<object>.Collection.OneActive, IShell, IHandle<IsFlyoutOpenMsg>
     {
         #region IOC Fields
         private readonly IEventAggregator _eventAggregator;
@@ -96,7 +96,7 @@ namespace P3.ViewModels
         #endregion
         #region HandleEvents
         //this  whole ordeal is very badly named i know. make me fix.
-        public void Handle(OpenFlyoutMessage message)
+        public void Handle(IsFlyoutOpenMsg message)
         {
             if (!IsFlyoutOpen)
             {

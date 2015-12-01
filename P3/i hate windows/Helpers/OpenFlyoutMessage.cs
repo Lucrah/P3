@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace i_hate_windows.Helpers
 {
-    class OpenFlyoutMessage
+    class IsFlyoutOpenMsg
     {
         private bool _isOpen;
         public bool IsOpen
@@ -22,7 +22,7 @@ namespace i_hate_windows.Helpers
             get { return _selectedListing; }
             set { _selectedListing = value; }
         }
-        public OpenFlyoutMessage(bool isOpen, Listing selectedListing)
+        public IsFlyoutOpenMsg(bool isOpen, Listing selectedListing)
         {
             SelectedListing = selectedListing;
             IsOpen = isOpen;

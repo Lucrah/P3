@@ -12,7 +12,7 @@ using System.ComponentModel.Composition;
 namespace i_hate_windows.ViewModels
 {
     [Export(typeof(FlyoutLeftViewModel))]
-    class FlyoutLeftViewModel : Screen , IHandle<OpenFlyoutMessage>
+    class FlyoutLeftViewModel : Screen , IHandle<IsFlyoutOpenMsg>
     {
         private IEventAggregator _eventaggregator;
         private Listing _selectedItem;
@@ -38,7 +38,7 @@ namespace i_hate_windows.ViewModels
             }
         }
 
-        public void Handle(OpenFlyoutMessage message)
+        public void Handle(IsFlyoutOpenMsg message)
         {
             SelectedItem = message.SelectedListing;
         }
