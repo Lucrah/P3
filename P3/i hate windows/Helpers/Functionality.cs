@@ -21,10 +21,8 @@ namespace P3.Helpers
         public Funktionality(IWindowManager windowManager)
         {
             _windowManager = windowManager;
-            _windowManager.ShowDialog(new bogipopupViewModel("this is a popup"));
+            //_windowManager.ShowDialog(new bogipopupViewModel("this is a popup"));
         }
-
-
 
 
     //should this not be coupled directly onto listing.cs to keep it as close to data as possible
@@ -32,8 +30,8 @@ namespace P3.Helpers
 
     private static string connectionString = "server=localhost;user id=root;password=1234;database=p3database";
 
-    #region Cords and haversine.. haversine is obsolete... done with queries instead
-    public static void getCoordinates(Listing listing)
+    #region Cords
+    public void getCoordinates(Listing listing)
     {
       System.Threading.Thread.Sleep(250);
 
@@ -49,20 +47,26 @@ namespace P3.Helpers
       {
         foreach (XmlNode childrenNode in parentNode)
         {
-          listing.Lat = Convert.ToDouble(childrenNode.SelectSingleNode("lat").InnerText, new CultureInfo("en-US"));
-          listing.Lng = Convert.ToDouble(childrenNode.SelectSingleNode("lng").InnerText, new CultureInfo("en-US"));
+          System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+          customCulture.NumberFormat.NumberDecimalSeparator = ".";
+          System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+          listing.Lat = Convert.ToDouble(childrenNode.SelectSingleNode("lat").InnerText);
+          listing.Lng = Convert.ToDouble(childrenNode.SelectSingleNode("lng").InnerText);
         }
       }
       else if (status == "ZERO_RESULTS")
       {
         //kast exception der fortæller at addressen ikke findes og/eller er stavet forkert.
-        Console.WriteLine("Addressen findes ikke og/eller er stavet forkert.");
+        _windowManager.ShowDialog(new bogipopupViewModel("Adressen kunne ikke findes."));
       }
       else if (status == "OVER_QUERY_LIMIT")
       {
+        _windowManager.ShowDialog(new bogipopupViewModel("Kvoten af lookups er opbrugt."));
         //Kast exception der fortæller at de har opbrugt kvote af lookups.
-        
+
       }
+      //string lol = String.Format("{0}     -     {1} \n {2}", listing.Lat, listing.Lng, listing.AddressForUrl);
+      //_windowManager.ShowDialog(new bogipopupViewModel(lol));
     }
 
     public BindableCollection<Listing> StaticSearch()
@@ -120,7 +124,7 @@ namespace P3.Helpers
       if (input.SearchInput != null)
       {
         split = input.SearchInput.Split(' ');
-        SearchListing = new Listing(split[0], split[1], int.Parse(split[2]));
+        SearchListing = new Listing(split[0].Trim(','), split[1], int.Parse(split[2]));
         getCoordinates(SearchListing);
 
         if (input.AreaSliderLowerValue >= 0.0 && input.AreaSliderHigherValue > 0.0 && !input.SameRoad && !input.SameZipCode)
@@ -187,7 +191,7 @@ namespace P3.Helpers
 
       sqlOr += ") AND ";
 
-      if (count != 0)
+      if (PropTypeChecked.Count != 0)
       {
         sql += sqlOr;
       }
@@ -240,7 +244,7 @@ namespace P3.Helpers
       if (input.SearchInput != null)
       {
         split = input.SearchInput.Split(' ');
-        SearchListing = new Listing(split[0], split[1], int.Parse(split[2]));
+        SearchListing = new Listing(split[0].Trim(','), split[1], int.Parse(split[2]));
         getCoordinates(SearchListing);
 
         if (input.AreaSliderLowerValue >= 0.0 && input.AreaSliderHigherValue > 0.0 && input.SameRoad == false && input.SameZipCode == false)
@@ -307,7 +311,7 @@ namespace P3.Helpers
 
       sqlOr += ") AND ";
 
-      if (count != 0)
+      if (PropTypeChecked.Count != 0)
       {
         sql += sqlOr;
       }

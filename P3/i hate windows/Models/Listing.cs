@@ -50,7 +50,7 @@ namespace P3.Models
       StreetName = streetName;
       AreaCode = areaCode;
       Address = streetName + " " + Convert.ToString(houseNumber);
-      AddressForUrl = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode);
+      AddressForUrl = streetName + "+" + Convert.ToString(houseNumber) + "+" + Convert.ToString(areaCode) + "+Denmark";
       HouseNumber = houseNumber;
       PropertyType = propertyType;
       Size = size;
@@ -68,7 +68,7 @@ namespace P3.Models
       StreetName = streetName;
       AreaCode = areaCode;
       Address = streetName + " " + Convert.ToString(houseNumber);
-      AddressForUrl = streetName + "+" + Convert.ToString(houseNumber) + ",+" + Convert.ToString(areaCode);
+      AddressForUrl = streetName + "+" + Convert.ToString(houseNumber) + "+" + Convert.ToString(areaCode) + "+Denmark";
       HouseNumber = houseNumber;
       PropertyType = propertyType;
       Size = size;
@@ -84,6 +84,7 @@ namespace P3.Models
             StreetName = streetName;
             HouseNumber = houseNumber;
             AreaCode = areaCode;
+            AddressForUrl = streetName + "+" + Convert.ToString(houseNumber) + "+" + Convert.ToString(areaCode) + "+Denmark";
         }
 
     private string _propertyType;
