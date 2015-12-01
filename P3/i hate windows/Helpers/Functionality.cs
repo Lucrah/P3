@@ -5,6 +5,9 @@ using MySql.Data.MySqlClient;
 using Dapper;
 using System.Collections.Generic;
 using Caliburn.Micro;
+using System.Globalization;
+using P3.ViewModels;
+
 
 namespace P3.Helpers
 {
@@ -16,49 +19,37 @@ namespace P3.Helpers
     private static string connectionString = "server=localhost;user id=root;password=1234;database=p3database";
 
     #region Cords and haversine.. haversine is obsolete... done with queries instead
-    public static void getCoordinates(Listing listing)  //need the new getcoordinates from ConsoleApplication1..
+    public static void getCoordinates(Listing listing)
     {
-      System.Threading.Thread.Sleep(1000);
-      double[] geoCode = new double[2] { 0.0, 0.0 };
+      System.Threading.Thread.Sleep(250);
 
       string address = "http://maps.googleapis.com/maps/api/geocode/xml?address=" + listing.AddressForUrl + "&sensor=false";
 
       var result = new System.Net.WebClient().DownloadString(address);
       XmlDocument doc = new XmlDocument();
       doc.LoadXml(result);
+      string status = doc.DocumentElement.SelectSingleNode("/GeocodeResponse/status").InnerText;
       XmlNodeList parentNode = doc.GetElementsByTagName("location");
-      foreach (XmlNode childrenNode in parentNode)
+
+      if (status == "OK")
       {
-        listing.Lat = Convert.ToDouble(childrenNode.SelectSingleNode("lat").InnerText);
-        listing.Lng = Convert.ToDouble(childrenNode.SelectSingleNode("lng").InnerText);
+        foreach (XmlNode childrenNode in parentNode)
+        {
+          listing.Lat = Convert.ToDouble(childrenNode.SelectSingleNode("lat").InnerText, new CultureInfo("en-US"));
+          listing.Lng = Convert.ToDouble(childrenNode.SelectSingleNode("lng").InnerText, new CultureInfo("en-US"));
+        }
+      }
+      else if (status == "ZERO_RESULTS")
+      {
+        //kast exception der fortæller at addressen ikke findes og/eller er stavet forkert.
+        Console.WriteLine("Addressen findes ikke og/eller er stavet forkert.");
+      }
+      else if (status == "OVER_QUERY_LIMIT")
+      {
+        //Kast exception der fortæller at de har opbrugt kvote af lookups.
+        
       }
     }
-
-
-    public static double convertToDistance(Listing a, Listing b)
-    {
-      //Haversine formula for calculating distance between lat/long points
-      double theDistance = (Math.Sin(DegreesToRadians(a.Lat)) *
-            Math.Sin(DegreesToRadians(b.Lat)) +
-            Math.Cos(DegreesToRadians(a.Lat)) *
-            Math.Cos(DegreesToRadians(b.Lat)) *
-            Math.Cos(DegreesToRadians(a.Lng - b.Lng)));
-
-      return Convert.ToDouble((RadiansToDegrees(Math.Acos(theDistance)))) * 69.09 * 1.6093;
-    }
-
-    static public double RadiansToDegrees(double angle)
-    {
-      return angle * (180.0 / Math.PI);
-    }
-
-
-
-    static public double DegreesToRadians(double angle)
-    {
-      return Math.PI * angle / 180.0;
-    }
-    #endregion
 
     public BindableCollection<Listing> StaticSearch()
     {
