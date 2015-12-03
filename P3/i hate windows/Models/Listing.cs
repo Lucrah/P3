@@ -9,7 +9,7 @@ namespace P3.Models
   public class Listing : PropertyChangedBase
   {
     #region Ctors
-        public Listing(int id, string streetName, string houseNumber, int areaCode, string propertyType, int size, int numberOfRooms, int yearBuilt, int price, int priceSqr, int demurrage)
+        public Listing(int id, string streetName, string houseNumber, int areaCode, string propertyType, int size, int numberOfRooms, int yearBuilt, int price, int priceSqr, DateTime forSaleDate)
         {
             ID = id;
             StreetName = streetName;
@@ -23,7 +23,8 @@ namespace P3.Models
             YearBuilt = yearBuilt;
             Price = price;
             PriceSqr = priceSqr;
-            Demurrage = demurrage;
+            Demurrage = (DateTime.Today - forSaleDate).Days;
+            ForSaleDate = forSaleDate;
             Town = ZipCodeChecker(AreaCode);
         }
         public Listing(int id, string streetName, string houseNumber, int areaCode, string propertyType, int size, int numberOfRooms, int yearBuilt, string salesType, int price, int priceSqr, DateTime salesDate)
@@ -62,7 +63,7 @@ namespace P3.Models
       SalesDate = salesDate;
       Town = ZipCodeChecker(AreaCode);
     }
-    public Listing(int id, string streetName, string houseNumber, int areaCode, string propertyType, int size, int numberOfRooms, int yearBuilt, int price, int priceSqr, int demurrage, double distance_in_m)
+    public Listing(int id, string streetName, string houseNumber, int areaCode, string propertyType, int size, int numberOfRooms, int yearBuilt, int price, int priceSqr, DateTime forSaleDate, double distance_in_m)
     {
       ID = id;
       StreetName = streetName;
@@ -76,7 +77,8 @@ namespace P3.Models
       YearBuilt = yearBuilt;
       Price = price;
       PriceSqr = priceSqr;
-      Demurrage = demurrage;
+      Demurrage = (DateTime.Today - forSaleDate).Days;
+      ForSaleDate = forSaleDate;
       Town = ZipCodeChecker(AreaCode);
     }
     public Listing(string streetName, string houseNumber, int areaCode)
@@ -107,6 +109,7 @@ namespace P3.Models
     private string _salesType;
     private DateTime _salesDate;
     private string _town;
+    private DateTime _forSaleDate;
 
     private double _lat;
     private double _lng;
@@ -214,6 +217,13 @@ namespace P3.Models
             NotifyOfPropertyChange(() => PropertyType);
         }
     }
+
+    public DateTime ForSaleDate
+    {
+      get { return _forSaleDate; }
+      set { _forSaleDate = value; }
+    }
+
     public bool ForSale
     {
         get

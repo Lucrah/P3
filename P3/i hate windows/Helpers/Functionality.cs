@@ -76,7 +76,7 @@ namespace P3.Helpers
       List<Listing> listSold = new List<Listing>();
       using (MySqlConnection connection = new MySqlConnection(connectionString))
       {
-        listForSale = connection.Query<Listing>("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS size, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfoforsale.Price AS price, salesinfoforsale.PriceSqr AS priceSqr, salesinfoforsale.Demurrage AS demurrage FROM address, listings, salesinfoforsale WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfoforsale.IDSalesInfoForSale LIMIT 25").AsList();
+        listForSale = connection.Query<Listing>("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS size, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfoforsale.Price AS price, salesinfoforsale.PriceSqr AS priceSqr, salesinfoforsale.ForSaleDate AS forSaleDate FROM address, listings, salesinfoforsale WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfoforsale.IDSalesInfoForSale LIMIT 25").AsList();
         listSold = connection.Query<Listing>("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS size, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfosold.SalesType AS salesType, salesinfosold.Price AS price, salesinfosold.PriceSqr AS priceSqr, salesinfosold.SalesDate AS salesDate FROM address, listings, salesinfosold WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfosold.IDSalesInfoSold LIMIT 25").AsList();
 
       }
@@ -98,8 +98,20 @@ namespace P3.Helpers
       List<Listing> listSold = new List<Listing>();
       using (MySqlConnection connection = new MySqlConnection(connectionString))
       {
-        listSold = connection.Query<Listing>(SqlStringBuilderSold(input)).AsList();
-        listForSale = connection.Query<Listing>(SqlStringBuilderForSale(input)).AsList();
+        if (input.ForSale && !input.Sold)
+        {
+          listForSale = connection.Query<Listing>(SqlStringBuilderForSale(input)).AsList();
+        }
+        else if (!input.ForSale && input.Sold)
+        {
+          listSold = connection.Query<Listing>(SqlStringBuilderSold(input)).AsList();
+        }
+        else
+        {
+          listSold = connection.Query<Listing>(SqlStringBuilderSold(input)).AsList();
+          listForSale = connection.Query<Listing>(SqlStringBuilderForSale(input)).AsList();
+        }
+        
 
       }
 
@@ -117,7 +129,7 @@ namespace P3.Helpers
 
     private string SqlStringBuilderForSale(SearchSettingModel input)
     {
-      string sql = System.String.Format("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS size, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfoforsale.Price AS price, salesinfoforsale.PriceSqr AS priceSqr, salesinfoforsale.Demurrage AS demurrage FROM address, listings, salesinfoforsale WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfoforsale.IDSalesInfoForSale AND ");
+      string sql = System.String.Format("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS size, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfoforsale.Price AS price, salesinfoforsale.PriceSqr AS priceSqr, salesinfoforsale.ForSaleDate AS forSaleDate FROM address, listings, salesinfoforsale WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfoforsale.IDSalesInfoForSale AND ");
 
       string[] split = { "Unknown" };
       Listing SearchListing;
@@ -129,7 +141,7 @@ namespace P3.Helpers
 
         if (input.AreaSliderLowerValue >= 0.0 && input.AreaSliderHigherValue > 0.0 && !input.SameRoad && !input.SameZipCode)
         {
-          sql = System.String.Format("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS size, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfoforsale.Price AS price, salesinfoforsale.PriceSqr AS priceSqr, salesinfoforsale.Demurrage AS demurrage, 111.045 * DEGREES(ACOS(COS(RADIANS({0})) * COS(RADIANS(Lat)) * COS(RADIANS({1}) - RADIANS(Lng)) + SIN(RADIANS({0})) * SIN(RADIANS(Lat)))) * 1000 AS distance_in_m FROM address, listings, salesinfoforsale JOIN( SELECT  {0}  AS latpoint, {1} AS longpoint ) AS p ON 1 = 1 WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfoforsale.IDSalesInfoForSale AND ", SearchListing.Lat, SearchListing.Lng);
+          sql = System.String.Format("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS size, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfoforsale.Price AS price, salesinfoforsale.PriceSqr AS priceSqr, salesinfoforsale.ForSaleDate AS forSaleDate, 111.045 * DEGREES(ACOS(COS(RADIANS({0})) * COS(RADIANS(Lat)) * COS(RADIANS({1}) - RADIANS(Lng)) + SIN(RADIANS({0})) * SIN(RADIANS(Lat)))) * 1000 AS distance_in_m FROM address, listings, salesinfoforsale JOIN( SELECT  {0}  AS latpoint, {1} AS longpoint ) AS p ON 1 = 1 WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfoforsale.IDSalesInfoForSale AND ", SearchListing.Lat, SearchListing.Lng);
         }
       }
 
@@ -206,9 +218,9 @@ namespace P3.Helpers
         sql += System.String.Format("listings.Size >= {0} AND listings.Size <= {1} AND ", input.SizeSliderLowerValue, input.SizeSliderHigherValue);
       }
 
-      if (input.DowntimeHigherValue > 0.0)
+      if (input.DowntimeHigherValue > 0.0 && input.ForSale)
       {
-        sql += System.String.Format("salesinfoforsale.Demurrage >= {0} AND salesinfoforsale.Demurrage <= {1} AND ", input.DowntimeLowerValue, input.DowntimeHigherValue);
+        sql += System.String.Format("DATEDIFF(current_date(), salesinfoforsale.ForSaleDate) >= {0} AND DATEDIFF(current_date(), salesinfoforsale.ForSaleDate) <= {1} AND ", input.DowntimeLowerValue, input.DowntimeHigherValue);
       }
 
       if (input.SameRoad)
@@ -326,9 +338,9 @@ namespace P3.Helpers
         sql += System.String.Format("listings.Size >= {0} AND listings.Size <= {1} AND ", input.SizeSliderLowerValue, input.SizeSliderHigherValue);
       }
 
-      //if (input.DowntimeHigherValue > 0.0)
+      //if (input.DowntimeHigherValue > 0.0 && input.Sold)
       //{
-      //  sql += System.String.Format("salesinfosold.SalesDate >= {0} AND salesinfosold.SalesDate <= {1} AND ", input til salesdate plox!!!!);
+      //  sql += System.String.Format("salesinfosold.SalesDate >= {0} AND salesinfosold.SalesDate <= {1} AND "); // input til salesdate plox!!!!
       //}
 
       if (input.SameRoad)
