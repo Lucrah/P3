@@ -76,8 +76,8 @@ namespace P3.Helpers
       List<Listing> listSold = new List<Listing>();
       using (MySqlConnection connection = new MySqlConnection(connectionString))
       {
-        listForSale = connection.Query<Listing>("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS size, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfoforsale.Price AS price, salesinfoforsale.PriceSqr AS priceSqr, salesinfoforsale.ForSaleDate AS forSaleDate FROM address, listings, salesinfoforsale WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfoforsale.IDSalesInfoForSale LIMIT 25").AsList();
-        listSold = connection.Query<Listing>("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS size, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfosold.SalesType AS salesType, salesinfosold.Price AS price, salesinfosold.PriceSqr AS priceSqr, salesinfosold.SalesDate AS salesDate FROM address, listings, salesinfosold WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfosold.IDSalesInfoSold LIMIT 25").AsList();
+        listForSale = connection.Query<Listing>("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS size, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfoforsale.Price AS price, salesinfoforsale.PriceSqr AS priceSqr, salesinfoforsale.ForSaleDate AS forSaleDate FROM address, listings, salesinfoforsale WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfoforsale.IDSalesInfoForSale").AsList();
+        listSold = connection.Query<Listing>("SELECT address.IDAddress AS id, address.StreetName AS streetName, address.HouseNumber AS houseNumber, address.AreaCode AS areaCode, listings.PropertyType AS propertyType, listings.Size AS size, listings.NumberOfRooms AS numberOfRooms, listings.YearBuild AS yearBuilt, salesinfosold.SalesType AS salesType, salesinfosold.Price AS price, salesinfosold.PriceSqr AS priceSqr, salesinfosold.SalesDate AS salesDate FROM address, listings, salesinfosold WHERE address.IDAddress = listings.IDListings AND address.IDAddress = salesinfosold.IDSalesInfoSold").AsList();
 
       }
       foreach (var ForSale in listForSale)
@@ -377,6 +377,29 @@ namespace P3.Helpers
       {
         return  string.Empty;
       }
+    }
+
+    public BindableCollection<Listing> getSelectedListings(BindableCollection<Listing> SearchResults)
+    {
+      BindableCollection<Listing> Results = new BindableCollection<Listing>();
+      foreach (var Property in SearchResults)
+      {
+        if (Property.IsSelected)
+        {
+          Results.Add(Property);
+        }
+      }
+      return Results;
+    }
+
+    double getEstPrice(BindableCollection<Listing> listings)
+    {
+      double totalPriceSqr = 0;
+      foreach (var Property in listings)
+      {
+        totalPriceSqr += Property.PriceSqr;
+      }
+      return (totalPriceSqr / listings.Count);
     }
         #endregion
     }
