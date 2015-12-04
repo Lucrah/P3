@@ -75,5 +75,10 @@ namespace P3.Views
                 GetResults.IsEnabled = false;
             }
         }
+
+        private void GetResults_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

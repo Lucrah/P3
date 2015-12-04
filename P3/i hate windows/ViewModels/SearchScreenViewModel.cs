@@ -102,12 +102,12 @@ namespace P3.ViewModels
             ResultsReturned = new BindableCollection<Listing>();
 
             //this one is just a static search, no user input.
-            ResultsReturned = func.StaticSearch();
+            //ResultsReturned = func.StaticSearch();
 
             //this one should take into account all user input
             //UN-comment once their stringbuilder is ready, until then, only staticsearch
 
-            //ResultsReturned = func.SuperSearch(SearchSettings);
+            ResultsReturned = func.SuperSearch(SearchSettings);
             
             ResultScreen = new ResultScreenViewModel(ResultsReturned, SearchSettings, _windowManager, _eventAggregator);
 
