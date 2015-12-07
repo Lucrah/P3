@@ -80,5 +80,13 @@ namespace P3.Views
         {
 
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            advanced.IsEnabled = false;
+            advanced.Visibility = Visibility.Hidden;
+            OptionsGrid.IsEnabled = true;
+            OptionsGrid.Visibility = Visibility.Visible;
+        }
     }
 }

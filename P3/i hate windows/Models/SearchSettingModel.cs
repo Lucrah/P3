@@ -407,7 +407,7 @@ namespace P3.Models
                 switch (columnName)
                 {
                     case "SearchInput":
-                        if (SearchInput == null || SearchInput.Split().Length < 4)
+                        if (string.IsNullOrEmpty(SearchInput) ||  SearchInput.Split().Length > 3)
                         {
                             ToolTipErrorInfo = "Indtast søgning: adresse, husnr, postnr";
                             
@@ -597,7 +597,12 @@ namespace P3.Models
             }
         }
         #endregion
-
+        public static bool IsValidStreetAddress(string address)
+        {
+            const string exp = @"\d{1,3}.?\d{0,3}\s[a-zA-Z]{2,30}\s[a-zA-Z]{2,15}";
+            var regex = new Regex(exp);
+            return regex.IsMatch(address);
+        }
 
     }
 }
