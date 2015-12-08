@@ -87,26 +87,28 @@ namespace P3.ViewModels
         {
             //Running the query stuff on a seperate thread. There is lots of options to let us get reports of progress or something like that, but time does not permit us to do it.
             BackgroundWorker bWorker = new BackgroundWorker();
-            bWorker.DoWork += new DoWorkEventHandler(delegate (object o, DoWorkEventArgs args)
-            {
-                IsSearching = true;
-                //Functionality is extremely bad piece of code badly named, stuff in weird places.
-                Funktionality fncy = new Funktionality(_windowManager);
-                ResultsReturned = new BindableCollection<Listing>();
+            bWorker.DoWork += bWorker_doWork;
+            bWorker.RunWorkerAsync();
+        }
 
-                //This one is just a static search, no user input. Used for testing.
-                ResultsReturned = fncy.StaticSearch();
+        private void bWorker_doWork(object sender, DoWorkEventArgs e)
+        {
+            IsSearching = true;
+            //Functionality is extremely bad piece of code badly named, stuff in weird places.
+            Funktionality fncy = new Funktionality(_windowManager);
+            ResultsReturned = new BindableCollection<Listing>();
+
+            //This one is just a static search, no user input. Used for testing.
+            //ResultsReturned = fncy.StaticSearch();
 
 
-                //ResultsReturned = fncy.SuperSearch(SearchSettings);
+            ResultsReturned = fncy.SuperSearch(SearchSettings);
 
-                //initiates the resultscreen, with the propert parts.
-                ResultScreen = new ResultScreenViewModel(ResultsReturned, SearchSettings, _windowManager, _eventAggregator);
-                //This saves the search history each time a search is made. It is then listed for convenience in the combobox in the view.
-                SearchHistoryCreater();
-                IsSearching = false;
-            }
-            );
+            //initiates the resultscreen, with the propert parts.
+            ResultScreen = new ResultScreenViewModel(ResultsReturned, SearchSettings, _windowManager, _eventAggregator);
+            //This saves the search history each time a search is made. It is then listed for convenience in the combobox in the view.
+            SearchHistoryCreater();
+            IsSearching = false;
         }
 
         public void Print()
