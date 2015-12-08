@@ -186,13 +186,13 @@ namespace P3.Helpers
           sqlOr += proptype + "\"Lejlighed\" " + AndOr;
           count--;
       }
-      if (input.Rækkehus)
+      if (input.Sommerhus)
       {
           AndOr = getAndOr(count);
           sqlOr += proptype + "\"Sommerhus\" " + AndOr;
           count--;
       }
-      if (input.Rækkehus)
+      if (input.Andet)
       {
           AndOr = getAndOr(count);
           sqlOr += proptype + "\"Andet\" " + AndOr;
@@ -306,13 +306,13 @@ namespace P3.Helpers
         sqlOr += proptype + "\"Lejlighed\" " + AndOr;
         count--;
       }
-      if (input.Rækkehus)
+      if (input.Sommerhus)
       {
         AndOr = getAndOr(count);
         sqlOr += proptype + "\"Sommerhus\" " + AndOr;
         count--;
       }
-      if (input.Rækkehus)
+      if (input.Andet)
       {
         AndOr = getAndOr(count);
         sqlOr += proptype + "\"Andet\" " + AndOr;
