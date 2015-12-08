@@ -446,225 +446,192 @@ namespace P3.Models
               switch (columnName)
               {
                 case "SearchInput":
-                  if (string.IsNullOrEmpty(SearchInput) || SearchInput.Split().Length < 2 || SearchInput.Split().Length > 5)
-                    break;
-                  if (Regex.Match(SearchInput, @"\b([a-zA-Z.]+|[a-zA-Z.]+\s[a-zA-Z.]+|[a-zA-Z.]+\s[a-zA-Z.]+\s[a-zA-Z.] +|[a-zA-Z.]+\s[a-zA-Z.]+\s[a-zA-Z.]+\s[a-zA-Z.])+\s+([0-9]+[a-zA-Z]+|[0-9]+)+\s+[0-9]{4}\b").Success)
+            if (string.IsNullOrEmpty(SearchInput))
+            {
+              ToolTipErrorInfo = "Indtast søgning: adresse, husnr, postnr";
+              break;
+            }
+            if (!Regex.Match(SearchInput, @"\b([a-zA-Z.]+|[a-zA-Z.]+\s[a-zA-Z.]+|[a-zA-Z.]+\s[a-zA-Z.]+\s[a-zA-Z.] +|[a-zA-Z.]+\s[a-zA-Z.]+\s[a-zA-Z.]+\s[a-zA-Z.])+\s+([0-9]+[a-zA-Z]+|[0-9]+)+\s+[0-9]{4}\b").Success)
                   {
                     ToolTipErrorInfo = "Indtast søgning: adresse, husnr, postnr";
                     break;
                   }
-
-            //string[] searchInputArray = SearchInput.Split();
-
-            //if (string.IsNullOrEmpty(SearchInput))
-            //{
-            //  ToolTipErrorInfo = "Indtast søgning: adresse, husnr, postnr";
-            //  break;
-            //}
-
-            //for (int i = 0; i < SearchInput.Split().Length - 2; ++i)
-            //{
-            //  foreach (char ch in searchInputArray[i])
-            //  {
-            //    if (!Char.IsLetter(ch))
-            //    {
-            //      ToolTipErrorInfo = "Indtast søgning: adresse, husnr, postnr";
-
-            //      break;
-            //    }
-            //  }
-
-            //}
-
-            //if (!Char.IsDigit(searchInputArray[SearchInput.Split().Length - 2][0]))
-            //{
-            //  ToolTipErrorInfo = "Indtast søgning: adresse, husnr, postnr";
-            //  break;
-            //}
-
-            //foreach (char ch in searchInputArray[SearchInput.Split().Length - 1])
-            //{
-            //  if (!Char.IsDigit(ch))
-            //  {
-            //    ToolTipErrorInfo = "Indtast søgning: adresse, husnr, postnr";
-            //    break;
-            //  }
-            //}
-            break;
-            case "PriceSliderLowerValue":
-              if (PriceSliderLowerValue < 0)
-              {
-                ToolTipErrorInfo = "Input skal være over nul.";
+                  break;
+              
+              case "PriceSliderLowerValue":
+                if (PriceSliderLowerValue < 0)
+                {
+                  ToolTipErrorInfo = "Input skal være over nul.";
+                  break;
+                }
+                if (PriceSliderLowerValue > PriceSliderHigherValue)
+                {
+                  ToolTipErrorInfo = "Input skal være under " + PriceSliderHigherValue;
+                  break;
+                }
                 break;
+              case "PriceSliderHigherValue":
+                if (PriceSliderHigherValue < 0)
+                {
+                  ToolTipErrorInfo = "Input skal være over nul.";
+                  break;
+                }
+                if (PriceSliderHigherValue < PriceSliderLowerValue)
+                {
+                  ToolTipErrorInfo = "Input skal være over " + PriceSliderLowerValue;
+                  break;
+                }
+                break;
+              case "AreaSliderLowerValue":
+                  if (AreaSliderLowerValue < 0)
+                  {
+                    ToolTipErrorInfo = "Input skal være over nul.";
+                    break;
+                  }
+                  if (AreaSliderLowerValue > AreaSliderHigherValue)
+                  {
+                    ToolTipErrorInfo = "Input skal være under " + AreaSliderHigherValue;
+                    break;
+                  }
+                  break;
+              case "AreaSliderHigherValue":
+                  if (AreaSliderHigherValue < 0)
+                  {
+                    ToolTipErrorInfo = "Input skal være over nul.";
+                    break;
+                  }
+                  if (AreaSliderHigherValue < AreaSliderLowerValue)
+                  {
+                    ToolTipErrorInfo = "Input skal være over " + AreaSliderLowerValue;
+                    break;
+                  }
+                  break;
+              case "DowntimeLowerValue":
+                  if (DowntimeLowerValue < 0)
+                  {
+                    ToolTipErrorInfo = "Input skal være over nul.";
+                    break;
+                  }
+                  if (DowntimeLowerValue > DowntimeHigherValue)
+                  {
+                    ToolTipErrorInfo = "Input skal være under " + DowntimeHigherValue;
+                    break;
+                  }
+                  break;
+              case "DowntimeHigherValue":
+                  if (DowntimeHigherValue < 0)
+                  {
+                    ToolTipErrorInfo = "Input skal være over nul.";
+                    break;
+                  }
+                  if (DowntimeHigherValue < DowntimeLowerValue)
+                  {
+                    ToolTipErrorInfo = "Input skal være over " + DowntimeLowerValue;
+                    break;
+                  }
+                  break;
+              case "MinPrKvm":
+                  if (MinPrKvm < 0)
+                  {
+                    ToolTipErrorInfo = "Input skal være over nul.";
+                    break;
+                  }
+                  if (MinPrKvm > MaxPrKvm)
+                  {
+                    ToolTipErrorInfo = "Input skal være under " + MaxPrKvm;
+                    break;
+                  }
+                  break;
+              case "MaxPrKvm":
+                  if (MinPrKvm < 0)
+                  {
+                    ToolTipErrorInfo = "Input skal være over nul.";
+                    break;
+                  }
+                  if (MaxPrKvm < MinPrKvm)
+                  {
+                    ToolTipErrorInfo = "Input skal være over " + MinPrKvm;
+                    break;
+                  }
+                  break;
+              case "MinYearBuilt":
+                  if (MinYearBuilt < 0)
+                  {
+                    ToolTipErrorInfo = "Input skal være over nul.";
+                    break;
+                  }
+                  if (MinYearBuilt > MaxYearBuilt)
+                  {
+                    ToolTipErrorInfo = "Input skal være under " + MaxYearBuilt;
+                    break;
+                  }
+                  break;
+              case "MaxYearBuilt":
+                  if (MaxYearBuilt < 0)
+                  {
+                    ToolTipErrorInfo = "Input skal være over nul.";
+                    break;
+                  }
+                  if (MaxYearBuilt < MinYearBuilt)
+                  {
+                    ToolTipErrorInfo = "Input skal være over " + MinYearBuilt;
+                    break;
+                  }
+                  break;
+              case "MinRoomCount":
+                  if (MinRoomCount < 0)
+                  {
+                    ToolTipErrorInfo = "Input skal være over nul.";
+                    break;
+                  }
+                  if (MinRoomCount > MaxRoomCount)
+                  {
+                    ToolTipErrorInfo = "Input skal være under " + MaxRoomCount;
+                    break;
+                  }
+                  break;
+              case "MaxRoomCount":
+                  if (MaxRoomCount < 0)
+                  {
+                    ToolTipErrorInfo = "Input skal være over nul.";
+                    break;
+                  }
+                  if (MaxRoomCount < MinRoomCount)
+                  {
+                    ToolTipErrorInfo = "Input skal være over " + MinRoomCount;
+                    break;
+                  }
+                  break;
+              case "MinGroundSize":
+                  if (MinGroundSize < 0)
+                  {
+                    ToolTipErrorInfo = "Input skal være over nul.";
+                    break;
+                  }
+                  if (MinGroundSize > MaxGroundSize)
+                  {
+                    ToolTipErrorInfo = "Input skal være under " + MaxGroundSize;
+                    break;
+                  }
+                  break;
+              case "MaxGroundSize":
+                  if (MaxGroundSize < 0)
+                  {
+                    ToolTipErrorInfo = "Input skal være over nul.";
+                    break;
+                  }
+                  if (MaxGroundSize < MinGroundSize)
+                  {
+                    ToolTipErrorInfo = "Input skal være over " + MinGroundSize;
+                    break;
+                  }
+                  break;
+              default:
+                  //DO NOT MAKE DEFAULT CASE, IT BREAKS THE WRING INPUT TOOLTIP FOR SOME REASON
+                  break;
+                  }
+                  return ToolTipErrorInfo;
               }
-              if (PriceSliderLowerValue > PriceSliderHigherValue)
-              {
-                ToolTipErrorInfo = "Input skal være under " + PriceSliderHigherValue;
-                break;
-              }
-              break;
-            case "PriceSliderHigherValue":
-              if (PriceSliderHigherValue < 0)
-              {
-                ToolTipErrorInfo = "Input skal være over nul.";
-                break;
-              }
-              if (PriceSliderHigherValue < PriceSliderLowerValue)
-              {
-                ToolTipErrorInfo = "Input skal være over " + PriceSliderLowerValue;
-                break;
-              }
-              break;
-            case "AreaSliderLowerValue":
-                if (AreaSliderLowerValue < 0)
-                {
-                  ToolTipErrorInfo = "Input skal være over nul.";
-                  break;
-                }
-                if (AreaSliderLowerValue > AreaSliderHigherValue)
-                {
-                  ToolTipErrorInfo = "Input skal være under " + AreaSliderHigherValue;
-                  break;
-                }
-                break;
-            case "AreaSliderHigherValue":
-                if (AreaSliderHigherValue < 0)
-                {
-                  ToolTipErrorInfo = "Input skal være over nul.";
-                  break;
-                }
-                if (AreaSliderHigherValue < AreaSliderLowerValue)
-                {
-                  ToolTipErrorInfo = "Input skal være over " + AreaSliderLowerValue;
-                  break;
-                }
-                break;
-            case "DowntimeLowerValue":
-                if (DowntimeLowerValue < 0)
-                {
-                  ToolTipErrorInfo = "Input skal være over nul.";
-                  break;
-                }
-                if (DowntimeLowerValue > DowntimeHigherValue)
-                {
-                  ToolTipErrorInfo = "Input skal være under " + DowntimeHigherValue;
-                  break;
-                }
-                break;
-            case "DowntimeHigherValue":
-                if (DowntimeHigherValue < 0)
-                {
-                  ToolTipErrorInfo = "Input skal være over nul.";
-                  break;
-                }
-                if (DowntimeHigherValue < DowntimeLowerValue)
-                {
-                  ToolTipErrorInfo = "Input skal være over " + DowntimeLowerValue;
-                  break;
-                }
-                break;
-            case "MinPrKvm":
-                if (MinPrKvm < 0)
-                {
-                  ToolTipErrorInfo = "Input skal være over nul.";
-                  break;
-                }
-                if (MinPrKvm > MaxPrKvm)
-                {
-                  ToolTipErrorInfo = "Input skal være under " + MaxPrKvm;
-                  break;
-                }
-                break;
-            case "MaxPrKvm":
-                if (MinPrKvm < 0)
-                {
-                  ToolTipErrorInfo = "Input skal være over nul.";
-                  break;
-                }
-                if (MaxPrKvm < MinPrKvm)
-                {
-                  ToolTipErrorInfo = "Input skal være over " + MinPrKvm;
-                  break;
-                }
-                break;
-            case "MinYearBuilt":
-                if (MinYearBuilt < 0)
-                {
-                  ToolTipErrorInfo = "Input skal være over nul.";
-                  break;
-                }
-                if (MinYearBuilt > MaxYearBuilt)
-                {
-                  ToolTipErrorInfo = "Input skal være under " + MaxYearBuilt;
-                  break;
-                }
-                break;
-            case "MaxYearBuilt":
-                if (MaxYearBuilt < 0)
-                {
-                  ToolTipErrorInfo = "Input skal være over nul.";
-                  break;
-                }
-                if (MaxYearBuilt < MinYearBuilt)
-                {
-                  ToolTipErrorInfo = "Input skal være over " + MinYearBuilt;
-                  break;
-                }
-                break;
-            case "MinRoomCount":
-                if (MinRoomCount < 0)
-                {
-                  ToolTipErrorInfo = "Input skal være over nul.";
-                  break;
-                }
-                if (MinRoomCount > MaxRoomCount)
-                {
-                  ToolTipErrorInfo = "Input skal være under " + MaxRoomCount;
-                  break;
-                }
-                break;
-            case "MaxRoomCount":
-                if (MaxRoomCount < 0)
-                {
-                  ToolTipErrorInfo = "Input skal være over nul.";
-                  break;
-                }
-                if (MaxRoomCount < MinRoomCount)
-                {
-                  ToolTipErrorInfo = "Input skal være over " + MinRoomCount;
-                  break;
-                }
-                break;
-            case "MinGroundSize":
-                if (MinGroundSize < 0)
-                {
-                  ToolTipErrorInfo = "Input skal være over nul.";
-                  break;
-                }
-                if (MinGroundSize > MaxGroundSize)
-                {
-                  ToolTipErrorInfo = "Input skal være under " + MaxGroundSize;
-                  break;
-                }
-                break;
-            case "MaxGroundSize":
-                if (MaxGroundSize < 0)
-                {
-                  ToolTipErrorInfo = "Input skal være over nul.";
-                  break;
-                }
-                if (MaxGroundSize < MinGroundSize)
-                {
-                  ToolTipErrorInfo = "Input skal være over " + MinGroundSize;
-                  break;
-                }
-                break;
-            default:
-                //DO NOT MAKE DEFAULT CASE, IT BREAKS THE WRING INPUT TOOLTIP FOR SOME REASON
-                break;
-                }
-                return ToolTipErrorInfo;
-            }
         }
 
         public string Error
