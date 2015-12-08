@@ -66,39 +66,44 @@ namespace P3.Views
         //It turned out to be way easier to do this in code behind rather than in the viewmodel, because of no support for deep property guard methods in caliburn. 
         private void CanSearch(object sender, TextChangedEventArgs e)
         {
+          
           TextBox TxtB = sender as TextBox;
-          GetResults.IsEnabled = true;
-          string[] TxtBString = TxtB.Text.Split();
-
-          if (string.IsNullOrEmpty(TxtB.Text))
+          GetResults.IsEnabled = false;
+          if (string.IsNullOrEmpty(TxtB.Text) || TxtB.Text.Split().Length < 2 || TxtB.Text.Split().Length > 5)
+            return;
+          if (Regex.Match(TxtB.Text, @"\b([a-zA-Z.]+|[a-zA-Z.]+\s[a-zA-Z.]+|[a-zA-Z.]+\s[a-zA-Z.]+\s[a-zA-Z.] +|[a-zA-Z.]+\s[a-zA-Z.]+\s[a-zA-Z.]+\s[a-zA-Z.])+\s+([0-9]+[a-zA-Z]+|[0-9]+)+\s+[0-9]{4}\b").Success)
           {
-            GetResults.IsEnabled = false;
+            GetResults.IsEnabled = true;
             return;
           }
 
-          for (int i = 0; i < TxtB.Text.Split().Length - 2; ++i)
-          {
-            if (!Char.IsLetter(TxtBString[i][0]))
-            {
-              GetResults.IsEnabled = false;
-              return;
-            }
-          }
+          //for (int i = 0; i < TxtB.Text.Split().Length - 2; ++i)
+          //{
+          //  foreach (char ch in TxtBString[i])
+          //  {
+          //    if (!Char.IsLetter(ch))
+          //    {
+          //      GetResults.IsEnabled = false;
+          //      return;
+          //    }
+          //  }
+            
+          //}
 
-          if (!Char.IsDigit(TxtBString[TxtB.Text.Split().Length - 2][0]))
-          {
-            GetResults.IsEnabled = false;
-            return;
-          }
+          //if (!Char.IsDigit(TxtBString[TxtB.Text.Split().Length - 2][0]))
+          //{
+          //  GetResults.IsEnabled = false;
+          //  return;
+          //}
 
-          foreach (char ch in TxtBString[TxtB.Text.Split().Length-1])
-          {
-            if (!Char.IsDigit(ch))
-              {
-                GetResults.IsEnabled = false;
-                return;
-              }
-          }
+          //foreach (char ch in TxtBString[TxtB.Text.Split().Length-1])
+          //{
+          //  if (!Char.IsDigit(ch))
+          //    {
+          //      GetResults.IsEnabled = false;
+          //      return;
+          //    }
+          //}
         }
 
         private void GetResults_Click(object sender, RoutedEventArgs e)
