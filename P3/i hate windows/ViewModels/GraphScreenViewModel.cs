@@ -18,11 +18,12 @@ using OxyPlot.Series;
 namespace P3.ViewModels
 {
     [Export(typeof(GraphScreenViewModel))]
-    class GraphScreenViewModel : Screen{
+    class GraphScreenViewModel : Screen
+    {
 
         private readonly IWindowManager _windowManager;
-        [ImportingConstructor]
 
+        [ImportingConstructor]
         public GraphScreenViewModel(BindableCollection<Listing> ls, IWindowManager _windowManager)
         {
             this.Title = "test";

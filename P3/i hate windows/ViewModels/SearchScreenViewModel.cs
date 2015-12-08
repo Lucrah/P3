@@ -124,6 +124,10 @@ namespace P3.ViewModels
             }
         }
 
+        public void Analysis()
+        {
+            _windowManager.ShowWindow(new GraphScreenViewModel(ResultsReturned, _windowManager));
+        }
         public void Handle(BoolPropMsg message)
         {
             if(message.Prop == "IsPrintOpen")
