@@ -19,7 +19,7 @@ namespace i_hate_windows.Views
     /// <summary>
     /// Interaction logic for PrintWindowView.xaml
     /// </summary>
-    public partial class PrintWindowView : MetroWindow
+    public partial class PrintWindowView : UserControl
     {
         public PrintWindowView()
         {

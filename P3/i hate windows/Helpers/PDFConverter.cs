@@ -44,6 +44,15 @@ namespace i_hate_windows.Helpers
         
       public void ExecuteCreation(string mode, int numberofsearchresults)
         {
+            if(File.Exists(PDFPath + "/SøgeResultater.pdf"))
+            {
+                if(File.Exists(PDFPath + "/SøgeResultaterOLD.pdf"))
+                {
+                    File.Delete(PDFPath + "/SøgeResultaterOLD.pdf");
+                }
+                File.Move(PDFPath + "/SøgeResultater.pdf", PDFPath + "/SøgeResultaterOLD.pdf");
+                File.Delete(PDFPath + "/SøgeResultater.pdf");
+            }
             NumberOfSearchResults = numberofsearchresults;
             if (mode == "result")
             {
@@ -55,6 +64,8 @@ namespace i_hate_windows.Helpers
             }
             else
                 ResultAndGraphPDF();
+
+            System.Diagnostics.Process.Start(PDFPath + "/SøgeResultater.pdf");
         }
       //lets start by creating a path string to the pdf folder
       public string GetPath()

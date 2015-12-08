@@ -36,6 +36,9 @@ namespace P3.Models
         private bool _andelsBolig;
         private bool _rækkehus;
         private bool _nedlagtLandbrug;
+        private bool _lejlighed;
+        private bool _sommerhus;
+        private bool _andet;
 
         //Bottom values in SearchView
         private int _minPrKvm = 0;
@@ -271,6 +274,41 @@ namespace P3.Models
             {
                 _nedlagtLandbrug = value;
                 NotifyOfPropertyChange(() => NedlagtLandbrug);
+            }
+        }
+        public bool Lejlighed
+        {
+            get { return _lejlighed; }
+            set
+            {
+                _lejlighed = value;
+                NotifyOfPropertyChange(() => Lejlighed);
+            }
+        }
+        public bool Sommerhus
+        {
+            get
+            {
+                return _sommerhus;
+            }
+
+            set
+            {
+                _sommerhus = value;
+                NotifyOfPropertyChange(() => Sommerhus);
+            }
+        }
+        public bool Andet
+        {
+            get
+            {
+                return _andet;
+            }
+
+            set
+            {
+                _andet = value;
+                NotifyOfPropertyChange(() => Andet);
             }
         }
 

@@ -200,8 +200,27 @@ namespace P3.Helpers
         sqlOr += proptype + "\"Rækkehus\" " + AndOr;
         count--;
       }
+        if (input.Lejlighed)
+        {
+            AndOr = getAndOr(count);
+            sqlOr += proptype + "\"Lejlighed\" " + AndOr;
+            count--;
+        }
+        if (input.Rækkehus)
+        {
+            AndOr = getAndOr(count);
+            sqlOr += proptype + "\"Sommerhus\" " + AndOr;
+            count--;
+        }
+        if (input.Rækkehus)
+        {
+            AndOr = getAndOr(count);
+            sqlOr += proptype + "\"Andet\" " + AndOr;
+            count--;
+        }
 
-      sqlOr += ") AND ";
+
+            sqlOr += ") AND ";
 
       if (PropTypeChecked.Count != 0)
       {

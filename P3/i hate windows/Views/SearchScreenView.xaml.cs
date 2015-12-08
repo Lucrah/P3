@@ -88,5 +88,10 @@ namespace P3.Views
             OptionsGrid.IsEnabled = true;
             OptionsGrid.Visibility = Visibility.Visible;
         }
+
+        private void SearchSettings_Andelsbolig_Copy_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
