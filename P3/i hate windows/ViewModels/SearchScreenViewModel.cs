@@ -240,7 +240,15 @@ namespace P3.ViewModels
       {
         writer.WriteLine(SearchSettings.SearchInput ?? "");
 
-        //Hustype laves når det er lavet om :))
+        writer.WriteLine(Convert.ToString(SearchSettings.Villa));
+        writer.WriteLine(Convert.ToString(SearchSettings.LiebhaverEjendom));
+        writer.WriteLine(Convert.ToString(SearchSettings.FritidsEjendom));
+        writer.WriteLine(Convert.ToString(SearchSettings.Andelsbolig));
+        writer.WriteLine(Convert.ToString(SearchSettings.Rækkehus));
+        writer.WriteLine(Convert.ToString(SearchSettings.NedlagtLandbrug));
+        writer.WriteLine(Convert.ToString(SearchSettings.Lejlighed));
+        writer.WriteLine(Convert.ToString(SearchSettings.Sommerhus));
+        writer.WriteLine(Convert.ToString(SearchSettings.Andet));
 
         writer.WriteLine(Convert.ToString(SearchSettings.PriceSliderLowerValue) ?? "");
         writer.WriteLine(Convert.ToString(SearchSettings.PriceSliderHigherValue) ?? "");
@@ -289,7 +297,15 @@ namespace P3.ViewModels
       {
         SearchSettings.SearchInput = reader.ReadLine() ?? "";
 
-        //Hustype laves når det lort er done
+        SearchSettings.Villa = Convert.ToBoolean(reader.ReadLine() ?? "");
+        SearchSettings.LiebhaverEjendom = Convert.ToBoolean(reader.ReadLine() ?? "");
+        SearchSettings.FritidsEjendom = Convert.ToBoolean(reader.ReadLine() ?? "");
+        SearchSettings.Andelsbolig = Convert.ToBoolean(reader.ReadLine() ?? "");
+        SearchSettings.Rækkehus = Convert.ToBoolean(reader.ReadLine() ?? "");
+        SearchSettings.NedlagtLandbrug = Convert.ToBoolean(reader.ReadLine() ?? "");
+        SearchSettings.Lejlighed = Convert.ToBoolean(reader.ReadLine() ?? "");
+        SearchSettings.Sommerhus = Convert.ToBoolean(reader.ReadLine() ?? "");
+        SearchSettings.Andet = Convert.ToBoolean(reader.ReadLine() ?? "");
 
         SearchSettings.PriceSliderLowerValue = Convert.ToDouble(reader.ReadLine() ?? "");
         SearchSettings.PriceSliderHigherValue = Convert.ToDouble(reader.ReadLine() ?? "");
@@ -299,7 +315,6 @@ namespace P3.ViewModels
         SearchSettings.DowntimeHigherValue = Convert.ToDouble(reader.ReadLine() ?? "");
         SearchSettings.AreaSliderLowerValue = Convert.ToDouble(reader.ReadLine() ?? "");
         SearchSettings.AreaSliderHigherValue = Convert.ToDouble(reader.ReadLine() ?? "");
-
 
         SearchSettings.MinPrKvm = Convert.ToInt32(reader.ReadLine() ?? "");
         SearchSettings.MaxPrKvm = Convert.ToInt32(reader.ReadLine() ?? "");
