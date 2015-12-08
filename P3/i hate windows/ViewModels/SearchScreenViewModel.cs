@@ -12,6 +12,7 @@ using System.ComponentModel.Composition;
 using P3.Helpers;
 using i_hate_windows.Helpers;
 using i_hate_windows.ViewModels;
+using System.ComponentModel;
 
 namespace P3.ViewModels
 {
@@ -83,32 +84,40 @@ namespace P3.ViewModels
 
         public void GetResults()
         {
-            Funktionality func = new Funktionality(_windowManager);
-            //Call and run query functions here
-            //SearchSettings propertien indeholder de valgte settings.
-            ResultsReturned = new BindableCollection<Listing>();
+            //Running the query stuff on a seperate thread. There is lots of options to let us get reports of progress or something like that, but time does not permit us to do it.
+            BackgroundWorker bWorker = new BackgroundWorker();
+            bWorker.DoWork += new DoWorkEventHandler(delegate (object o, DoWorkEventArgs args)
+            {
 
-            //this one is just a static search, no user input.
-            //ResultsReturned = func.StaticSearch();
+                //Functionality is extremely bad piece of code badly named, stuff in weird places.
+                Funktionality fncy = new Funktionality(_windowManager);
+                ResultsReturned = new BindableCollection<Listing>();
 
-            //this one should take into account all user input
-            //UN-comment once their stringbuilder is ready, until then, only staticsearch
+                //This one is just a static search, no user input. Used for testing.
+                //ResultsReturned = func.StaticSearch();
 
-            ResultsReturned = func.SuperSearch(SearchSettings);
-            
-            ResultScreen = new ResultScreenViewModel(ResultsReturned, SearchSettings, _windowManager, _eventAggregator);
 
-            //Jeppes funktioner, responsible for saving the searchsettings to a .csv so you can view recent searches.
-            SearchHistoryCreater();
+                ResultsReturned = fncy.SuperSearch(SearchSettings);
+
+                //initiates the resultscreen, with the propert parts.
+                ResultScreen = new ResultScreenViewModel(ResultsReturned, SearchSettings, _windowManager, _eventAggregator);
+                //This saves the search history each time a search is made. It is then listed for convenience in the combobox in the view.
+                SearchHistoryCreater();
+
+            }
+            );
         }
 
         public void Print()
         {
             if (!IsPrintOpen)
             {
-                _windowManager.ShowWindow(new PrintWindowViewModel(ResultsReturned, SearchSettings, graphResults, _eventAggregator));
-                //technically this should be a publishonuithread?
-                IsPrintOpen = true;
+                if (ResultsReturned != null)
+                {
+                    _windowManager.ShowWindow(new PrintWindowViewModel(ResultsReturned, SearchSettings, graphResults, _eventAggregator));
+                    //technically this should be a publishonuithread?
+                    IsPrintOpen = true;
+                }
             }
         }
 
