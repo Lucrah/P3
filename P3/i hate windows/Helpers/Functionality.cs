@@ -148,7 +148,7 @@ namespace P3.Helpers
       string sqlOr = "(";
       string AndOr = string.Empty;
       string proptype = "listings.PropertyType = ";
-      List<bool> PropTypes = new List<bool> { input.Andelsbolig, input.FritidsEjendom, input.LiebhaverEjendom, input.NedlagtLandbrug, input.Rækkehus, input.Villa };
+      List<bool> PropTypes = new List<bool> { input.Andelsbolig, input.Sommerhus, input.Lejlighed, input.Ejerlejlighed, input.Rækkehus, input.Villa, input.Andet };
       List<bool> PropTypeChecked = new List<bool>();
       foreach (var item in PropTypes)
       {
@@ -173,24 +173,24 @@ namespace P3.Helpers
         count--;
       }
 
-      if (input.FritidsEjendom)
+      if (input.Sommerhus)
       {
         AndOr = getAndOr(count);
-        sqlOr += proptype + "\"Fritids Ejendom\" " + AndOr;
+        sqlOr += proptype + "\"Sommerhus\" " + AndOr;
         count--;
       }
 
-      if (input.LiebhaverEjendom)
+      if (input.Lejlighed)
       {
         AndOr = getAndOr(count);
-        sqlOr += proptype + "\"Liebhaver Ejendom\" " + AndOr;
+        sqlOr += proptype + "\"Lejlighed\" " + AndOr;
         count--;
       }
 
-      if (input.NedlagtLandbrug)
+      if (input.Ejerlejlighed)
       {
         AndOr = getAndOr(count);
-        sqlOr += proptype + "\"Nedlagt Landbrug\" " + AndOr;
+        sqlOr += proptype + "\"Ejerlejlighed\" " + AndOr;
         count--;
       }
 
@@ -198,6 +198,13 @@ namespace P3.Helpers
       {
         AndOr = getAndOr(count);
         sqlOr += proptype + "\"Rækkehus\" " + AndOr;
+        count--;
+      }
+
+      if (input.Andet)
+      {
+        AndOr = getAndOr(count);
+        sqlOr += proptype + "\"Andet\" " + AndOr;
         count--;
       }
 
@@ -268,7 +275,7 @@ namespace P3.Helpers
       string sqlOr = "(";
       string AndOr = string.Empty;
       string proptype = "listings.PropertyType = ";
-      List<bool> PropTypes = new List<bool> { input.Andelsbolig, input.FritidsEjendom, input.LiebhaverEjendom, input.NedlagtLandbrug, input.Rækkehus, input.Villa };
+      List<bool> PropTypes = new List<bool> { input.Andelsbolig, input.Sommerhus, input.Lejlighed, input.Ejerlejlighed, input.Rækkehus, input.Villa, input.Andet };
       List<bool> PropTypeChecked = new List<bool>();
       foreach (var item in PropTypes)
       {
@@ -293,24 +300,24 @@ namespace P3.Helpers
         count--;
       }
 
-      if (input.FritidsEjendom)
+      if (input.Sommerhus)
       {
         AndOr = getAndOr(count);
-        sqlOr += proptype + "\"Fritids Ejendom\" " + AndOr;
+        sqlOr += proptype + "\"Sommerhus\" " + AndOr;
         count--;
       }
 
-      if (input.LiebhaverEjendom)
+      if (input.Lejlighed)
       {
         AndOr = getAndOr(count);
-        sqlOr += proptype + "\"Liebhaver Ejendom\" " + AndOr;
+        sqlOr += proptype + "\"Lejlighed\" " + AndOr;
         count--;
       }
 
-      if (input.NedlagtLandbrug)
+      if (input.Ejerlejlighed)
       {
         AndOr = getAndOr(count);
-        sqlOr += proptype + "\"Nedlagt Landbrug\" " + AndOr;
+        sqlOr += proptype + "\"Ejerlejlighed\" " + AndOr;
         count--;
       }
 
@@ -318,6 +325,13 @@ namespace P3.Helpers
       {
         AndOr = getAndOr(count);
         sqlOr += proptype + "\"Rækkehus\" " + AndOr;
+        count--;
+      }
+
+      if (input.Andet)
+      {
+        AndOr = getAndOr(count);
+        sqlOr += proptype + "\"Andet\" " + AndOr;
         count--;
       }
 
