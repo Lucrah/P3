@@ -10,7 +10,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="1920" d:DesignWidth="1820" Width="1900" Height="978"
              >
-    <Grid Background="#FF1F1F1F">
+    <Grid Background="#FF1F1F1F" Name ="GlobalGrid" IsEnabled="{Binding Path=IsSearching}">
         <Grid.RowDefinitions>
             <RowDefinition Height="688"/>
             <RowDefinition Height="35.333"/>

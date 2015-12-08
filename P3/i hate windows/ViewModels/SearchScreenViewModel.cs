@@ -29,6 +29,7 @@ namespace P3.ViewModels
         private IEventAggregator _eventAggregator;
         private object graphResults;
         private bool _isPrintOpen = false;
+        private bool _isSearching = false;
 
         //mef stuff
         private readonly IWindowManager _windowManager;
@@ -88,7 +89,7 @@ namespace P3.ViewModels
             BackgroundWorker bWorker = new BackgroundWorker();
             bWorker.DoWork += new DoWorkEventHandler(delegate (object o, DoWorkEventArgs args)
             {
-
+                IsSearching = true;
                 //Functionality is extremely bad piece of code badly named, stuff in weird places.
                 Funktionality fncy = new Funktionality(_windowManager);
                 ResultsReturned = new BindableCollection<Listing>();
@@ -103,7 +104,7 @@ namespace P3.ViewModels
                 ResultScreen = new ResultScreenViewModel(ResultsReturned, SearchSettings, _windowManager, _eventAggregator);
                 //This saves the search history each time a search is made. It is then listed for convenience in the combobox in the view.
                 SearchHistoryCreater();
-
+                IsSearching = false;
             }
             );
         }
@@ -177,7 +178,21 @@ namespace P3.ViewModels
             }
         }
 
-    public void SearchHistoryCreater()
+        public bool IsSearching
+        {
+            get
+            {
+                return !_isSearching;
+            }
+
+            set
+            {
+                _isSearching = value;
+                NotifyOfPropertyChange(() => IsSearching);
+            }
+        }
+
+        public void SearchHistoryCreater()
     {
       string history = GetPath() + @"/History";
 
