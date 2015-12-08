@@ -8,23 +8,24 @@
              mc:Ignorable="d" 
              d:DesignHeight="901.243" d:DesignWidth="1340" Height="901.243" Width="1340" VerticalAlignment="Top" HorizontalAlignment="Left">
 
-    <ListView Tag="{Binding DataContext}" x:Name="ResultListView" ItemsSource="{Binding SearchResults}" Background="#FF2C2C2C" SelectedItem="{Binding SelectedSearchResult}" ContextMenuService.ShowOnDisabled="True" Initialized="OnInitialize" SelectedIndex="0" ScrollViewer.VerticalScrollBarVisibility="Visible" IsHitTestVisible="True">
+    <ListView x:Name="ResultListView" ItemsSource="{Binding SearchResults}" Background="#FF2C2C2C" SelectedItem="{Binding SelectedSearchResult}" ContextMenuService.ShowOnDisabled="True" Initialized="OnInitialize" SelectedIndex="0" ScrollViewer.VerticalScrollBarVisibility="Visible" IsHitTestVisible="True">
         <ListView.ItemContainerStyle>
             <Style TargetType="{x:Type ListViewItem}">
-                <Style.Triggers>
-                    <Trigger Property="IsSelected" Value="True" >
-                        <Setter Property="Foreground" Value="White"/>
-                    </Trigger>
-                </Style.Triggers>
+                <Setter Property="Tag" Value="{Binding Path=DataContext, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView}}"/>
                 <Setter Property="ContextMenu">
                     <Setter.Value>
-                        <ContextMenu Name="cm" cal:Action.TargetWithoutContext="{Binding DataContext, RelativeSource={RelativeSource Self}}">
+                        <ContextMenu cal:Action.TargetWithoutContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
                             <MenuItem Header="Vis boliginfo..." cal:Message.Attach="ShowPropertyInfoFlyout"/>
                             <MenuItem Header="Vis boliginfo i nyt vindue..." cal:Message.Attach="ShowPropertyInfoNewWindow"/>
                             <MenuItem Header="Print Valgte..." cal:Message.Attach="PrintChosen"/>
                         </ContextMenu>
                     </Setter.Value>
                 </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True" >
+                        <Setter Property="Foreground" Value="White"/>
+                    </Trigger>
+                </Style.Triggers>
             </Style>
         </ListView.ItemContainerStyle>
         <ListView.View>
