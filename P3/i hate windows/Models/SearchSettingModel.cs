@@ -451,7 +451,7 @@ namespace P3.Models
               ToolTipErrorInfo = "Indtast søgning: adresse, husnr, postnr";
               break;
             }
-            if (!Regex.Match(SearchInput, @"\b([a-zA-Z.]+|[a-zA-Z.]+\s[a-zA-Z.]+|[a-zA-Z.]+\s[a-zA-Z.]+\s[a-zA-Z.] +|[a-zA-Z.]+\s[a-zA-Z.]+\s[a-zA-Z.]+\s[a-zA-Z.])+\s+([0-9]+[a-zA-Z]+|[0-9]+)+\s+[0-9]{4}\b").Success)
+            if (!Regex.Match(SearchInput, @"\b([a-zA-Z.]+|[a-zA-Z.]+\s[a-zA-Z.]+|[a-zA-Z.]+\s[a-zA-Z.]+\s[a-zA-Z.]+|[a-zA-Z.]+\s[a-zA-Z.]+\s[a-zA-Z.]+\s[a-zA-Z.])+\s+([0-9]+[a-zA-Z]+|[0-9]+)+\s+[0-9]{4}\b").Success)
                   {
                     ToolTipErrorInfo = "Indtast søgning: adresse, husnr, postnr";
                     break;
