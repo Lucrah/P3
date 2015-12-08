@@ -62,7 +62,7 @@
                 <Rectangle x:Name="seventhRec"  Fill="#FF005430" Margin="0,0,0,25.785" Stroke="Black" Grid.Row="15" StrokeThickness="0" Height="100" VerticalAlignment="Bottom" Grid.ColumnSpan="3"/>
 
                 <CheckBox x:Name="SearchSettings_Villa" Content=" Villa" Margin="13,0,35,5.546" Grid.Row="4" FontSize="16" Foreground="White"/>
-                <TextBlock x:Name="Ejendomstype_Title" Grid.Row="2" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Grid.Column="1" HorizontalAlignment="Left" Width="70"><Run Text="Ejendomstype"/><LineBreak/><Run/></TextBlock>
+                <TextBlock x:Name="Ejendomstype_Title" Grid.Row="2" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Grid.Column="1" HorizontalAlignment="Left" Width="120"><Run Text="Ejendomstyper"/><LineBreak/><Run/></TextBlock>
                 <CheckBox x:Name="SearchSettings_Liebhaver" Content=" Liebhaverejendom" Margin="13,0,30,5.546" Grid.Row="5" FontSize="16" Foreground="White"/>
                 <CheckBox x:Name="SearchSettings_FritidsEjendom" Content=" Fritidsejendom" Margin="13,0,35,5.546" Grid.Row="6" FontSize="16" Foreground="White"/>
                 <CheckBox x:Name="SearchSettings_Andelsbolig" Content=" Andelsbolig" Margin="0,0,0,5.546" Grid.Row="4" FontSize="16" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Width="160"/>
