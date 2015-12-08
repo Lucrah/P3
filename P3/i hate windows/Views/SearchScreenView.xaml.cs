@@ -66,15 +66,39 @@ namespace P3.Views
         //It turned out to be way easier to do this in code behind rather than in the viewmodel, because of no support for deep property guard methods in caliburn. 
         private void CanSearch(object sender, TextChangedEventArgs e)
         {
-            TextBox TxtB = sender as TextBox;
-            if (!string.IsNullOrEmpty(TxtB.Text) && TxtB.Text.Split().Length > 3)
+          TextBox TxtB = sender as TextBox;
+          GetResults.IsEnabled = true;
+          string[] TxtBString = TxtB.Text.Split();
+
+          if (string.IsNullOrEmpty(TxtB.Text))
+          {
+            GetResults.IsEnabled = false;
+            return;
+          }
+
+          for (int i = 0; i < TxtB.Text.Split().Length - 2; ++i)
+          {
+            if (!Char.IsLetter(TxtBString[i][0]))
             {
-                GetResults.IsEnabled = true;
+              GetResults.IsEnabled = false;
+              return;
             }
-            else
-            {
+          }
+
+          if (!Char.IsDigit(TxtBString[TxtB.Text.Split().Length - 2][0]))
+          {
+            GetResults.IsEnabled = false;
+            return;
+          }
+
+          foreach (char ch in TxtBString[TxtB.Text.Split().Length-1])
+          {
+            if (!Char.IsDigit(ch))
+              {
                 GetResults.IsEnabled = false;
-            }
+                return;
+              }
+          }
         }
 
         private void GetResults_Click(object sender, RoutedEventArgs e)
