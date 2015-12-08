@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="i_hate_windows.Views.GraphScreenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"  xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:local="clr-namespace:P3.Views"
+             d:DesignHeight="901" d:DesignWidth="1340">
+
+    <Grid Background="#FF1F1F1F">
+
+        <Grid Margin="0,10,0,-10">
+            <oxy:Plot Title="{Binding Title}" Margin="78,260,744,304">
+                <oxy:Plot.Series>
+                    <oxy:LineSeries ItemsSource="{Binding Points}"/>
+                </oxy:Plot.Series>
+            </oxy:Plot>
+            <Grid HorizontalAlignment="Left" Height="100" Margin="78,650,0,0" VerticalAlignment="Top" Width="518" Background="#FF005430"/>
+            <Grid HorizontalAlignment="Left" Height="100" Margin="744,650,0,0" VerticalAlignment="Top" Width="514" Background="#FF005430"/>
+            <Grid HorizontalAlignment="Left" Height="184" Margin="78,48,0,0" VerticalAlignment="Top" Width="1180" Background="#FF005430"/>
+            <oxy:Plot Title="{Binding Title}" Margin="740,260,82,304">
+                <oxy:LineSeries ItemsSource="{Binding Points}"/>
+            </oxy:Plot>
+        </Grid>
+
+    </Grid>
+</UserControl>

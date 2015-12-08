@@ -82,6 +82,15 @@
       <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="OxyPlot">
+      <HintPath>..\packages\OxyPlot.Core.1.0.0-unstable1886\lib\net45\OxyPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.Wpf">
+      <HintPath>..\packages\OxyPlot.Wpf.1.0.0-unstable1886\lib\net45\OxyPlot.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.Xps">
+      <HintPath>..\packages\OxyPlot.Wpf.1.0.0-unstable1886\lib\net45\OxyPlot.Xps.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
@@ -162,6 +171,9 @@
     <Compile Include="Views\FlyoutLeftView.xaml.cs">
       <DependentUpon>FlyoutLeftView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\GraphScreenView.xaml.cs">
+      <DependentUpon>GraphScreenView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PrintWindowView.xaml.cs">
       <DependentUpon>PrintWindowView.xaml</DependentUpon>
     </Compile>
@@ -221,6 +233,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\FlyoutLeftView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GraphScreenView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

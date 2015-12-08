@@ -112,10 +112,7 @@ namespace P3.ViewModels
          * And really, this can be used to bind any function to any button/other control.
          * This also shows the aforementioned ActivateItem. If i wanted to pass settings or something into the views it could be done here.
          * */
-        public void ShowGraphScreen()
-        {
-            ActivateItem(new GraphScreenViewModel());
-        }
+       
         public void ShowSearchScreen()
         {
             ActivateItem(new SearchScreenViewModel(_windowManager, _eventAggregator));

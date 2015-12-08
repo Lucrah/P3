@@ -59,6 +59,11 @@ namespace P3.ViewModels
             PDFConverter pdfconv = new PDFConverter(SearchResults, _searchSettings, graphresults, DateTime.Now.ToString());
         }
 
+        public void ShowGraphNewWindow()
+        {
+            _windowManager.ShowWindow(new GraphScreenViewModel(SearchResults, _windowManager));
+        }
+
         #region Public fields
 
         //Has to be bindableCollection, del af caliburn
