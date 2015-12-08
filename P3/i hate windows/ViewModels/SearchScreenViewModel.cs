@@ -113,7 +113,7 @@ namespace P3.ViewModels
         {
             if (!IsPrintOpen)
             {
-                if (ResultsReturned != null)
+                if (true)
                 {
                     _windowManager.ShowWindow(new PrintWindowViewModel(ResultsReturned, SearchSettings, graphResults, _eventAggregator));
                     //technically this should be a publishonuithread?
