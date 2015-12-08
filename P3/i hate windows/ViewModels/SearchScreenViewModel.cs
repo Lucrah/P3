@@ -95,10 +95,10 @@ namespace P3.ViewModels
                 ResultsReturned = new BindableCollection<Listing>();
 
                 //This one is just a static search, no user input. Used for testing.
-                //ResultsReturned = func.StaticSearch();
+                ResultsReturned = fncy.StaticSearch();
 
 
-                ResultsReturned = fncy.SuperSearch(SearchSettings);
+                //ResultsReturned = fncy.SuperSearch(SearchSettings);
 
                 //initiates the resultscreen, with the propert parts.
                 ResultScreen = new ResultScreenViewModel(ResultsReturned, SearchSettings, _windowManager, _eventAggregator);
