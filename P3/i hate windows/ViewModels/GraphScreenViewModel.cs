@@ -24,8 +24,10 @@ namespace P3.ViewModels
         private readonly IWindowManager _windowManager;
 
         [ImportingConstructor]
-        public GraphScreenViewModel(BindableCollection<Listing> ls, IWindowManager _windowManager)
+        public GraphScreenViewModel(BindableCollection<Listing> ls, IWindowManager windowManager)
         {
+            _windowManager = windowManager;
+            _results = ls;
             this.Title = "test";
             this.Points = new List<DataPoint>
                               {
@@ -37,10 +39,41 @@ namespace P3.ViewModels
                                   new DataPoint(50, 12)
                               };
         }
+        private BindableCollection<Listing> _results;
+        private string _title;
+        private IList<DataPoint> _points;
+        public string Title    
+        {
+            get { return _title; }
+           
+            set {_title = value;
+                NotifyOfPropertyChange(() => Title);
+                }
+        }
+        public BindableCollection<Listing> Results
+        {
+            get { return _results; }
 
-        public string Title { get; private set; }
+            set
+            {
+                _results = value;
+                NotifyOfPropertyChange(() => Results);
+            }
+        }
 
-        public IList<DataPoint> Points { get; private set; }
+        public IList<DataPoint> Points 
+        {
+            get
+            {
+                return _points;
+            }
+
+            set
+            {
+                _points = value;
+                NotifyOfPropertyChange(() => Points);
+            }
+        }
     }
 }
     
