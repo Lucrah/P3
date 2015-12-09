@@ -21,7 +21,7 @@
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
-            <Image x:Name="image" Height="230" Source="Penguins.jpg" Margin="0,0,0,10"/>
+            <Image x:Name="image" Height="230" Source="Hus.jpg" Margin="0,0,0,10"/>
             <Border Height="44" Background="#FF005430">
                 <TextBlock Margin="170,7.813,179.037,7.813" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Info" FontSize="21.333" Foreground="White" Width="45.963"/>
             </Border>

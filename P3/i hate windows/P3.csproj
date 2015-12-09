@@ -146,8 +146,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Behaviours\CloseWindowBehavior.cs" />
-    <Compile Include="Behaviours\ToggleFullScreenBehavior.cs" />
     <Compile Include="Helpers\BoolPropMsg.cs" />
     <Compile Include="Helpers\Debugger.cs" />
     <Compile Include="Helpers\Extensions.cs" />
@@ -221,9 +219,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Views\Penguins.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="Simple Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -265,9 +260,7 @@
     <Resource Include="Views\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Koala.jpg" />
     <Resource Include="Resources\logo.png" />
-    <Resource Include="Resources\Penguins.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="thorkildcut.ico" />
@@ -283,6 +276,18 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Hus.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Køkken.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Badeværelse.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Behaviours\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
