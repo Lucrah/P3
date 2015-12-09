@@ -14,6 +14,7 @@ using i_hate_windows.ViewModels;
 using System.ComponentModel;
 using OxyPlot;
 using OxyPlot.Series;
+using OxyPlot.Axes;
 
 namespace P3.ViewModels
 {
@@ -23,25 +24,36 @@ namespace P3.ViewModels
 
         private readonly IWindowManager _windowManager;
 
+
         [ImportingConstructor]
+
         public GraphScreenViewModel(BindableCollection<Listing> ls, IWindowManager windowManager)
         {
             _windowManager = windowManager;
             _results = ls;
-            this.Title = "test";
-            this.Points = new List<DataPoint>
-                              {
-                                  new DataPoint(0, 4),
-                                  new DataPoint(10, 13),
-                                  new DataPoint(20, 15),
-                                  new DataPoint(30, 16),
-                                  new DataPoint(40, 12),
-                                  new DataPoint(50, 12)
-                              };
+            this.Title = "Example 2";
+            this.Kvm = new List<DataPoint>();
+
+            foreach (var Property in Results.OrderBy(t=>t.SalesDate))
+            {
+                if( Property.IsSelected){
+                    Kvm.Add(new DataPoint(Property.SalesDate.ToOADate(), Property.PriceSqr));
+                    
+                }
+                {
+                   
+
+                };
+                
+            }
+                              
+                             
+
         }
+
         private BindableCollection<Listing> _results;
         private string _title;
-        private IList<DataPoint> _points;
+        private IList<DataPoint> _kvm;
         public string Title    
         {
             get { return _title; }
@@ -61,17 +73,17 @@ namespace P3.ViewModels
             }
         }
 
-        public IList<DataPoint> Points 
+        public IList<DataPoint> Kvm 
         {
             get
             {
-                return _points;
+                return _kvm;
             }
 
             set
             {
-                _points = value;
-                NotifyOfPropertyChange(() => Points);
+                _kvm = value;
+                NotifyOfPropertyChange(() => Kvm);
             }
         }
     }
