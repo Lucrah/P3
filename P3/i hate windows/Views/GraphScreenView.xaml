@@ -11,8 +11,8 @@
         <Grid Margin="0,10,0,-10">
             <oxy:Plot Title="{Binding Title}" Margin="78,260,744,304" Height="335" Width="518">
                 <oxy:Plot.Axes>
-                    <oxy:DateTimeAxis Position="Bottom"/>
-                    <oxy:LinearAxis Position="Left"/>
+                    <oxy:DateTimeAxis Position="Bottom" Title="Salgsår"/>
+                    <oxy:LinearAxis Position="Left" Title="Pris pr. Kvm"/>
                 </oxy:Plot.Axes>
                 <oxy:Plot.Series>
                     <oxy:LineSeries ItemsSource="{Binding Kvm}"/>

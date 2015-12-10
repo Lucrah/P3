@@ -31,22 +31,22 @@ namespace P3.ViewModels
         {
             _windowManager = windowManager;
             _results = ls;
-            this.Title = "Example 2";
+            this.Title = "Pris udvikling";
             this.Kvm = new List<DataPoint>();
 
-            foreach (var Property in Results.OrderBy(t=>t.SalesDate))
+            foreach (var Property in Results)
             {
-                if( Property.IsSelected){
-                    Kvm.Add(new DataPoint(Property.SalesDate.ToOADate(), Property.PriceSqr));
-                    
-                }
-                {
-                   
-
+                if( Property.IsSelected ){
+                    if (Property.SalesDate.ToOADate() != 0)
+                    {
+                        Kvm.Add(new DataPoint(Property.SalesDate.ToOADate(), Property.PriceSqr));
+                    }
+                    else
+                        Kvm.Add(new DataPoint(Property.ForSaleDate.ToOADate(), Property.PriceSqr));
                 };
                 
             }
-                              
+            Kvm.OrderBy(s => s.X);   
                              
 
         }
