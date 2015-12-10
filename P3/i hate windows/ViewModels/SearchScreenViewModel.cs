@@ -23,6 +23,7 @@ namespace P3.ViewModels
 
         private BindableCollection<SearchSettingModel> _savedSettingsCollection;
         private BindableCollection<Listing> ResultsReturned;
+        private Funktionality fncy;
         private string Path;
         private Screen _resultScreen;
         private SearchSettingModel _searchSettings;
@@ -33,7 +34,7 @@ namespace P3.ViewModels
 
         //mef stuff
         private readonly IWindowManager _windowManager;
-
+        
         #endregion
         #region ctor/s
 
@@ -43,10 +44,11 @@ namespace P3.ViewModels
             _eventAggregator = eventaggregator;
             _eventAggregator.Subscribe(this);
             _windowManager = windowManager;
+            
             Initialize();
             
         }
-
+        
         #endregion
 
         #region Functions
@@ -95,7 +97,7 @@ namespace P3.ViewModels
         {
             IsSearching = true;
             //Functionality is extremely bad piece of code badly named, stuff in weird places.
-            Funktionality fncy = new Funktionality(_windowManager);
+            fncy = new Funktionality(_windowManager);
             ResultsReturned = new BindableCollection<Listing>();
 
             //This one is just a static search, no user input. Used for testing.
@@ -126,6 +128,8 @@ namespace P3.ViewModels
 
         public void Analysis()
         {
+            fncy = new Funktionality(_windowManager);
+            ResultsReturned = fncy.getSelectedListings(ResultsReturned);
             _windowManager.ShowWindow(new GraphScreenViewModel(ResultsReturned, _windowManager));
         }
         public void Handle(BoolPropMsg message)
