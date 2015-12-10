@@ -61,7 +61,7 @@ namespace P3.ViewModels
 
         public void ShowGraphNewWindow()
         {
-            _windowManager.ShowWindow(new GraphScreenViewModel(SearchResults, _windowManager));
+            _windowManager.ShowWindow(new GraphScreenViewModel(SearchResults, _windowManager, _searchSettings.SearchInput));
         }
 
         #region Public fields

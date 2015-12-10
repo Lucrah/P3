@@ -27,10 +27,11 @@ namespace P3.ViewModels
 
         [ImportingConstructor]
 
-        public GraphScreenViewModel(BindableCollection<Listing> ls, IWindowManager windowManager)
+        public GraphScreenViewModel(BindableCollection<Listing> ls, IWindowManager windowManager, string searchInput)
         {
             _windowManager = windowManager;
             _results = ls;
+            _input = searchInput;
             this.Title1 = "Pris udvikling";
             this.Kvm1 = new List<DataPoint>();
             this.Kvm2 = new List<DataPoint>();
@@ -63,6 +64,7 @@ namespace P3.ViewModels
         private BindableCollection<Listing> _results;
         private string _title1;
         private string _title2;
+        private string _input;
         private IList<DataPoint> _kvm1;
         private IList<DataPoint> _kvm2;
         private IList<DataPoint> _liggetid;
@@ -82,6 +84,16 @@ namespace P3.ViewModels
             {
                 _title2 = value;
                 NotifyOfPropertyChange(() => Title2);
+            }
+        }
+        public string Input
+        {
+            get { return _input; }
+
+            set
+            {
+                _input = value;
+                NotifyOfPropertyChange(() => Input);
             }
         }
         public BindableCollection<Listing> Results

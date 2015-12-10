@@ -20,11 +20,15 @@
                 MarkerType="Circle"/>
                 </oxy:Plot.Series>
             </oxy:Plot>
-            <Grid HorizontalAlignment="Left" Height="100" Margin="78,650,0,0" VerticalAlignment="Top" Width="518" Background="#FF005430"/>
-            <Grid HorizontalAlignment="Left" Height="100" Margin="744,650,0,0" VerticalAlignment="Top" Width="518" Background="#FF005430"/>
-            <Grid HorizontalAlignment="Left" Height="184" Margin="78,48,0,0" VerticalAlignment="Top" Width="1180" Background="#FF005430"/>
+            <Grid HorizontalAlignment="Left" Height="100" Margin="78,78,0,0" VerticalAlignment="Top" Width="518" Background="#FF005430"/>
+            <Grid HorizontalAlignment="Left" Height="100" Margin="740,78,0,0" VerticalAlignment="Top" Width="518" Background="#FF005430"/>
+            <Grid HorizontalAlignment="Left" Height="184" Margin="78,642,0,0" VerticalAlignment="Top" Width="1180" Background="#FF005430"/>
+            <DockPanel x:Name="InfoDock" LastChildFill="False" Margin="78,642,82,0" Height="65" VerticalAlignment="Top">
+                <TextBlock x:Name="Address" TextWrapping="Wrap" Width="52" Margin="0,0,0,9" Height="16" Text="Adresse: " TextDecorations="Underline" FontWeight="Bold"/>
+                <TextBlock x:Name="AdressText" TextWrapping="Wrap" Margin="0,0,0,10" Height="16" Text="{Binding Input}"/>
+            </DockPanel>
             <oxy:Plot Margin="740,260,82,304" Height="335" Width="518">
-                
+
                 <oxy:Plot.Axes>
                     <oxy:DateTimeAxis Position="Bottom" Title="Salgsår"/>
                     <oxy:LinearAxis Position="Left" Title="Pris pr. Kvm"/>
@@ -34,7 +38,7 @@
                 MarkerFill="SteelBlue" 
                 MarkerType="Circle"/>
                 </oxy:Plot.Series>
-                
+
             </oxy:Plot>
         </Grid>
 
