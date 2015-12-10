@@ -15,14 +15,26 @@
                     <oxy:LinearAxis Position="Left" Title="Pris pr. Kvm"/>
                 </oxy:Plot.Axes>
                 <oxy:Plot.Series>
-                    <oxy:LineSeries ItemsSource="{Binding Kvm}"/>
+                    <oxy:LineSeries ItemsSource="{Binding Kvm1}" Color="Black" 
+                MarkerFill="SteelBlue" 
+                MarkerType="Circle"/>
                 </oxy:Plot.Series>
             </oxy:Plot>
             <Grid HorizontalAlignment="Left" Height="100" Margin="78,650,0,0" VerticalAlignment="Top" Width="518" Background="#FF005430"/>
             <Grid HorizontalAlignment="Left" Height="100" Margin="744,650,0,0" VerticalAlignment="Top" Width="518" Background="#FF005430"/>
             <Grid HorizontalAlignment="Left" Height="184" Margin="78,48,0,0" VerticalAlignment="Top" Width="1180" Background="#FF005430"/>
             <oxy:Plot Margin="740,260,82,304" Height="335" Width="518">
-                <oxy:LineSeries ItemsSource="{Binding vm}" />
+                
+                <oxy:Plot.Axes>
+                    <oxy:DateTimeAxis Position="Bottom" Title="Salgsår"/>
+                    <oxy:LinearAxis Position="Left" Title="Pris pr. Kvm"/>
+                </oxy:Plot.Axes>
+                <oxy:Plot.Series>
+                    <oxy:LineSeries ItemsSource="{Binding Kvm2}" Color="Black" 
+                MarkerFill="SteelBlue" 
+                MarkerType="Circle"/>
+                </oxy:Plot.Series>
+                
             </oxy:Plot>
         </Grid>
 

@@ -31,36 +31,58 @@ namespace P3.ViewModels
         {
             _windowManager = windowManager;
             _results = ls;
-            this.Title = "Pris udvikling";
-            this.Kvm = new List<DataPoint>();
+            this.Title1 = "Pris udvikling";
+            this.Kvm1 = new List<DataPoint>();
+            this.Kvm2 = new List<DataPoint>();
+            this.Liggetid = new List<DataPoint>();
+           
+            
 
-            foreach (var Property in Results)
-            {
-                if( Property.IsSelected ){
-                    if (Property.SalesDate.ToOADate() != 0)
+                foreach (var Property in Results.OrderBy(t=>t.SalesDate).ThenBy(s=>s.ForSaleDate))
+                {
+                         if (Property.SalesDate.ToOADate() != 0)
                     {
-                        Kvm.Add(new DataPoint(Property.SalesDate.ToOADate(), Property.PriceSqr));
+                        Kvm1.Add(new DataPoint(Property.SalesDate.ToOADate(), Property.PriceSqr));
                     }
                     else
-                        Kvm.Add(new DataPoint(Property.ForSaleDate.ToOADate(), Property.PriceSqr));
-                };
-                
-            }
-            Kvm.OrderBy(s => s.X);   
-                             
+                    {
+                        Kvm2.Add(new DataPoint(Property.ForSaleDate.ToOADate(), Property.PriceSqr));
+                    }
+                }
+
+
+
+
+                this.Liggetid = new List<DataPoint>();
+           
+
+
 
         }
 
         private BindableCollection<Listing> _results;
-        private string _title;
-        private IList<DataPoint> _kvm;
-        public string Title    
+        private string _title1;
+        private string _title2;
+        private IList<DataPoint> _kvm1;
+        private IList<DataPoint> _kvm2;
+        private IList<DataPoint> _liggetid;
+        public string Title1    
         {
-            get { return _title; }
+            get { return _title1; }
            
-            set {_title = value;
-                NotifyOfPropertyChange(() => Title);
+            set {_title1 = value;
+                NotifyOfPropertyChange(() => Title1);
                 }
+        }
+        public string Title2
+        {
+            get { return _title2; }
+
+            set
+            {
+                _title2 = value;
+                NotifyOfPropertyChange(() => Title2);
+            }
         }
         public BindableCollection<Listing> Results
         {
@@ -73,17 +95,43 @@ namespace P3.ViewModels
             }
         }
 
-        public IList<DataPoint> Kvm 
+        public IList<DataPoint> Kvm1 
         {
             get
             {
-                return _kvm;
+                return _kvm1;
             }
 
             set
             {
-                _kvm = value;
-                NotifyOfPropertyChange(() => Kvm);
+                _kvm1 = value;
+                NotifyOfPropertyChange(() => Kvm1);
+            }
+        }
+        public IList<DataPoint> Kvm2
+        {
+            get
+            {
+                return _kvm2;
+            }
+
+            set
+            {
+                _kvm2 = value;
+                NotifyOfPropertyChange(() => Kvm2);
+            }
+        }
+        public IList<DataPoint> Liggetid
+        {
+            get
+            {
+                return _liggetid;
+            }
+
+            set
+            {
+                _liggetid = value;
+                NotifyOfPropertyChange(() => Liggetid);
             }
         }
     }
