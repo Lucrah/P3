@@ -129,8 +129,8 @@ namespace P3.ViewModels
         public void Analysis()
         {
             fncy = new Funktionality(_windowManager);
-            ResultsReturned = fncy.getSelectedListings(ResultsReturned);
-            _windowManager.ShowWindow(new GraphScreenViewModel(ResultsReturned, _windowManager));
+            BindableCollection<Listing> results = new BindableCollection<Listing>(fncy.getSelectedListings(ResultsReturned));
+            _windowManager.ShowWindow(new GraphScreenViewModel(results, _windowManager));
         }
         public void Handle(BoolPropMsg message)
         {
