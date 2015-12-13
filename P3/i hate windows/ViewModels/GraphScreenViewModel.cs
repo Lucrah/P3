@@ -27,15 +27,15 @@ namespace P3.ViewModels
 
         [ImportingConstructor]
 
-        public GraphScreenViewModel(BindableCollection<Listing> ls, IWindowManager windowManager, string searchInput)
+        public GraphScreenViewModel(BindableCollection<Listing> ls, IWindowManager windowManager, string searchInput, double estprice)
         {
             _windowManager = windowManager;
             _results = ls;
             _input = searchInput;
-            this.Title1 = "Pris udvikling";
+            _estpris = estprice;
             this.Kvm1 = new List<DataPoint>();
             this.Kvm2 = new List<DataPoint>();
-            this.Liggetid = new List<DataPoint>();
+            
            
             
 
@@ -48,13 +48,15 @@ namespace P3.ViewModels
                     else
                     {
                         Kvm2.Add(new DataPoint(Property.ForSaleDate.ToOADate(), Property.PriceSqr));
+                        Demurage += Property.Demurrage;
+
                     }
                 }
+                Demurage = Demurage / Kvm2.Count;
 
 
 
-
-                this.Liggetid = new List<DataPoint>();
+              
            
 
 
@@ -62,30 +64,13 @@ namespace P3.ViewModels
         }
 
         private BindableCollection<Listing> _results;
-        private string _title1;
-        private string _title2;
         private string _input;
+        private double _estpris;
+        private double _demurage;
         private IList<DataPoint> _kvm1;
         private IList<DataPoint> _kvm2;
-        private IList<DataPoint> _liggetid;
-        public string Title1    
-        {
-            get { return _title1; }
-           
-            set {_title1 = value;
-                NotifyOfPropertyChange(() => Title1);
-                }
-        }
-        public string Title2
-        {
-            get { return _title2; }
-
-            set
-            {
-                _title2 = value;
-                NotifyOfPropertyChange(() => Title2);
-            }
-        }
+        
+       
         public string Input
         {
             get { return _input; }
@@ -94,6 +79,27 @@ namespace P3.ViewModels
             {
                 _input = value;
                 NotifyOfPropertyChange(() => Input);
+            }
+        }
+
+        public double EstPris
+        {
+            get { return _estpris; }
+
+            set
+            {
+                _estpris = value;
+                NotifyOfPropertyChange(() => EstPris);
+            }
+        }
+        public double Demurage
+        {
+            get { return _demurage; }
+
+            set
+            {
+                _demurage = value;
+                NotifyOfPropertyChange(() => Demurage);
             }
         }
         public BindableCollection<Listing> Results
@@ -131,19 +137,6 @@ namespace P3.ViewModels
             {
                 _kvm2 = value;
                 NotifyOfPropertyChange(() => Kvm2);
-            }
-        }
-        public IList<DataPoint> Liggetid
-        {
-            get
-            {
-                return _liggetid;
-            }
-
-            set
-            {
-                _liggetid = value;
-                NotifyOfPropertyChange(() => Liggetid);
             }
         }
     }

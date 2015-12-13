@@ -120,7 +120,7 @@
                     <GridViewColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Margin="6,2,6,2">
-                                <TextBlock Text="{Binding Demurrage, StringFormat={}{0} Måneder}" Foreground="#FF979797" FontSize="16"/>
+                                <TextBlock Text="{Binding Demurrage, StringFormat={}{0} Dage}" Foreground="#FF979797" FontSize="16"/>
                             </StackPanel>
                         </DataTemplate>
                     </GridViewColumn.CellTemplate>

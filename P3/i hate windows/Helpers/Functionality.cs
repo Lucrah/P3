@@ -390,7 +390,7 @@ namespace P3.Helpers
       return Results;
     }
 
-    double getEstPrice(BindableCollection<Listing> listings)
+    public double getEstPrice(BindableCollection<Listing> listings)
     {
       double totalPriceSqr = 0;
       foreach (var Property in listings)
