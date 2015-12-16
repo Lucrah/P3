@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P3", "i hate windows\P3.csp
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "InstallationP3", "InstallationP3\InstallationP3.vdproj", "{3FF5CE91-B06D-48B6-AD7F-F93AED8E8A8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P3Tests", "P3Tests\P3Tests.csproj", "{639635AC-1D5E-4A3B-81CC-51E6D776F4A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{D072B05C-4198-4508-B872-D33281BFC7D1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3FF5CE91-B06D-48B6-AD7F-F93AED8E8A8D}.Debug|Any CPU.ActiveCfg = Debug
 		{3FF5CE91-B06D-48B6-AD7F-F93AED8E8A8D}.Release|Any CPU.ActiveCfg = Release
+		{639635AC-1D5E-4A3B-81CC-51E6D776F4A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{639635AC-1D5E-4A3B-81CC-51E6D776F4A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{639635AC-1D5E-4A3B-81CC-51E6D776F4A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{639635AC-1D5E-4A3B-81CC-51E6D776F4A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

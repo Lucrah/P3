@@ -133,10 +133,22 @@ namespace P3.Helpers
 
       string[] split = { "Unknown" };
       Listing SearchListing;
+      string SearchAddress = string.Empty;
       if (input.SearchInput != null)
       {
         split = input.SearchInput.Split(' ');
-        SearchListing = new Listing(split[0].Trim(','), split[1], int.Parse(split[2]));
+        if (split.Length == 3)
+        {
+          SearchListing = new Listing(split[0].Trim(' '), split[1], int.Parse(split[2]));
+        }
+        else
+        {
+          for (int i = 0; i < split.Length - 3; i++)
+          {
+            SearchAddress += split[i] + " ";
+          }
+          SearchListing = new Listing(SearchAddress.Trim(' '), split[split.Length - 2], int.Parse(split[split.Length - 1]));
+        }
         getCoordinates(SearchListing);
 
         if (input.AreaSliderLowerValue >= 0.0 && input.AreaSliderHigherValue > 0.0 && !input.SameRoad && !input.SameZipCode)
@@ -252,10 +264,22 @@ namespace P3.Helpers
 
       string[] split = { "Unknown" };
       Listing SearchListing;
+      string SearchAddress = string.Empty;
       if (input.SearchInput != null)
       {
         split = input.SearchInput.Split(' ');
-        SearchListing = new Listing(split[0].Trim(','), split[1], int.Parse(split[2]));
+        if (split.Length == 3)
+        {
+          SearchListing = new Listing(split[0].Trim(' '), split[1], int.Parse(split[2]));
+        }
+        else
+        {
+          for (int i = 0; i < split.Length - 3; i++)
+          {
+            SearchAddress += split[i] + " ";
+          }
+          SearchListing = new Listing(SearchAddress.Trim(' '), split[split.Length - 2], int.Parse(split[split.Length - 1]));
+        }
         getCoordinates(SearchListing);
 
         if (input.AreaSliderLowerValue >= 0.0 && input.AreaSliderHigherValue > 0.0 && input.SameRoad == false && input.SameZipCode == false)
