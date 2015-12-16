@@ -6,7 +6,7 @@ using P3.ViewModels;
 
 namespace P3.Models
 {
-    class SearchSettingModel : PropertyChangedBase, IDataErrorInfo
+    public class SearchSettingModel : PropertyChangedBase, IDataErrorInfo
     {
         public SearchSettingModel()
         {

@@ -13,7 +13,7 @@ using i_hate_windows.ViewModels;
 namespace P3.Helpers
 {
     [Export(typeof(Funktionality))]
-  class Funktionality
+  public class Funktionality
   {
         private IWindowManager _windowManager;
 
