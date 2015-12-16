@@ -31,6 +31,7 @@ namespace P3.ViewModels
         private object graphResults;
         private bool _isPrintOpen = false;
         private bool _isSearching = false;
+      private bool _canAnalyseOrPrint = false;
 
         //mef stuff
         private readonly IWindowManager _windowManager;
@@ -141,6 +142,23 @@ namespace P3.ViewModels
             }
         }
         #endregion
+
+      public bool CanAnalyseOrPrint
+      {
+        get
+        {
+          if (ResultsReturned != null)
+          {
+            _canAnalyseOrPrint = true;
+          }
+          else
+          {
+            _canAnalyseOrPrint = false;
+          }
+          return _canAnalyseOrPrint;
+        }
+        set { _canAnalyseOrPrint = value; NotifyOfPropertyChange(()=> CanAnalyseOrPrint); }
+      }
         public SearchSettingModel SearchSettings
         {
             get
