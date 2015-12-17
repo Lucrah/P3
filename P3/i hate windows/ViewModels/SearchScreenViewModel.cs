@@ -21,7 +21,7 @@ namespace P3.ViewModels
   {
     #region Fields that are not searchsettings
 
-    private BindableCollection<SearchSettingModel> _savedSettingsCollection;
+    private BindableCollection<string> _savedSettingsCollection;
     private BindableCollection<Listing> ResultsReturned;
     private Funktionality fncy;
     private string Path;
@@ -32,7 +32,7 @@ namespace P3.ViewModels
     private bool _isPrintOpen = false;
     private bool _isSearching = false;
     private bool _canAnalyseOrPrint = false;
-
+    private string _selectedSetting;
     //mef stuff
     private readonly IWindowManager _windowManager;
 
@@ -45,7 +45,7 @@ namespace P3.ViewModels
       _eventAggregator = eventaggregator;
       _eventAggregator.Subscribe(this);
       _windowManager = windowManager;
-
+      SavedSettingsCollection = ScanDirectory();
       Initialize();
 
     }
@@ -182,7 +182,7 @@ namespace P3.ViewModels
         NotifyOfPropertyChange(() => ResultScreen);
       }
     }
-    public BindableCollection<SearchSettingModel> SavedSettingsCollection
+    public BindableCollection<string> SavedSettingsCollection
     {
       get { return _savedSettingsCollection; }
       set
@@ -221,6 +221,24 @@ namespace P3.ViewModels
       }
     }
 
+    public string SelectedSetting
+    {
+      get
+      {
+        return _selectedSetting;
+      }
+
+      set
+      {
+        _selectedSetting = value;
+        NotifyOfPropertyChange(() => SelectedSetting);
+      }
+    }
+
+    public void LoadSettings()
+    {
+      LoadFromFile(SelectedSetting);
+    }
     public void SearchHistoryCreater()
     {
       string history = GetPath() + @"/History";
@@ -317,13 +335,13 @@ namespace P3.ViewModels
       return filesFound;
     }
 
-    public void LoadFromFile()
+    public void LoadFromFile(string historyFileName)
     {
-      string history = GetPath() + @"/History";
-      using (StreamReader reader = File.OpenText(history))
+      string historyFile = GetPath() + @"/History/" + historyFileName + ".csv";
+      using (StreamReader reader = File.OpenText(historyFile))
       {
         SearchSettings.SearchInput = reader.ReadLine() ?? "";
-
+        
         SearchSettings.Villa = Convert.ToBoolean(reader.ReadLine() ?? "");
         SearchSettings.LiebhaverEjendom = Convert.ToBoolean(reader.ReadLine() ?? "");
         SearchSettings.FritidsEjendom = Convert.ToBoolean(reader.ReadLine() ?? "");
