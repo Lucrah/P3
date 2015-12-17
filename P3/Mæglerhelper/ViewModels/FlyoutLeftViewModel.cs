@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using MahApps.Metro;
 using Caliburn.Micro;
-using i_hate_windows.Helpers;
+using P3.Helpers;
 using P3.Models;
 using System.ComponentModel.Composition;
 
-namespace i_hate_windows.ViewModels
+namespace P3.ViewModels
 {
   [Export(typeof(FlyoutLeftViewModel))]
   class FlyoutLeftViewModel : Screen, IHandle<IsFlyoutOpenMsg>

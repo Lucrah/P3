@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using P3.Interfaces;
-using i_hate_windows.Helpers;
+using P3.Helpers;
 using P3.Models;
-using i_hate_windows.ViewModels;
+using P3.ViewModels;
 
 namespace P3.ViewModels
 {

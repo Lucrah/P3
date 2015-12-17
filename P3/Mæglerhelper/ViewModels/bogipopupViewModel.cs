@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace i_hate_windows.ViewModels
+namespace P3.ViewModels
 {
   class bogipopupViewModel : PropertyChangedBase
   {

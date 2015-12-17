@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace i_hate_windows.Views
+namespace P3.Views
 {
     /// <summary>
     /// Interaction logic for PrintWindowView.xaml

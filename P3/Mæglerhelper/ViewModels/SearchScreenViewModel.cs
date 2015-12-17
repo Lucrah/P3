@@ -10,8 +10,8 @@ using P3.Models;
 using MySql.Data.MySqlClient;
 using System.ComponentModel.Composition;
 using P3.Helpers;
-using i_hate_windows.Helpers;
-using i_hate_windows.ViewModels;
+using P3.Helpers;
+using P3.ViewModels;
 using System.ComponentModel;
 
 namespace P3.ViewModels

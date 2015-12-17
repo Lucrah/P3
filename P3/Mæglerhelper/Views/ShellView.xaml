@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:P3.Views"
-        xmlns:flyouts="clr-namespace:i_hate_windows.Views"
+        xmlns:flyouts="clr-namespace:P3.Views"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:cal="http://www.caliburnproject.org"
         mc:Ignorable="d"

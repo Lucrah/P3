@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace i_hate_windows.Views
+namespace P3.Views
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// Interaction logic for bogipopup.xaml
     /// </summary>
-    public partial class FlyoutLeftView : UserControl
+    public partial class bogipopupView : UserControl
     {
-        public FlyoutLeftView()
+        public bogipopupView()
         {
             InitializeComponent();
         }

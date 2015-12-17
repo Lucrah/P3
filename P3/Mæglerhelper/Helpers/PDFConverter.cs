@@ -17,7 +17,7 @@ using P3.ViewModels;
 using List = System.Windows.Documents.List;
 using iTextSharp.text.pdf;
 
-namespace i_hate_windows.Helpers
+namespace P3.Helpers
 {
   class PDFConverter : PropertyChangedBase
   {

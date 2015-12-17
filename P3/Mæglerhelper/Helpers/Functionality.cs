@@ -8,7 +8,7 @@ using Caliburn.Micro;
 using System.Globalization;
 using P3.ViewModels;
 using System.ComponentModel.Composition;
-using i_hate_windows.ViewModels;
+using P3.ViewModels;
 
 namespace P3.Helpers
 {
