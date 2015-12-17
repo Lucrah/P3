@@ -33,7 +33,6 @@ namespace P3.ViewModels
     private bool _isSearching = false;
     private bool _canAnalyseOrPrint = false;
     private string _selectedSetting;
-    //mef stuff
     private readonly IWindowManager _windowManager;
 
     #endregion
@@ -58,23 +57,9 @@ namespace P3.ViewModels
     {
       SearchSettings = new SearchSettingModel();
       Path = GetPath();
-      //Når GetSearchSettings er lavet, så uncomment det her, og det burde virke. Der er et sted mere hvor der skal uncommentes.
-      //Remind to make functionality so that no more than 10 saved settings are stored at a time.
-      //SavedSettingsCollection = GetSearchSettings();
+      
     }
 
-    //This function is supposed to look in a subfolder of the root folder (using the getpath function), find a .csv with the 10 most recent searches, 
-    //and read those into the program, to be stored in PreviousSearches, which in turn will populate the SavedSettingsCollection when it is needed. 
-    //The SearchSettings object is bound to the ui with different databindings, and will always contain either the default values of the different parameters, 
-    //Or the values currently choosen by the user.
-
-
-    //This is supposed to save the current search settings to the SavedSettingsCollection
-    private void SaveSearchSettings()
-    {
-      //SavedSettingsCollection.Add(SearchSettings);
-    }
-    //Gets the file path of the current directory. Might need to modify this with appendices if you want subfolders or sumthin.
     private string GetPath()
     {
       string rel_path = Directory.GetCurrentDirectory();
@@ -88,7 +73,7 @@ namespace P3.ViewModels
 
     public void GetResults()
     {
-      //Running the query stuff on a seperate thread. There is lots of options to let us get reports of progress or something like that, but time does not permit us to do it.
+      
       BackgroundWorker bWorker = new BackgroundWorker();
       bWorker.DoWork += bWorker_doWork;
       bWorker.RunWorkerAsync();
@@ -97,17 +82,13 @@ namespace P3.ViewModels
     private void bWorker_doWork(object sender, DoWorkEventArgs e)
     {
       IsSearching = true;
-      //Functionality is extremely bad piece of code badly named, stuff in weird places.
+     
       fncy = new Funktionality(_windowManager);
       ResultsReturned = new BindableCollection<Listing>();
 
-      //This one is just a static search, no user input. Used for testing.
-      //ResultsReturned = fncy.StaticSearch();
-
-
       ResultsReturned = fncy.SuperSearch(SearchSettings);
 
-      //initiates the resultscreen, with the propert parts.
+      //initiates the resultscreen, with the proper parts.
       ResultScreen = new ResultScreenViewModel(ResultsReturned, SearchSettings, _windowManager, _eventAggregator);
       //This saves the search history each time a search is made. It is then listed for convenience in the combobox in the view.
       SearchHistoryCreater();
@@ -121,7 +102,6 @@ namespace P3.ViewModels
         if (true)
         {
           _windowManager.ShowWindow(new PrintWindowViewModel(ResultsReturned, SearchSettings, graphResults, _eventAggregator));
-          //technically this should be a publishonuithread?
           IsPrintOpen = true;
         }
       }

@@ -13,8 +13,7 @@ namespace P3.ViewModels
   [Export(typeof(PrintWindowViewModel))]
   class PrintWindowViewModel : Screen
   {
-    //Enable these as needed.
-    //IWindowManager _windowManager;
+    
     IEventAggregator _eventAggregator;
 
     SearchSettingModel _searchSettings;

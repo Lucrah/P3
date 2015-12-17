@@ -75,10 +75,9 @@ namespace P3.Helpers
           streetName = adresse.Substring(0, digitStartIndex);
           houseNumber = adresse.Substring(digitStartIndex);
         }
+
         string propertyType = values[7];
         int areaCode = Convert.ToInt32(values[8]);
-
-
       }
     }
 

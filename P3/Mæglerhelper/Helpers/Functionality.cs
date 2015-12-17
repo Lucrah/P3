@@ -244,7 +244,6 @@ namespace P3.Helpers
 
       sql += "LIMIT 25";
 
-      //throw new Exception(sql);
       return sql;
     }
 
@@ -349,11 +348,6 @@ namespace P3.Helpers
       {
         sql += System.String.Format("listings.Size >= {0} AND listings.Size <= {1} AND ", input.SizeSliderLowerValue, input.SizeSliderHigherValue);
       }
-
-      //if (input.DowntimeHigherValue > 0.0 && input.Sold)
-      //{
-      //  sql += System.String.Format("salesinfosold.SalesDate >= {0} AND salesinfosold.SalesDate <= {1} AND "); // input til salesdate plox!!!!
-      //}
 
       if (input.SameRoad)
       {

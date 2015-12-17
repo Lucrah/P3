@@ -30,13 +30,10 @@ namespace P3.ViewModels
     }
     #endregion
     #region Fields
-    //Store returned SearchResults in this, Clear it before every new search
-    private BindableCollection<Listing> _searchResults;
-    //Represents the selected SearchResult. Bound in the listview, do not rename or anything like that. 
-    private Listing _selectedSearchResult;
-    //mef stuff, allows us to open new windows of this particular type easily
+    
+    private BindableCollection<Listing> _searchResults;    
+    private Listing _selectedSearchResult;   
     private readonly IWindowManager _windowManager;
-    //EventAggregator, publish events to this to communicate between views.
     private IEventAggregator _eventAggregator;
     //The searchsettings, used for creating the pdf
     private SearchSettingModel _searchSettings;
@@ -62,7 +59,6 @@ namespace P3.ViewModels
 
     #region Public fields
 
-    //Has to be bindableCollection, del af caliburn
     public BindableCollection<Listing> SearchResults
     {
       get { return _searchResults; }
@@ -85,8 +81,7 @@ namespace P3.ViewModels
     #endregion
 
     #region SortingMethods
-    //Jeg er rimelig sikker på at det her kan gøres bedre....med en form for selection based på input parameter hvor
-    //den så skifter item.(input) ud med noget andet. Men jeg kunne ikke lige pt huske hvordan.
+
     public void SortByAdress()
     {
       SearchResults = (BindableCollection<Listing>)SearchResults.OrderBy(col => col.Address).ToObservableCollection();

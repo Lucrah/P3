@@ -95,7 +95,7 @@ namespace P3.ViewModels
     }
     #endregion
     #region HandleEvents
-    //this  whole ordeal is very badly named i know. make me fix.
+
     public void Handle(IsFlyoutOpenMsg message)
     {
       if (!IsFlyoutOpen)
@@ -106,13 +106,6 @@ namespace P3.ViewModels
     }
     #endregion
     #region NavigateFunctions
-    /*Shows how to display an item(in this case a usercontrol)
-     *you then do something like this on a button:
-     * <Button x:Name="ShowResultScreen" Content="ResultScreen" Height="29.5" VerticalAlignment="Top" Width="96"/>
-     * And really, this can be used to bind any function to any button/other control.
-     * This also shows the aforementioned ActivateItem. If i wanted to pass settings or something into the views it could be done here.
-     * */
-
     public void ShowSearchScreen()
     {
       ActivateItem(new SearchScreenViewModel(_windowManager, _eventAggregator));

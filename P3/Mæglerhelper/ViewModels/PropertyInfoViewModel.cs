@@ -12,7 +12,7 @@ namespace P3.ViewModels
   [Export(typeof(PropertyInfoViewModel))]
   class PropertyInfoViewModel : Screen
   {
-    //MEF shit
+    
     private readonly IWindowManager _windowManager;
     [ImportingConstructor]
     public PropertyInfoViewModel(Listing ls, IWindowManager windowManager)

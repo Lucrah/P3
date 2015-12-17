@@ -21,17 +21,12 @@ namespace P3.Helpers
 {
   class PDFConverter : PropertyChangedBase
   {
-    //In charge of setting up a page, and filling the first couple of pages with the list of returned results, and the next couple of pages with graphs/calculations for the mægler ./ask rasmus
-    //Basically, converting 2 objects, a) a list of returned results and b) an object consisting of the graphs output by the program, into pdf format.
-
     private string PDFPath;
     private string appendToPDF;
     private BindableCollection<Listing> _searchResults;
     private SearchSettingModel _searchInput;
     private object _graphResults;
     private int _numberOfSearchResults;
-
-    //Ctor, change this to take in rasmus's elements when they are done too
 
     public PDFConverter(BindableCollection<Listing> searchResults, SearchSettingModel searchInput, object graphResults, string whatToAppend)
     {
@@ -67,7 +62,7 @@ namespace P3.Helpers
 
       System.Diagnostics.Process.Start(PDFPath + "/SøgeResultater.pdf");
     }
-    //lets start by creating a path string to the pdf folder
+
     public string GetPath()
     {
       string result;
@@ -75,8 +70,6 @@ namespace P3.Helpers
       return result;
     }
 
-    //if we ever want other types of pdf, make new functions. Or maybe reuse some of the bottom ones.
-    //refactoring, a lot of code redundancy in here.
     private void ResultAndGraphPDF()
     {
       Document doc = new Document();
@@ -86,14 +79,14 @@ namespace P3.Helpers
         //INITIALIZATION
         PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(PDFPath + "/SøgeResultater.pdf", FileMode.Create));
         doc.Open();
-        //calling the main functions to handle adding content
+        
         BannerAdd(doc, writer);
         SearchInfo(doc);
         doc.NewPage();
-        //no need to pass in that
+        
         ResultTable(_searchResults, doc);
         doc.NewPage();
-        //Call function to show rasmus thing here
+        
 
       }
       catch (Exception ex)
@@ -120,7 +113,7 @@ namespace P3.Helpers
         BannerAdd(doc, writer);
         SearchInfo(doc);
         doc.NewPage();
-        //no need to pass in that doc ref prolly
+        
         ResultTable(_searchResults, doc);
         doc.NewPage();
 
@@ -144,12 +137,11 @@ namespace P3.Helpers
         //INITIALIZATION
         PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(PDFPath + "/SøgeResultater.pdf", FileMode.Create));
         doc.Open();
-        //calling the main functions to handle adding content
+       
         BannerAdd(doc, writer);
         SearchInfo(doc);
         doc.NewPage();
-        //Call function to show rasmus thing here
-        GraphAdd();
+      
       }
       catch (Exception ex)
       {
@@ -239,7 +231,7 @@ namespace P3.Helpers
       return propertyString;
     }
 
-    //These three functions handle creating all the things in the pdf. Put down here to make it easier to read the other parts of this class.
+    
     private void ResultTable(BindableCollection<Listing> propertyList, Document doc)
     {
       iTextSharp.text.Font PropertyFont = new iTextSharp.text.Font();
@@ -319,11 +311,6 @@ namespace P3.Helpers
       cb.AddImage(banner);
       cb.RestoreState();
     }
-    private void GraphAdd()
-    {
-      //this can possibly be replaced by a simple merge with the output file from oxyplot.
-    }
-
     public int NumberOfSearchResults
     {
       get

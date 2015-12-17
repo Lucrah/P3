@@ -13,7 +13,7 @@ namespace P3.Models
     }
 
     #region Fields / GetSet
-    //NOTE: When trying to bind to these in the views, remember to bind to the public part.
+    
 
     //SliderValues
     private double _priceSliderLowerValue = 0;
@@ -627,7 +627,7 @@ namespace P3.Models
             }
             break;
           default:
-            //DO NOT MAKE DEFAULT CASE, IT BREAKS THE WRING INPUT TOOLTIP FOR SOME REASON
+            
             break;
         }
         return ToolTipErrorInfo;
