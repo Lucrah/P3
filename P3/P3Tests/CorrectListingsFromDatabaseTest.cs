@@ -10,7 +10,7 @@ using Caliburn.Micro;
 
 namespace P3Tests
 {
-  
+
   [TestClass]
   public class CorrectListingsFromDatabaseTest
   {

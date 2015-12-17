@@ -11,36 +11,36 @@ using System.ComponentModel.Composition;
 
 namespace i_hate_windows.ViewModels
 {
-    [Export(typeof(FlyoutLeftViewModel))]
-    class FlyoutLeftViewModel : Screen , IHandle<IsFlyoutOpenMsg>
+  [Export(typeof(FlyoutLeftViewModel))]
+  class FlyoutLeftViewModel : Screen, IHandle<IsFlyoutOpenMsg>
+  {
+    private IEventAggregator _eventaggregator;
+    private Listing _selectedItem;
+
+    [ImportingConstructor]
+    public FlyoutLeftViewModel(IEventAggregator iEventAggregator)
     {
-        private IEventAggregator _eventaggregator;
-        private Listing _selectedItem;
-
-        [ImportingConstructor]
-        public FlyoutLeftViewModel(IEventAggregator iEventAggregator)
-        {
-            _eventaggregator = iEventAggregator;
-            _eventaggregator.Subscribe(this);
-        }
-
-        public Listing SelectedItem
-        {
-            get
-            {
-                return _selectedItem;
-            }
-
-            set
-            {
-                _selectedItem = value;
-                NotifyOfPropertyChange(() => SelectedItem);
-            }
-        }
-
-        public void Handle(IsFlyoutOpenMsg message)
-        {
-            SelectedItem = message.SelectedListing;
-        }
+      _eventaggregator = iEventAggregator;
+      _eventaggregator.Subscribe(this);
     }
+
+    public Listing SelectedItem
+    {
+      get
+      {
+        return _selectedItem;
+      }
+
+      set
+      {
+        _selectedItem = value;
+        NotifyOfPropertyChange(() => SelectedItem);
+      }
+    }
+
+    public void Handle(IsFlyoutOpenMsg message)
+    {
+      SelectedItem = message.SelectedListing;
+    }
+  }
 }

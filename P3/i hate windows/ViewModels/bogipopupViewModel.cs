@@ -7,27 +7,27 @@ using System.Threading.Tasks;
 
 namespace i_hate_windows.ViewModels
 {
-    class bogipopupViewModel : PropertyChangedBase
+  class bogipopupViewModel : PropertyChangedBase
+  {
+
+    public bogipopupViewModel(string text)
     {
-
-        public bogipopupViewModel(string text)
-        {
-            Text = text;
-        }
-        private string _text;
-
-        public string Text
-        {
-            get
-            {
-                return _text;
-            }
-
-            set
-            {
-                _text = value;
-                NotifyOfPropertyChange(() => Text);
-            }
-        }
+      Text = text;
     }
+    private string _text;
+
+    public string Text
+    {
+      get
+      {
+        return _text;
+      }
+
+      set
+      {
+        _text = value;
+        NotifyOfPropertyChange(() => Text);
+      }
+    }
+  }
 }

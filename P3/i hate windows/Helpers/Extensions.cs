@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace i_hate_windows.Helpers
 {
-    public static class Extensions
+  public static class Extensions
+  {
+    public static ObservableCollection<T> ToObservableCollection<T>(this IOrderedEnumerable<T> col)
     {
-        public static ObservableCollection<T> ToObservableCollection<T>(this IOrderedEnumerable<T> col)
-        {
-            return new BindableCollection<T>(col);
-        }
+      return new BindableCollection<T>(col);
     }
+  }
 }

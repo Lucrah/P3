@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace P3.Interfaces
 {
-    interface IShell
-    {
-    }
+  interface IShell
+  {
+  }
 }

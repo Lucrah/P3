@@ -9,31 +9,31 @@ using System.ComponentModel.Composition;
 
 namespace P3.ViewModels
 {
-    [Export(typeof(PropertyInfoViewModel))]
-    class PropertyInfoViewModel : Screen
+  [Export(typeof(PropertyInfoViewModel))]
+  class PropertyInfoViewModel : Screen
+  {
+    //MEF shit
+    private readonly IWindowManager _windowManager;
+    [ImportingConstructor]
+    public PropertyInfoViewModel(Listing ls, IWindowManager windowManager)
     {
-        //MEF shit
-        private readonly IWindowManager _windowManager;
-        [ImportingConstructor]
-        public PropertyInfoViewModel(Listing ls, IWindowManager windowManager)
-        {
-            _windowManager = windowManager;
-            _propertyToShow = ls;
-        }
-        private Listing _propertyToShow;
-
-        public Listing PropertyToShow
-        {
-            get
-            {
-                return _propertyToShow;
-            }
-
-            set
-            {
-                _propertyToShow = value;
-                NotifyOfPropertyChange(() => PropertyToShow);
-            }
-        }
+      _windowManager = windowManager;
+      _propertyToShow = ls;
     }
+    private Listing _propertyToShow;
+
+    public Listing PropertyToShow
+    {
+      get
+      {
+        return _propertyToShow;
+      }
+
+      set
+      {
+        _propertyToShow = value;
+        NotifyOfPropertyChange(() => PropertyToShow);
+      }
+    }
+  }
 }

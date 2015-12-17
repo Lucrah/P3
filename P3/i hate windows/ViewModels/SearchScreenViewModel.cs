@@ -16,212 +16,212 @@ using System.ComponentModel;
 
 namespace P3.ViewModels
 {
-    [Export(typeof(SearchScreenViewModel))]
-    class SearchScreenViewModel : Conductor<object>.Collection.OneActive, IHandle<BoolPropMsg>
+  [Export(typeof(SearchScreenViewModel))]
+  class SearchScreenViewModel : Conductor<object>.Collection.OneActive, IHandle<BoolPropMsg>
+  {
+    #region Fields that are not searchsettings
+
+    private BindableCollection<SearchSettingModel> _savedSettingsCollection;
+    private BindableCollection<Listing> ResultsReturned;
+    private Funktionality fncy;
+    private string Path;
+    private Screen _resultScreen;
+    private SearchSettingModel _searchSettings;
+    private IEventAggregator _eventAggregator;
+    private object graphResults;
+    private bool _isPrintOpen = false;
+    private bool _isSearching = false;
+    private bool _canAnalyseOrPrint = false;
+
+    //mef stuff
+    private readonly IWindowManager _windowManager;
+
+    #endregion
+    #region ctor/s
+
+    [ImportingConstructor]
+    public SearchScreenViewModel(IWindowManager windowManager, IEventAggregator eventaggregator)
     {
-        #region Fields that are not searchsettings
+      _eventAggregator = eventaggregator;
+      _eventAggregator.Subscribe(this);
+      _windowManager = windowManager;
 
-        private BindableCollection<SearchSettingModel> _savedSettingsCollection;
-        private BindableCollection<Listing> ResultsReturned;
-        private Funktionality fncy;
-        private string Path;
-        private Screen _resultScreen;
-        private SearchSettingModel _searchSettings;
-        private IEventAggregator _eventAggregator;
-        private object graphResults;
-        private bool _isPrintOpen = false;
-        private bool _isSearching = false;
-      private bool _canAnalyseOrPrint = false;
+      Initialize();
 
-        //mef stuff
-        private readonly IWindowManager _windowManager;
-        
-        #endregion
-        #region ctor/s
+    }
 
-        [ImportingConstructor]
-        public SearchScreenViewModel(IWindowManager windowManager, IEventAggregator eventaggregator)
-        {
-            _eventAggregator = eventaggregator;
-            _eventAggregator.Subscribe(this);
-            _windowManager = windowManager;
-            
-            Initialize();
-            
-        }
-        
-        #endregion
+    #endregion
 
-        #region Functions
-        //Sets default values, and gets old searches.
-        private void Initialize()
-        {
-            SearchSettings = new SearchSettingModel();
-            Path = GetPath();
-            //Når GetSearchSettings er lavet, så uncomment det her, og det burde virke. Der er et sted mere hvor der skal uncommentes.
-            //Remind to make functionality so that no more than 10 saved settings are stored at a time.
-            //SavedSettingsCollection = GetSearchSettings();
-        }
+    #region Functions
+    //Sets default values, and gets old searches.
+    private void Initialize()
+    {
+      SearchSettings = new SearchSettingModel();
+      Path = GetPath();
+      //Når GetSearchSettings er lavet, så uncomment det her, og det burde virke. Der er et sted mere hvor der skal uncommentes.
+      //Remind to make functionality so that no more than 10 saved settings are stored at a time.
+      //SavedSettingsCollection = GetSearchSettings();
+    }
 
-        //This function is supposed to look in a subfolder of the root folder (using the getpath function), find a .csv with the 10 most recent searches, 
-        //and read those into the program, to be stored in PreviousSearches, which in turn will populate the SavedSettingsCollection when it is needed. 
-        //The SearchSettings object is bound to the ui with different databindings, and will always contain either the default values of the different parameters, 
-        //Or the values currently choosen by the user.
-        
-
-        //This is supposed to save the current search settings to the SavedSettingsCollection
-        private void SaveSearchSettings()
-        {
-            //SavedSettingsCollection.Add(SearchSettings);
-        }
-        //Gets the file path of the current directory. Might need to modify this with appendices if you want subfolders or sumthin.
-        private string GetPath()
-        {
-            string rel_path = Directory.GetCurrentDirectory();
-            string dir_info = new DirectoryInfo(rel_path).Name;
-            rel_path = rel_path.Replace(dir_info, "");
-            dir_info = new DirectoryInfo(rel_path).Name;
-            rel_path = rel_path.Replace(dir_info, "");
-            var path = rel_path.Remove(rel_path.Length - 1) + @"Data\";
-            return path;
-        }
-
-        public void GetResults()
-        {
-            //Running the query stuff on a seperate thread. There is lots of options to let us get reports of progress or something like that, but time does not permit us to do it.
-            BackgroundWorker bWorker = new BackgroundWorker();
-            bWorker.DoWork += bWorker_doWork;
-            bWorker.RunWorkerAsync();
-        }
-
-        private void bWorker_doWork(object sender, DoWorkEventArgs e)
-        {
-            IsSearching = true;
-            //Functionality is extremely bad piece of code badly named, stuff in weird places.
-            fncy = new Funktionality(_windowManager);
-            ResultsReturned = new BindableCollection<Listing>();
-
-            //This one is just a static search, no user input. Used for testing.
-            //ResultsReturned = fncy.StaticSearch();
+    //This function is supposed to look in a subfolder of the root folder (using the getpath function), find a .csv with the 10 most recent searches, 
+    //and read those into the program, to be stored in PreviousSearches, which in turn will populate the SavedSettingsCollection when it is needed. 
+    //The SearchSettings object is bound to the ui with different databindings, and will always contain either the default values of the different parameters, 
+    //Or the values currently choosen by the user.
 
 
-            ResultsReturned = fncy.SuperSearch(SearchSettings);
+    //This is supposed to save the current search settings to the SavedSettingsCollection
+    private void SaveSearchSettings()
+    {
+      //SavedSettingsCollection.Add(SearchSettings);
+    }
+    //Gets the file path of the current directory. Might need to modify this with appendices if you want subfolders or sumthin.
+    private string GetPath()
+    {
+      string rel_path = Directory.GetCurrentDirectory();
+      string dir_info = new DirectoryInfo(rel_path).Name;
+      rel_path = rel_path.Replace(dir_info, "");
+      dir_info = new DirectoryInfo(rel_path).Name;
+      rel_path = rel_path.Replace(dir_info, "");
+      var path = rel_path.Remove(rel_path.Length - 1) + @"Data\";
+      return path;
+    }
 
-            //initiates the resultscreen, with the propert parts.
-            ResultScreen = new ResultScreenViewModel(ResultsReturned, SearchSettings, _windowManager, _eventAggregator);
-            //This saves the search history each time a search is made. It is then listed for convenience in the combobox in the view.
-            SearchHistoryCreater();
-            IsSearching = false;
-        }
+    public void GetResults()
+    {
+      //Running the query stuff on a seperate thread. There is lots of options to let us get reports of progress or something like that, but time does not permit us to do it.
+      BackgroundWorker bWorker = new BackgroundWorker();
+      bWorker.DoWork += bWorker_doWork;
+      bWorker.RunWorkerAsync();
+    }
 
-        public void Print()
-        {
-            if (!IsPrintOpen)
-            {
-                if (true)
-                {
-                    _windowManager.ShowWindow(new PrintWindowViewModel(ResultsReturned, SearchSettings, graphResults, _eventAggregator));
-                    //technically this should be a publishonuithread?
-                    IsPrintOpen = true;
-                }
-            }
-        }
+    private void bWorker_doWork(object sender, DoWorkEventArgs e)
+    {
+      IsSearching = true;
+      //Functionality is extremely bad piece of code badly named, stuff in weird places.
+      fncy = new Funktionality(_windowManager);
+      ResultsReturned = new BindableCollection<Listing>();
 
-        public void Analysis()
-        {
-            fncy = new Funktionality(_windowManager);
-            BindableCollection<Listing> results = new BindableCollection<Listing>(fncy.getSelectedListings(ResultsReturned));
-            double estprice = fncy.getEstPrice(results);
-            _windowManager.ShowWindow(new GraphScreenViewModel(results, _windowManager, _searchSettings.SearchInput,estprice));
-        }
-        public void Handle(BoolPropMsg message)
-        {
-            if(message.Prop == "IsPrintOpen")
-            {
-                IsPrintOpen = message.Val;
-            }
-        }
-        #endregion
+      //This one is just a static search, no user input. Used for testing.
+      //ResultsReturned = fncy.StaticSearch();
 
-      public bool CanAnalyseOrPrint
+
+      ResultsReturned = fncy.SuperSearch(SearchSettings);
+
+      //initiates the resultscreen, with the propert parts.
+      ResultScreen = new ResultScreenViewModel(ResultsReturned, SearchSettings, _windowManager, _eventAggregator);
+      //This saves the search history each time a search is made. It is then listed for convenience in the combobox in the view.
+      SearchHistoryCreater();
+      IsSearching = false;
+    }
+
+    public void Print()
+    {
+      if (!IsPrintOpen)
       {
-        get
+        if (true)
         {
-          if (ResultsReturned != null)
-          {
-            _canAnalyseOrPrint = true;
-          }
-          else
-          {
-            _canAnalyseOrPrint = false;
-          }
-          return _canAnalyseOrPrint;
+          _windowManager.ShowWindow(new PrintWindowViewModel(ResultsReturned, SearchSettings, graphResults, _eventAggregator));
+          //technically this should be a publishonuithread?
+          IsPrintOpen = true;
         }
-        set { _canAnalyseOrPrint = value; NotifyOfPropertyChange(()=> CanAnalyseOrPrint); }
       }
-        public SearchSettingModel SearchSettings
+    }
+
+    public void Analysis()
+    {
+      fncy = new Funktionality(_windowManager);
+      BindableCollection<Listing> results = new BindableCollection<Listing>(fncy.getSelectedListings(ResultsReturned));
+      double estprice = fncy.getEstPrice(results);
+      _windowManager.ShowWindow(new GraphScreenViewModel(results, _windowManager, _searchSettings.SearchInput, estprice));
+    }
+    public void Handle(BoolPropMsg message)
+    {
+      if (message.Prop == "IsPrintOpen")
+      {
+        IsPrintOpen = message.Val;
+      }
+    }
+    #endregion
+
+    public bool CanAnalyseOrPrint
+    {
+      get
+      {
+        if (ResultsReturned != null)
         {
-            get
-            {
-                return _searchSettings;
-            }
-
-            private set
-            {
-                _searchSettings = value;
-                NotifyOfPropertyChange(( )=> SearchSettings);
-            }
+          _canAnalyseOrPrint = true;
         }
-
-        public Screen ResultScreen
+        else
         {
-            get { return _resultScreen; }
-            set
-            {
-                _resultScreen = value;
-                NotifyOfPropertyChange(() => ResultScreen);
-            }
+          _canAnalyseOrPrint = false;
         }
-        public BindableCollection<SearchSettingModel> SavedSettingsCollection
-        {
-            get { return _savedSettingsCollection; }
-            set
-            {
-                _savedSettingsCollection = value;
-                NotifyOfPropertyChange(() => SavedSettingsCollection);
-            }
+        return _canAnalyseOrPrint;
+      }
+      set { _canAnalyseOrPrint = value; NotifyOfPropertyChange(() => CanAnalyseOrPrint); }
+    }
+    public SearchSettingModel SearchSettings
+    {
+      get
+      {
+        return _searchSettings;
+      }
 
-        }
+      private set
+      {
+        _searchSettings = value;
+        NotifyOfPropertyChange(() => SearchSettings);
+      }
+    }
 
-        public bool IsPrintOpen
-        {
-            get
-            {
-                return _isPrintOpen;
-            }
+    public Screen ResultScreen
+    {
+      get { return _resultScreen; }
+      set
+      {
+        _resultScreen = value;
+        NotifyOfPropertyChange(() => ResultScreen);
+      }
+    }
+    public BindableCollection<SearchSettingModel> SavedSettingsCollection
+    {
+      get { return _savedSettingsCollection; }
+      set
+      {
+        _savedSettingsCollection = value;
+        NotifyOfPropertyChange(() => SavedSettingsCollection);
+      }
 
-            set
-            {
-                _isPrintOpen = value;
-                NotifyOfPropertyChange(() => IsPrintOpen);
-            }
-        }
+    }
 
-        public bool IsSearching
-        {
-            get
-            {
-                return !_isSearching;
-            }
+    public bool IsPrintOpen
+    {
+      get
+      {
+        return _isPrintOpen;
+      }
 
-            set
-            {
-                _isSearching = value;
-                NotifyOfPropertyChange(() => IsSearching);
-            }
-        }
+      set
+      {
+        _isPrintOpen = value;
+        NotifyOfPropertyChange(() => IsPrintOpen);
+      }
+    }
 
-        public void SearchHistoryCreater()
+    public bool IsSearching
+    {
+      get
+      {
+        return !_isSearching;
+      }
+
+      set
+      {
+        _isSearching = value;
+        NotifyOfPropertyChange(() => IsSearching);
+      }
+    }
+
+    public void SearchHistoryCreater()
     {
       string history = GetPath() + @"/History";
 
@@ -262,7 +262,7 @@ namespace P3.ViewModels
 
     public void WriteToFile(string historyFile)
     {
-      
+
       using (StreamWriter writer = File.CreateText(historyFile))
       {
         writer.WriteLine(SearchSettings.SearchInput ?? "");

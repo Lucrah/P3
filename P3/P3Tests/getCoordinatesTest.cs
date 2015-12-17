@@ -17,7 +17,7 @@ namespace P3Tests
   {
     static IWindowManager windowManager;
     Funktionality fncy = new Funktionality(windowManager);
-    
+
 
     [TestMethod]
     public void TestgetCoordinates()
@@ -31,13 +31,13 @@ namespace P3Tests
       var result = new System.Net.WebClient().DownloadString(address);
       XmlDocument doc = new XmlDocument();
       doc.LoadXml(result);
-     
+
       XmlNodeList AddressComponents = doc.GetElementsByTagName("address_component");
       //  XmlNodeList houseNumberNode = doc.GetElementsByTagName("./address_component[type = 'street_number']");
       //XmlNodeList areaCodeNode = doc.GetElementsByTagName("./address_component[type = 'postal_code']");
       foreach (XmlNode childNode in AddressComponents)
       {
-        if (childNode.SelectSingleNode("type").InnerText == "route") 
+        if (childNode.SelectSingleNode("type").InnerText == "route")
         {
           StreetNameTest = childNode.SelectSingleNode("long_name").InnerText;
         }
@@ -53,7 +53,7 @@ namespace P3Tests
       Assert.AreEqual(TestListing.StreetName, StreetNameTest);
       Assert.AreEqual(TestListing.HouseNumber, HouseNumberTest);
       Assert.AreEqual(TestListing.AreaCode, AreaCodeTest);
-      
+
     }
   }
 }

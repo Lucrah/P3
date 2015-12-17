@@ -12,21 +12,16 @@ using i_hate_windows.ViewModels;
 
 namespace P3.Helpers
 {
-    [Export(typeof(Funktionality))]
+  [Export(typeof(Funktionality))]
   public class Funktionality
   {
-        private IWindowManager _windowManager;
+    private IWindowManager _windowManager;
 
-        [ImportingConstructor]
-        public Funktionality(IWindowManager windowManager)
-        {
-            _windowManager = windowManager;
-            //_windowManager.ShowDialog(new bogipopupViewModel("this is a popup"));
-        }
-
-
-    //should this not be coupled directly onto listing.cs to keep it as close to data as possible
-    //Or maybe even put it in BaseINPCModel, so that any listing, as long as it has an adress it can get coords 4 u
+    [ImportingConstructor]
+    public Funktionality(IWindowManager windowManager)
+    {
+      _windowManager = windowManager;
+    }
 
     private static string connectionString = "server=localhost;user id=root;password=1234;database=p3database";
 
@@ -56,17 +51,12 @@ namespace P3.Helpers
       }
       else if (status == "ZERO_RESULTS")
       {
-        //kast exception der fortæller at addressen ikke findes og/eller er stavet forkert.
         _windowManager.ShowDialog(new bogipopupViewModel("Adressen kunne ikke findes."));
       }
       else if (status == "OVER_QUERY_LIMIT")
       {
         _windowManager.ShowDialog(new bogipopupViewModel("Kvoten af lookups er opbrugt."));
-        //Kast exception der fortæller at de har opbrugt kvote af lookups.
-
       }
-      //string lol = String.Format("{0}     -     {1} \n {2}", listing.Lat, listing.Lng, listing.AddressForUrl);
-      //_windowManager.ShowDialog(new bogipopupViewModel(lol));
     }
 
     public BindableCollection<Listing> StaticSearch()
@@ -111,7 +101,7 @@ namespace P3.Helpers
           listSold = connection.Query<Listing>(SqlStringBuilderSold(input)).AsList();
           listForSale = connection.Query<Listing>(SqlStringBuilderForSale(input)).AsList();
         }
-        
+
 
       }
 
@@ -194,25 +184,25 @@ namespace P3.Helpers
 
       if (input.Lejlighed)
       {
-          AndOr = getAndOr(count);
-          sqlOr += proptype + "\"Lejlighed\" " + AndOr;
-          count--;
+        AndOr = getAndOr(count);
+        sqlOr += proptype + "\"Lejlighed\" " + AndOr;
+        count--;
       }
       if (input.Sommerhus)
       {
-          AndOr = getAndOr(count);
-          sqlOr += proptype + "\"Sommerhus\" " + AndOr;
-          count--;
+        AndOr = getAndOr(count);
+        sqlOr += proptype + "\"Sommerhus\" " + AndOr;
+        count--;
       }
       if (input.Andet)
       {
-          AndOr = getAndOr(count);
-          sqlOr += proptype + "\"Andet\" " + AndOr;
-          count--;
+        AndOr = getAndOr(count);
+        sqlOr += proptype + "\"Andet\" " + AndOr;
+        count--;
       }
 
 
-          sqlOr += ") AND ";
+      sqlOr += ") AND ";
 
       if (PropTypeChecked.Count != 0)
       {
@@ -253,7 +243,7 @@ namespace P3.Helpers
       }
 
       sql += "LIMIT 25";
-    
+
       //throw new Exception(sql);
       return sql;
     }
@@ -385,7 +375,6 @@ namespace P3.Helpers
 
       sql += "LIMIT 25";
 
-      //throw new Exception(sql);
       return sql;
     }
 
@@ -393,11 +382,11 @@ namespace P3.Helpers
     {
       if (count > 1)
       {
-        return  "OR ";
+        return "OR ";
       }
       else
       {
-        return  string.Empty;
+        return string.Empty;
       }
     }
 
@@ -423,6 +412,6 @@ namespace P3.Helpers
       }
       return (totalPriceSqr / listings.Count);
     }
-        #endregion
-    }
+    #endregion
+  }
 }
