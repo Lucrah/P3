@@ -110,9 +110,13 @@ namespace P3.ViewModels
     public void Analysis()
     {
       fncy = new Funktionality(_windowManager);
-      BindableCollection<Listing> results = new BindableCollection<Listing>(fncy.getSelectedListings(ResultsReturned));
-      double estprice = fncy.getEstPrice(results);
-      _windowManager.ShowWindow(new GraphScreenViewModel(results, _windowManager, _searchSettings.SearchInput, estprice));
+      if (fncy.getSelectedListings(ResultsReturned).Count != 0)
+      {
+        BindableCollection<Listing> results = new BindableCollection<Listing>(fncy.getSelectedListings(ResultsReturned));
+        double estprice = fncy.getEstPrice(results);
+        _windowManager.ShowWindow(new GraphScreenViewModel(results, _windowManager, _searchSettings.SearchInput, estprice));
+      }
+      
     }
     public void Handle(BoolPropMsg message)
     {
