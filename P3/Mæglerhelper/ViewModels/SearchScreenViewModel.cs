@@ -22,7 +22,7 @@ namespace P3.ViewModels
     #region Fields that are not searchsettings
 
     private BindableCollection<string> _savedSettingsCollection;
-    private BindableCollection<Listing> ResultsReturned;
+    private BindableCollection<Listing> _resultsReturned;
     private Funktionality fncy;
     private string Path;
     private Screen _resultScreen;
@@ -77,6 +77,7 @@ namespace P3.ViewModels
       BackgroundWorker bWorker = new BackgroundWorker();
       bWorker.DoWork += bWorker_doWork;
       bWorker.RunWorkerAsync();
+
     }
 
     private void bWorker_doWork(object sender, DoWorkEventArgs e)
@@ -88,8 +89,12 @@ namespace P3.ViewModels
 
       ResultsReturned = fncy.SuperSearch(SearchSettings);
 
-      //initiates the resultscreen, with the proper parts.
-      ResultScreen = new ResultScreenViewModel(ResultsReturned, SearchSettings, _windowManager, _eventAggregator);
+            //initiates the resultscreen, with the proper parts.
+            if (ResultsReturned != null)
+            {
+                ResultScreen = new ResultScreenViewModel(ResultsReturned, SearchSettings, _windowManager, _eventAggregator);
+            }
+ 
       //This saves the search history each time a search is made. It is then listed for convenience in the combobox in the view.
       SearchHistoryCreater();
       IsSearching = false;
@@ -110,13 +115,9 @@ namespace P3.ViewModels
     public void Analysis()
     {
       fncy = new Funktionality(_windowManager);
-      if (fncy.getSelectedListings(ResultsReturned).Count != 0)
-      {
         BindableCollection<Listing> results = new BindableCollection<Listing>(fncy.getSelectedListings(ResultsReturned));
         double estprice = fncy.getEstPrice(results);
-        _windowManager.ShowWindow(new GraphScreenViewModel(results, _windowManager, _searchSettings.SearchInput, estprice));
-      }
-      
+        _windowManager.ShowWindow(new GraphScreenViewModel(results, _windowManager, _searchSettings.SearchInput, estprice));  
     }
     public void Handle(BoolPropMsg message)
     {
@@ -133,7 +134,10 @@ namespace P3.ViewModels
       {
         if (ResultsReturned != null)
         {
-          _canAnalyseOrPrint = true;
+                    if (ResultsReturned.Count != 0)
+                    {
+                        _canAnalyseOrPrint = true;
+                    }
         }
         else
         {
@@ -219,7 +223,22 @@ namespace P3.ViewModels
       }
     }
 
-    public void LoadSettings()
+        public BindableCollection<Listing> ResultsReturned
+        {
+            get
+            {
+                return _resultsReturned;
+            }
+
+            set
+            {
+                _resultsReturned = value;
+                NotifyOfPropertyChange(() => CanAnalyseOrPrint);
+                NotifyOfPropertyChange(() => ResultsReturned);
+            }
+        }
+
+        public void LoadSettings()
     {
       LoadFromFile(SelectedSetting);
     }

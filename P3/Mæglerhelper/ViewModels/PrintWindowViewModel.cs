@@ -122,7 +122,7 @@ namespace P3.ViewModels
       catch (Exception)
       {
 
-        throw;
+
       }
     }
 

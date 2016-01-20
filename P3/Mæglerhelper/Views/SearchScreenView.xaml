@@ -120,7 +120,7 @@
                 <Button x:Name="LoadSettings" Content="Indlæs" HorizontalAlignment="Left" Margin="10,216,0,0" Grid.Row="15" VerticalAlignment="Top" Width="141" Height="4.3"/>
                 <ComboBox SelectedItem="{Binding Path=SelectedSetting}" ItemsSource="{Binding Path=SavedSettingsCollection}"  HorizontalAlignment="Left" Margin="10,185,0,0" Grid.Row="15" VerticalAlignment="Top" Width="141"/>
                 <Button x:Name="Analysis" IsEnabled="{Binding Path=CanAnalyseOrPrint}"  Content="Analyse" Grid.Column="1" HorizontalAlignment="Left" Margin="193,178,0,0" Grid.Row="15" VerticalAlignment="Top" Width="124" Grid.ColumnSpan="2"/>
-                <Button x:Name="Print" IsEnabled="{Binding Path=CanAnalyseOrPrint}" Content="Print.." Grid.Column="1" HorizontalAlignment="Left" Margin="193,209,0,0" Grid.Row="15" VerticalAlignment="Top" Width="124" Grid.ColumnSpan="2"/>
+                <Button x:Name="Print" IsEnabled="{Binding Path=CanAnalyseOrPrint}" Content="Print" Grid.Column="1" HorizontalAlignment="Left" Margin="193,209,0,0" Grid.Row="15" VerticalAlignment="Top" Width="124" Grid.ColumnSpan="2"/>
                 <Border BorderThickness="1" Margin="64.917,92.001,20.333,0" Grid.Row="15" Height="25" VerticalAlignment="Top" Background="#FF027C47" Grid.Column="1">
                     <TextBox Text="{Binding Path=SearchSettings.MaxYearBuilt, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" TextWrapping="NoWrap" FontSize="10.667" Margin="65,0.25,0.25,-1" Background="{x:Null}" BorderBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" BorderThickness="0" PreviewTextInput="TextInputValidation" MinHeight="0" VerticalContentAlignment="Center"/>
                 </Border>
